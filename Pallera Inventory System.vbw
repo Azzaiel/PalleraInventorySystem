@@ -1,0 +1,8 @@
+frmSupplier = 150, 150, 994, 601, , 50, 50, 879, 542, C
+frmItemType = 100, 100, 944, 551, Z, 25, 25, 869, 476, C
+DbInstance = 0, 0, 0, 0, C
+MainSub = 0, 0, 0, 0, C
+DataCrudDao = 75, 75, 1011, 464, 
+UserSession = 0, 0, 0, 0, C
+CommonHelper = 75, 75, 919, 526, 
+Constants = 0, 0, 0, 0, C
