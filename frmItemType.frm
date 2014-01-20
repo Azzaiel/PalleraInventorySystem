@@ -1,13 +1,13 @@
 VERSION 5.00
 Begin VB.Form frmItemType 
    Caption         =   "Form2"
-   ClientHeight    =   3030
+   ClientHeight    =   4110
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   4560
+   ClientWidth     =   9495
    LinkTopic       =   "Form2"
-   ScaleHeight     =   3030
-   ScaleWidth      =   4560
+   ScaleHeight     =   4110
+   ScaleWidth      =   9495
    StartUpPosition =   3  'Windows Default
 End
 Attribute VB_Name = "frmItemType"

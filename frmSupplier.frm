@@ -11,30 +11,66 @@ Begin VB.Form frmSupplier
    ScaleWidth      =   18645
    Begin VB.CommandButton cmbClear 
       Caption         =   "Clear"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   495
-      Left            =   3720
+      Left            =   3840
       TabIndex        =   31
       Top             =   5040
       Width           =   1095
    End
    Begin VB.CommandButton cmbClose 
       Caption         =   "Close"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   495
-      Left            =   4920
+      Left            =   5040
       TabIndex        =   30
       Top             =   5040
       Width           =   1095
    End
    Begin VB.CommandButton cmdActivation 
       Caption         =   "De-Activate"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   495
       Left            =   2520
       TabIndex        =   29
       Top             =   5040
-      Width           =   1095
+      Width           =   1215
    End
    Begin VB.CommandButton cmbEdit 
       Caption         =   "Edit"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   495
       Left            =   1320
       TabIndex        =   28
@@ -42,7 +78,16 @@ Begin VB.Form frmSupplier
       Width           =   1095
    End
    Begin VB.CommandButton cmbNewRec 
-      Caption         =   "Add"
+      Caption         =   "New"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   495
       Left            =   120
       TabIndex        =   27
@@ -52,7 +97,7 @@ Begin VB.Form frmSupplier
    Begin VB.Frame Frame2 
       Caption         =   "Search"
       Height          =   975
-      Left            =   6120
+      Left            =   6240
       TabIndex        =   17
       Top             =   120
       Width           =   12375
@@ -130,7 +175,7 @@ Begin VB.Form frmSupplier
       Left            =   120
       TabIndex        =   1
       Top             =   120
-      Width           =   5895
+      Width           =   6015
       Begin VB.TextBox txtSalesEmail 
          Height          =   285
          Left            =   1800
@@ -184,7 +229,7 @@ Begin VB.Form frmSupplier
       End
       Begin VB.Label Label5 
          BackColor       =   &H0000FF00&
-         Caption         =   "Sales Phone no"
+         Caption         =   "*Sales Phone no"
          Height          =   255
          Left            =   240
          TabIndex        =   34
@@ -284,7 +329,7 @@ Begin VB.Form frmSupplier
       End
       Begin VB.Label Label4 
          BackColor       =   &H0000FF00&
-         Caption         =   "Sales Contact"
+         Caption         =   "*Sales Contact"
          Height          =   255
          Left            =   240
          TabIndex        =   5
@@ -311,7 +356,7 @@ Begin VB.Form frmSupplier
       End
       Begin VB.Label Label1 
          BackColor       =   &H0000FF00&
-         Caption         =   "Supplier Name"
+         Caption         =   "*Supplier Name"
          Height          =   255
          Left            =   240
          TabIndex        =   2
@@ -321,7 +366,7 @@ Begin VB.Form frmSupplier
    End
    Begin MSDataGridLib.DataGrid dgSupplier 
       Height          =   4335
-      Left            =   6120
+      Left            =   6240
       TabIndex        =   0
       Top             =   1200
       Width           =   12375
@@ -416,59 +461,83 @@ Private Sub formatDataGrid()
 End Sub
 
 Private Sub cmbClear_Click()
-  txtName = ""
-  lblActive = "Y"
-  txtComPhone = ""
-  txtCompanyAddress = ""
-  txtSales = ""
-  txtSalesEmail = ""
-  txtSalesPhone = ""
-  lblCreatedBy = ""
-  lblCreatedDate = ""
-  lblLatModBy = ""
-  lblLastModDate = ""
+  Call toogelInsertMode(False)
 End Sub
 
 Private Sub cmbClose_Click()
   Unload Me
 End Sub
 
-Private Sub cmbDelete_Click()
-  if
-End Sub
-
 Private Sub cmbEdit_Click()
-  rs!Name = txtName
-  rs!active = lblActive
-  rs!COMPANY_PHONE_NUMBER = txtComPhone
-  rs!COMPANY_ADDRESS = txtCompanyAddress
-  rs!SALES_CONTACT = txtSales
-  rs!SALES_EMAIL = txtSalesEmail
-  rs!SALES_PHONE_NUMBER = txtSalesPhone
-  rs!CREATED_BY = UserSession.getLoginUser
-  rs!CREATED_DATE = Now
-  rs!LAST_MOD_BY = UserSession.getLoginUser
-  rs!LAST_MOD_DATE = Now
-  rs.Update
-  MsgBox "Record Updated", vbInformation
-  Call populateDataGrid
+  Call resetFormSkin
+  If (isFormDetailValid) Then
+    rs!Name = txtName
+    rs!active = lblActive
+    rs!COMPANY_PHONE_NUMBER = txtComPhone
+    rs!COMPANY_ADDRESS = txtCompanyAddress
+    rs!SALES_CONTACT = txtSales
+    rs!SALES_EMAIL = txtSalesEmail
+    rs!SALES_PHONE_NUMBER = txtSalesPhone
+    rs!CREATED_BY = UserSession.getLoginUser
+    rs!CREATED_DATE = Now
+    rs!LAST_MOD_BY = UserSession.getLoginUser
+    rs!LAST_MOD_DATE = Now
+    rs.Update
+    MsgBox "Record Updated", vbInformation
+    Call populateDataGrid
+  End If
 End Sub
+Private Function resetFormSkin()
+  Call CommonHelper.toDefaultSkin(txtName)
+  Call CommonHelper.toDefaultSkin(txtSales)
+  Call CommonHelper.toDefaultSkin(txtSalesPhone)
+End Function
 
 Private Sub cmbNewRec_Click()
-  rs.AddNew
-  rs!Name = txtName
-  rs!active = lblActive
-  rs!COMPANY_PHONE_NUMBER = txtComPhone
-  rs!COMPANY_ADDRESS = txtCompanyAddress
-  rs!SALES_CONTACT = txtSales
-  rs!SALES_EMAIL = txtSalesEmail
-  rs!SALES_PHONE_NUMBER = txtSalesPhone
-  rs!LAST_MOD_BY = UserSession.getLoginUser
-  rs!LAST_MOD_DATE = Now
-  rs.Update
-  MsgBox "Record Created", vbInformation
-  Call populateDataGrid
+  Call resetFormSkin
+  If (cmbNewRec.Caption = "New") Then
+    Call toogelInsertMode(True)
+  Else
+    If (isFormDetailValid) Then
+      rs.AddNew
+      rs!Name = txtName
+      rs!active = lblActive
+      rs!COMPANY_PHONE_NUMBER = txtComPhone
+      rs!COMPANY_ADDRESS = txtCompanyAddress
+      rs!SALES_CONTACT = txtSales
+      rs!SALES_EMAIL = txtSalesEmail
+      rs!SALES_PHONE_NUMBER = txtSalesPhone
+      rs!LAST_MOD_BY = UserSession.getLoginUser
+      rs!LAST_MOD_DATE = Now
+      rs.Update
+      MsgBox "Record Created", vbInformation
+      Call populateDataGrid
+      Call toogelInsertMode(False)
+    End If
+  End If
 End Sub
+
+Private Function isFormDetailValid() As Boolean
+  If (Not CommonHelper.hasValidValue(txtName)) Then
+    isFormDetailValid = False
+    Call CommonHelper.sendWarning(txtName, "Please enter the Supplier Name")
+    Exit Function
+  End If
+  
+  If (Not CommonHelper.hasValidValue(txtSales)) Then
+    isFormDetailValid = False
+    Call CommonHelper.sendWarning(txtSales, "Please sales contact")
+    Exit Function
+  End If
+  
+  If (Not CommonHelper.hasValidValue(txtSalesPhone)) Then
+    isFormDetailValid = False
+    Call CommonHelper.sendWarning(txtSalesPhone, "Please sales phone number")
+    Exit Function
+  End If
+  
+  isFormDetailValid = True
+End Function
 
 Private Sub cmdActivation_Click()
   If (cmdActivation.Caption = "De-Activate") Then
@@ -527,6 +596,31 @@ Private Sub showSelectedData()
     cmdActivation.Caption = "Activate"
   End If
   
+End Sub
+Private Sub clearForm()
+  txtName = ""
+  lblActive = "Y"
+  txtComPhone = ""
+  txtCompanyAddress = ""
+  txtSales = ""
+  txtSalesEmail = ""
+  txtSalesPhone = ""
+  lblCreatedBy = ""
+  lblCreatedDate = ""
+  lblLatModBy = ""
+  lblLastModDate = ""
+End Sub
+Private Sub toogelInsertMode(isInisilization As Boolean)
+  If (isInisilization) Then
+    Call clearForm
+    cmbNewRec.Caption = "Add"
+    cmdActivation.Enabled = False
+    cmbClear.Enabled = False
+  Else
+    cmbNewRec.Caption = "New"
+    cmdActivation.Enabled = True
+    cmbClear.Enabled = True
+  End If
 End Sub
 
 Private Sub Form_Load()
