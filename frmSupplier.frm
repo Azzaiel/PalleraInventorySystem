@@ -172,9 +172,9 @@ Begin VB.Form frmSupplier
    Begin VB.Frame Frame1 
       Caption         =   "Sales Form"
       Height          =   4815
-      Left            =   120
+      Left            =   0
       TabIndex        =   1
-      Top             =   120
+      Top             =   0
       Width           =   6015
       Begin VB.TextBox txtSalesEmail 
          Height          =   285

@@ -1,4 +1,4 @@
 Attribute VB_Name = "MainSub"
 Sub main()
-  frmSupplier.Show
+  frmAccnt.Show
 End Sub
