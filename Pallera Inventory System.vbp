@@ -1,9 +1,8 @@
 Type=Exe
-Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\..\..\Windows\SysWOW64\stdole2.tlb#OLE Automation
-Reference=*\G{2A75196C-D9EB-4129-B803-931327F72D5C}#2.8#0#..\..\..\..\..\Program Files (x86)\Common Files\System\ado\msado28.tlb#Microsoft ActiveX Data Objects 2.8 Library
-Reference=*\G{00025E01-0000-0000-C000-000000000046}#4.0#0#..\..\..\..\..\Program Files (x86)\Common Files\Microsoft Shared\DAO\DAO350.DLL#Microsoft DAO 3.51 Object Library
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#C:\WINDOWS\system32\stdole2.tlb#OLE Automation
+Reference=*\G{2A75196C-D9EB-4129-B803-931327F72D5C}#2.8#0#C:\Program Files\Common Files\system\ado\msado15.dll#Microsoft ActiveX Data Objects 2.8 Library
+Reference=*\G{00025E01-0000-0000-C000-000000000046}#4.0#0#C:\Program Files\Common Files\Microsoft Shared\DAO\DAO350.DLL#Microsoft DAO 3.51 Object Library
 Form=frmSupplier.frm
-Form=frmItemType.frm
 Module=DbInstance; DbInstance.bas
 Module=MainSub; MainSub.bas
 Module=DataCrudDao; DataCrudDao.bas
@@ -11,6 +10,8 @@ Object={CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0; MSDATGRD.OCX
 Module=UserSession; UserSession.bas
 Module=CommonHelper; CommonHelper.bas
 Module=Constants; Constants.bas
+Form=frmAccnt.frm
+Form=frmItemType.frm
 Startup="Sub Main"
 HelpFile=""
 Command32=""
@@ -38,3 +39,6 @@ Unattended=0
 Retained=0
 ThreadPerObject=0
 MaxNumberOfThreads=1
+
+[MS Transaction Server]
+AutoRefresh=1
