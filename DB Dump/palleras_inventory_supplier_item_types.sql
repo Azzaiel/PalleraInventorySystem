@@ -18,38 +18,33 @@ USE `palleras_inventory`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `suppliers`
+-- Table structure for table `supplier_item_types`
 --
 
-DROP TABLE IF EXISTS `suppliers`;
+DROP TABLE IF EXISTS `supplier_item_types`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `suppliers` (
+CREATE TABLE `supplier_item_types` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` varchar(255) DEFAULT NULL,
-  `SALES_CONTACT` varchar(255) DEFAULT NULL,
-  `SALES_EMAIL` varchar(50) DEFAULT NULL,
-  `SALES_PHONE_NUMBER` varchar(50) DEFAULT NULL,
-  `COMPANY_ADDRESS` varchar(255) DEFAULT NULL,
-  `COMPANY_PHONE_NUMBER` varchar(45) DEFAULT NULL,
-  `CREATED_BY` varchar(100) DEFAULT NULL,
-  `CREATED_DATE` datetime DEFAULT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `SUPPLIER_ID` int(11) DEFAULT NULL,
+  `CREATED_BY` varchar(255) DEFAULT NULL,
+  `CREATED_DATE` datetime NOT NULL,
+  `LAST_MOD_BY` varchar(255) DEFAULT NULL,
   `LAST_MOD_DATE` datetime DEFAULT NULL,
-  `LAST_MOD_BY` varchar(100) DEFAULT NULL,
-  `ACTIVE` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID_UNIQUE` (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `suppliers`
+-- Dumping data for table `supplier_item_types`
 --
 
-LOCK TABLES `suppliers` WRITE;
-/*!40000 ALTER TABLE `suppliers` DISABLE KEYS */;
-INSERT INTO `suppliers` VALUES (1,'Metro Marketing','asd','dasdsdsd','dasd','asdasdas','asdas','System','2014-01-11 11:52:34','2014-01-11 11:52:34','System','Y'),(2,'Davis Paint','asd','dasdsdsd','dasd','asdasdas','asdas','System','2014-01-11 11:49:47','2014-01-11 12:01:54','System','N'),(3,'Mayland Constraction','Richard Reyles','asdasdasd','asdasdas','Some where','sdsdsd','System','2014-01-11 12:11:14','2014-01-11 12:11:14','System','Y');
-/*!40000 ALTER TABLE `suppliers` ENABLE KEYS */;
+LOCK TABLES `supplier_item_types` WRITE;
+/*!40000 ALTER TABLE `supplier_item_types` DISABLE KEYS */;
+INSERT INTO `supplier_item_types` VALUES (1,'Wood Paint',2,'icha','2014-01-26 11:35:44','icha','2014-01-26 11:35:44'),(2,'Wall Paint',2,'System','2014-01-26 12:08:16','System','2014-01-26 12:08:16'),(3,'Aircon 123',1,'System','2014-01-26 12:09:40','System','2014-01-26 12:13:33');
+/*!40000 ALTER TABLE `supplier_item_types` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
