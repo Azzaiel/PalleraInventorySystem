@@ -1,54 +1,90 @@
 VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form frmItemType 
-   ClientHeight    =   5025
+   ClientHeight    =   4320
    ClientLeft      =   120
    ClientTop       =   450
    ClientWidth     =   16245
    LinkTopic       =   "Form2"
-   ScaleHeight     =   5025
+   ScaleHeight     =   4320
    ScaleWidth      =   16245
    StartUpPosition =   3  'Windows Default
    Begin VB.CommandButton cmbNewRec 
-      Caption         =   "Add"
+      Caption         =   "New"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   495
       Left            =   240
-      TabIndex        =   28
-      Top             =   3960
+      TabIndex        =   24
+      Top             =   3360
       Width           =   1095
    End
    Begin VB.CommandButton cmbEdit 
       Caption         =   "Edit"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   495
       Left            =   1440
-      TabIndex        =   27
-      Top             =   3960
+      TabIndex        =   23
+      Top             =   3360
       Width           =   1095
    End
    Begin VB.CommandButton cmbClose 
       Caption         =   "Close"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   495
       Left            =   3960
-      TabIndex        =   26
-      Top             =   3960
+      TabIndex        =   22
+      Top             =   3360
       Width           =   1095
    End
    Begin VB.CommandButton cmbClear 
       Caption         =   "Clear"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   495
       Left            =   2760
-      TabIndex        =   25
-      Top             =   3960
+      TabIndex        =   21
+      Top             =   3360
       Width           =   1095
    End
    Begin MSDataGridLib.DataGrid dgItemType 
-      Height          =   3375
+      Height          =   2895
       Left            =   5280
-      TabIndex        =   22
+      TabIndex        =   18
       Top             =   1200
       Width           =   10935
       _ExtentX        =   19288
-      _ExtentY        =   5953
+      _ExtentY        =   5106
       _Version        =   393216
       HeadLines       =   1
       RowHeight       =   15
@@ -109,44 +145,36 @@ Begin VB.Form frmItemType
       Caption         =   "Search"
       Height          =   975
       Left            =   5280
-      TabIndex        =   13
+      TabIndex        =   11
       Top             =   120
       Width           =   10935
       Begin VB.TextBox txtSearchSuppliers 
          Height          =   285
          Left            =   1800
-         TabIndex        =   18
+         TabIndex        =   15
          Top             =   240
-         Width           =   3255
-      End
-      Begin VB.ComboBox cmSearchCategory 
-         Height          =   315
-         Left            =   1800
-         Style           =   2  'Dropdown List
-         TabIndex        =   17
-         Top             =   600
          Width           =   3255
       End
       Begin VB.TextBox txtSearchItemType 
          Height          =   285
          Left            =   6720
-         TabIndex        =   16
+         TabIndex        =   14
          Top             =   240
          Width           =   3735
       End
       Begin VB.CommandButton cmdClearSearch 
          Caption         =   "Clear"
          Height          =   315
-         Left            =   8640
-         TabIndex        =   15
+         Left            =   6000
+         TabIndex        =   13
          Top             =   600
          Width           =   1695
       End
       Begin VB.CommandButton cmdSearch 
          Caption         =   "Search"
          Height          =   315
-         Left            =   6840
-         TabIndex        =   14
+         Left            =   3120
+         TabIndex        =   12
          Top             =   600
          Width           =   1695
       End
@@ -155,17 +183,8 @@ Begin VB.Form frmItemType
          Caption         =   "Supplier Name"
          Height          =   255
          Left            =   480
-         TabIndex        =   21
+         TabIndex        =   17
          Top             =   240
-         Width           =   1095
-      End
-      Begin VB.Label Label13 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Category"
-         Height          =   255
-         Left            =   480
-         TabIndex        =   20
-         Top             =   600
          Width           =   1095
       End
       Begin VB.Label Label14 
@@ -173,37 +192,31 @@ Begin VB.Form frmItemType
          Caption         =   "Item Type"
          Height          =   255
          Left            =   5400
-         TabIndex        =   19
+         TabIndex        =   16
          Top             =   240
          Width           =   1095
       End
    End
    Begin VB.Frame Frame1 
       Caption         =   "Item Type Form"
-      Height          =   3735
+      Height          =   2775
       Left            =   120
       TabIndex        =   0
-      Top             =   120
+      Top             =   360
       Width           =   5055
       Begin VB.TextBox txtItemType 
          Height          =   285
          Left            =   1440
-         TabIndex        =   24
-         Top             =   480
-         Width           =   3375
-      End
-      Begin VB.ComboBox cmCategory 
-         Height          =   315
-         Left            =   1440
-         TabIndex        =   8
+         TabIndex        =   20
          Top             =   840
          Width           =   3375
       End
       Begin VB.ComboBox cmSuppliers 
          Height          =   315
          Left            =   1440
-         TabIndex        =   7
-         Top             =   1200
+         Style           =   2  'Dropdown List
+         TabIndex        =   6
+         Top             =   360
          Width           =   3375
       End
       Begin VB.Label Label5 
@@ -211,8 +224,8 @@ Begin VB.Form frmItemType
          Caption         =   "Item Type:"
          Height          =   255
          Left            =   240
-         TabIndex        =   23
-         Top             =   480
+         TabIndex        =   19
+         Top             =   840
          Width           =   855
       End
       Begin VB.Label lblCreatedBy 
@@ -220,8 +233,8 @@ Begin VB.Form frmItemType
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   12
-         Top             =   1560
+         TabIndex        =   10
+         Top             =   1200
          Width           =   1935
       End
       Begin VB.Label lblCreatedDate 
@@ -229,8 +242,8 @@ Begin VB.Form frmItemType
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   11
-         Top             =   1920
+         TabIndex        =   9
+         Top             =   1560
          Width           =   1935
       End
       Begin VB.Label lblLatModBy 
@@ -238,8 +251,8 @@ Begin VB.Form frmItemType
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   10
-         Top             =   2280
+         TabIndex        =   8
+         Top             =   1920
          Width           =   1935
       End
       Begin VB.Label lblLastModDate 
@@ -247,8 +260,8 @@ Begin VB.Form frmItemType
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   9
-         Top             =   2640
+         TabIndex        =   7
+         Top             =   2280
          Width           =   1935
       End
       Begin VB.Label Label9 
@@ -256,8 +269,8 @@ Begin VB.Form frmItemType
          Caption         =   "Last mod date:"
          Height          =   255
          Left            =   240
-         TabIndex        =   6
-         Top             =   2640
+         TabIndex        =   5
+         Top             =   2280
          Width           =   1095
       End
       Begin VB.Label Label8 
@@ -265,8 +278,8 @@ Begin VB.Form frmItemType
          Caption         =   "Last mod by:"
          Height          =   255
          Left            =   240
-         TabIndex        =   5
-         Top             =   2280
+         TabIndex        =   4
+         Top             =   1920
          Width           =   975
       End
       Begin VB.Label Label7 
@@ -274,8 +287,8 @@ Begin VB.Form frmItemType
          Caption         =   "Created date:"
          Height          =   255
          Left            =   240
-         TabIndex        =   4
-         Top             =   1920
+         TabIndex        =   3
+         Top             =   1560
          Width           =   975
       End
       Begin VB.Label Label6 
@@ -283,17 +296,8 @@ Begin VB.Form frmItemType
          Caption         =   "Created by:"
          Height          =   255
          Left            =   240
-         TabIndex        =   3
-         Top             =   1560
-         Width           =   855
-      End
-      Begin VB.Label Label4 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Category:"
-         Height          =   255
-         Left            =   240
          TabIndex        =   2
-         Top             =   840
+         Top             =   1200
          Width           =   855
       End
       Begin VB.Label Label2 
@@ -302,7 +306,7 @@ Begin VB.Form frmItemType
          Height          =   255
          Left            =   240
          TabIndex        =   1
-         Top             =   1200
+         Top             =   360
          Width           =   855
       End
    End
@@ -314,11 +318,13 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Private rs As ADODB.Recordset
+Private suplierIdList As Variant
+Private tempRs As ADODB.Recordset
 Private Sub dgCategories_Click()
 
 End Sub
 Private Sub populateDataGrid()
-  Set rs = DataCrudDao.getItemTypeRS(cmSearchCategory, txtSearchItemType, txtSearchSuppliers)
+  Set rs = DataCrudDao.getItemTypeRS(txtSearchItemType, txtSearchSuppliers)
   Set dgItemType.DataSource = rs
   dgItemType.Refresh
   If (rs.RecordCount > 0) Then
@@ -331,14 +337,18 @@ Private Sub formatDataGrid()
   
 End Sub
 
-Private Sub cmbClear_Click()
+Private Sub clearForm()
   txtItemType = ""
-  cmCategory = ""
-  cmSuppliers = ""
+  cmSuppliers.ListIndex = -1
   lblCreatedBy = ""
   lblCreatedDate = ""
   lblLatModBy = ""
   lblLastModDate = ""
+End Sub
+
+Private Sub cmbClear_Click()
+  Call clearForm
+  Call toogelInsertMode(False)
 End Sub
 
 Private Sub cmbClose_Click()
@@ -346,37 +356,50 @@ Private Sub cmbClose_Click()
 End Sub
 
 Private Sub cmbDelete_Click()
-  if
 End Sub
 
 Private Sub cmbEdit_Click()
-  rs!SUPPLIERS = cmSuppliers.Text
-  rs!Category = cmCategory.Text
-  rs!ITEM_TYPE = txtItemType
-  rs!CREATED_BY = UserSession.getLoginUser
-  rs!CREATED_DATE = Now
-  rs!LAST_MOD_BY = UserSession.getLoginUser
-  rs!LAST_MOD_DATE = Now
-  rs.Update
+
+  Set tempRs = DataCrudDao.getItemTypeRSByID(rs!id)
+  tempRs!SUPPLIER_ID = suplierIdList(cmSuppliers.ListIndex)
+  tempRs!Name = txtItemType
+  tempRs!LAST_MOD_BY = UserSession.getLoginUser
+  tempRs!LAST_MOD_DATE = Now
+  tempRs.Update
+  Call DbInstance.closeRecordSet(tempRs)
   MsgBox "Record Updated", vbInformation
   Call populateDataGrid
 End Sub
 
 Private Sub cmbNewRec_Click()
-  rs.AddNew
-  rs!SUPPLIERS = cmSuppliers.Text
-  rs!Category = cmCategory.Text
-  rs!ITEM_TYPE = txtItemType
-  rs!CREATED_BY = UserSession.getLoginUser
-  rs!CREATED_DATE = Now
-  rs!LAST_MOD_BY = UserSession.getLoginUser
-  rs!LAST_MOD_DATE = Now
-  rs.Update
-  MsgBox "Record Created", vbInformation
-  Call populateDataGrid
+  If (cmbNewRec.Caption = "New") Then
+    Call toogelInsertMode(True)
+  Else
+    Set tempRs = DataCrudDao.getFakeItemTypeRS
+    tempRs.AddNew
+    tempRs!SUPPLIER_ID = suplierIdList(cmSuppliers.ListIndex)
+    tempRs!Name = txtItemType
+    tempRs!CREATED_BY = UserSession.getLoginUser
+    tempRs!CREATED_DATE = Now
+    tempRs!LAST_MOD_BY = UserSession.getLoginUser
+    tempRs!LAST_MOD_DATE = Now
+    tempRs.Update
+    Call DbInstance.closeRecordSet(tempRs)
+    MsgBox "Record Created", vbInformation
+    Call populateDataGrid
+    Call toogelInsertMode(False)
+  End If
 End Sub
-
-
+Private Sub toogelInsertMode(isInisilization As Boolean)
+  If (isInisilization) Then
+    Call clearForm
+    cmbNewRec.Caption = "Add"
+    cmbEdit.Enabled = False
+  Else
+    cmbNewRec.Caption = "New"
+    cmbEdit.Enabled = True
+  End If
+End Sub
 Private Sub cmdClearSearch_Click()
   txtSearchItemType = ""
   txtSearchSuppliers = ""
@@ -397,9 +420,8 @@ Private Sub dgItemType_SelChange(Cancel As Integer)
   Call showSelectedData
 End Sub
 Private Sub showSelectedData()
-  cmSuppliers.Text = CommonHelper.extractStringValue(rs!SUPPLIERS)
-  cmCategory.Text = CommonHelper.extractStringValue(rs!Category)
-  txtItemType = CommonHelper.extractStringValue(rs!ITEM_TYPE)
+  cmSuppliers.Text = CommonHelper.extractStringValue(rs!Supplier_name)
+  txtItemType = CommonHelper.extractStringValue(rs!ITEM_NAME)
   lblCreatedBy = CommonHelper.extractStringValue(rs!CREATED_BY)
   lblCreatedDate = CommonHelper.extractDateValue(rs!CREATED_DATE)
   lblLatModBy = CommonHelper.extractStringValue(rs!LAST_MOD_BY)
@@ -408,7 +430,22 @@ Private Sub showSelectedData()
 End Sub
 
 Private Sub Form_Load()
-    Call populateDataGrid
+  Call populateLov
+  Call populateDataGrid
+End Sub
+Private Sub populateLov()
+  Set tempRs = DataCrudDao.getSupplierRS("", "", "")
+  cmSuppliers.Clear
+  ReDim suplierIdList(0 To tempRs.RecordCount) As Long
+  Dim index As Integer
+  index = 0
+  While Not tempRs.EOF
+    cmSuppliers.AddItem tempRs!Name
+    suplierIdList(index) = tempRs!id
+    index = index + 1
+    tempRs.MoveNext
+  Wend
+  Call DbInstance.closeRecordSet(tempRs)
 End Sub
 
 Private Sub txtSearchSuppliers_KeyPress(KeyAscii As Integer)

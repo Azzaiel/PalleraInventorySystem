@@ -37,29 +37,27 @@ Public Function getSupplierRS(active As String, suplierName As String, salesCont
 
 End Function
 
-Public Function getItemTypeRS(itemType As String, Supplier As String, Category As String) As ADODB.Recordset
+Public Function getItemTypeRS(itemType As String, Supplier_name As String) As ADODB.Recordset
 
    Dim con As ADODB.Connection
    Set con = DbInstance.getDBConnetion
    
    Dim sqlQuery As String
    
-   sqlQuery = "SELECT SUPPLIERS,CATEGORY ,ITEM_TYPE " & _
-              "       , CREATED_DATE, LAST_MOD_BY, LAST_MOD_DATE " & _
-              "FROM item_type "
+   sqlQuery = "Select a.ID, b.name as SUPPLIER_NAME, a.name as ITEM_NAME, a.CREATED_BY " & _
+              "       , a.CREATED_DATE, a.LAST_MOD_BY, a.LAST_MOD_DATE " & _
+              "From supplier_item_types a, suppliers b " & _
+              "Where a.SUPPLIER_ID = b.ID "
               
               
     
-    If (CommonHelper.hasValidValue(Supplier)) Then
-       sqlQuery = sqlQuery & " And SUPPLIER like '" & Supplier & "%' "
+    If (CommonHelper.hasValidValue(Supplier_name)) Then
+       sqlQuery = sqlQuery & " And b.name like '" & Supplier_name & "%' "
     End If
-    
-    If (CommonHelper.hasValidValue(Category)) Then
-       sqlQuery = sqlQuery & " And CATEGORY like '" & Category & "%' "
-    End If
+
     
     If (CommonHelper.hasValidValue(itemType)) Then
-       sqlQuery = sqlQuery & " And ITEM_TYPE like '" & itemType & "%' "
+       sqlQuery = sqlQuery & " And a.name like '" & itemType & "%' "
     End If
               
     sqlQuery = sqlQuery & " Order By LAST_MOD_DATE desc"
@@ -72,8 +70,7 @@ Public Function getItemTypeRS(itemType As String, Supplier As String, Category A
    Set getItemTypeRS = rs
 
 End Function
-Public Function getFakeUserRS() As ADODB.Recordset
-
+Public Function getFakeItemTypeRS() As ADODB.Recordset
 
    Dim con As ADODB.Connection
    Set con = DbInstance.getDBConnetion
@@ -81,16 +78,38 @@ Public Function getFakeUserRS() As ADODB.Recordset
   Dim sqlQuery As String
   
   sqlQuery = "SELECT * " & _
-             "FROM users " & _
+             "FROM supplier_item_types " & _
              "Where 1 = 2 "
               
   Dim rs As ADODB.Recordset
   Set rs = New ADODB.Recordset
+  
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
    
-  Set getFakeUserRS = rs
+  Set getFakeItemTypeRS = rs
   
 End Function
-Public Function getAccount(ID As String, USERNAME As String, PASSWORD As String, ROLE As String, FIRSTNAME As String, LASTNAME As String, MIDDLENAME As String) As ADODB.Recordset
+
+Public Function getItemTypeRSByID(id As Long) As ADODB.Recordset
+
+   Dim con As ADODB.Connection
+   Set con = DbInstance.getDBConnetion
+  
+  Dim sqlQuery As String
+  
+  sqlQuery = "SELECT * " & _
+             "FROM supplier_item_types " & _
+             "Where ID = " & id
+              
+  Dim rs As ADODB.Recordset
+  Set rs = New ADODB.Recordset
+  
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+  Set getItemTypeRSByID = rs
+  
+End Function
+Public Function getAccount() As ADODB.Recordset
 
    Dim con As ADODB.Connection
    Set con = DbInstance.getDBConnetion
