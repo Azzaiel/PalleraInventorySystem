@@ -44,7 +44,7 @@ Public Function getItemTypeRS(itemType As String, Supplier_name As String) As AD
    
    Dim sqlQuery As String
    
-   sqlQuery = "Select a.ID, b.name as SUPPLIER_NAME, a.name as ITEM_NAME, a.CREATED_BY " & _
+   sqlQuery = "Select a.ID, b.name as SUPPLIER_NAME, a.name as ITEM_TYPE_NAME, a.CREATED_BY " & _
               "       , a.CREATED_DATE, a.LAST_MOD_BY, a.LAST_MOD_DATE " & _
               "From supplier_item_types a, suppliers b " & _
               "Where a.SUPPLIER_ID = b.ID "
@@ -107,6 +107,26 @@ Public Function getItemTypeRSByID(id As Long) As ADODB.Recordset
   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
    
   Set getItemTypeRSByID = rs
+  
+End Function
+
+Public Function getItemTypeRSBySupplierID(supplierID As Long) As ADODB.Recordset
+
+   Dim con As ADODB.Connection
+   Set con = DbInstance.getDBConnetion
+  
+  Dim sqlQuery As String
+  
+  sqlQuery = "SELECT ID, name as ITEM_TYPE_NAME " & _
+             "FROM supplier_item_types " & _
+             "Where supplier_id = " & supplierID
+              
+  Dim rs As ADODB.Recordset
+  Set rs = New ADODB.Recordset
+  
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+  Set getItemTypeRSBySupplierID = rs
   
 End Function
 Public Function getAccount() As ADODB.Recordset

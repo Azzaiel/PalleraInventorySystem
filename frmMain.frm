@@ -46,6 +46,10 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub mnRegisterItem_Click()
+  frmItemReg.Show vbModal
+End Sub
+
 Private Sub mnRegItemType_Click()
   frmItemReg.Show vbModal
 End Sub

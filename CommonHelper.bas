@@ -64,4 +64,17 @@ End Function
 Public Function getImgPath() As String
   getImgPath = App.Path & "\" & Constants.IMG_FOLDER
 End Function
-
+Public Function isFunctionAscii(ascii As Integer) As Boolean
+  If (ascii = 13 Or ascii = 8 Or ascii = 32) Then
+    isFunctionAscii = True
+  Else
+    isFunctionAscii = False
+  End If
+End Function
+Public Function isNumberAscii(ascii As Integer) As Boolean
+  If (ascii >= 48 And ascii <= 57) Then
+    isNumberAscii = True
+  Else
+    isNumberAscii = False
+  End If
+End Function
