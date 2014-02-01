@@ -2,9 +2,9 @@ CREATE DATABASE  IF NOT EXISTS `palleras_inventory` /*!40100 DEFAULT CHARACTER S
 USE `palleras_inventory`;
 -- MySQL dump 10.13  Distrib 5.6.13, for Win32 (x86)
 --
--- Host: localhost    Database: palleras_inventory
+-- Host: 127.0.0.1    Database: palleras_inventory
 -- ------------------------------------------------------
--- Server version	5.5.35
+-- Server version	5.6.12-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -36,6 +36,7 @@ CREATE TABLE `items` (
   `Created_Date` datetime DEFAULT NULL,
   `Last_Mod_By` varchar(255) DEFAULT NULL,
   `Last_Mod_Date` datetime DEFAULT NULL,
+  `ACTIVE` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID_UNIQUE` (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -47,7 +48,7 @@ CREATE TABLE `items` (
 
 LOCK TABLES `items` WRITE;
 /*!40000 ALTER TABLE `items` DISABLE KEYS */;
-INSERT INTO `items` VALUES (1,2,2,'Flat White 122 Liter',100,131,'DV 500','icha','2014-01-25 21:38:24','icha','2014-01-25 21:38:24');
+INSERT INTO `items` VALUES (1,2,2,'Flat White 122 Liter',100,131,'DV 500','icha','2014-01-25 21:38:24','icha','2014-01-25 21:38:24','Y');
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -60,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-01-25 21:55:25
+-- Dump completed on 2014-02-01 10:06:51
