@@ -254,7 +254,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Private rs As ADODB.Recordset
-Private tempRS As ADODB.Recordset
+Private tempRs As ADODB.Recordset
 Private Sub dgCategories_Click()
 End Sub
 Private Sub populateDataGrid()
@@ -331,7 +331,7 @@ Private Sub cmdDelete_Click()
 End Sub
 
 Private Sub cmdEdit_Click()
-    rs!ID = txtID
+    rs!id = txtID
     rs!userName = txtUsername
     rs!ROLE = cmbRole.Text
     rs!FIRST_NAME = txtFirstname

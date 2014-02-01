@@ -346,7 +346,7 @@ Begin VB.Form frmItemReg
       Top             =   4560
       Width           =   1095
    End
-   Begin MSDataGridLib.DataGrid dgItemType 
+   Begin MSDataGridLib.DataGrid dgItems 
       Height          =   3975
       Left            =   6240
       TabIndex        =   4
@@ -439,6 +439,7 @@ End Sub
 
 Private Sub Form_Load()
   Call populateLov
+  Call populateDataGrid
 End Sub
 Private Sub populateLov()
   Set tempRs = DataCrudDao.getSupplierRS("", "", "")
@@ -454,6 +455,16 @@ Private Sub populateLov()
   Wend
   Call DbInstance.closeRecordSet(tempRs)
 End Sub
+Private Sub populateDataGrid()
+  Set rs = DataCrudDao.getItemReg()
+  Set dgItems.DataSource = rs
+  dgItems.Refresh
+  If (rs.RecordCount > 0) Then
+    rs.MoveFirst
+    Call showSelectedData
+ End If
+Call formatDataGrid
+End Sub
 
 Private Sub txtRetailPrice_KeyPress(KeyAscii As Integer)
   If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtRetailPrice) > 11)) Then
@@ -468,3 +479,23 @@ Private Sub txtUnitPrice_KeyPress(KeyAscii As Integer)
     Beep
   End If
 End Sub
+
+Private Sub showSelectedData()
+ txtItemCode = CommonHelper.extractStringValue(rs!ITeM_CODE)
+ txtName = CommonHelper.extractStringValue(rs!SUPPLIER)
+ 'txt = CommonHelper.extractStringValue(rs!COMPANY_PHONE_NUMBER)
+ ' txtCompanyAddress = CommonHelper.extractStringValue(rs!COMPANY_ADDRESS)
+ ' txtSales = CommonHelper.extractStringValue(rs!SALES_CONTACT)
+ ' txtSalesEmail = CommonHelper.extractStringValue(rs!SALES_EMAIL)
+ ' txtSalesPhone = CommonHelper.extractStringValue(rs!SALES_PHONE_NUMBER)
+ ' lblCreatedBy = CommonHelper.extractStringValue(rs!CREATED_BY)
+' lblCreatedDate = CommonHelper.extractDateValue(rs!CREATED_DATE)
+ ' lblLatModBy = CommonHelper.extractStringValue(rs!LAST_MOD_BY)
+ ' lblLastModDate = CommonHelper.extractDateValue(rs!LAST_MOD_DATE)
+
+End Sub
+
+Private Sub formatDataGrid()
+
+End Sub
+
