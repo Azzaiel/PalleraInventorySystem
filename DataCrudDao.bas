@@ -157,8 +157,8 @@ Dim con As ADODB.Connection
    
    Dim sqlQuery As String
    
-   sqlQuery = "Select a.ID, a.ITeM_CODE, b.Name as SUPPLIER , c.Name as ITEM_TYPE, a.Name as ITEM_NAME " & _
-              ", a.RETAIL_PRICE, a.UNIT_PRICE, a.CREATED_BY , a.CREATED_DATE, a.LAST_MOD_DATE " & _
+   sqlQuery = "Select a.ID, a.ACTIVE, a.ITeM_CODE, b.Name as SUPPLIER , c.Name as ITEM_TYPE, a.Name as ITEM_NAME " & _
+              ", a.RETAIL_PRICE, a.UNIT_PRICE, a.CREATED_BY , a.CREATED_DATE, a.LAST_MOD_BY " & _
               ", a.LAST_MOD_DATE " & _
               "From items a, SUPPLIERS b, supplier_item_types c " & _
               "Where a.SUPPLIER_ID = b.ID " & _
@@ -175,14 +175,14 @@ Dim con As ADODB.Connection
 
 End Function
 
-Public Function getItemByItemType(itemTypeID As Long) As ADODB.Recordset
+Public Function getItemByItemsRS(itemTypeID As Long) As ADODB.Recordset
 
 Dim con As ADODB.Connection
    Set con = DbInstance.getDBConnetion
    
    Dim sqlQuery As String
    
-   sqlQuery = "Select a.ID, a.ITeM_CODE, b.Name as SUPPLIER , c.Name as ITEM_TYPE, a.Name as ITEM_NAME " & _
+   sqlQuery = "Select a.ID, a.ACTIVE, a.ITeM_CODE, b.Name as SUPPLIER , c.Name as ITEM_TYPE, a.Name as ITEM_NAME " & _
               ", a.RETAIL_PRICE, a.UNIT_PRICE, a.CREATED_BY , a.CREATED_DATE, a.LAST_MOD_DATE " & _
               ", a.LAST_MOD_DATE " & _
               "From items a, SUPPLIERS b, supplier_item_types c " & _
@@ -196,11 +196,58 @@ Dim con As ADODB.Connection
    
    rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
    
-   Set getItemByItemType = rs
+   Set getItemsRS = rs
 
 End Function
 
+
+
    
+Public Function getFakeItemsRS() As ADODB.Recordset
+
+   Dim con As ADODB.Connection
+   Set con = DbInstance.getDBConnetion
+  
+  Dim sqlQuery As String
+  
+  sqlQuery = "SELECT * " & _
+             "FROM items " & _
+             "Where 1 = 2 "
+              
+  Dim rs As ADODB.Recordset
+  Set rs = New ADODB.Recordset
+  
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+  Set getFakeItemsRS = rs
+  
+End Function
+
+Public Function getItemRSByID(itemID As Long) As ADODB.Recordset
+
+Dim con As ADODB.Connection
+Set con = DbInstance.getDBConnetion
+  
+  Dim sqlQuery As String
+  
+  sqlQuery = "SELECT * " & _
+             "FROM items " & _
+             "Where ID =  " & itemID
+              
+  Dim rs As ADODB.Recordset
+  Set rs = New ADODB.Recordset
+  
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+  Set getItemRSByID = rs
+  
+
+End Function
+
+
+
+
+
 
 
 

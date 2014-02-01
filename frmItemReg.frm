@@ -22,7 +22,7 @@ Begin VB.Form frmItemReg
       EndProperty
       Height          =   495
       Left            =   1320
-      TabIndex        =   31
+      TabIndex        =   7
       Top             =   4560
       Width           =   1215
    End
@@ -30,27 +30,27 @@ Begin VB.Form frmItemReg
       Caption         =   "Item Type Form"
       Height          =   4455
       Left            =   120
-      TabIndex        =   12
+      TabIndex        =   19
       Top             =   0
       Width           =   5895
       Begin VB.TextBox txtItemName 
          Height          =   285
          Left            =   1440
-         TabIndex        =   34
+         TabIndex        =   3
          Top             =   1560
          Width           =   4215
       End
       Begin VB.TextBox txtUnitPrice 
          Height          =   285
          Left            =   1440
-         TabIndex        =   29
+         TabIndex        =   5
          Top             =   2280
          Width           =   1935
       End
       Begin VB.TextBox txtRetailPrice 
          Height          =   285
          Left            =   1440
-         TabIndex        =   27
+         TabIndex        =   4
          Top             =   1920
          Width           =   1935
       End
@@ -58,7 +58,7 @@ Begin VB.Form frmItemReg
          Height          =   315
          Left            =   1440
          Style           =   2  'Dropdown List
-         TabIndex        =   25
+         TabIndex        =   1
          Top             =   720
          Width           =   4215
       End
@@ -66,14 +66,14 @@ Begin VB.Form frmItemReg
          Height          =   315
          Left            =   1440
          Style           =   2  'Dropdown List
-         TabIndex        =   14
+         TabIndex        =   2
          Top             =   1200
          Width           =   4215
       End
       Begin VB.TextBox txtItemCode 
          Height          =   285
          Left            =   1440
-         TabIndex        =   13
+         TabIndex        =   0
          Top             =   360
          Width           =   4215
       End
@@ -91,7 +91,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Active:"
          Height          =   255
          Left            =   240
-         TabIndex        =   33
+         TabIndex        =   34
          Top             =   2640
          Width           =   495
       End
@@ -100,7 +100,7 @@ Begin VB.Form frmItemReg
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   32
+         TabIndex        =   33
          Top             =   2640
          Width           =   1935
       End
@@ -109,7 +109,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Unit Price"
          Height          =   255
          Left            =   240
-         TabIndex        =   30
+         TabIndex        =   32
          Top             =   2280
          Width           =   855
       End
@@ -118,7 +118,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Retail Price"
          Height          =   255
          Left            =   240
-         TabIndex        =   28
+         TabIndex        =   31
          Top             =   1920
          Width           =   855
       End
@@ -127,7 +127,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Suppliers:"
          Height          =   255
          Left            =   240
-         TabIndex        =   26
+         TabIndex        =   30
          Top             =   720
          Width           =   855
       End
@@ -136,7 +136,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Item Type:"
          Height          =   255
          Left            =   240
-         TabIndex        =   24
+         TabIndex        =   29
          Top             =   1200
          Width           =   855
       End
@@ -145,7 +145,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Created by:"
          Height          =   255
          Left            =   240
-         TabIndex        =   23
+         TabIndex        =   28
          Top             =   3000
          Width           =   855
       End
@@ -154,7 +154,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Created date:"
          Height          =   255
          Left            =   240
-         TabIndex        =   22
+         TabIndex        =   27
          Top             =   3360
          Width           =   975
       End
@@ -163,7 +163,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Last mod by:"
          Height          =   255
          Left            =   240
-         TabIndex        =   21
+         TabIndex        =   26
          Top             =   3720
          Width           =   975
       End
@@ -172,7 +172,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Last mod date:"
          Height          =   255
          Left            =   240
-         TabIndex        =   20
+         TabIndex        =   25
          Top             =   4080
          Width           =   1095
       End
@@ -181,7 +181,7 @@ Begin VB.Form frmItemReg
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   19
+         TabIndex        =   24
          Top             =   4080
          Width           =   1935
       End
@@ -190,7 +190,7 @@ Begin VB.Form frmItemReg
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   18
+         TabIndex        =   23
          Top             =   3720
          Width           =   1935
       End
@@ -199,7 +199,7 @@ Begin VB.Form frmItemReg
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   17
+         TabIndex        =   22
          Top             =   3360
          Width           =   1935
       End
@@ -208,7 +208,7 @@ Begin VB.Form frmItemReg
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   16
+         TabIndex        =   21
          Top             =   3000
          Width           =   1935
       End
@@ -217,7 +217,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Item Code"
          Height          =   255
          Left            =   240
-         TabIndex        =   15
+         TabIndex        =   20
          Top             =   360
          Width           =   855
       End
@@ -226,14 +226,14 @@ Begin VB.Form frmItemReg
       Caption         =   "Search"
       Height          =   975
       Left            =   6240
-      TabIndex        =   5
-      Top             =   0
+      TabIndex        =   12
+      Top             =   120
       Width           =   12975
       Begin VB.CommandButton cmdSearch 
          Caption         =   "Search"
          Height          =   315
          Left            =   3120
-         TabIndex        =   9
+         TabIndex        =   16
          Top             =   600
          Width           =   1695
       End
@@ -241,21 +241,21 @@ Begin VB.Form frmItemReg
          Caption         =   "Clear"
          Height          =   315
          Left            =   6000
-         TabIndex        =   8
+         TabIndex        =   15
          Top             =   600
          Width           =   1695
       End
       Begin VB.TextBox txtSearchItemType 
          Height          =   285
          Left            =   6720
-         TabIndex        =   7
+         TabIndex        =   14
          Top             =   240
          Width           =   3735
       End
       Begin VB.TextBox txtSearchSuppliers 
          Height          =   285
          Left            =   1800
-         TabIndex        =   6
+         TabIndex        =   13
          Top             =   240
          Width           =   3255
       End
@@ -264,7 +264,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Item Type"
          Height          =   255
          Left            =   5400
-         TabIndex        =   11
+         TabIndex        =   18
          Top             =   240
          Width           =   1095
       End
@@ -273,7 +273,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Supplier Name"
          Height          =   255
          Left            =   480
-         TabIndex        =   10
+         TabIndex        =   17
          Top             =   240
          Width           =   1095
       End
@@ -291,7 +291,7 @@ Begin VB.Form frmItemReg
       EndProperty
       Height          =   495
       Left            =   3840
-      TabIndex        =   3
+      TabIndex        =   9
       Top             =   4560
       Width           =   1095
    End
@@ -308,7 +308,7 @@ Begin VB.Form frmItemReg
       EndProperty
       Height          =   495
       Left            =   5040
-      TabIndex        =   2
+      TabIndex        =   10
       Top             =   4560
       Width           =   1095
    End
@@ -325,7 +325,7 @@ Begin VB.Form frmItemReg
       EndProperty
       Height          =   495
       Left            =   2640
-      TabIndex        =   1
+      TabIndex        =   8
       Top             =   4560
       Width           =   1095
    End
@@ -342,14 +342,14 @@ Begin VB.Form frmItemReg
       EndProperty
       Height          =   495
       Left            =   120
-      TabIndex        =   0
+      TabIndex        =   6
       Top             =   4560
       Width           =   1095
    End
    Begin MSDataGridLib.DataGrid dgItems 
       Height          =   3975
       Left            =   6240
-      TabIndex        =   4
+      TabIndex        =   11
       Top             =   1080
       Width           =   12975
       _ExtentX        =   22886
@@ -422,7 +422,41 @@ Private suplierIdList As Variant
 Private itemTypeIdList As Variant
 Private tempRs As ADODB.Recordset
 
+Private Sub cmbClear_Click()
+Call ClearForm
+Call toogelInsertMode(False)
+End Sub
+
+Private Sub cmbNewRec_Click()
+  If (cmbNewRec.Caption = "New") Then
+     toogelInsertMode (True)
+  Else
+    Call toogelInsertMode(False)
+    Set tempRs = DataCrudDao.getFakeItemsRS
+    tempRs.AddNew
+    tempRs!ITeM_CODE = txtItemCode
+    tempRs!SUPPLIER_ID = itemTypeIdList(cmbSupplier.ListIndex)
+    tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
+    tempRs!Name = txtItemName
+    tempRs!retail_price = txtRetailPrice
+    tempRs!UNIT_PRICE = txtUnitPrice
+    tempRs!CREATED_BY = UserSession.getLoginUser
+    tempRs!CREATED_DATE = Now
+    tempRs!LAST_MOD_DATE = Now
+    tempRs!active = txtActive
+    tempRs.Update
+    Call DbInstance.closeRecordSet(tempRs)
+    MsgBox "Record Created", vbInformation
+    Call populateDataGrid
+    Call toogelInsertMode(False)
+    cmbNewRec.Caption = "Add"
+  
+  
+  End If
+End Sub
+
 Private Sub cmbSupplier_Click()
+If cmbSupplier.ListIndex >= 0 Then
   cmbItemType.Clear
   Set tempRs = DataCrudDao.getItemTypeRSBySupplierID(Val(suplierIdList(cmbSupplier.ListIndex)))
   ReDim itemTypeIdList(0 To tempRs.RecordCount) As Long
@@ -435,6 +469,28 @@ Private Sub cmbSupplier_Click()
     tempRs.MoveNext
   Wend
   Call DbInstance.closeRecordSet(tempRs)
+End If
+End Sub
+
+Private Sub cmdActivation_Click()
+
+  Set tempRs = DataCrudDao.getItemRSByID(rs!id)
+    
+  If rs!active = "N" Then
+    cmdActivation.Caption = "De-Activate"
+    tempRs!active = "Y"
+  Else
+    tempRs!active = "N"
+    cmdActivation.Caption = "Activate"
+  End If
+  tempRs.Update
+  Call DbInstance.closeRecordSet(tempRs)
+  MsgBox "Status Update "
+    
+  Call ClearForm
+  Call populateDataGrid
+
+
 End Sub
 
 Private Sub Form_Load()
@@ -472,7 +528,6 @@ Private Sub txtRetailPrice_KeyPress(KeyAscii As Integer)
     Beep
   End If
 End Sub
-
 Private Sub txtUnitPrice_KeyPress(KeyAscii As Integer)
   If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtUnitPrice) > 11)) Then
     KeyAscii = 0
@@ -482,16 +537,16 @@ End Sub
 
 Private Sub showSelectedData()
  txtItemCode = CommonHelper.extractStringValue(rs!ITeM_CODE)
- txtName = CommonHelper.extractStringValue(rs!SUPPLIER)
- 'txt = CommonHelper.extractStringValue(rs!COMPANY_PHONE_NUMBER)
- ' txtCompanyAddress = CommonHelper.extractStringValue(rs!COMPANY_ADDRESS)
- ' txtSales = CommonHelper.extractStringValue(rs!SALES_CONTACT)
- ' txtSalesEmail = CommonHelper.extractStringValue(rs!SALES_EMAIL)
- ' txtSalesPhone = CommonHelper.extractStringValue(rs!SALES_PHONE_NUMBER)
- ' lblCreatedBy = CommonHelper.extractStringValue(rs!CREATED_BY)
-' lblCreatedDate = CommonHelper.extractDateValue(rs!CREATED_DATE)
- ' lblLatModBy = CommonHelper.extractStringValue(rs!LAST_MOD_BY)
- ' lblLastModDate = CommonHelper.extractDateValue(rs!LAST_MOD_DATE)
+ cmbSupplier.Text = CommonHelper.extractStringValue(rs!SUPPLIER)
+ cmbItemType.Text = CommonHelper.extractStringValue(rs!ITEM_TYPE)
+ txtItemName = CommonHelper.extractStringValue(rs!ITEM_NAME)
+ txtRetailPrice = CommonHelper.extractStringValue(rs!retail_price)
+ txtUnitPrice = CommonHelper.extractStringValue(rs!UNIT_PRICE)
+ txtActive = CommonHelper.extractStringValue(rs!active)
+ lblCreatedBy = CommonHelper.extractStringValue(rs!CREATED_BY)
+ lblCreatedDate = CommonHelper.extractDateValue(rs!CREATED_DATE)
+ lblLatModBy = CommonHelper.extractStringValue(rs!LAST_MOD_BY)
+ lblLastModDate = CommonHelper.extractDateValue(rs!LAST_MOD_DATE)
 
 End Sub
 
@@ -499,3 +554,31 @@ Private Sub formatDataGrid()
 
 End Sub
 
+Private Sub ClearForm()
+
+txtItemCode = ""
+cmbSupplier.ListIndex = -1
+cmbItemType.ListIndex = -1
+txtItemName = ""
+txtRetailPrice = ""
+txtUnitPrice = ""
+lblCreatedBy = ""
+lblCreatedDate = ""
+lblLastModDate = ""
+lblLatModBy = ""
+
+
+End Sub
+
+Private Sub toogelInsertMode(isInisilization As Boolean)
+  If (isInisilization) Then
+    Call ClearForm
+    cmbNewRec.Caption = "ADD"
+    cmdActivation.Enabled = False
+    cmbEdit.Enabled = False
+  Else
+    cmbNewRec.Caption = "New"
+    cmdActivation.Enabled = True
+    cmbEdit.Enabled = True
+  End If
+End Sub
