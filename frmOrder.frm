@@ -1,4 +1,5 @@
 VERSION 5.00
+Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmOrder 
    Caption         =   "Form1"
    ClientHeight    =   4920
@@ -8,13 +9,25 @@ Begin VB.Form frmOrder
    LinkTopic       =   "Form1"
    ScaleHeight     =   4920
    ScaleWidth      =   12420
-   StartUpPosition =   3  'Windows Default
+   StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame1 
-      Height          =   4455
-      Left            =   0
+      Height          =   4335
+      Left            =   360
       TabIndex        =   0
-      Top             =   0
-      Width           =   5895
+      Top             =   240
+      Width           =   4575
+      Begin MSComCtl2.DTPicker dtOrderDate 
+         Height          =   255
+         Left            =   1440
+         TabIndex        =   20
+         Top             =   2640
+         Width           =   1935
+         _ExtentX        =   3413
+         _ExtentY        =   450
+         _Version        =   393216
+         Format          =   106627075
+         CurrentDate     =   41671
+      End
       Begin VB.TextBox Text1 
          Height          =   285
          Left            =   1440
@@ -28,14 +41,14 @@ Begin VB.Form frmOrder
          Style           =   2  'Dropdown List
          TabIndex        =   14
          Top             =   1560
-         Width           =   4215
+         Width           =   2655
       End
       Begin VB.TextBox txtItemCode 
          Height          =   285
          Left            =   1440
          TabIndex        =   4
          Top             =   360
-         Width           =   4215
+         Width           =   1935
       End
       Begin VB.ComboBox cmbItemType 
          Height          =   315
@@ -43,7 +56,7 @@ Begin VB.Form frmOrder
          Style           =   2  'Dropdown List
          TabIndex        =   3
          Top             =   1200
-         Width           =   4215
+         Width           =   2655
       End
       Begin VB.ComboBox cmbSupplier 
          Height          =   315
@@ -51,7 +64,7 @@ Begin VB.Form frmOrder
          Style           =   2  'Dropdown List
          TabIndex        =   2
          Top             =   720
-         Width           =   4215
+         Width           =   2655
       End
       Begin VB.TextBox txtRetailPrice 
          Height          =   285
@@ -184,6 +197,47 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
+Private rs As ADODB.Recordset
+Private suplierIdList As Variant
+Private itemTypeIdList As Variant
+Private tempRs As ADODB.Recordset
 Private Sub lblCreatedDate_Click()
 
 End Sub
+
+Private Sub cmbSupplier_Click()
+   cmbItemType.Clear
+  Set tempRs = DataCrudDao.getItemTypeRSBySupplierID(Val(suplierIdList(cmbSupplier.ListIndex)))
+  ReDim itemTypeIdList(0 To tempRs.RecordCount) As Long
+  Dim index As Integer
+  index = 0
+   While Not tempRs.EOF
+    cmbItemType.AddItem tempRs!ITEM_TYPE_NAME
+    itemTypeIdList(index) = tempRs!id
+    index = index + 1
+    tempRs.MoveNext
+  Wend
+  Call DbInstance.closeRecordSet(tempRs)
+End Sub
+
+Private Sub Form_Load()
+  dtOrderDate.CustomFormat = Constants.DEFAULT_FORMAT
+  dtOrderDate = Now
+  Call populateLov
+End Sub
+Private Sub populateLov()
+  Set tempRs = DataCrudDao.getSupplierRS("", "", "")
+  cmbSupplier.Clear
+  ReDim suplierIdList(0 To tempRs.RecordCount) As Long
+  Dim index As Integer
+  index = 0
+  While Not tempRs.EOF
+    cmbSupplier.AddItem tempRs!Name
+    suplierIdList(index) = tempRs!id
+    index = index + 1
+    tempRs.MoveNext
+  Wend
+  Call DbInstance.closeRecordSet(tempRs)
+End Sub
+

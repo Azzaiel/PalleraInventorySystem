@@ -2,12 +2,13 @@ VERSION 5.00
 Begin VB.Form frmMain 
    Caption         =   "Pallera's  Inventory System"
    ClientHeight    =   7575
-   ClientLeft      =   720
-   ClientTop       =   1350
+   ClientLeft      =   420
+   ClientTop       =   1635
    ClientWidth     =   13470
    LinkTopic       =   "Form1"
    ScaleHeight     =   7575
    ScaleWidth      =   13470
+   StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame1 
       Caption         =   "Pending Orders"
       Height          =   7215
@@ -46,6 +47,10 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub mnOder_Click()
+  frmOrder.Show vbModal
+End Sub
+
 Private Sub mnRegisterItem_Click()
   frmItemReg.Show vbModal
 End Sub
