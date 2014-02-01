@@ -427,6 +427,33 @@ Call ClearForm
 Call toogelInsertMode(False)
 End Sub
 
+Private Sub cmbClose_Click()
+    Unload Me
+End Sub
+
+Private Sub cmbEdit_Click()
+
+Set tempRs = DataCrudDao.getItemRSByID(rs!id)
+    
+  
+  tempRs!ITeM_CODE = txtItemCode
+  tempRs!SUPPLIER_ID = itemTypeIdList(cmbSupplier.ListIndex)
+  tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
+  tempRs!Name = txtItemName
+  tempRs!retail_price = txtRetailPrice
+  tempRs!UNIT_PRICE = txtUnitPrice
+  tempRs!CREATED_BY = UserSession.getLoginUser
+  tempRs!LAST_MOD_DATE = Now
+  
+
+  tempRs.Update
+  Call DbInstance.closeRecordSet(tempRs)
+  MsgBox "Status Update "
+  Call populateDataGrid
+
+
+End Sub
+
 Private Sub cmbNewRec_Click()
   If (cmbNewRec.Caption = "New") Then
      toogelInsertMode (True)
