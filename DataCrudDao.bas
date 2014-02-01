@@ -175,6 +175,31 @@ Dim con As ADODB.Connection
 
 End Function
 
+Public Function getItemByItemType(itemTypeID As Long) As ADODB.Recordset
+
+Dim con As ADODB.Connection
+   Set con = DbInstance.getDBConnetion
+   
+   Dim sqlQuery As String
+   
+   sqlQuery = "Select a.ID, a.ITeM_CODE, b.Name as SUPPLIER , c.Name as ITEM_TYPE, a.Name as ITEM_NAME " & _
+              ", a.RETAIL_PRICE, a.UNIT_PRICE, a.CREATED_BY , a.CREATED_DATE, a.LAST_MOD_DATE " & _
+              ", a.LAST_MOD_DATE " & _
+              "From items a, SUPPLIERS b, supplier_item_types c " & _
+              "Where a.SUPPLIER_ID = b.ID " & _
+              "      and a.ITEm_TYPE_ID = c.ID" & _
+              "      and a.ITEm_TYPE_ID = " & itemTypeID
+
+              
+   Dim rs As ADODB.Recordset
+   Set rs = New ADODB.Recordset
+   
+   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+   Set getItemByItemType = rs
+
+End Function
+
    
 
 
