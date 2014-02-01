@@ -18,33 +18,31 @@ USE `palleras_inventory`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `users` (
+CREATE TABLE `orders` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `USERNAME` varchar(255) DEFAULT NULL,
-  `PASSWORD` varchar(255) DEFAULT NULL,
-  `ROLE` varchar(255) DEFAULT NULL,
-  `FIRST_NAME` varchar(100) DEFAULT NULL,
-  `LAST_NAME` varchar(100) DEFAULT NULL,
-  `MIDDLE_NAME` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `ID_UNIQUE` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `SUPLIER_ID` int(11) DEFAULT NULL,
+  `STATUS` varchar(255) DEFAULT NULL,
+  `ORDER_DATE` datetime DEFAULT NULL,
+  `ORDERED_BY` varchar(255) DEFAULT NULL,
+  `RECIVED_DATE` datetime DEFAULT NULL,
+  `RECIVED_BY` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `orders`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (3,'adjands','adsasdd','Admin','adsasd','adssdad','adsadd'),(4,'Icha','Icha','Admin','Richard','Reyles','Granados');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

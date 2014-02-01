@@ -10,6 +10,14 @@ Begin VB.Form frmAccnt
    ScaleHeight     =   4155
    ScaleWidth      =   16005
    StartUpPosition =   3  'Windows Default
+   Begin VB.Frame Frame2 
+      Caption         =   "Frame2"
+      Height          =   15
+      Left            =   9000
+      TabIndex        =   17
+      Top             =   2160
+      Width           =   15
+   End
    Begin VB.Frame Frame1 
       Caption         =   "Registration Form"
       Height          =   3375
