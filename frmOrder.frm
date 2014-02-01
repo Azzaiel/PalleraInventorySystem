@@ -1,60 +1,59 @@
 VERSION 5.00
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmOrder 
-   Caption         =   "Form1"
-   ClientHeight    =   4920
+   ClientHeight    =   5115
    ClientLeft      =   120
    ClientTop       =   450
    ClientWidth     =   12420
    LinkTopic       =   "Form1"
-   ScaleHeight     =   4920
+   ScaleHeight     =   5115
    ScaleWidth      =   12420
    StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame1 
-      Height          =   4335
-      Left            =   360
+      Height          =   4935
+      Left            =   120
       TabIndex        =   0
-      Top             =   240
-      Width           =   4575
+      Top             =   0
+      Width           =   4455
+      Begin VB.TextBox txtQuantity 
+         Height          =   285
+         Left            =   1440
+         TabIndex        =   20
+         Top             =   2280
+         Width           =   1935
+      End
       Begin MSComCtl2.DTPicker dtOrderDate 
          Height          =   255
          Left            =   1440
-         TabIndex        =   20
-         Top             =   2640
+         TabIndex        =   18
+         Top             =   3360
          Width           =   1935
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   106627075
+         Format          =   106496003
          CurrentDate     =   41671
       End
       Begin VB.TextBox Text1 
          Height          =   285
          Left            =   1440
-         TabIndex        =   15
-         Top             =   2280
+         TabIndex        =   13
+         Top             =   3000
          Width           =   1935
       End
-      Begin VB.ComboBox Combo1 
+      Begin VB.ComboBox cmbItems 
          Height          =   315
          Left            =   1440
          Style           =   2  'Dropdown List
-         TabIndex        =   14
+         TabIndex        =   12
          Top             =   1560
          Width           =   2655
-      End
-      Begin VB.TextBox txtItemCode 
-         Height          =   285
-         Left            =   1440
-         TabIndex        =   4
-         Top             =   360
-         Width           =   1935
       End
       Begin VB.ComboBox cmbItemType 
          Height          =   315
          Left            =   1440
          Style           =   2  'Dropdown List
-         TabIndex        =   3
+         TabIndex        =   2
          Top             =   1200
          Width           =   2655
       End
@@ -62,15 +61,53 @@ Begin VB.Form frmOrder
          Height          =   315
          Left            =   1440
          Style           =   2  'Dropdown List
-         TabIndex        =   2
+         TabIndex        =   1
          Top             =   720
          Width           =   2655
       End
-      Begin VB.TextBox txtRetailPrice 
-         Height          =   285
+      Begin VB.Label lblTotalPrice 
+         BackColor       =   &H8000000A&
+         BorderStyle     =   1  'Fixed Single
+         Height          =   255
          Left            =   1440
-         TabIndex        =   1
+         TabIndex        =   24
+         Top             =   2640
+         Width           =   1935
+      End
+      Begin VB.Label lblUnitPrice 
+         BackColor       =   &H8000000A&
+         BorderStyle     =   1  'Fixed Single
+         Height          =   255
+         Left            =   1440
+         TabIndex        =   23
          Top             =   1920
+         Width           =   1935
+      End
+      Begin VB.Label Label11 
+         BackColor       =   &H0000FF00&
+         Caption         =   "Total Price"
+         Height          =   255
+         Left            =   240
+         TabIndex        =   22
+         Top             =   2640
+         Width           =   855
+      End
+      Begin VB.Label Label10 
+         BackColor       =   &H0000FF00&
+         Caption         =   "Quantity"
+         Height          =   255
+         Left            =   240
+         TabIndex        =   21
+         Top             =   2280
+         Width           =   855
+      End
+      Begin VB.Label lblOrderID 
+         BackColor       =   &H8000000A&
+         BorderStyle     =   1  'Fixed Single
+         Height          =   255
+         Left            =   1440
+         TabIndex        =   19
+         Top             =   360
          Width           =   1935
       End
       Begin VB.Label Label9 
@@ -78,8 +115,8 @@ Begin VB.Form frmOrder
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   19
-         Top             =   3360
+         TabIndex        =   17
+         Top             =   4080
          Width           =   1935
       End
       Begin VB.Label lblCreatedBy 
@@ -87,8 +124,8 @@ Begin VB.Form frmOrder
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   18
-         Top             =   3000
+         TabIndex        =   16
+         Top             =   3720
          Width           =   1935
       End
       Begin VB.Label lblLatModBy 
@@ -96,8 +133,8 @@ Begin VB.Form frmOrder
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   17
-         Top             =   3720
+         TabIndex        =   15
+         Top             =   4440
          Width           =   1935
       End
       Begin VB.Label Label4 
@@ -105,8 +142,8 @@ Begin VB.Form frmOrder
          Caption         =   "Status"
          Height          =   255
          Left            =   240
-         TabIndex        =   16
-         Top             =   2280
+         TabIndex        =   14
+         Top             =   3000
          Width           =   855
       End
       Begin VB.Label Label5 
@@ -114,7 +151,7 @@ Begin VB.Form frmOrder
          Caption         =   "Order ID"
          Height          =   255
          Left            =   240
-         TabIndex        =   13
+         TabIndex        =   11
          Top             =   360
          Width           =   855
       End
@@ -123,8 +160,8 @@ Begin VB.Form frmOrder
          Caption         =   "Received By"
          Height          =   255
          Left            =   240
-         TabIndex        =   12
-         Top             =   3720
+         TabIndex        =   10
+         Top             =   4440
          Width           =   975
       End
       Begin VB.Label Label7 
@@ -132,8 +169,8 @@ Begin VB.Form frmOrder
          Caption         =   "Received Date"
          Height          =   255
          Left            =   240
-         TabIndex        =   11
-         Top             =   3360
+         TabIndex        =   9
+         Top             =   4080
          Width           =   1095
       End
       Begin VB.Label Label6 
@@ -141,8 +178,8 @@ Begin VB.Form frmOrder
          Caption         =   "Order  By"
          Height          =   255
          Left            =   240
-         TabIndex        =   10
-         Top             =   3000
+         TabIndex        =   8
+         Top             =   3720
          Width           =   855
       End
       Begin VB.Label Label2 
@@ -150,7 +187,7 @@ Begin VB.Form frmOrder
          Caption         =   "Item Type:"
          Height          =   255
          Left            =   240
-         TabIndex        =   9
+         TabIndex        =   7
          Top             =   1200
          Width           =   855
       End
@@ -159,7 +196,7 @@ Begin VB.Form frmOrder
          Caption         =   "Suppliers:"
          Height          =   255
          Left            =   240
-         TabIndex        =   8
+         TabIndex        =   6
          Top             =   720
          Width           =   855
       End
@@ -168,7 +205,7 @@ Begin VB.Form frmOrder
          Caption         =   "Retail Price"
          Height          =   255
          Left            =   240
-         TabIndex        =   7
+         TabIndex        =   5
          Top             =   1920
          Width           =   855
       End
@@ -177,8 +214,8 @@ Begin VB.Form frmOrder
          Caption         =   "Order  Date"
          Height          =   255
          Left            =   240
-         TabIndex        =   6
-         Top             =   2640
+         TabIndex        =   4
+         Top             =   3360
          Width           =   855
       End
       Begin VB.Label Label13 
@@ -186,7 +223,7 @@ Begin VB.Form frmOrder
          Caption         =   "Item"
          Height          =   255
          Left            =   240
-         TabIndex        =   5
+         TabIndex        =   3
          Top             =   1560
          Width           =   855
       End
@@ -201,13 +238,37 @@ Option Explicit
 Private rs As ADODB.Recordset
 Private suplierIdList As Variant
 Private itemTypeIdList As Variant
+Private itemsList As Variant
 Private tempRs As ADODB.Recordset
 Private Sub lblCreatedDate_Click()
 
 End Sub
 
+Private Sub cmbItems_Click()
+  lblUnitPrice = itemsList(cmbItems.ListIndex, 1)
+  Call computeTotalPrice
+End Sub
+
+Private Sub cmbItemType_Click()
+  cmbItems.Clear
+  lblUnitPrice = ""
+  Call computeTotalPrice
+  Set tempRs = DataCrudDao.getItemByItemType(Val(itemTypeIdList(cmbItemType.ListIndex)))
+  ReDim itemsList(0 To tempRs.RecordCount, 0 To 1) As Long
+  Dim index As Integer
+  index = 0
+   While Not tempRs.EOF
+    cmbItems.AddItem tempRs!ITEM_NAME
+    itemsList(index, 0) = tempRs!id
+    itemsList(index, 1) = tempRs!retail_price
+    index = index + 1
+    tempRs.MoveNext
+  Wend
+  Call DbInstance.closeRecordSet(tempRs)
+End Sub
+
 Private Sub cmbSupplier_Click()
-   cmbItemType.Clear
+  cmbItemType.Clear
   Set tempRs = DataCrudDao.getItemTypeRSBySupplierID(Val(suplierIdList(cmbSupplier.ListIndex)))
   ReDim itemTypeIdList(0 To tempRs.RecordCount) As Long
   Dim index As Integer
@@ -241,3 +302,29 @@ Private Sub populateLov()
   Call DbInstance.closeRecordSet(tempRs)
 End Sub
 
+Private Sub Text2_Change()
+
+End Sub
+
+Private Sub Text2_KeyPress(KeyAscii As Integer)
+
+End Sub
+
+Private Sub computeTotalPrice()
+  If (Val(txtQuantity) > 0 And Val(lblUnitPrice) > 0) Then
+    lblTotalPrice = Val(txtQuantity) * Val(lblUnitPrice)
+  Else
+    lblTotalPrice = ""
+  End If
+End Sub
+
+Private Sub txtQuantity_Change()
+  Call computeTotalPrice
+End Sub
+
+Private Sub txtQuantity_KeyPress(KeyAscii As Integer)
+    If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtQuantity) > 11)) Then
+    KeyAscii = 0
+    Beep
+  End If
+End Sub
