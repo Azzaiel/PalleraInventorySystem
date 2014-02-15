@@ -22,7 +22,7 @@ Begin VB.Form frmOrder
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   2760
+      Left            =   2640
       TabIndex        =   22
       Top             =   120
       Width           =   975
@@ -39,7 +39,7 @@ Begin VB.Form frmOrder
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   1680
+      Left            =   1560
       TabIndex        =   21
       Top             =   120
       Width           =   975
@@ -56,7 +56,7 @@ Begin VB.Form frmOrder
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   3840
+      Left            =   3720
       TabIndex        =   20
       Top             =   120
       Width           =   975
@@ -73,7 +73,7 @@ Begin VB.Form frmOrder
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   600
+      Left            =   480
       TabIndex        =   19
       Top             =   120
       Width           =   975
@@ -90,7 +90,7 @@ Begin VB.Form frmOrder
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   4920
+      Left            =   4800
       TabIndex        =   18
       Top             =   120
       Width           =   1095
@@ -102,7 +102,7 @@ Begin VB.Form frmOrder
       TabIndex        =   13
       Top             =   3840
       Width           =   6015
-      Begin MSDataGridLib.DataGrid dgAccounts 
+      Begin MSDataGridLib.DataGrid gdOrderItems 
          Height          =   3495
          Left            =   120
          TabIndex        =   14
@@ -294,7 +294,7 @@ Begin VB.Form frmOrder
          Top             =   2640
          Width           =   975
       End
-      Begin VB.Label lblLatModBy 
+      Begin VB.Label lblReceviedBy 
          BackColor       =   &H8000000A&
          BorderStyle     =   1  'Fixed Single
          Height          =   255
@@ -303,7 +303,7 @@ Begin VB.Form frmOrder
          Top             =   2640
          Width           =   1935
       End
-      Begin VB.Label lblCreatedBy 
+      Begin VB.Label lblOrderBy 
          BackColor       =   &H8000000A&
          BorderStyle     =   1  'Fixed Single
          Height          =   255
@@ -312,7 +312,7 @@ Begin VB.Form frmOrder
          Top             =   1920
          Width           =   1935
       End
-      Begin VB.Label Label9 
+      Begin VB.Label lblReceviedDate 
          BackColor       =   &H8000000A&
          BorderStyle     =   1  'Fixed Single
          Height          =   255
@@ -322,14 +322,14 @@ Begin VB.Form frmOrder
          Width           =   1935
       End
    End
-   Begin MSDataGridLib.DataGrid DataGrid1 
-      Height          =   7575
+   Begin MSDataGridLib.DataGrid dgOrders 
+      Height          =   6135
       Left            =   6360
       TabIndex        =   15
-      Top             =   240
+      Top             =   1680
       Width           =   9375
       _ExtentX        =   16536
-      _ExtentY        =   13361
+      _ExtentY        =   10821
       _Version        =   393216
       AllowUpdate     =   0   'False
       HeadLines       =   1
@@ -395,6 +395,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Private rs As ADODB.Recordset
+Private rsTemp As ADODB.Recordset
 Private suplierIdList As Variant
 Private itemTypeIdList As Variant
 Private itemsList As Variant
@@ -448,6 +449,15 @@ Private Sub cmdAdd_Click()
   If cmdAdd.Caption = "New" Then
     Call toogelInsertMode(True)
   Else
+    Set rsTemp = DataCrudDao.getFakeOrdersRs
+    rsTemp.AddNew
+    rsTemp!Status = txtStatus
+    rsTemp!Suplier_id = suplierIdList(cmbSupplier.ListIndex)
+    rsTemp!Order_Date = dtOrderDate.value
+    rsTemp!Ordered_by = UserSession.getLoginUser
+    rsTemp.Update
+    Call DbInstance.closeRecordSet(rsTemp)
+    MsgBox "Record Added", vbInformation
   End If
 End Sub
 Private Sub toogelInsertMode(isInisilization As Boolean)
@@ -478,6 +488,25 @@ Private Sub Form_Load()
   dtOrderDate.CustomFormat = Constants.DEFAULT_FORMAT
   dtOrderDate = Now
   Call populateLov
+  Call populateDatagrid
+End Sub
+Private Sub populateDatagrid()
+  Set rs = DataCrudDao.getPendingOrdersRs
+  Set dgOrders.DataSource = rs
+  If (rs.RecordCount > 0) Then
+   rs.MoveFirst
+   Call showSelectedData
+  End If
+  
+End Sub
+Private Sub showSelectedData()
+  lblOrderID = CommonHelper.extractStringValue(rs!Order_ID)
+  cmbSupplier.Text = rs!Suplier_Name
+  txtStatus = CommonHelper.extractStringValue(rs!Status)
+  dtOrderDate.value = CommonHelper.extractDateValue(rs!Order_Date)
+  lblOrderBy = CommonHelper.extractStringValue(rs!Ordered_by)
+  lblReceviedDate = CommonHelper.extractDateValue(rs!Recived_Date)
+  lblReceviedBy = CommonHelper.extractStringValue(rs!RECIVED_BY)
 End Sub
 Private Sub populateLov()
   Set tempRs = DataCrudDao.getSupplierRS("", "", "")

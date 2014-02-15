@@ -222,7 +222,6 @@ Public Function getFakeItemsRS() As ADODB.Recordset
   Set getFakeItemsRS = rs
   
 End Function
-
 Public Function getItemRSByID(itemID As Long) As ADODB.Recordset
 
 Dim con As ADODB.Connection
@@ -241,9 +240,47 @@ Set con = DbInstance.getDBConnetion
    
   Set getItemRSByID = rs
   
+End Function
+Public Function getFakeOrdersRs() As ADODB.Recordset
+ 
+ Dim con As ADODB.Connection
+ Set con = DbInstance.getDBConnetion
+ 
+ Dim sqlQuery As String
+  
+ sqlQuery = "Select * " & _
+            "From orders " & _
+            "Where 1 = 2"
+              
+ Dim rs As ADODB.Recordset
+ Set rs = New ADODB.Recordset
+  
+ rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+ Set getFakeOrdersRs = rs
 
 End Function
+Public Function getPendingOrdersRs() As ADODB.Recordset
+ 
+ Dim con As ADODB.Connection
+ Set con = DbInstance.getDBConnetion
+ 
+ Dim sqlQuery As String
+  
+ sqlQuery = "Select a.ID as Order_Id,  b.name as Suplier_Name " & _
+            "       , a.Status, a.Ordered_by, a.Order_Date " & _
+            "       , a.RECIVED_BY, a.Recived_Date " & _
+            "From orders a, suppliers b " & _
+            "Where a.SUPLIER_ID = b.id "
+              
+ Dim rs As ADODB.Recordset
+ Set rs = New ADODB.Recordset
+  
+ rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+ Set getPendingOrdersRs = rs
 
+End Function
 
 
 
