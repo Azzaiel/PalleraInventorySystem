@@ -55,8 +55,14 @@ Begin VB.Form frmMain
    End
    Begin VB.Menu mnUsers 
       Caption         =   "Account"
+      Begin VB.Menu mnChangePass 
+         Caption         =   "Change Password"
+      End
       Begin VB.Menu mnRegUsers 
          Caption         =   "Regiter Users"
+      End
+      Begin VB.Menu mnLogout 
+         Caption         =   "Logout"
       End
    End
 End
@@ -70,6 +76,15 @@ Attribute VB_Exposed = False
 Private Sub Form_Load()
 
 lblWelcome.Caption = "Welcome " & UserSession.Name & " you are logged in as " & UserSession.Role
+End Sub
+
+Private Sub mnChangePass_Click()
+  frmChangePassword.Show vbModal
+End Sub
+
+Private Sub mnLogout_Click()
+   Unload Me
+   LogIn.Show vbModal
 End Sub
 
 Private Sub mnOder_Click()

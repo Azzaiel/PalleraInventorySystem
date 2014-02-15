@@ -423,7 +423,7 @@ Private itemTypeIdList As Variant
 Private tempRs As ADODB.Recordset
 
 Private Sub cmbClear_Click()
-Call ClearForm
+Call clearForm
 Call toogelInsertMode(False)
 End Sub
 
@@ -433,7 +433,7 @@ End Sub
 
 Private Sub cmbEdit_Click()
 
-Set tempRs = DataCrudDao.getItemRSByID(rs!id)
+Set tempRs = DataCrudDao.getItemRSByID(rs!ID)
     
   
   tempRs!ITeM_CODE = txtItemCode
@@ -491,7 +491,7 @@ If cmbSupplier.ListIndex >= 0 Then
   index = 0
    While Not tempRs.EOF
     cmbItemType.AddItem tempRs!ITEM_TYPE_NAME
-    itemTypeIdList(index) = tempRs!id
+    itemTypeIdList(index) = tempRs!ID
     index = index + 1
     tempRs.MoveNext
   Wend
@@ -501,7 +501,7 @@ End Sub
 
 Private Sub cmdActivation_Click()
 
-  Set tempRs = DataCrudDao.getItemRSByID(rs!id)
+  Set tempRs = DataCrudDao.getItemRSByID(rs!ID)
     
   If rs!active = "N" Then
     cmdActivation.Caption = "De-Activate"
@@ -514,7 +514,7 @@ Private Sub cmdActivation_Click()
   Call DbInstance.closeRecordSet(tempRs)
   MsgBox "Status Update "
     
-  Call ClearForm
+  Call clearForm
   Call populateDataGrid
 
 
@@ -532,7 +532,7 @@ Private Sub populateLov()
   index = 0
   While Not tempRs.EOF
     cmbSupplier.AddItem tempRs!Name
-    suplierIdList(index) = tempRs!id
+    suplierIdList(index) = tempRs!ID
     index = index + 1
     tempRs.MoveNext
   Wend
@@ -581,7 +581,7 @@ Private Sub formatDataGrid()
 
 End Sub
 
-Private Sub ClearForm()
+Private Sub clearForm()
 
 txtItemCode = ""
 cmbSupplier.ListIndex = -1
@@ -599,7 +599,7 @@ End Sub
 
 Private Sub toogelInsertMode(isInisilization As Boolean)
   If (isInisilization) Then
-    Call ClearForm
+    Call clearForm
     cmbNewRec.Caption = "ADD"
     cmdActivation.Enabled = False
     cmbEdit.Enabled = False

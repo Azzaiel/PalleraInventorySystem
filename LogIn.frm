@@ -34,7 +34,9 @@ Begin VB.Form LogIn
       End
       Begin VB.TextBox txtPassword 
          Height          =   285
+         IMEMode         =   3  'DISABLE
          Left            =   1200
+         PasswordChar    =   "*"
          TabIndex        =   2
          Top             =   840
          Width           =   1695
@@ -74,10 +76,10 @@ Attribute VB_Exposed = False
 
 
 Private Sub CmdLogin_Click()
-  Call CommonHelper.toDefaultSkin(TxtUser)
-  Call CommonHelper.toDefaultSkin(TxtPassword)
+  Call CommonHelper.toDefaultSkin(txtUser)
+  Call CommonHelper.toDefaultSkin(txtPassword)
   If (hasValidForm) Then
-    If UserSession.hasValidCredential(TxtUser, TxtPassword) Then
+    If UserSession.hasValidCredential(txtUser, txtPassword) Then
     Unload Me
     frmMain.Show
     Else
@@ -86,12 +88,12 @@ Private Sub CmdLogin_Click()
   End If
 End Sub
 Private Function hasValidForm() As Boolean
-   If (Not CommonHelper.hasValidValue(TxtUser)) Then
-     Call CommonHelper.sendWarning(TxtUser, "Please enter a username")
+   If (Not CommonHelper.hasValidValue(txtUser)) Then
+     Call CommonHelper.sendWarning(txtUser, "Please enter a username")
      hasValidForm = False
      
-   ElseIf (Not CommonHelper.hasValidValue(TxtPassword)) Then
-     Call CommonHelper.sendWarning(TxtPassword, "Please enter a password")
+   ElseIf (Not CommonHelper.hasValidValue(txtPassword)) Then
+     Call CommonHelper.sendWarning(txtPassword, "Please enter a password")
      hasValidForm = False
    Else
      hasValidForm = True
@@ -109,4 +111,16 @@ End If
 
 
 
+End Sub
+
+Private Sub txtPassword_KeyPress(KeyAscii As Integer)
+If KeyAscii = 13 Then
+  Call CmdLogin_Click
+End If
+End Sub
+
+Private Sub txtUser_KeyPress(KeyAscii As Integer)
+If KeyAscii = 13 Then
+  Call CmdLogin_Click
+End If
 End Sub
