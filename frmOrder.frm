@@ -10,8 +10,8 @@ Begin VB.Form frmOrder
    ScaleHeight     =   7995
    ScaleWidth      =   15945
    StartUpPosition =   2  'CenterScreen
-   Begin VB.CommandButton cmbClose 
-      Caption         =   "Close"
+   Begin VB.CommandButton cmdEdit 
+      Caption         =   "Edit"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -22,43 +22,9 @@ Begin VB.Form frmOrder
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   4800
-      TabIndex        =   20
-      Top             =   3240
-      Width           =   1095
-   End
-   Begin VB.CommandButton cmdAdd 
-      Caption         =   "New"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   495
-      Left            =   480
-      TabIndex        =   18
-      Top             =   3240
-      Width           =   975
-   End
-   Begin VB.CommandButton cmdClear 
-      Caption         =   "Clear"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   495
-      Left            =   3720
-      TabIndex        =   17
-      Top             =   3240
+      Left            =   2760
+      TabIndex        =   22
+      Top             =   120
       Width           =   975
    End
    Begin VB.CommandButton cmdDelete 
@@ -73,13 +39,13 @@ Begin VB.Form frmOrder
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   1560
-      TabIndex        =   16
-      Top             =   3240
+      Left            =   1680
+      TabIndex        =   21
+      Top             =   120
       Width           =   975
    End
-   Begin VB.CommandButton cmdEdit 
-      Caption         =   "Edit"
+   Begin VB.CommandButton cmdClear 
+      Caption         =   "Clear"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -90,12 +56,46 @@ Begin VB.Form frmOrder
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   2640
-      TabIndex        =   15
-      Top             =   3240
+      Left            =   3840
+      TabIndex        =   20
+      Top             =   120
       Width           =   975
    End
-   Begin VB.Frame Frame3 
+   Begin VB.CommandButton cmdAdd 
+      Caption         =   "New"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   600
+      TabIndex        =   19
+      Top             =   120
+      Width           =   975
+   End
+   Begin VB.CommandButton cmbClose 
+      Caption         =   "Close"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   4920
+      TabIndex        =   18
+      Top             =   120
+      Width           =   1095
+   End
+   Begin VB.Frame frmOrderItem 
       Caption         =   "Order Items (Double cllick to view Detail)"
       Height          =   3975
       Left            =   240
@@ -167,7 +167,7 @@ Begin VB.Form frmOrder
             EndProperty
          EndProperty
       End
-      Begin VB.Label Label2 
+      Begin VB.Label lblAddItemLink 
          Caption         =   "Add Item"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -180,8 +180,8 @@ Begin VB.Form frmOrder
          EndProperty
          ForeColor       =   &H00FF0000&
          Height          =   255
-         Left            =   4440
-         TabIndex        =   21
+         Left            =   4560
+         TabIndex        =   23
          Top             =   0
          Width           =   1095
       End
@@ -191,30 +191,13 @@ Begin VB.Form frmOrder
       Height          =   3015
       Left            =   240
       TabIndex        =   0
-      Top             =   120
+      Top             =   720
       Width           =   6015
-      Begin VB.CommandButton Command1 
-         Caption         =   "Receive Order"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   1095
-         Left            =   3840
-         TabIndex        =   24
-         Top             =   1560
-         Width           =   1935
-      End
-      Begin VB.TextBox Text1 
+      Begin VB.TextBox txtStatus 
          Height          =   285
          Left            =   1680
          Locked          =   -1  'True
-         TabIndex        =   22
+         TabIndex        =   16
          Text            =   "Pending"
          Top             =   1200
          Width           =   1935
@@ -236,7 +219,7 @@ Begin VB.Form frmOrder
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   106496003
+         Format          =   107151363
          CurrentDate     =   41671
       End
       Begin VB.Label Label4 
@@ -244,7 +227,7 @@ Begin VB.Form frmOrder
          Caption         =   "Status"
          Height          =   255
          Left            =   480
-         TabIndex        =   23
+         TabIndex        =   17
          Top             =   1200
          Width           =   855
       End
@@ -342,7 +325,7 @@ Begin VB.Form frmOrder
    Begin MSDataGridLib.DataGrid DataGrid1 
       Height          =   7575
       Left            =   6360
-      TabIndex        =   19
+      TabIndex        =   15
       Top             =   240
       Width           =   9375
       _ExtentX        =   16536
@@ -461,6 +444,35 @@ Private Sub cmbSupplier_Click()
   'Wend
   'Call DbInstance.closeRecordSet(tempRs)
 End Sub
+Private Sub cmdAdd_Click()
+  If cmdAdd.Caption = "New" Then
+    Call toogelInsertMode(True)
+  Else
+  End If
+End Sub
+Private Sub toogelInsertMode(isInisilization As Boolean)
+  If (isInisilization) Then
+    Call ClearForm
+    cmdAdd.Caption = "ADD"
+    cmdDelete.Enabled = False
+    cmdEdit.Enabled = False
+    frmOrderItem.Enabled = False
+    lblAddItemLink.ForeColor = vbGrayText
+  Else
+    cmdAdd.Caption = "New"
+    cmdDelete.Enabled = True
+    cmdEdit.Enabled = True
+    frmOrderItem.Enabled = True
+    lblAddItemLink.ForeColor = vbBlue
+  End If
+End Sub
+Private Sub ClearForm()
+  Call toogelInsertMode(False)
+End Sub
+
+Private Sub cmdClear_Click()
+  Call ClearForm
+End Sub
 
 Private Sub Form_Load()
   dtOrderDate.CustomFormat = Constants.DEFAULT_FORMAT
@@ -508,3 +520,4 @@ Private Sub txtQuantity_KeyPress(KeyAscii As Integer)
     Beep
   End If
 End Sub
+
