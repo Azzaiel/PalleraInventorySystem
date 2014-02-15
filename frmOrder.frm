@@ -484,6 +484,14 @@ Private Sub cmdClear_Click()
   Call ClearForm
 End Sub
 
+Private Sub dgOrders_Click()
+
+End Sub
+
+Private Sub dgOrders_SelChange(Cancel As Integer)
+  Call r
+End Sub
+
 Private Sub Form_Load()
   dtOrderDate.CustomFormat = Constants.DEFAULT_FORMAT
   dtOrderDate = Now
@@ -550,3 +558,6 @@ Private Sub txtQuantity_KeyPress(KeyAscii As Integer)
   End If
 End Sub
 
+Private Sub lblAddItemLink_Click()
+  frmAddOrderItem.Show
+End Sub
