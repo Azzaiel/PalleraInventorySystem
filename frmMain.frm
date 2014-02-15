@@ -17,6 +17,24 @@ Begin VB.Form frmMain
       Top             =   120
       Width           =   5175
    End
+   Begin VB.Label lblWelcome 
+      Caption         =   "Welcome"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H000000FF&
+      Height          =   255
+      Left            =   6240
+      TabIndex        =   1
+      Top             =   120
+      Width           =   5655
+   End
    Begin VB.Menu mnSupplier 
       Caption         =   "Supplier"
       Begin VB.Menu mnReSupplier 
@@ -47,6 +65,13 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
+
+Private Sub Form_Load()
+
+lblWelcome.Caption = "Welcome " & UserSession.Name & " you are logged in as " & UserSession.Role
+End Sub
+
 Private Sub mnOder_Click()
   frmOrder.Show vbModal
 End Sub
