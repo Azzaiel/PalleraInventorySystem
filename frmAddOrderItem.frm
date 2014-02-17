@@ -247,9 +247,11 @@ Private Sub cmbClose_Click()
 End Sub
 
 Private Sub cmbItems_Click()
+  lblRetailPrice = 0
   If (cmbItems.Text <> vbNullString) Then
     lblRetailPrice = itemsInfoList(cmbItems.ListIndex, PRICE_INDEX)
   End If
+   Call computeTotalPrice
 End Sub
 
 Private Sub cmbItemType_Click()
@@ -271,10 +273,18 @@ Private Sub cmbItemType_Click()
     Call DbInstance.closeRecordSet(tempRs)
     
   End If
+  Call computeTotalPrice
 End Sub
 
 Private Sub Form_Load()
   suplierID = 0
+End Sub
+
+Private Sub txtQuantity_Change()
+   Call computeTotalPrice
+End Sub
+Private Sub computeTotalPrice()
+  lblTotalPrice = Format(Val(lblRetailPrice) * Val(txtQuantity), Constants.CURRENCY_FORMAT)
 End Sub
 
 Private Sub txtQuantity_KeyPress(KeyAscii As Integer)
