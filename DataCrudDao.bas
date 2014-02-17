@@ -196,7 +196,7 @@ Dim con As ADODB.Connection
    
    rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
    
-   Set getItemsRS = rs
+   Set getItemByItemsRS = rs
 
 End Function
 

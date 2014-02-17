@@ -280,14 +280,14 @@ Private Sub formatDataGrid()
     .Columns(6).Visible = False
   End With
 End Sub
-Private Sub cmdADD_Click()
+Private Sub cmdAdd_Click()
   If (cmdAdd.Caption = "New") Then
     Call toogelInsertMode(True)
   Else
     rs.AddNew
-    rs!userName = txtUsername.Text
+    rs!Username = txtUsername.Text
     rs!Password = txtUsername.Text
-    rs!ROLE = cmbRole.Text
+    rs!Role = cmbRole.Text
     rs!FIRST_NAME = txtFirstname.Text
     rs!LAST_NAME = txtLastname.Text
     rs!MIDDLE_NAME = txtMiddlename.Text
@@ -340,8 +340,8 @@ End Sub
 
 Private Sub cmdEdit_Click()
     rs!id = txtID
-    rs!userName = txtUsername
-    rs!ROLE = cmbRole.Text
+    rs!Username = txtUsername
+    rs!Role = cmbRole.Text
     rs!FIRST_NAME = txtFirstname
     rs!LAST_NAME = txtLastname
     rs!MIDDLE_NAME = txtMiddlename
@@ -368,9 +368,9 @@ Private Sub Form_Load()
 End Sub
 Private Sub showSelectedData()
   'txtID = CommonHelper.extractStringValue(rs!ID)
-  txtUsername = CommonHelper.extractStringValue(rs!userName)
+  txtUsername = CommonHelper.extractStringValue(rs!Username)
   'txtPassword = CommonHelper.extractStringValue(rs!PASSWORD)
-  cmbRole.Text = CommonHelper.extractStringValue(rs!ROLE)
+  cmbRole.Text = CommonHelper.extractStringValue(rs!Role)
   txtFirstname = CommonHelper.extractStringValue(rs!FIRST_NAME)
   txtLastname = CommonHelper.extractStringValue(rs!LAST_NAME)
   txtMiddlename = CommonHelper.extractStringValue(rs!MIDDLE_NAME)

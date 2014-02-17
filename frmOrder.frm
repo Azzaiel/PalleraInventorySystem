@@ -10,23 +10,6 @@ Begin VB.Form frmOrder
    ScaleHeight     =   7995
    ScaleWidth      =   15945
    StartUpPosition =   2  'CenterScreen
-   Begin VB.CommandButton cmdEdit 
-      Caption         =   "Edit"
-      BeginProperty Font 
-         Name            =   "MS Sans Serif"
-         Size            =   8.25
-         Charset         =   0
-         Weight          =   700
-         Underline       =   0   'False
-         Italic          =   0   'False
-         Strikethrough   =   0   'False
-      EndProperty
-      Height          =   495
-      Left            =   2640
-      TabIndex        =   22
-      Top             =   120
-      Width           =   975
-   End
    Begin VB.CommandButton cmdDelete 
       Caption         =   "Delete"
       BeginProperty Font 
@@ -39,7 +22,7 @@ Begin VB.Form frmOrder
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   1560
+      Left            =   2040
       TabIndex        =   21
       Top             =   120
       Width           =   975
@@ -56,7 +39,7 @@ Begin VB.Form frmOrder
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   3720
+      Left            =   3120
       TabIndex        =   20
       Top             =   120
       Width           =   975
@@ -73,7 +56,7 @@ Begin VB.Form frmOrder
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   480
+      Left            =   960
       TabIndex        =   19
       Top             =   120
       Width           =   975
@@ -90,7 +73,7 @@ Begin VB.Form frmOrder
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   4800
+      Left            =   4200
       TabIndex        =   18
       Top             =   120
       Width           =   1095
@@ -181,7 +164,7 @@ Begin VB.Form frmOrder
          ForeColor       =   &H00FF0000&
          Height          =   255
          Left            =   4560
-         TabIndex        =   23
+         TabIndex        =   22
          Top             =   0
          Width           =   1095
       End
@@ -203,6 +186,7 @@ Begin VB.Form frmOrder
          Width           =   1935
       End
       Begin VB.ComboBox cmbSupplier 
+         Enabled         =   0   'False
          Height          =   315
          Left            =   1680
          Style           =   2  'Dropdown List
@@ -219,7 +203,7 @@ Begin VB.Form frmOrder
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   107151363
+         Format          =   106561539
          CurrentDate     =   41671
       End
       Begin VB.Label Label4 
@@ -462,50 +446,52 @@ Private Sub cmdAdd_Click()
 End Sub
 Private Sub toogelInsertMode(isInisilization As Boolean)
   If (isInisilization) Then
-    Call ClearForm
+    Call clearForm
     cmdAdd.Caption = "ADD"
     cmdDelete.Enabled = False
-    cmdEdit.Enabled = False
     frmOrderItem.Enabled = False
+    cmbSupplier.Enabled = True
     lblAddItemLink.ForeColor = vbGrayText
   Else
     cmdAdd.Caption = "New"
     cmdDelete.Enabled = True
-    cmdEdit.Enabled = True
     frmOrderItem.Enabled = True
     lblAddItemLink.ForeColor = vbBlue
+    cmbSupplier.Enabled = False
   End If
 End Sub
-Private Sub ClearForm()
+Private Sub clearForm()
   Call toogelInsertMode(False)
+  dtOrderDate.CustomFormat = Constants.DEFAULT_FORMAT
+  cmbSupplier.ListIndex = -1
+  lblOrderBy = UserSession.getLoginUser
 End Sub
 
-Private Sub cmdClear_Click()
-  Call ClearForm
-End Sub
-
-Private Sub dgOrders_Click()
-
+Private Sub cmdclear_Click()
+  Call clearForm
+  If (rs.RecordCount > 0) Then
+    rs.MoveFirst
+    Call showSelectedData
+  End If
 End Sub
 
 Private Sub dgOrders_SelChange(Cancel As Integer)
-  Call r
+  Call showSelectedData
 End Sub
 
 Private Sub Form_Load()
   dtOrderDate.CustomFormat = Constants.DEFAULT_FORMAT
   dtOrderDate = Now
   Call populateLov
-  Call populateDatagrid
+  Call populateDataGrid
 End Sub
-Private Sub populateDatagrid()
+Private Sub populateDataGrid()
   Set rs = DataCrudDao.getPendingOrdersRs
   Set dgOrders.DataSource = rs
   If (rs.RecordCount > 0) Then
    rs.MoveFirst
    Call showSelectedData
   End If
-  
 End Sub
 Private Sub showSelectedData()
   lblOrderID = CommonHelper.extractStringValue(rs!Order_ID)
@@ -546,18 +532,23 @@ Private Sub computeTotalPrice()
     lblTotalPrice = ""
   End If
 End Sub
-
 Private Sub txtQuantity_Change()
   Call computeTotalPrice
 End Sub
-
 Private Sub txtQuantity_KeyPress(KeyAscii As Integer)
     If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtQuantity) > 11)) Then
     KeyAscii = 0
     Beep
   End If
 End Sub
-
 Private Sub lblAddItemLink_Click()
-  frmAddOrderItem.Show
+  If (Val(lblOrderID) > 0) Then
+    frmAddOrderItem.lblOrderID = lblOrderID
+    frmAddOrderItem.lblSuplier = cmbSupplier.Text
+    frmAddOrderItem.suplierID = suplierIdList(cmbSupplier.ListIndex)
+    Call frmAddOrderItem.initializeForm
+    frmAddOrderItem.Show vbModal
+  Else
+    MsgBox "Please select a valid Order Item"
+  End If
 End Sub

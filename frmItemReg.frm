@@ -433,7 +433,7 @@ End Sub
 
 Private Sub cmbEdit_Click()
 
-Set tempRs = DataCrudDao.getItemRSByID(rs!ID)
+Set tempRs = DataCrudDao.getItemRSByID(rs!id)
     
   
   tempRs!ITeM_CODE = txtItemCode
@@ -491,7 +491,7 @@ If cmbSupplier.ListIndex >= 0 Then
   index = 0
    While Not tempRs.EOF
     cmbItemType.AddItem tempRs!ITEM_TYPE_NAME
-    itemTypeIdList(index) = tempRs!ID
+    itemTypeIdList(index) = tempRs!id
     index = index + 1
     tempRs.MoveNext
   Wend
@@ -501,7 +501,7 @@ End Sub
 
 Private Sub cmdActivation_Click()
 
-  Set tempRs = DataCrudDao.getItemRSByID(rs!ID)
+  Set tempRs = DataCrudDao.getItemRSByID(rs!id)
     
   If rs!active = "N" Then
     cmdActivation.Caption = "De-Activate"
@@ -532,7 +532,7 @@ Private Sub populateLov()
   index = 0
   While Not tempRs.EOF
     cmbSupplier.AddItem tempRs!Name
-    suplierIdList(index) = tempRs!ID
+    suplierIdList(index) = tempRs!id
     index = index + 1
     tempRs.MoveNext
   Wend

@@ -9,11 +9,45 @@ Begin VB.Form frmAddOrderItem
    LinkTopic       =   "Form1"
    ScaleHeight     =   4245
    ScaleWidth      =   5115
-   StartUpPosition =   3  'Windows Default
+   StartUpPosition =   1  'CenterOwner
+   Begin VB.CommandButton cmbClose 
+      Caption         =   "Close"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   2640
+      TabIndex        =   4
+      Top             =   3600
+      Width           =   1095
+   End
+   Begin VB.CommandButton cmdAdd 
+      Caption         =   "Add"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   495
+      Left            =   1320
+      TabIndex        =   3
+      Top             =   3600
+      Width           =   975
+   End
    Begin VB.Frame Frame2 
       Height          =   1095
       Left            =   120
-      TabIndex        =   11
+      TabIndex        =   13
       Top             =   0
       Width           =   4815
       Begin VB.Label lblSuplier 
@@ -29,7 +63,7 @@ Begin VB.Form frmAddOrderItem
          EndProperty
          Height          =   255
          Left            =   1320
-         TabIndex        =   15
+         TabIndex        =   17
          Top             =   600
          Width           =   2895
       End
@@ -46,7 +80,7 @@ Begin VB.Form frmAddOrderItem
          EndProperty
          Height          =   255
          Left            =   1320
-         TabIndex        =   14
+         TabIndex        =   16
          Top             =   240
          Width           =   3255
       End
@@ -63,7 +97,7 @@ Begin VB.Form frmAddOrderItem
          EndProperty
          Height          =   255
          Left            =   240
-         TabIndex        =   13
+         TabIndex        =   15
          Top             =   600
          Width           =   1095
       End
@@ -80,7 +114,7 @@ Begin VB.Form frmAddOrderItem
          EndProperty
          Height          =   255
          Left            =   240
-         TabIndex        =   12
+         TabIndex        =   14
          Top             =   240
          Width           =   1095
       End
@@ -88,14 +122,14 @@ Begin VB.Form frmAddOrderItem
    Begin VB.Frame Frame1 
       Height          =   2295
       Left            =   120
-      TabIndex        =   0
+      TabIndex        =   5
       Top             =   1200
       Width           =   4815
       Begin VB.ComboBox cmbItemType 
          Height          =   315
          Left            =   1320
          Style           =   2  'Dropdown List
-         TabIndex        =   3
+         TabIndex        =   0
          Top             =   360
          Width           =   2655
       End
@@ -103,14 +137,14 @@ Begin VB.Form frmAddOrderItem
          Height          =   315
          Left            =   1320
          Style           =   2  'Dropdown List
-         TabIndex        =   2
+         TabIndex        =   1
          Top             =   720
          Width           =   2655
       End
       Begin VB.TextBox txtQuantity 
          Height          =   285
          Left            =   1320
-         TabIndex        =   1
+         TabIndex        =   2
          Top             =   1440
          Width           =   1935
       End
@@ -119,7 +153,7 @@ Begin VB.Form frmAddOrderItem
          Caption         =   "Item"
          Height          =   255
          Left            =   120
-         TabIndex        =   10
+         TabIndex        =   12
          Top             =   720
          Width           =   855
       End
@@ -128,7 +162,7 @@ Begin VB.Form frmAddOrderItem
          Caption         =   "Retail Price"
          Height          =   255
          Left            =   120
-         TabIndex        =   9
+         TabIndex        =   11
          Top             =   1080
          Width           =   855
       End
@@ -137,7 +171,7 @@ Begin VB.Form frmAddOrderItem
          Caption         =   "Item Type:"
          Height          =   255
          Left            =   120
-         TabIndex        =   8
+         TabIndex        =   10
          Top             =   360
          Width           =   855
       End
@@ -146,7 +180,7 @@ Begin VB.Form frmAddOrderItem
          Caption         =   "Quantity"
          Height          =   255
          Left            =   120
-         TabIndex        =   7
+         TabIndex        =   9
          Top             =   1440
          Width           =   855
       End
@@ -155,16 +189,16 @@ Begin VB.Form frmAddOrderItem
          Caption         =   "Total Price"
          Height          =   255
          Left            =   120
-         TabIndex        =   6
+         TabIndex        =   8
          Top             =   1800
          Width           =   855
       End
-      Begin VB.Label lblUnitPrice 
+      Begin VB.Label lblRetailPrice 
          BackColor       =   &H8000000A&
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1320
-         TabIndex        =   5
+         TabIndex        =   7
          Top             =   1080
          Width           =   1935
       End
@@ -173,7 +207,7 @@ Begin VB.Form frmAddOrderItem
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1320
-         TabIndex        =   4
+         TabIndex        =   6
          Top             =   1800
          Width           =   1935
       End
@@ -184,6 +218,68 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub Form_Load()
+Option Explicit
+Public suplierID As Integer
+Private itemTypeIdList As Variant
+Private itemsInfoList As Variant
+Private tempRs As ADODB.Recordset
+Const ID_INDEX As Integer = 0
+Const PRICE_INDEX As Integer = 1
+Public Sub initializeForm()
+  If suplierID >= 0 Then
+    cmbItemType.Clear
+    Set tempRs = DataCrudDao.getItemTypeRSBySupplierID(Val(suplierID))
+    ReDim itemTypeIdList(0 To tempRs.RecordCount) As Long
+    Dim index As Integer
+    index = 0
+    While Not tempRs.EOF
+      cmbItemType.AddItem tempRs!ITEM_TYPE_NAME
+      itemTypeIdList(index) = tempRs!id
+      index = index + 1
+      tempRs.MoveNext
+    Wend
+    Call DbInstance.closeRecordSet(tempRs)
+  End If
+End Sub
 
+Private Sub cmbClose_Click()
+  Unload Me
+End Sub
+
+Private Sub cmbItems_Click()
+  If (cmbItems.Text <> vbNullString) Then
+    lblRetailPrice = itemsInfoList(cmbItems.ListIndex, PRICE_INDEX)
+  End If
+End Sub
+
+Private Sub cmbItemType_Click()
+  cmbItems.Clear
+  lblRetailPrice = ""
+  If cmbItemType.ListIndex > -1 Then
+    
+    Set tempRs = DataCrudDao.getItemByItemsRS(Val(itemTypeIdList(cmbItemType.ListIndex)))
+    ReDim itemsInfoList(0 To tempRs.RecordCount, 0 To 1) As Long
+    Dim index As Integer
+    index = 0
+    While Not tempRs.EOF
+      cmbItems.AddItem tempRs!ITEM_NAME
+      itemsInfoList(index, ID_INDEX) = tempRs!id
+      itemsInfoList(index, PRICE_INDEX) = tempRs!RETAIL_PRICE
+      index = index + 1
+      tempRs.MoveNext
+    Wend
+    Call DbInstance.closeRecordSet(tempRs)
+    
+  End If
+End Sub
+
+Private Sub Form_Load()
+  suplierID = 0
+End Sub
+
+Private Sub txtQuantity_KeyPress(KeyAscii As Integer)
+   If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtQuantity) > 11)) Then
+    KeyAscii = 0
+    Beep
+  End If
 End Sub
