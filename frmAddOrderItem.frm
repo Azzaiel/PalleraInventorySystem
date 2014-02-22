@@ -293,6 +293,23 @@ Private Sub cmdAdd_Click()
     Unload Me
     Call DbInstance.closeRecordSet(tempRs)
   Else
+    Set tempRs = DataCrudDao.getOrderItemsByID(orderItemID)
+    If (tempRs.RecordCount > 0) Then
+      tempRs!ORDER_ID = lblOrderID
+      tempRs!SUPPLIER_ID = suplierID
+      tempRs!ITEM_TYPE_ID = Val(itemTypeIdList(cmbItemType.ListIndex))
+      tempRs!ITEM_ID = itemsInfoList(cmbItems.ListIndex, ID_INDEX)
+      tempRs!retil_price = Val(txtRetailPrice)
+      tempRs!quantity = Val(txtQuantity)
+      tempRs!CREATED_BY = UserSession.getLoginUser
+      tempRs!CREATED_DATE = Now
+      tempRs!LAST_MOD_BY = UserSession.getLoginUser
+      tempRs!LAST_MOD_DATE = Now
+      tempRs.Update
+    End If
+    MsgBox "Record Updated!!", vbInformation
+    Unload Me
+    Call DbInstance.closeRecordSet(tempRs)
   End If
 End Sub
 

@@ -478,6 +478,7 @@ End Sub
 
 Private Sub dgOrderItems_DblClick()
   If (rsOrderItems.RecordCount > 0) Then
+    frmAddOrderItem.orderItemID = rsOrderItems!id
     frmAddOrderItem.lblOrderID = lblOrderID
     frmAddOrderItem.lblSuplier = cmbSupplier.Text
     frmAddOrderItem.suplierID = suplierIdList(cmbSupplier.ListIndex)
