@@ -281,7 +281,48 @@ Public Function getPendingOrdersRs() As ADODB.Recordset
  Set getPendingOrdersRs = rs
 
 End Function
-
+Public Function getFakeOrderItems() As ADODB.Recordset
+ 
+ Dim con As ADODB.Connection
+ Set con = DbInstance.getDBConnetion
+ 
+ Dim sqlQuery As String
+  
+ sqlQuery = "Select * " & _
+            "From order_items " & _
+            "Where 1 = 2 "
+              
+ Dim rs As ADODB.Recordset
+ Set rs = New ADODB.Recordset
+  
+ rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+ Set getFakeOrderItems = rs
+ 
+End Function
+Public Function getOrderItemsByOrderID(orderID As Integer) As ADODB.Recordset
+ 
+ Dim con As ADODB.Connection
+ Set con = DbInstance.getDBConnetion
+ 
+ Dim sqlQuery As String
+  
+ sqlQuery = "Select i.name, oi.retil_price, oi.quantity " & _
+            "       , oi.retil_price *  oi.quantity as TOTAL_PRICE " & _
+            "       , oi.CREATED_BY, oi.CREATED_DATE " & _
+            "       , oi.LAST_MOD_BY, oi.LAST_MOD_DATE " & _
+            "From order_items oi, items i " & _
+            "Where oi.ITEM_ID = i.ID  " & _
+            "      and oi.order_id = " & orderID
+            
+ Dim rs As ADODB.Recordset
+ Set rs = New ADODB.Recordset
+  
+ rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+ Set getOrderItemsByOrderID = rs
+ 
+End Function
 
 
 

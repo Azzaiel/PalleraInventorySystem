@@ -85,7 +85,7 @@ Begin VB.Form frmOrder
       TabIndex        =   13
       Top             =   3840
       Width           =   6015
-      Begin MSDataGridLib.DataGrid gdOrderItems 
+      Begin MSDataGridLib.DataGrid dgOrderItems 
          Height          =   3495
          Left            =   120
          TabIndex        =   14
@@ -203,7 +203,7 @@ Begin VB.Form frmOrder
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   106561539
+         Format          =   105578499
          CurrentDate     =   41671
       End
       Begin VB.Label Label4 
@@ -379,6 +379,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Private rs As ADODB.Recordset
+Private rsOrderItems As ADODB.Recordset
 Private rsTemp As ADODB.Recordset
 Private suplierIdList As Variant
 Private itemTypeIdList As Variant
@@ -404,7 +405,7 @@ Private Sub cmbItemType_Click()
    While Not tempRs.EOF
     cmbItems.AddItem tempRs!ITEM_NAME
     itemsList(index, 0) = tempRs!id
-    itemsList(index, 1) = tempRs!retail_price
+    itemsList(index, 1) = tempRs!RETAIL_PRICE
     index = index + 1
     tempRs.MoveNext
   Wend
@@ -494,13 +495,17 @@ Private Sub populateDataGrid()
   End If
 End Sub
 Private Sub showSelectedData()
-  lblOrderID = CommonHelper.extractStringValue(rs!Order_ID)
+  lblOrderID = CommonHelper.extractStringValue(rs!ORDER_ID)
   cmbSupplier.Text = rs!Suplier_Name
   txtStatus = CommonHelper.extractStringValue(rs!Status)
   dtOrderDate.value = CommonHelper.extractDateValue(rs!Order_Date)
   lblOrderBy = CommonHelper.extractStringValue(rs!Ordered_by)
   lblReceviedDate = CommonHelper.extractDateValue(rs!Recived_Date)
   lblReceviedBy = CommonHelper.extractStringValue(rs!RECIVED_BY)
+  
+  Set rsOrderItems = DataCrudDao.getOrderItemsByOrderID(Val(lblOrderID))
+  Set dgOrderItems.DataSource = rsOrderItems
+  
 End Sub
 Private Sub populateLov()
   Set tempRs = DataCrudDao.getSupplierRS("", "", "")
@@ -541,6 +546,11 @@ Private Sub txtQuantity_KeyPress(KeyAscii As Integer)
     Beep
   End If
 End Sub
+
+Private Sub gdOrderItems_Click()
+
+End Sub
+
 Private Sub lblAddItemLink_Click()
   If (Val(lblOrderID) > 0) Then
     frmAddOrderItem.lblOrderID = lblOrderID
