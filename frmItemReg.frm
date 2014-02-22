@@ -516,6 +516,10 @@ Private Sub cmdActivation_Click()
 
 End Sub
 
+Private Sub cmdSearch_Click()
+
+End Sub
+
 Private Sub dgItems_SelChange(Cancel As Integer)
   Call showSelectedData
 End Sub

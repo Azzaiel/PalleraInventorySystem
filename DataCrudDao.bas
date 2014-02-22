@@ -150,7 +150,7 @@ Public Function getAccount() As ADODB.Recordset
 End Function
 
 
-Public Function getItemReg() As ADODB.Recordset
+Public Function getItemReg(Optional itemCode As String) As ADODB.Recordset
 
 Dim con As ADODB.Connection
    Set con = DbInstance.getDBConnetion
@@ -163,7 +163,11 @@ Dim con As ADODB.Connection
               "From items a, SUPPLIERS b, supplier_item_types c " & _
               "Where a.SUPPLIER_ID = b.ID " & _
               "      and a.ITEm_TYPE_ID = c.ID"
-
+    If CommonHelper.hasValidValue(itemCode) Then
+        sqlQuery = sqlQuery & " And a.item_code = '" & itemCode & "'"
+    End If
+    
+            
               
    Dim rs As ADODB.Recordset
    Set rs = New ADODB.Recordset
