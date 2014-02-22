@@ -150,11 +150,19 @@ Begin VB.Form frmOrder
             EndProperty
          EndProperty
       End
-      Begin VB.Label Label9 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Total Cost:"
+      Begin VB.Label lblTotalCost 
+         BackColor       =   &H00FFFFFF&
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
-         Left            =   2280
+         Left            =   2880
          TabIndex        =   26
          Top             =   3600
          Width           =   1455
@@ -162,11 +170,20 @@ Begin VB.Form frmOrder
       Begin VB.Label Label3 
          BackColor       =   &H0000FF00&
          Caption         =   "Total Cost:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
-         Left            =   1320
+         Left            =   1560
          TabIndex        =   25
          Top             =   3600
-         Width           =   855
+         Width           =   1215
       End
       Begin VB.Label lblAddItemLink 
          Caption         =   "Add Item"
@@ -238,7 +255,7 @@ Begin VB.Form frmOrder
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   51838979
+         Format          =   105578499
          CurrentDate     =   41671
       End
       Begin VB.Label Label2 
@@ -569,9 +586,20 @@ Public Sub showSelectedData()
   Set rsOrderItems = DataCrudDao.getOrderItemsByOrderID(Val(lblOrderID))
   Set dgOrderItems.DataSource = rsOrderItems
   
-  With dgOrderItems
-    .Columns(0).Visible = False
-  End With
+  If (rsOrderItems.RecordCount > 0) Then
+    With dgOrderItems
+     .Columns(0).Visible = False
+    End With
+    Dim totalCost As Integer
+    While Not rsOrderItems.EOF
+      totalCost = totalCost + Val(rsOrderItems!TOTAL_PRICE)
+      rsOrderItems.MoveNext
+    Wend
+    lblTotalCost = Format(totalCost, Constants.CURRENCY_FORMAT)
+    rsOrderItems.MoveFirst
+  Else
+    lblTotalCost = 0
+  End If
   
 End Sub
 Private Sub populateLov()
