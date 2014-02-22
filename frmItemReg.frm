@@ -433,24 +433,20 @@ End Sub
 
 Private Sub cmbEdit_Click()
 
-Set tempRs = DataCrudDao.getItemRSByID(rs!id)
-    
-  
+  Set tempRs = DataCrudDao.getItemRSByID(rs!id)
   tempRs!ITeM_CODE = txtItemCode
   tempRs!SUPPLIER_ID = itemTypeIdList(cmbSupplier.ListIndex)
   tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
   tempRs!Name = txtItemName
-  tempRs!retail_price = txtRetailPrice
+  tempRs!RETAIL_PRICE = txtRetailPrice
   tempRs!UNIT_PRICE = txtUnitPrice
   tempRs!CREATED_BY = UserSession.getLoginUser
   tempRs!LAST_MOD_DATE = Now
   
-
   tempRs.Update
   Call DbInstance.closeRecordSet(tempRs)
-  MsgBox "Status Update "
+  MsgBox "Record Updated!! ", vbInformation
   Call populateDataGrid
-
 
 End Sub
 
@@ -465,7 +461,7 @@ Private Sub cmbNewRec_Click()
     tempRs!SUPPLIER_ID = itemTypeIdList(cmbSupplier.ListIndex)
     tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
     tempRs!Name = txtItemName
-    tempRs!retail_price = txtRetailPrice
+    tempRs!RETAIL_PRICE = txtRetailPrice
     tempRs!UNIT_PRICE = txtUnitPrice
     tempRs!CREATED_BY = UserSession.getLoginUser
     tempRs!CREATED_DATE = Now
@@ -520,6 +516,10 @@ Private Sub cmdActivation_Click()
 
 End Sub
 
+Private Sub dgItems_SelChange(Cancel As Integer)
+  Call showSelectedData
+End Sub
+
 Private Sub Form_Load()
   Call populateLov
   Call populateDataGrid
@@ -565,9 +565,9 @@ End Sub
 Private Sub showSelectedData()
  txtItemCode = CommonHelper.extractStringValue(rs!ITeM_CODE)
  cmbSupplier.Text = CommonHelper.extractStringValue(rs!SUPPLIER)
- cmbItemType.Text = CommonHelper.extractStringValue(rs!ITEM_TYPE)
+ cmbItemType.Text = CommonHelper.extractStringValue(rs!Item_Type)
  txtItemName = CommonHelper.extractStringValue(rs!ITEM_NAME)
- txtRetailPrice = CommonHelper.extractStringValue(rs!retail_price)
+ txtRetailPrice = CommonHelper.extractStringValue(rs!RETAIL_PRICE)
  txtUnitPrice = CommonHelper.extractStringValue(rs!UNIT_PRICE)
  txtActive = CommonHelper.extractStringValue(rs!active)
  lblCreatedBy = CommonHelper.extractStringValue(rs!CREATED_BY)

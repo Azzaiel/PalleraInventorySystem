@@ -218,6 +218,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Public suplierID As Integer
+Public orderItemID As Integer
 Private itemTypeIdList As Variant
 Private itemsInfoList As Variant
 Private tempRs As ADODB.Recordset
@@ -274,30 +275,33 @@ Private Sub cmbItemType_Click()
   Call computeTotalPrice
 End Sub
 Private Sub cmdAdd_Click()
-  Set tempRs = DataCrudDao.getFakeOrderItems
-  tempRs.AddNew
-  tempRs!ORDER_ID = lblOrderID
-  tempRs!SUPPLIER_ID = suplierID
-  tempRs!ITEM_TYPE_ID = Val(itemTypeIdList(cmbItemType.ListIndex))
-  tempRs!ITEM_ID = itemsInfoList(cmbItems.ListIndex, ID_INDEX)
-  tempRs!retil_price = Val(txtRetailPrice)
-  tempRs!quantity = Val(txtQuantity)
-  tempRs!CREATED_BY = UserSession.getLoginUser
-  tempRs!CREATED_DATE = Now
-  tempRs!LAST_MOD_BY = UserSession.getLoginUser
-  tempRs!LAST_MOD_DATE = Now
-  tempRs.Update
-  MsgBox "Record Added", vbInformation
-  Unload Me
-  Call DbInstance.closeRecordSet(tempRs)
+  If (cmdAdd.Caption = "Add") Then
+    Set tempRs = DataCrudDao.getFakeOrderItems
+    tempRs.AddNew
+    tempRs!ORDER_ID = lblOrderID
+    tempRs!SUPPLIER_ID = suplierID
+    tempRs!ITEM_TYPE_ID = Val(itemTypeIdList(cmbItemType.ListIndex))
+    tempRs!ITEM_ID = itemsInfoList(cmbItems.ListIndex, ID_INDEX)
+    tempRs!retil_price = Val(txtRetailPrice)
+    tempRs!quantity = Val(txtQuantity)
+    tempRs!CREATED_BY = UserSession.getLoginUser
+    tempRs!CREATED_DATE = Now
+    tempRs!LAST_MOD_BY = UserSession.getLoginUser
+    tempRs!LAST_MOD_DATE = Now
+    tempRs.Update
+    MsgBox "Record Added", vbInformation
+    Unload Me
+    Call DbInstance.closeRecordSet(tempRs)
+  Else
+  End If
 End Sub
 
 Private Sub Form_Load()
   suplierID = 0
 End Sub
 
-Private Sub lblRetailPrice_Click()
-
+Private Sub Form_Unload(Cancel As Integer)
+  frmOrder.showSelectedData
 End Sub
 
 Private Sub txtQuantity_Change()
@@ -306,7 +310,6 @@ End Sub
 Private Sub computeTotalPrice()
   lblTotalPrice = Format(Val(txtRetailPrice) * Val(txtQuantity), Constants.CURRENCY_FORMAT)
 End Sub
-
 Private Sub txtQuantity_KeyPress(KeyAscii As Integer)
    If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtQuantity) > 11)) Then
     KeyAscii = 0

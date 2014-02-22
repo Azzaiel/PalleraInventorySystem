@@ -300,6 +300,25 @@ Public Function getFakeOrderItems() As ADODB.Recordset
  Set getFakeOrderItems = rs
  
 End Function
+Public Function getOrderItemsByID(orderItemID As Integer) As ADODB.Recordset
+ 
+ Dim con As ADODB.Connection
+ Set con = DbInstance.getDBConnetion
+ 
+ Dim sqlQuery As String
+  
+ sqlQuery = "Select * " & _
+            "From order_items " & _
+            "Where ID = " & orderItemID
+              
+ Dim rs As ADODB.Recordset
+ Set rs = New ADODB.Recordset
+  
+ rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+ Set getOrderItemsByID = rs
+ 
+End Function
 Public Function getOrderItemsByOrderID(orderID As Integer) As ADODB.Recordset
  
  Dim con As ADODB.Connection
@@ -307,12 +326,13 @@ Public Function getOrderItemsByOrderID(orderID As Integer) As ADODB.Recordset
  
  Dim sqlQuery As String
   
- sqlQuery = "Select i.name, oi.retil_price, oi.quantity " & _
+ sqlQuery = "Select oi.id, sit.name as Item_Type, i.name, oi.retil_price, oi.quantity " & _
             "       , oi.retil_price *  oi.quantity as TOTAL_PRICE " & _
             "       , oi.CREATED_BY, oi.CREATED_DATE " & _
             "       , oi.LAST_MOD_BY, oi.LAST_MOD_DATE " & _
-            "From order_items oi, items i " & _
+            "From order_items oi, items i, supplier_item_types sit " & _
             "Where oi.ITEM_ID = i.ID  " & _
+            "      and sit.id = oi.ITEM_TYPE_ID " & _
             "      and oi.order_id = " & orderID
             
  Dim rs As ADODB.Recordset

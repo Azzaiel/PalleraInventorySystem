@@ -476,6 +476,21 @@ Private Sub cmdclear_Click()
   End If
 End Sub
 
+Private Sub dgOrderItems_DblClick()
+  If (rsOrderItems.RecordCount > 0) Then
+    frmAddOrderItem.lblOrderID = lblOrderID
+    frmAddOrderItem.lblSuplier = cmbSupplier.Text
+    frmAddOrderItem.suplierID = suplierIdList(cmbSupplier.ListIndex)
+    Call frmAddOrderItem.initializeForm
+    frmAddOrderItem.cmbItemType.Text = rsOrderItems!Item_Type
+    frmAddOrderItem.cmbItems.Text = rsOrderItems!Name
+    frmAddOrderItem.txtRetailPrice = rsOrderItems!retil_price
+    frmAddOrderItem.txtQuantity = rsOrderItems!quantity
+    frmAddOrderItem.cmdAdd.Caption = "Save"
+    frmAddOrderItem.Show vbModal
+  End If
+End Sub
+
 Private Sub dgOrders_SelChange(Cancel As Integer)
   Call showSelectedData
 End Sub
@@ -494,7 +509,7 @@ Private Sub populateDataGrid()
    Call showSelectedData
   End If
 End Sub
-Private Sub showSelectedData()
+Public Sub showSelectedData()
   lblOrderID = CommonHelper.extractStringValue(rs!ORDER_ID)
   cmbSupplier.Text = rs!Suplier_Name
   txtStatus = CommonHelper.extractStringValue(rs!Status)
@@ -505,6 +520,10 @@ Private Sub showSelectedData()
   
   Set rsOrderItems = DataCrudDao.getOrderItemsByOrderID(Val(lblOrderID))
   Set dgOrderItems.DataSource = rsOrderItems
+  
+  With dgOrderItems
+    .Columns(0).Visible = False
+  End With
   
 End Sub
 Private Sub populateLov()
@@ -553,6 +572,7 @@ End Sub
 
 Private Sub lblAddItemLink_Click()
   If (Val(lblOrderID) > 0) Then
+    frmAddOrderItem.cmdAdd.Caption = "Add"
     frmAddOrderItem.lblOrderID = lblOrderID
     frmAddOrderItem.lblSuplier = cmbSupplier.Text
     frmAddOrderItem.suplierID = suplierIdList(cmbSupplier.ListIndex)
