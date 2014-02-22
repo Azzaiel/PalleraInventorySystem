@@ -298,12 +298,34 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Public rs As ADODB.Recordset
-Private rsTemp As ADODB.Recordset
+Private tempRs As ADODB.Recordset
 
 Private Sub cmbAccpectOrder_Click()
   Dim ans
-  ans = MsgBox("Are you sure you want to Conteneu", vbYesNo)
+  ans = MsgBox("Are you sure you want to Continue?", vbYesNo)
   If ans = vbYes Then
+    rs.MoveFirst
+    While Not rs.EOF
+      Set tempRs = DataCrudDao.getItemRSByID(rs!ITEM_ID)
+      If (tempRs.RecordCount > 0) Then
+        tempRs!quantity = Val(CommonHelper.extractStringValue(tempRs!quantity)) + Val(rs!quantity)
+        tempRs.Update
+      End If
+      Call DbInstance.closeRecordSet(tempRs)
+      rs.MoveNext
+    Wend
+    
+    Set tempRs = DataCrudDao.getOrderByIDRs(Val(lblOrderID))
+    If (tempRs.RecordCount > 0) Then
+      tempRs!Status = "Completed"
+      tempRs!RECIVED_DATE = Now
+      tempRs!RECIVED_BY = UserSession.getLoginUser
+      tempRs.Update
+    End If
+    Call DbInstance.closeRecordSet(tempRs)
+    MsgBox "Order Accpected!!", vbInformation
+    
+    Unload Me
     
   End If
 End Sub
@@ -312,6 +334,6 @@ Private Sub cmdClose_Click()
   Unload Me
 End Sub
 
-Private Sub Form_Load()
-
+Private Sub Form_Unload(Cancel As Integer)
+  Call frmOrder.Form_Load
 End Sub

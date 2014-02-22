@@ -157,9 +157,9 @@ Dim con As ADODB.Connection
    
    Dim sqlQuery As String
    
-   sqlQuery = "Select a.ID, a.ACTIVE, a.ITeM_CODE, b.Name as SUPPLIER , c.Name as ITEM_TYPE, a.Name as ITEM_NAME " & _
-              ", a.RETAIL_PRICE, a.UNIT_PRICE, a.CREATED_BY , a.CREATED_DATE, a.LAST_MOD_BY " & _
-              ", a.LAST_MOD_DATE " & _
+   sqlQuery = "Select a.ID, a.ACTIVE, a.ITEM_CODE, b.Name as SUPPLIER , c.Name as ITEM_TYPE, a.Name as ITEM_NAME " & _
+              "       , a.Quantity, a.RETAIL_PRICE, a.UNIT_PRICE, a.CREATED_BY , a.CREATED_DATE, a.LAST_MOD_BY " & _
+              "       , a.LAST_MOD_DATE " & _
               "From items a, SUPPLIERS b, supplier_item_types c " & _
               "Where a.SUPPLIER_ID = b.ID " & _
               "      and a.ITEm_TYPE_ID = c.ID"

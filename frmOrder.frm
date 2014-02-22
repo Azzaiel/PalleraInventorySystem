@@ -255,7 +255,7 @@ Begin VB.Form frmOrder
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   66977795
+         Format          =   66781187
          CurrentDate     =   41671
       End
       Begin VB.Label Label2 
@@ -488,6 +488,13 @@ Private Sub cmbReceiveOrder_Click()
    .Columns(0).Visible = False
    .Columns(1).Visible = False
   End With
+  Dim totalCost As Integer
+  While Not rsOrderItems.EOF
+    totalCost = totalCost + Val(rsOrderItems!TOTAL_PRICE)
+    rsOrderItems.MoveNext
+  Wend
+  frmOrderReceive.lblTotalCost = Format(totalCost, Constants.CURRENCY_FORMAT)
+  rsOrderItems.MoveFirst
   frmOrderReceive.Show vbModal
 End Sub
 
@@ -575,7 +582,7 @@ Private Sub dgOrders_SelChange(Cancel As Integer)
   Call showSelectedData
 End Sub
 
-Private Sub Form_Load()
+Public Sub Form_Load()
   dtOrderDate.CustomFormat = Constants.DEFAULT_FORMAT
   dtOrderDate = Now
   Call populateLov
@@ -595,7 +602,7 @@ Public Sub showSelectedData()
   txtStatus = CommonHelper.extractStringValue(rs!Status)
   dtOrderDate.value = CommonHelper.extractDateValue(rs!Order_Date)
   lblOrderBy = CommonHelper.extractStringValue(rs!Ordered_by)
-  lblReceviedDate = CommonHelper.extractDateValue(rs!Recived_Date)
+  lblReceviedDate = CommonHelper.extractDateValue(rs!RECIVED_DATE)
   lblReceviedBy = CommonHelper.extractStringValue(rs!RECIVED_BY)
   
   Set rsOrderItems = DataCrudDao.getOrderItemsByOrderID(Val(lblOrderID))
