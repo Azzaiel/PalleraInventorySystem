@@ -512,10 +512,6 @@ If cmbSupplier.ListIndex >= 0 Then
 End If
 End Sub
 
-Private Sub cmbSupplierName_Change()
-
-End Sub
-
 Private Sub cmdActivation_Click()
 
   Set tempRs = DataCrudDao.getItemRSByID(rs!id)
@@ -552,11 +548,13 @@ End Sub
 Private Sub populateLov()
   Set tempRs = DataCrudDao.getSupplierRS("", "", "")
   cmbSupplier.Clear
+  cmbSupplierName.Clear
   ReDim suplierIdList(0 To tempRs.RecordCount) As Long
   Dim index As Integer
   index = 0
   While Not tempRs.EOF
     cmbSupplier.AddItem tempRs!Name
+    cmbSupplierName.AddItem tempRs!Name
     suplierIdList(index) = tempRs!id
     index = index + 1
     tempRs.MoveNext
