@@ -476,6 +476,16 @@ Private Sub cmbClose_Click()
   Unload Me
 End Sub
 
+Private Sub cmbReceiveOrder_Click()
+  frmOrderReceive.lblOrderID = lblOrderID
+  frmOrderReceive.lblSuplier = cmbSupplier.Text
+  frmOrderReceive.lblStatus = txtStatus
+  frmOrderReceive.lblOrderBy = lblOrderBy
+  frmOrderReceive.lblOrderDate = dtOrderDate.value
+  Set frmOrderReceive.dgOrderItems.DataSource = rsOrderItems
+  frmOrderReceive.Show vbModal
+End Sub
+
 Private Sub cmbSupplier_Click()
   'cmbItemType.Clear
   'Set tempRs = DataCrudDao.getItemTypeRSBySupplierID(Val(suplierIdList(cmbSupplier.ListIndex)))
