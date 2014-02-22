@@ -5,10 +5,25 @@ Begin VB.Form frmItemReg
    ClientHeight    =   5235
    ClientLeft      =   120
    ClientTop       =   750
-   ClientWidth     =   19380
+   ClientWidth     =   17160
    LinkTopic       =   "Form1"
    ScaleHeight     =   5235
-   ScaleWidth      =   19380
+   ScaleWidth      =   17160
+   Begin VB.ComboBox cmbSupplierName 
+      Height          =   315
+      Left            =   8040
+      Style           =   2  'Dropdown List
+      TabIndex        =   37
+      Top             =   960
+      Width           =   3375
+   End
+   Begin VB.TextBox txtItemCodeSearch 
+      Height          =   285
+      Left            =   8040
+      TabIndex        =   0
+      Top             =   480
+      Width           =   3255
+   End
    Begin VB.CommandButton cmdActivation 
       Caption         =   "De-Activate"
       BeginProperty Font 
@@ -22,7 +37,7 @@ Begin VB.Form frmItemReg
       EndProperty
       Height          =   495
       Left            =   1320
-      TabIndex        =   7
+      TabIndex        =   8
       Top             =   4560
       Width           =   1215
    End
@@ -36,21 +51,21 @@ Begin VB.Form frmItemReg
       Begin VB.TextBox txtItemName 
          Height          =   285
          Left            =   1440
-         TabIndex        =   3
+         TabIndex        =   4
          Top             =   1560
          Width           =   4215
       End
       Begin VB.TextBox txtUnitPrice 
          Height          =   285
          Left            =   1440
-         TabIndex        =   5
+         TabIndex        =   6
          Top             =   2280
          Width           =   1935
       End
       Begin VB.TextBox txtRetailPrice 
          Height          =   285
          Left            =   1440
-         TabIndex        =   4
+         TabIndex        =   5
          Top             =   1920
          Width           =   1935
       End
@@ -58,7 +73,7 @@ Begin VB.Form frmItemReg
          Height          =   315
          Left            =   1440
          Style           =   2  'Dropdown List
-         TabIndex        =   1
+         TabIndex        =   2
          Top             =   720
          Width           =   4215
       End
@@ -66,14 +81,14 @@ Begin VB.Form frmItemReg
          Height          =   315
          Left            =   1440
          Style           =   2  'Dropdown List
-         TabIndex        =   2
+         TabIndex        =   3
          Top             =   1200
          Width           =   4215
       End
       Begin VB.TextBox txtItemCode 
          Height          =   285
          Left            =   1440
-         TabIndex        =   0
+         TabIndex        =   1
          Top             =   360
          Width           =   4215
       End
@@ -222,62 +237,6 @@ Begin VB.Form frmItemReg
          Width           =   855
       End
    End
-   Begin VB.Frame Frame2 
-      Caption         =   "Search"
-      Height          =   975
-      Left            =   6240
-      TabIndex        =   12
-      Top             =   120
-      Width           =   12975
-      Begin VB.CommandButton cmdSearch 
-         Caption         =   "Search"
-         Height          =   315
-         Left            =   3120
-         TabIndex        =   16
-         Top             =   600
-         Width           =   1695
-      End
-      Begin VB.CommandButton cmdClearSearch 
-         Caption         =   "Clear"
-         Height          =   315
-         Left            =   6000
-         TabIndex        =   15
-         Top             =   600
-         Width           =   1695
-      End
-      Begin VB.TextBox txtSearchItemType 
-         Height          =   285
-         Left            =   6720
-         TabIndex        =   14
-         Top             =   240
-         Width           =   3735
-      End
-      Begin VB.TextBox txtSearchSuppliers 
-         Height          =   285
-         Left            =   1800
-         TabIndex        =   13
-         Top             =   240
-         Width           =   3255
-      End
-      Begin VB.Label Label14 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Item Type"
-         Height          =   255
-         Left            =   5400
-         TabIndex        =   18
-         Top             =   240
-         Width           =   1095
-      End
-      Begin VB.Label Label11 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Supplier Name"
-         Height          =   255
-         Left            =   480
-         TabIndex        =   17
-         Top             =   240
-         Width           =   1095
-      End
-   End
    Begin VB.CommandButton cmbClear 
       Caption         =   "Clear"
       BeginProperty Font 
@@ -291,7 +250,7 @@ Begin VB.Form frmItemReg
       EndProperty
       Height          =   495
       Left            =   3840
-      TabIndex        =   9
+      TabIndex        =   10
       Top             =   4560
       Width           =   1095
    End
@@ -308,7 +267,7 @@ Begin VB.Form frmItemReg
       EndProperty
       Height          =   495
       Left            =   5040
-      TabIndex        =   10
+      TabIndex        =   11
       Top             =   4560
       Width           =   1095
    End
@@ -325,7 +284,7 @@ Begin VB.Form frmItemReg
       EndProperty
       Height          =   495
       Left            =   2640
-      TabIndex        =   8
+      TabIndex        =   9
       Top             =   4560
       Width           =   1095
    End
@@ -342,18 +301,18 @@ Begin VB.Form frmItemReg
       EndProperty
       Height          =   495
       Left            =   120
-      TabIndex        =   6
+      TabIndex        =   7
       Top             =   4560
       Width           =   1095
    End
    Begin MSDataGridLib.DataGrid dgItems 
-      Height          =   3975
+      Height          =   2775
       Left            =   6240
-      TabIndex        =   11
-      Top             =   1080
+      TabIndex        =   12
+      Top             =   2280
       Width           =   12975
       _ExtentX        =   22886
-      _ExtentY        =   7011
+      _ExtentY        =   4895
       _Version        =   393216
       HeadLines       =   1
       RowHeight       =   15
@@ -410,6 +369,64 @@ Begin VB.Form frmItemReg
          EndProperty
       EndProperty
    End
+   Begin VB.Frame Frame2 
+      Caption         =   "Search"
+      Height          =   1935
+      Left            =   6240
+      TabIndex        =   13
+      Top             =   0
+      Width           =   12975
+      Begin VB.CommandButton cmdSearch 
+         Caption         =   "Search"
+         Height          =   315
+         Left            =   6840
+         TabIndex        =   16
+         Top             =   1200
+         Width           =   1695
+      End
+      Begin VB.CommandButton cmdClearSearch 
+         Caption         =   "Clear"
+         Height          =   315
+         Left            =   8640
+         TabIndex        =   15
+         Top             =   1200
+         Width           =   1695
+      End
+      Begin VB.TextBox txtSearchItemType 
+         Height          =   285
+         Left            =   6720
+         TabIndex        =   14
+         Top             =   480
+         Width           =   3735
+      End
+      Begin VB.Label aaa 
+         BackColor       =   &H0000FF00&
+         Caption         =   "Item Code Search"
+         Height          =   255
+         Left            =   360
+         TabIndex        =   36
+         Top             =   480
+         Width           =   1335
+      End
+      Begin VB.Label Label14 
+         BackColor       =   &H0000FF00&
+         Caption         =   "Item Type"
+         Height          =   255
+         Left            =   5400
+         TabIndex        =   18
+         Top             =   480
+         Width           =   1095
+      End
+      Begin VB.Label Label11 
+         BackColor       =   &H0000FF00&
+         Caption         =   "Supplier Name"
+         Height          =   255
+         Left            =   360
+         TabIndex        =   17
+         Top             =   960
+         Width           =   1335
+      End
+   End
 End
 Attribute VB_Name = "frmItemReg"
 Attribute VB_GlobalNameSpace = False
@@ -435,7 +452,7 @@ Private Sub cmbEdit_Click()
 
   Set tempRs = DataCrudDao.getItemRSByID(rs!id)
   tempRs!ITeM_CODE = txtItemCode
-  tempRs!SUPPLIER_ID = suplierIdList(cmbSupplier.ListIndex)
+  tempRs!SUPPLIER_ID = itemTypeIdList(cmbSupplier.ListIndex)
   tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
   tempRs!Name = txtItemName
   tempRs!RETAIL_PRICE = txtRetailPrice
@@ -458,7 +475,7 @@ Private Sub cmbNewRec_Click()
     Set tempRs = DataCrudDao.getFakeItemsRS
     tempRs.AddNew
     tempRs!ITeM_CODE = txtItemCode
-    tempRs!SUPPLIER_ID = suplierIdList(cmbSupplier.ListIndex)
+    tempRs!SUPPLIER_ID = itemTypeIdList(cmbSupplier.ListIndex)
     tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
     tempRs!Name = txtItemName
     tempRs!RETAIL_PRICE = txtRetailPrice
@@ -495,6 +512,10 @@ If cmbSupplier.ListIndex >= 0 Then
 End If
 End Sub
 
+Private Sub cmbSupplierName_Change()
+
+End Sub
+
 Private Sub cmdActivation_Click()
 
   Set tempRs = DataCrudDao.getItemRSByID(rs!id)
@@ -514,6 +535,10 @@ Private Sub cmdActivation_Click()
   Call populateDataGrid
 
 
+End Sub
+
+Private Sub cmdSearch_Click()
+Call populateDataGrid
 End Sub
 
 Private Sub dgItems_SelChange(Cancel As Integer)
@@ -539,7 +564,7 @@ Private Sub populateLov()
   Call DbInstance.closeRecordSet(tempRs)
 End Sub
 Private Sub populateDataGrid()
-  Set rs = DataCrudDao.getItemReg()
+  Set rs = DataCrudDao.getItemReg(txtItemCodeSearch)
   Set dgItems.DataSource = rs
   dgItems.Refresh
   If (rs.RecordCount > 0) Then
@@ -549,12 +574,38 @@ Private Sub populateDataGrid()
 Call formatDataGrid
 End Sub
 
+Private Sub Text1_Change()
+End Sub
+
+
+
+
+Private Sub txtItemCodeSearch_KeyPress(KeyAscii As Integer)
+If KeyAscii = 13 Then
+Call cmdSearch_Click
+End If
+
+End Sub
+
 Private Sub txtRetailPrice_KeyPress(KeyAscii As Integer)
   If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtRetailPrice) > 11)) Then
     KeyAscii = 0
     Beep
   End If
 End Sub
+
+Private Sub txtSearchItemType_KeyPress(KeyAscii As Integer)
+If KeyAscii = 13 Then
+Call cmdSearch
+End If
+End Sub
+
+Private Sub txtSearchSuppliers_KeyPress(KeyAscii As Integer)
+If KeyAscii = 13 Then
+Call cmdSearch
+End If
+End Sub
+
 Private Sub txtUnitPrice_KeyPress(KeyAscii As Integer)
   If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtUnitPrice) > 11)) Then
     KeyAscii = 0
