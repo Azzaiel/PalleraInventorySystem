@@ -96,7 +96,7 @@ Private Sub mnRegisterItem_Click()
 End Sub
 
 Private Sub mnRegItemType_Click()
-  frmItemReg.Show vbModal
+  frmItemType.Show vbModal
 End Sub
 
 Private Sub mnRegUsers_Click()

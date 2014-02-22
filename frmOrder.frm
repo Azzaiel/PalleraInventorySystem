@@ -86,13 +86,13 @@ Begin VB.Form frmOrder
       Top             =   3840
       Width           =   6015
       Begin MSDataGridLib.DataGrid dgOrderItems 
-         Height          =   3495
+         Height          =   3255
          Left            =   120
          TabIndex        =   14
          Top             =   240
          Width           =   5775
          _ExtentX        =   10186
-         _ExtentY        =   6165
+         _ExtentY        =   5741
          _Version        =   393216
          AllowUpdate     =   0   'False
          HeadLines       =   1
@@ -150,6 +150,24 @@ Begin VB.Form frmOrder
             EndProperty
          EndProperty
       End
+      Begin VB.Label Label9 
+         BackColor       =   &H0000FF00&
+         Caption         =   "Total Cost:"
+         Height          =   255
+         Left            =   2280
+         TabIndex        =   26
+         Top             =   3600
+         Width           =   1455
+      End
+      Begin VB.Label Label3 
+         BackColor       =   &H0000FF00&
+         Caption         =   "Total Cost:"
+         Height          =   255
+         Left            =   1320
+         TabIndex        =   25
+         Top             =   3600
+         Width           =   855
+      End
       Begin VB.Label lblAddItemLink 
          Caption         =   "Add Item"
          BeginProperty Font 
@@ -176,6 +194,23 @@ Begin VB.Form frmOrder
       TabIndex        =   0
       Top             =   720
       Width           =   6015
+      Begin VB.CommandButton cmbReceiveOrder 
+         Caption         =   "Receive Order"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   615
+         Left            =   3840
+         TabIndex        =   23
+         Top             =   1680
+         Width           =   1815
+      End
       Begin VB.TextBox txtStatus 
          Height          =   285
          Left            =   1680
@@ -203,8 +238,16 @@ Begin VB.Form frmOrder
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   105578499
+         Format          =   51838979
          CurrentDate     =   41671
+      End
+      Begin VB.Label Label2 
+         BackColor       =   &H0000FF00&
+         Height          =   855
+         Left            =   3720
+         TabIndex        =   24
+         Top             =   1560
+         Width           =   2055
       End
       Begin VB.Label Label4 
          BackColor       =   &H0000FF00&
@@ -474,6 +517,10 @@ Private Sub cmdclear_Click()
     rs.MoveFirst
     Call showSelectedData
   End If
+End Sub
+
+Private Sub Command1_Click()
+
 End Sub
 
 Private Sub dgOrderItems_DblClick()
