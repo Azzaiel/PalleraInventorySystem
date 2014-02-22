@@ -10,6 +10,67 @@ Begin VB.Form frmOrder
    ScaleHeight     =   7995
    ScaleWidth      =   15945
    StartUpPosition =   2  'CenterScreen
+   Begin VB.Frame Frame1 
+      Caption         =   "Frame1"
+      Height          =   975
+      Left            =   6360
+      TabIndex        =   27
+      Top             =   120
+      Width           =   9375
+      Begin VB.CommandButton Command2 
+         Caption         =   "Clear"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   5040
+         TabIndex        =   31
+         Top             =   600
+         Width           =   1815
+      End
+      Begin VB.CommandButton Command1 
+         Caption         =   "Search"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   3000
+         TabIndex        =   30
+         Top             =   600
+         Width           =   1815
+      End
+      Begin VB.ComboBox cmbSearchStatus 
+         Height          =   315
+         ItemData        =   "frmOrder.frx":0000
+         Left            =   1200
+         List            =   "frmOrder.frx":000A
+         TabIndex        =   28
+         Text            =   "Pending"
+         Top             =   240
+         Width           =   2655
+      End
+      Begin VB.Label Label9 
+         BackColor       =   &H0000FF00&
+         Caption         =   "Status"
+         Height          =   255
+         Left            =   240
+         TabIndex        =   29
+         Top             =   240
+         Width           =   855
+      End
+   End
    Begin VB.CommandButton cmdDelete 
       Caption         =   "Delete"
       BeginProperty Font 
@@ -255,7 +316,7 @@ Begin VB.Form frmOrder
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   66781187
+         Format          =   66977795
          CurrentDate     =   41671
       End
       Begin VB.Label Label2 
@@ -367,13 +428,13 @@ Begin VB.Form frmOrder
       End
    End
    Begin MSDataGridLib.DataGrid dgOrders 
-      Height          =   6135
+      Height          =   6615
       Left            =   6360
       TabIndex        =   15
-      Top             =   1680
+      Top             =   1200
       Width           =   9375
       _ExtentX        =   16536
-      _ExtentY        =   10821
+      _ExtentY        =   11668
       _Version        =   393216
       AllowUpdate     =   0   'False
       HeadLines       =   1
@@ -489,28 +550,18 @@ Private Sub cmbReceiveOrder_Click()
    .Columns(1).Visible = False
   End With
   Dim totalCost As Integer
-  While Not rsOrderItems.EOF
-    totalCost = totalCost + Val(rsOrderItems!TOTAL_PRICE)
-    rsOrderItems.MoveNext
-  Wend
-  frmOrderReceive.lblTotalCost = Format(totalCost, Constants.CURRENCY_FORMAT)
-  rsOrderItems.MoveFirst
+  If (rsOrderItems.RecordCount > 0) Then
+    While Not rsOrderItems.EOF
+      totalCost = totalCost + Val(rsOrderItems!TOTAL_PRICE)
+      rsOrderItems.MoveNext
+    Wend
+    rsOrderItems.MoveFirst
+    frmOrderReceive.lblTotalCost = Format(totalCost, Constants.CURRENCY_FORMAT)
+  Else
+    frmOrderReceive.lblTotalCost = 0
+  End If
+  
   frmOrderReceive.Show vbModal
-End Sub
-
-Private Sub cmbSupplier_Click()
-  'cmbItemType.Clear
-  'Set tempRs = DataCrudDao.getItemTypeRSBySupplierID(Val(suplierIdList(cmbSupplier.ListIndex)))
-  'ReDim itemTypeIdList(0 To tempRs.RecordCount) As Long
-  'Dim index As Integer
-  'index = 0
-  ' While Not tempRs.EOF
-  '  cmbItemType.AddItem tempRs!ITEM_TYPE_NAME
-  '  itemTypeIdList(index) = tempRs!id
-  '  index = index + 1
-  '  tempRs.MoveNext
-  'Wend
-  'Call DbInstance.closeRecordSet(tempRs)
 End Sub
 Private Sub cmdAdd_Click()
   If cmdAdd.Caption = "New" Then
@@ -518,7 +569,7 @@ Private Sub cmdAdd_Click()
   Else
     Set rsTemp = DataCrudDao.getFakeOrdersRs
     rsTemp.AddNew
-    rsTemp!Status = txtStatus
+    rsTemp!status = txtStatus
     rsTemp!Suplier_id = suplierIdList(cmbSupplier.ListIndex)
     rsTemp!Order_Date = dtOrderDate.value
     rsTemp!Ordered_by = UserSession.getLoginUser
@@ -558,8 +609,24 @@ Private Sub cmdclear_Click()
   End If
 End Sub
 
-Private Sub Command1_Click()
+Private Sub cmdDelete_Click()
+  Dim ans
+  ans = MsgBox("Are you sure you want to Delete the order?", vbYesNo)
+  If ans = vbYes Then
+    Set rsTemp = DataCrudDao.getOrderByIDRs(lblOrderID)
+    rsTemp.Delete
+    Call DbInstance.closeRecordSet(rsTemp)
+    MsgBox "Record Added", vbInformation
+    Call populateDataGrid
+  End If
+End Sub
 
+Private Sub Command1_Click()
+  Call populateDataGrid
+End Sub
+
+Private Sub Command2_Click()
+  cmbSearchStatus.Text = ""
 End Sub
 
 Private Sub dgOrderItems_DblClick()
@@ -589,7 +656,7 @@ Public Sub Form_Load()
   Call populateDataGrid
 End Sub
 Private Sub populateDataGrid()
-  Set rs = DataCrudDao.getPendingOrdersRs
+  Set rs = DataCrudDao.getOrders(cmbSearchStatus.Text)
   Set dgOrders.DataSource = rs
   If (rs.RecordCount > 0) Then
    rs.MoveFirst
@@ -599,7 +666,7 @@ End Sub
 Public Sub showSelectedData()
   lblOrderID = CommonHelper.extractStringValue(rs!ORDER_ID)
   cmbSupplier.Text = rs!Suplier_Name
-  txtStatus = CommonHelper.extractStringValue(rs!Status)
+  txtStatus = CommonHelper.extractStringValue(rs!status)
   dtOrderDate.value = CommonHelper.extractDateValue(rs!Order_Date)
   lblOrderBy = CommonHelper.extractStringValue(rs!Ordered_by)
   lblReceviedDate = CommonHelper.extractDateValue(rs!RECIVED_DATE)
@@ -622,6 +689,17 @@ Public Sub showSelectedData()
     rsOrderItems.MoveFirst
   Else
     lblTotalCost = 0
+  End If
+  
+  
+  If (txtStatus = "Pending") Then
+    cmbReceiveOrder.Enabled = True
+    lblAddItemLink.Enabled = True
+    cmdDelete.Enabled = True
+  Else
+    cmbReceiveOrder.Enabled = False
+    lblAddItemLink.Enabled = False
+    cmdDelete.Enabled = False
   End If
   
 End Sub

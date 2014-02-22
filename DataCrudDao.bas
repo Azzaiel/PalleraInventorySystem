@@ -284,7 +284,7 @@ Public Function getOrderByIDRs(orderID As Integer) As ADODB.Recordset
 
 End Function
 
-Public Function getPendingOrdersRs() As ADODB.Recordset
+Public Function getOrders(Optional status As String) As ADODB.Recordset
  
  Dim con As ADODB.Connection
  Set con = DbInstance.getDBConnetion
@@ -296,13 +296,17 @@ Public Function getPendingOrdersRs() As ADODB.Recordset
             "       , a.RECIVED_BY, a.Recived_Date " & _
             "From orders a, suppliers b " & _
             "Where a.SUPLIER_ID = b.id "
-              
+
+ If (CommonHelper.hasValidValue(status)) Then
+   sqlQuery = sqlQuery & " and a.Status = '" & status & "' "
+ End If
+
  Dim rs As ADODB.Recordset
  Set rs = New ADODB.Recordset
   
  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
    
- Set getPendingOrdersRs = rs
+ Set getOrders = rs
 
 End Function
 Public Function getFakeOrderItems() As ADODB.Recordset

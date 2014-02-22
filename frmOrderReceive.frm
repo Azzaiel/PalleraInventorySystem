@@ -301,6 +301,12 @@ Public rs As ADODB.Recordset
 Private tempRs As ADODB.Recordset
 
 Private Sub cmbAccpectOrder_Click()
+
+  If (rs.RecordCount = 0) Then
+    MsgBox "No Order to accpet", vbCritical
+    Exit Sub
+  End If
+
   Dim ans
   ans = MsgBox("Are you sure you want to Continue?", vbYesNo)
   If ans = vbYes Then
@@ -317,7 +323,7 @@ Private Sub cmbAccpectOrder_Click()
     
     Set tempRs = DataCrudDao.getOrderByIDRs(Val(lblOrderID))
     If (tempRs.RecordCount > 0) Then
-      tempRs!Status = "Completed"
+      tempRs!status = "Completed"
       tempRs!RECIVED_DATE = Now
       tempRs!RECIVED_BY = UserSession.getLoginUser
       tempRs.Update
