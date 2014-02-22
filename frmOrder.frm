@@ -255,7 +255,7 @@ Begin VB.Form frmOrder
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   105578499
+         Format          =   66977795
          CurrentDate     =   41671
       End
       Begin VB.Label Label2 
@@ -482,7 +482,12 @@ Private Sub cmbReceiveOrder_Click()
   frmOrderReceive.lblStatus = txtStatus
   frmOrderReceive.lblOrderBy = lblOrderBy
   frmOrderReceive.lblOrderDate = dtOrderDate.value
-  Set frmOrderReceive.dgOrderItems.DataSource = rsOrderItems
+  Set frmOrderReceive.rs = rsOrderItems
+  Set frmOrderReceive.dgOrderItems.DataSource = frmOrderReceive.rs
+  With frmOrderReceive.dgOrderItems
+   .Columns(0).Visible = False
+   .Columns(1).Visible = False
+  End With
   frmOrderReceive.Show vbModal
 End Sub
 
@@ -598,7 +603,8 @@ Public Sub showSelectedData()
   
   If (rsOrderItems.RecordCount > 0) Then
     With dgOrderItems
-     .Columns(0).Visible = False
+      .Columns(0).Visible = False
+      .Columns(1).Visible = False
     End With
     Dim totalCost As Integer
     While Not rsOrderItems.EOF

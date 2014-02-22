@@ -10,7 +10,24 @@ Begin VB.Form frmOrderReceive
    ScaleHeight     =   6510
    ScaleWidth      =   8115
    StartUpPosition =   1  'CenterOwner
-   Begin VB.CommandButton Command1 
+   Begin VB.CommandButton cmdClose 
+      Caption         =   "Close"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   9.75
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   375
+      Left            =   3960
+      TabIndex        =   16
+      Top             =   6000
+      Width           =   2295
+   End
+   Begin VB.CommandButton cmbAccpectOrder 
       Caption         =   "Accept Order"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -22,7 +39,7 @@ Begin VB.Form frmOrderReceive
          Strikethrough   =   0   'False
       EndProperty
       Height          =   375
-      Left            =   3000
+      Left            =   1320
       TabIndex        =   15
       Top             =   6000
       Width           =   2295
@@ -279,3 +296,22 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
+Public rs As ADODB.Recordset
+Private rsTemp As ADODB.Recordset
+
+Private Sub cmbAccpectOrder_Click()
+  Dim ans
+  ans = MsgBox("Are you sure you want to Conteneu", vbYesNo)
+  If ans = vbYes Then
+    
+  End If
+End Sub
+
+Private Sub cmdClose_Click()
+  Unload Me
+End Sub
+
+Private Sub Form_Load()
+
+End Sub

@@ -264,6 +264,26 @@ Public Function getFakeOrdersRs() As ADODB.Recordset
  Set getFakeOrdersRs = rs
 
 End Function
+Public Function getOrderByIDRs(orderID As Integer) As ADODB.Recordset
+ 
+ Dim con As ADODB.Connection
+ Set con = DbInstance.getDBConnetion
+ 
+ Dim sqlQuery As String
+  
+ sqlQuery = "Select * " & _
+            "From orders " & _
+            "Where id = " & orderID
+              
+ Dim rs As ADODB.Recordset
+ Set rs = New ADODB.Recordset
+  
+ rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+ Set getOrderByIDRs = rs
+
+End Function
+
 Public Function getPendingOrdersRs() As ADODB.Recordset
  
  Dim con As ADODB.Connection
@@ -330,8 +350,8 @@ Public Function getOrderItemsByOrderID(orderID As Integer) As ADODB.Recordset
  
  Dim sqlQuery As String
   
- sqlQuery = "Select oi.id, sit.name as Item_Type, i.name, oi.retil_price, oi.quantity " & _
-            "       , oi.retil_price *  oi.quantity as TOTAL_PRICE " & _
+ sqlQuery = "Select oi.id, i.id as ITEM_ID, sit.name as Item_Type, i.name, oi.retil_price " & _
+            "       , oi.quantity, oi.retil_price *  oi.quantity as TOTAL_PRICE " & _
             "       , oi.CREATED_BY, oi.CREATED_DATE " & _
             "       , oi.LAST_MOD_BY, oi.LAST_MOD_DATE " & _
             "From order_items oi, items i, supplier_item_types sit " & _
