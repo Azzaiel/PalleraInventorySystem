@@ -421,7 +421,7 @@ Private Sub dgItemType_SelChange(Cancel As Integer)
 End Sub
 Private Sub showSelectedData()
   cmSuppliers.Text = CommonHelper.extractStringValue(rs!Supplier_name)
-  txtItemType = CommonHelper.extractStringValue(rs!ITEM_NAME)
+  txtItemType = CommonHelper.extractStringValue(rs!ITEM_TYPE_NAME)
   lblCreatedBy = CommonHelper.extractStringValue(rs!CREATED_BY)
   lblCreatedDate = CommonHelper.extractDateValue(rs!CREATED_DATE)
   lblLatModBy = CommonHelper.extractStringValue(rs!LAST_MOD_BY)
