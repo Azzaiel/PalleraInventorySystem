@@ -435,7 +435,7 @@ Private Sub cmbEdit_Click()
 
   Set tempRs = DataCrudDao.getItemRSByID(rs!id)
   tempRs!ITeM_CODE = txtItemCode
-  tempRs!SUPPLIER_ID = itemTypeIdList(cmbSupplier.ListIndex)
+  tempRs!SUPPLIER_ID = suplierIdList(cmbSupplier.ListIndex)
   tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
   tempRs!Name = txtItemName
   tempRs!RETAIL_PRICE = txtRetailPrice
@@ -458,7 +458,7 @@ Private Sub cmbNewRec_Click()
     Set tempRs = DataCrudDao.getFakeItemsRS
     tempRs.AddNew
     tempRs!ITeM_CODE = txtItemCode
-    tempRs!SUPPLIER_ID = itemTypeIdList(cmbSupplier.ListIndex)
+    tempRs!SUPPLIER_ID = suplierIdList(cmbSupplier.ListIndex)
     tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
     tempRs!Name = txtItemName
     tempRs!RETAIL_PRICE = txtRetailPrice
@@ -513,10 +513,6 @@ Private Sub cmdActivation_Click()
   Call clearForm
   Call populateDataGrid
 
-
-End Sub
-
-Private Sub cmdSearch_Click()
 
 End Sub
 
