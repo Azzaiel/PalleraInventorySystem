@@ -1,6 +1,7 @@
 VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form frmItemType 
+   Caption         =   "Suplier Item Type"
    ClientHeight    =   4320
    ClientLeft      =   120
    ClientTop       =   450
@@ -8,7 +9,7 @@ Begin VB.Form frmItemType
    LinkTopic       =   "Form2"
    ScaleHeight     =   4320
    ScaleWidth      =   16245
-   StartUpPosition =   3  'Windows Default
+   StartUpPosition =   1  'CenterOwner
    Begin VB.CommandButton cmbNewRec 
       Caption         =   "New"
       BeginProperty Font 

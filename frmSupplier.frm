@@ -9,6 +9,7 @@ Begin VB.Form frmSupplier
    LinkTopic       =   "Form1"
    ScaleHeight     =   5715
    ScaleWidth      =   18645
+   StartUpPosition =   1  'CenterOwner
    Begin VB.CommandButton cmbClear 
       Caption         =   "Clear"
       BeginProperty Font 
@@ -510,7 +511,6 @@ Private Sub cmbNewRec_Click()
       rs!LAST_MOD_BY = UserSession.getLoginUser
       rs!LAST_MOD_DATE = Now
       rs.Update
-      MsgBox "Record Created", vbInformation
       Call populateDataGrid
       Call toogelInsertMode(False)
     End If
@@ -615,11 +615,9 @@ Private Sub toogelInsertMode(isInisilization As Boolean)
     Call clearForm
     cmbNewRec.Caption = "Add"
     cmdActivation.Enabled = False
-    cmbClear.Enabled = False
   Else
     cmbNewRec.Caption = "New"
     cmdActivation.Enabled = True
-    cmbClear.Enabled = True
   End If
 End Sub
 

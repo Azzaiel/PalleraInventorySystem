@@ -37,7 +37,7 @@ CREATE TABLE `order_items` (
   `retil_price` int(11) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
   UNIQUE KEY `ID_UNIQUE` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `order_items` (
 
 LOCK TABLES `order_items` WRITE;
 /*!40000 ALTER TABLE `order_items` DISABLE KEYS */;
-INSERT INTO `order_items` VALUES (2,1,2,2,1,'System','2014-02-22 15:29:42','System','2014-02-22',100,5),(3,1,2,1,2,'System','2014-02-22 15:19:55','System','2014-02-22',120,2);
+INSERT INTO `order_items` VALUES (2,1,2,2,1,'System','2014-02-22 15:29:42','System','2014-02-22',100,5),(3,1,2,1,2,'System','2014-02-22 15:19:55','System','2014-02-22',120,2),(4,2,3,4,4,'System','2014-02-23 11:09:10','System','2014-02-23',200,50),(5,2,3,5,5,'System','2014-02-23 11:09:20','System','2014-02-23',120,22),(6,3,2,2,1,'System','2014-02-23 11:09:32','System','2014-02-23',100,50);
 /*!40000 ALTER TABLE `order_items` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-22 18:44:57
+-- Dump completed on 2014-02-23 11:11:14

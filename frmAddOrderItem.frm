@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmAddOrderItem 
    Appearance      =   0  'Flat
-   Caption         =   "Form1"
+   Caption         =   "Add Order Item"
    ClientHeight    =   4245
    ClientLeft      =   120
    ClientTop       =   450

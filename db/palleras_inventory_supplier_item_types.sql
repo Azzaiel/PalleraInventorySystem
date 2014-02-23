@@ -34,7 +34,7 @@ CREATE TABLE `supplier_item_types` (
   `LAST_MOD_DATE` datetime DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `ID_UNIQUE` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `supplier_item_types` (
 
 LOCK TABLES `supplier_item_types` WRITE;
 /*!40000 ALTER TABLE `supplier_item_types` DISABLE KEYS */;
-INSERT INTO `supplier_item_types` VALUES (1,'Wood Paint',2,'icha','2014-01-26 11:35:44','icha','2014-01-26 11:35:44'),(2,'Wall Paint',2,'System','2014-01-26 12:08:16','System','2014-01-26 12:08:16'),(3,'Aircon 123',1,'System','2014-01-26 12:09:40','System','2014-01-26 12:13:33');
+INSERT INTO `supplier_item_types` VALUES (1,'Wood Paint',2,'icha','2014-01-26 11:35:44','icha','2014-01-26 11:35:44'),(2,'Wall Paint',2,'System','2014-01-26 12:08:16','System','2014-01-26 12:08:16'),(3,'Aircon 123',1,'System','2014-01-26 12:09:40','System','2014-01-26 12:13:33'),(4,'Wood',3,'System','2014-02-23 10:35:17','System','2014-02-23 10:35:17'),(5,'Tiles',3,'System','2014-02-23 10:35:55','System','2014-02-23 10:35:55'),(6,'Lights',1,'System','2014-02-23 10:36:19','System','2014-02-23 10:36:19'),(7,'Spray Wood Paint',2,'System','2014-02-23 11:02:09','System','2014-02-23 11:02:09');
 /*!40000 ALTER TABLE `supplier_item_types` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-22 18:44:57
+-- Dump completed on 2014-02-23 11:11:14

@@ -576,16 +576,23 @@ Private Sub cmdAdd_Click()
     rsTemp.Update
     Call DbInstance.closeRecordSet(rsTemp)
     MsgBox "Record Added", vbInformation
+    Call clearForm
+    Call populateDataGrid
   End If
 End Sub
 Private Sub toogelInsertMode(isInisilization As Boolean)
   If (isInisilization) Then
     Call clearForm
     cmdAdd.Caption = "ADD"
+    txtStatus = "Pending"
     cmdDelete.Enabled = False
     frmOrderItem.Enabled = False
     cmbSupplier.Enabled = True
+    cmbReceiveOrder.Enabled = False
     lblAddItemLink.ForeColor = vbGrayText
+    Set rsOrderItems = DataCrudDao.getOrderItemsByOrderID(Val(0))
+    Set dgOrderItems.DataSource = rsOrderItems
+  
   Else
     cmdAdd.Caption = "New"
     cmdDelete.Enabled = True

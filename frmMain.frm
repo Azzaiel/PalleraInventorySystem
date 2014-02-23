@@ -1,21 +1,21 @@
 VERSION 5.00
 Begin VB.Form frmMain 
    Caption         =   "Pallera's  Inventory System"
-   ClientHeight    =   7575
+   ClientHeight    =   7755
    ClientLeft      =   420
    ClientTop       =   1635
-   ClientWidth     =   13470
+   ClientWidth     =   14145
    LinkTopic       =   "Form1"
-   ScaleHeight     =   7575
-   ScaleWidth      =   13470
+   ScaleHeight     =   7755
+   ScaleWidth      =   14145
    StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame1 
       Caption         =   "Pending Orders"
-      Height          =   7215
+      Height          =   7575
       Left            =   120
       TabIndex        =   0
-      Top             =   120
-      Width           =   5175
+      Top             =   0
+      Width           =   7695
    End
    Begin VB.Label lblWelcome 
       Caption         =   "Welcome"
@@ -30,7 +30,7 @@ Begin VB.Form frmMain
       EndProperty
       ForeColor       =   &H000000FF&
       Height          =   255
-      Left            =   6240
+      Left            =   8280
       TabIndex        =   1
       Top             =   120
       Width           =   5655
@@ -47,7 +47,7 @@ Begin VB.Form frmMain
    Begin VB.Menu mnInventory 
       Caption         =   "Inventory"
       Begin VB.Menu mnRegisterItem 
-         Caption         =   "Register  Item"
+         Caption         =   "Item Registry"
       End
       Begin VB.Menu mnOder 
          Caption         =   "Order Itmes"

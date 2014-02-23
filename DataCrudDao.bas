@@ -30,7 +30,7 @@ Public Function getSupplierRS(active As String, suplierName As String, salesCont
               
    Dim rs As ADODB.Recordset
    Set rs = New ADODB.Recordset
-   
+
    rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
    
    Set getSupplierRS = rs
@@ -163,11 +163,10 @@ Dim con As ADODB.Connection
               "From items a, SUPPLIERS b, supplier_item_types c " & _
               "Where a.SUPPLIER_ID = b.ID " & _
               "      and a.ITEm_TYPE_ID = c.ID"
-    If CommonHelper.hasValidValue(itemCode) Then
-        sqlQuery = sqlQuery & " And a.item_code = '" & itemCode & "'"
-    End If
     
-            
+   If CommonHelper.hasValidValue(itemCode) Then
+        sqlQuery = sqlQuery & " And a.item_code = '" & itemCode & "'"
+   End If
               
    Dim rs As ADODB.Recordset
    Set rs = New ADODB.Recordset

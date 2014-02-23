@@ -12,10 +12,10 @@ Begin VB.Form frmItemReg
    StartUpPosition =   1  'CenterOwner
    Begin VB.ComboBox cmbSupplierName 
       Height          =   315
-      Left            =   8040
+      Left            =   12960
       Style           =   2  'Dropdown List
-      TabIndex        =   37
-      Top             =   960
+      TabIndex        =   35
+      Top             =   480
       Width           =   3375
    End
    Begin VB.TextBox txtItemCodeSearch 
@@ -23,7 +23,7 @@ Begin VB.Form frmItemReg
       Left            =   8040
       TabIndex        =   0
       Top             =   480
-      Width           =   3255
+      Width           =   2775
    End
    Begin VB.CommandButton cmdActivation 
       Caption         =   "De-Activate"
@@ -46,7 +46,7 @@ Begin VB.Form frmItemReg
       Caption         =   "Item Type Form"
       Height          =   4815
       Left            =   120
-      TabIndex        =   19
+      TabIndex        =   17
       Top             =   0
       Width           =   5895
       Begin VB.TextBox txtItemName 
@@ -98,7 +98,7 @@ Begin VB.Form frmItemReg
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   39
+         TabIndex        =   37
          Top             =   1920
          Width           =   1935
       End
@@ -107,7 +107,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Quantity"
          Height          =   255
          Left            =   240
-         TabIndex        =   38
+         TabIndex        =   36
          Top             =   1920
          Width           =   615
       End
@@ -116,7 +116,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Item Name:"
          Height          =   255
          Left            =   240
-         TabIndex        =   35
+         TabIndex        =   33
          Top             =   1560
          Width           =   855
       End
@@ -125,7 +125,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Active:"
          Height          =   255
          Left            =   240
-         TabIndex        =   34
+         TabIndex        =   32
          Top             =   3000
          Width           =   495
       End
@@ -134,7 +134,7 @@ Begin VB.Form frmItemReg
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   33
+         TabIndex        =   31
          Top             =   3000
          Width           =   1935
       End
@@ -143,7 +143,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Unit Price"
          Height          =   255
          Left            =   240
-         TabIndex        =   32
+         TabIndex        =   30
          Top             =   2640
          Width           =   855
       End
@@ -152,7 +152,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Retail Price"
          Height          =   255
          Left            =   240
-         TabIndex        =   31
+         TabIndex        =   29
          Top             =   2280
          Width           =   855
       End
@@ -161,7 +161,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Suppliers:"
          Height          =   255
          Left            =   240
-         TabIndex        =   30
+         TabIndex        =   28
          Top             =   720
          Width           =   855
       End
@@ -170,7 +170,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Item Type:"
          Height          =   255
          Left            =   240
-         TabIndex        =   29
+         TabIndex        =   27
          Top             =   1200
          Width           =   855
       End
@@ -179,7 +179,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Created by:"
          Height          =   255
          Left            =   240
-         TabIndex        =   28
+         TabIndex        =   26
          Top             =   3360
          Width           =   855
       End
@@ -188,7 +188,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Created date:"
          Height          =   255
          Left            =   240
-         TabIndex        =   27
+         TabIndex        =   25
          Top             =   3720
          Width           =   975
       End
@@ -197,7 +197,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Last mod by:"
          Height          =   255
          Left            =   240
-         TabIndex        =   26
+         TabIndex        =   24
          Top             =   4080
          Width           =   975
       End
@@ -206,7 +206,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Last mod date:"
          Height          =   255
          Left            =   240
-         TabIndex        =   25
+         TabIndex        =   23
          Top             =   4440
          Width           =   1095
       End
@@ -215,7 +215,7 @@ Begin VB.Form frmItemReg
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   24
+         TabIndex        =   22
          Top             =   4440
          Width           =   1935
       End
@@ -224,7 +224,7 @@ Begin VB.Form frmItemReg
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   23
+         TabIndex        =   21
          Top             =   4080
          Width           =   1935
       End
@@ -233,7 +233,7 @@ Begin VB.Form frmItemReg
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   22
+         TabIndex        =   20
          Top             =   3720
          Width           =   1935
       End
@@ -242,7 +242,7 @@ Begin VB.Form frmItemReg
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
-         TabIndex        =   21
+         TabIndex        =   19
          Top             =   3360
          Width           =   1935
       End
@@ -251,7 +251,7 @@ Begin VB.Form frmItemReg
          Caption         =   "Item Code"
          Height          =   255
          Left            =   240
-         TabIndex        =   20
+         TabIndex        =   18
          Top             =   360
          Width           =   855
       End
@@ -325,13 +325,13 @@ Begin VB.Form frmItemReg
       Width           =   1095
    End
    Begin MSDataGridLib.DataGrid dgItems 
-      Height          =   3855
+      Height          =   3735
       Left            =   6240
       TabIndex        =   12
-      Top             =   1680
+      Top             =   1800
       Width           =   10695
       _ExtentX        =   18865
-      _ExtentY        =   6800
+      _ExtentY        =   6588
       _Version        =   393216
       HeadLines       =   1
       RowHeight       =   15
@@ -389,61 +389,96 @@ Begin VB.Form frmItemReg
       EndProperty
    End
    Begin VB.Frame Frame2 
-      Caption         =   "Search"
-      Height          =   1575
+      Caption         =   "Search Form"
+      Height          =   1695
       Left            =   6240
       TabIndex        =   13
       Top             =   0
       Width           =   10695
+      Begin VB.TextBox Text1 
+         Height          =   285
+         Left            =   6720
+         TabIndex        =   40
+         Top             =   840
+         Width           =   3375
+      End
+      Begin VB.ComboBox Combo1 
+         Height          =   315
+         Left            =   1800
+         Style           =   2  'Dropdown List
+         TabIndex        =   39
+         Top             =   840
+         Width           =   2775
+      End
       Begin VB.CommandButton cmdSearch 
          Caption         =   "Search"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   315
-         Left            =   6000
-         TabIndex        =   16
-         Top             =   960
+         Left            =   3360
+         TabIndex        =   15
+         Top             =   1200
          Width           =   1695
       End
       Begin VB.CommandButton cmdClearSearch 
          Caption         =   "Clear"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   315
-         Left            =   7800
-         TabIndex        =   15
-         Top             =   960
+         Left            =   5640
+         TabIndex        =   14
+         Top             =   1200
          Width           =   1695
       End
-      Begin VB.TextBox txtSearchItemType 
-         Height          =   285
-         Left            =   6720
-         TabIndex        =   14
-         Top             =   480
-         Width           =   3735
+      Begin VB.Label Label15 
+         BackColor       =   &H0000FF00&
+         Caption         =   "Item Name:"
+         Height          =   255
+         Left            =   5520
+         TabIndex        =   41
+         Top             =   840
+         Width           =   855
+      End
+      Begin VB.Label Label14 
+         BackColor       =   &H0000FF00&
+         Caption         =   "Supplier Name"
+         Height          =   255
+         Left            =   360
+         TabIndex        =   38
+         Top             =   840
+         Width           =   1335
       End
       Begin VB.Label aaa 
          BackColor       =   &H0000FF00&
          Caption         =   "Item Code Search"
          Height          =   255
          Left            =   360
-         TabIndex        =   36
+         TabIndex        =   34
          Top             =   480
          Width           =   1335
-      End
-      Begin VB.Label Label14 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Item Type"
-         Height          =   255
-         Left            =   5400
-         TabIndex        =   18
-         Top             =   480
-         Width           =   1095
       End
       Begin VB.Label Label11 
          BackColor       =   &H0000FF00&
          Caption         =   "Supplier Name"
          Height          =   255
-         Left            =   360
-         TabIndex        =   17
-         Top             =   960
-         Width           =   1335
+         Left            =   5520
+         TabIndex        =   16
+         Top             =   480
+         Width           =   1095
       End
    End
 End
@@ -494,7 +529,7 @@ Private Sub cmbNewRec_Click()
     Set tempRs = DataCrudDao.getFakeItemsRS
     tempRs.AddNew
     tempRs!ITeM_CODE = txtItemCode
-    tempRs!SUPPLIER_ID = itemTypeIdList(cmbSupplier.ListIndex)
+    tempRs!SUPPLIER_ID = suplierIdList(cmbSupplier.ListIndex)
     tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
     tempRs!Name = txtItemName
     tempRs!RETAIL_PRICE = txtRetailPrice
@@ -508,9 +543,7 @@ Private Sub cmbNewRec_Click()
     MsgBox "Record Created", vbInformation
     Call populateDataGrid
     Call toogelInsertMode(False)
-    cmbNewRec.Caption = "Add"
-  
-  
+    Call clearForm
   End If
 End Sub
 
@@ -590,12 +623,6 @@ Private Sub populateDataGrid()
  End If
 Call formatDataGrid
 End Sub
-
-Private Sub Text1_Change()
-End Sub
-
-
-
 
 Private Sub txtItemCodeSearch_KeyPress(KeyAscii As Integer)
 If KeyAscii = 13 Then
