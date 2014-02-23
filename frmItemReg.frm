@@ -2,12 +2,12 @@ VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form frmItemReg 
    Caption         =   "Item Registration Form"
-   ClientHeight    =   5850
+   ClientHeight    =   5700
    ClientLeft      =   120
    ClientTop       =   750
    ClientWidth     =   17085
    LinkTopic       =   "Form1"
-   ScaleHeight     =   5850
+   ScaleHeight     =   5700
    ScaleWidth      =   17085
    StartUpPosition =   1  'CenterOwner
    Begin VB.ComboBox cmbSupplierName 
@@ -15,14 +15,14 @@ Begin VB.Form frmItemReg
       Left            =   12960
       Style           =   2  'Dropdown List
       TabIndex        =   35
-      Top             =   480
+      Top             =   240
       Width           =   3375
    End
    Begin VB.TextBox txtItemCodeSearch 
       Height          =   285
       Left            =   8040
       TabIndex        =   0
-      Top             =   480
+      Top             =   240
       Width           =   2775
    End
    Begin VB.CommandButton cmdActivation 
@@ -325,13 +325,13 @@ Begin VB.Form frmItemReg
       Width           =   1095
    End
    Begin MSDataGridLib.DataGrid dgItems 
-      Height          =   3735
+      Height          =   3975
       Left            =   6240
       TabIndex        =   12
-      Top             =   1800
+      Top             =   1560
       Width           =   10695
       _ExtentX        =   18865
-      _ExtentY        =   6588
+      _ExtentY        =   7011
       _Version        =   393216
       HeadLines       =   1
       RowHeight       =   15
@@ -390,7 +390,7 @@ Begin VB.Form frmItemReg
    End
    Begin VB.Frame Frame2 
       Caption         =   "Search Form"
-      Height          =   1695
+      Height          =   1455
       Left            =   6240
       TabIndex        =   13
       Top             =   0
@@ -399,7 +399,7 @@ Begin VB.Form frmItemReg
          Height          =   285
          Left            =   6720
          TabIndex        =   40
-         Top             =   840
+         Top             =   600
          Width           =   3375
       End
       Begin VB.ComboBox Combo1 
@@ -407,7 +407,7 @@ Begin VB.Form frmItemReg
          Left            =   1800
          Style           =   2  'Dropdown List
          TabIndex        =   39
-         Top             =   840
+         Top             =   600
          Width           =   2775
       End
       Begin VB.CommandButton cmdSearch 
@@ -424,7 +424,7 @@ Begin VB.Form frmItemReg
          Height          =   315
          Left            =   3360
          TabIndex        =   15
-         Top             =   1200
+         Top             =   960
          Width           =   1695
       End
       Begin VB.CommandButton cmdClearSearch 
@@ -441,7 +441,7 @@ Begin VB.Form frmItemReg
          Height          =   315
          Left            =   5640
          TabIndex        =   14
-         Top             =   1200
+         Top             =   960
          Width           =   1695
       End
       Begin VB.Label Label15 
@@ -450,7 +450,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   5520
          TabIndex        =   41
-         Top             =   840
+         Top             =   600
          Width           =   855
       End
       Begin VB.Label Label14 
@@ -459,7 +459,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   360
          TabIndex        =   38
-         Top             =   840
+         Top             =   600
          Width           =   1335
       End
       Begin VB.Label aaa 
@@ -468,7 +468,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   360
          TabIndex        =   34
-         Top             =   480
+         Top             =   240
          Width           =   1335
       End
       Begin VB.Label Label11 
@@ -477,7 +477,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   5520
          TabIndex        =   16
-         Top             =   480
+         Top             =   240
          Width           =   1095
       End
    End
@@ -503,31 +503,8 @@ Private Sub cmbClose_Click()
 End Sub
 
 Private Sub cmbEdit_Click()
-
-  Set tempRs = DataCrudDao.getItemRSByID(rs!id)
-  tempRs!ITeM_CODE = txtItemCode
-  tempRs!SUPPLIER_ID = itemTypeIdList(cmbSupplier.ListIndex)
-  tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
-  tempRs!Name = txtItemName
-  tempRs!RETAIL_PRICE = txtRetailPrice
-  tempRs!UNIT_PRICE = txtUnitPrice
-  tempRs!CREATED_BY = UserSession.getLoginUser
-  tempRs!LAST_MOD_DATE = Now
-  
-  tempRs.Update
-  Call DbInstance.closeRecordSet(tempRs)
-  MsgBox "Record Updated!! ", vbInformation
-  Call populateDataGrid
-
-End Sub
-
-Private Sub cmbNewRec_Click()
-  If (cmbNewRec.Caption = "New") Then
-     toogelInsertMode (True)
-  Else
-    Call toogelInsertMode(False)
-    Set tempRs = DataCrudDao.getFakeItemsRS
-    tempRs.AddNew
+  If (hasValidFormValue(Val(rs!id))) Then
+    Set tempRs = DataCrudDao.getItemRSByID(rs!id)
     tempRs!ITeM_CODE = txtItemCode
     tempRs!SUPPLIER_ID = suplierIdList(cmbSupplier.ListIndex)
     tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
@@ -535,17 +512,55 @@ Private Sub cmbNewRec_Click()
     tempRs!RETAIL_PRICE = txtRetailPrice
     tempRs!UNIT_PRICE = txtUnitPrice
     tempRs!CREATED_BY = UserSession.getLoginUser
-    tempRs!CREATED_DATE = Now
     tempRs!LAST_MOD_DATE = Now
-    tempRs!active = txtActive
+  
     tempRs.Update
     Call DbInstance.closeRecordSet(tempRs)
-    MsgBox "Record Created", vbInformation
+    MsgBox "Record Updated!! ", vbInformation
     Call populateDataGrid
-    Call toogelInsertMode(False)
-    Call clearForm
+  End If
+
+End Sub
+
+Private Sub cmbNewRec_Click()
+  If (cmbNewRec.Caption = "New") Then
+     toogelInsertMode (True)
+  Else
+    If (hasValidFormValue) Then
+      Call toogelInsertMode(False)
+      Set tempRs = DataCrudDao.getFakeItemsRS
+      tempRs.AddNew
+      tempRs!ITeM_CODE = txtItemCode
+       tempRs!SUPPLIER_ID = suplierIdList(cmbSupplier.ListIndex)
+      tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
+      tempRs!Name = txtItemName
+      tempRs!RETAIL_PRICE = txtRetailPrice
+      tempRs!UNIT_PRICE = txtUnitPrice
+      tempRs!CREATED_BY = UserSession.getLoginUser
+      tempRs!CREATED_DATE = Now
+      tempRs!LAST_MOD_DATE = Now
+      tempRs!active = txtActive
+      tempRs.Update
+      Call DbInstance.closeRecordSet(tempRs)
+      MsgBox "Record Created", vbInformation
+      Call populateDataGrid
+      Call toogelInsertMode(False)
+      Call clearForm
+    End If
   End If
 End Sub
+Private Function hasValidFormValue(Optional itemID As Integer = -1) As Boolean
+  Dim isValid As Boolean
+  isValid = True
+  If CommonHelper.hasValidValue(txtItemCode) = False Then
+    isValid = False
+    MsgBox "Please enter an Item Code", vbCritical
+  ElseIf DataCrudDao.isItemCodeAlreadyUsed(txtItemCode, itemID) Then
+    isValid = False
+    MsgBox "ItemCodeAlready In use", vbCritical
+  End If
+  hasValidFormValue = isValid
+End Function
 
 Private Sub cmbSupplier_Click()
 If cmbSupplier.ListIndex >= 0 Then

@@ -202,14 +202,9 @@ Dim con As ADODB.Connection
    Set getItemByItemsRS = rs
 
 End Function
-
-
-
-   
 Public Function getFakeItemsRS() As ADODB.Recordset
-
-   Dim con As ADODB.Connection
-   Set con = DbInstance.getDBConnetion
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
   
   Dim sqlQuery As String
   
@@ -223,8 +218,32 @@ Public Function getFakeItemsRS() As ADODB.Recordset
   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
    
   Set getFakeItemsRS = rs
-  
 End Function
+Public Function isItemCodeAlreadyUsed(itemCode As String, Optional id As Integer = -1) As Boolean
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
+  Dim sqlQuery As String
+  
+  sqlQuery = "SELECT * " & _
+             "FROM items " & _
+             "Where item_code = '" & itemCode & "' "
+  
+  If (id > 0) Then
+    sqlQuery = sqlQuery & "  and ID != " & id
+  End If
+  
+  Dim rs As ADODB.Recordset
+  Set rs = New ADODB.Recordset
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+  
+  If rs.RecordCount > 0 Then
+    isItemCodeAlreadyUsed = True
+  Else
+    isItemCodeAlreadyUsed = False
+  End If
+  Call closeRecordSet(rs)
+End Function
+
 Public Function getItemRSByID(itemID As Long) As ADODB.Recordset
 
 Dim con As ADODB.Connection

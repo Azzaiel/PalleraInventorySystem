@@ -12,19 +12,19 @@ Begin VB.Form frmMain
    StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame1 
       Caption         =   "Pending Orders (Double Click to View Details)"
-      Height          =   7575
+      Height          =   7215
       Left            =   120
       TabIndex        =   0
-      Top             =   0
+      Top             =   240
       Width           =   7815
       Begin MSDataGridLib.DataGrid dgPendinOrders 
-         Height          =   7215
+         Height          =   6735
          Left            =   120
          TabIndex        =   2
          Top             =   240
          Width           =   7575
          _ExtentX        =   13361
-         _ExtentY        =   12726
+         _ExtentY        =   11880
          _Version        =   393216
          AllowUpdate     =   0   'False
          HeadLines       =   1
@@ -96,10 +96,10 @@ Begin VB.Form frmMain
       EndProperty
       ForeColor       =   &H000000FF&
       Height          =   255
-      Left            =   8280
+      Left            =   8160
       TabIndex        =   1
       Top             =   120
-      Width           =   5655
+      Width           =   5895
    End
    Begin VB.Menu mnSupplier 
       Caption         =   "Supplier"
@@ -142,12 +142,12 @@ Private pendingOrderRs As ADODB.Recordset
 
 Private Sub dgPendinOrders_DblClick()
   If pendingOrderRs.RecordCount > 0 Then
-    frmOrderReceive.lblOrderID = pendingOrderRs!Order_Id
+    frmOrderReceive.lblOrderID = pendingOrderRs!ORDER_ID
     frmOrderReceive.lblSuplier = pendingOrderRs!Suplier_Name
     frmOrderReceive.lblStatus = "Pending"
     frmOrderReceive.lblOrderBy = pendingOrderRs!Ordered_By
     frmOrderReceive.lblOrderDate = pendingOrderRs!Order_Date
-    Set frmOrderReceive.rs = DataCrudDao.getOrderItemsByOrderID(Val(pendingOrderRs!Order_Id))
+    Set frmOrderReceive.rs = DataCrudDao.getOrderItemsByOrderID(Val(pendingOrderRs!ORDER_ID))
     Set frmOrderReceive.dgOrderItems.DataSource = frmOrderReceive.rs
     With frmOrderReceive.dgOrderItems
      .Columns(0).Visible = False
