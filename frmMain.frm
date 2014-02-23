@@ -119,6 +119,9 @@ Begin VB.Form frmMain
          Caption         =   "Order Itmes"
       End
    End
+   Begin VB.Menu mnSellItem 
+      Caption         =   "Sell Item"
+   End
    Begin VB.Menu mnUsers 
       Caption         =   "Account"
       Begin VB.Menu mnChangePass 
@@ -217,4 +220,8 @@ End Sub
 
 Private Sub mnReSupplier_Click()
   frmSupplier.Show vbModal
+End Sub
+
+Private Sub mnSellItem_Click()
+  frmItemSell.Show vbModal
 End Sub
