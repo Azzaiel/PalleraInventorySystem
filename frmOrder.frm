@@ -316,7 +316,7 @@ Begin VB.Form frmOrder
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   66977795
+         Format          =   66912259
          CurrentDate     =   41671
       End
       Begin VB.Label Label2 
@@ -548,6 +548,10 @@ Private Sub cmbReceiveOrder_Click()
   With frmOrderReceive.dgOrderItems
    .Columns(0).Visible = False
    .Columns(1).Visible = False
+   
+   .Columns(4).NumberFormat = Constants.CURRENCY_FORMAT
+   .Columns(5).NumberFormat = Constants.CURRENCY_FORMAT
+   .Columns(6).NumberFormat = Constants.CURRENCY_FORMAT
   End With
   Dim totalCost As Integer
   If (rsOrderItems.RecordCount > 0) Then
@@ -572,7 +576,7 @@ Private Sub cmdAdd_Click()
     rsTemp!status = txtStatus
     rsTemp!Suplier_id = suplierIdList(cmbSupplier.ListIndex)
     rsTemp!Order_Date = dtOrderDate.value
-    rsTemp!Ordered_by = UserSession.getLoginUser
+    rsTemp!Ordered_By = UserSession.getLoginUser
     rsTemp.Update
     Call DbInstance.closeRecordSet(rsTemp)
     MsgBox "Record Added", vbInformation
@@ -671,11 +675,11 @@ Private Sub populateDataGrid()
   End If
 End Sub
 Public Sub showSelectedData()
-  lblOrderID = CommonHelper.extractStringValue(rs!ORDER_ID)
+  lblOrderID = CommonHelper.extractStringValue(rs!Order_Id)
   cmbSupplier.Text = rs!Suplier_Name
   txtStatus = CommonHelper.extractStringValue(rs!status)
   dtOrderDate.value = CommonHelper.extractDateValue(rs!Order_Date)
-  lblOrderBy = CommonHelper.extractStringValue(rs!Ordered_by)
+  lblOrderBy = CommonHelper.extractStringValue(rs!Ordered_By)
   lblReceviedDate = CommonHelper.extractDateValue(rs!RECIVED_DATE)
   lblReceviedBy = CommonHelper.extractStringValue(rs!RECIVED_BY)
   
@@ -687,7 +691,7 @@ Public Sub showSelectedData()
       .Columns(0).Visible = False
       .Columns(1).Visible = False
     End With
-    Dim totalCost As Integer
+    Dim totalCost As Long
     While Not rsOrderItems.EOF
       totalCost = totalCost + Val(rsOrderItems!TOTAL_PRICE)
       rsOrderItems.MoveNext

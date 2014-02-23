@@ -347,7 +347,6 @@ Public Function getOrderItemsByID(orderItemID As Integer) As ADODB.Recordset
  
 End Function
 Public Function getOrderItemsByOrderID(orderID As Integer) As ADODB.Recordset
- 
  Dim con As ADODB.Connection
  Set con = DbInstance.getDBConnetion
  
@@ -370,7 +369,27 @@ Public Function getOrderItemsByOrderID(orderID As Integer) As ADODB.Recordset
  Set getOrderItemsByOrderID = rs
  
 End Function
-
+Public Function getPendingOrderDash() As ADODB.Recordset
+  Dim con As ADODB.Connection
+ Set con = DbInstance.getDBConnetion
+ 
+ Dim sqlQuery As String
+  
+ sqlQuery = "Select o.id as Order_Id, s.name as Suplier_Name, o.Ordered_By, o.Order_Date " & _
+            "       , (select count(*) from Order_items where Order_id = o.ID) as Items " & _
+            "       , (select sum(retil_price * quantity) from Order_items where Order_id = o.ID) as Total_Cost " & _
+            "From orders o, suppliers s " & _
+            "Where o.Status = 'Pending'  " & _
+            "      and  o.Suplier_id = s.ID " & _
+            " Order by Order_Date "
+            
+ Dim rs As ADODB.Recordset
+ Set rs = New ADODB.Recordset
+  
+ rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+ Set getPendingOrderDash = rs
+End Function
 
 
 
