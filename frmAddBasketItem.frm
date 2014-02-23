@@ -2,13 +2,12 @@ VERSION 5.00
 Begin VB.Form frmAddBasketItem 
    Caption         =   "Add Item"
    ClientHeight    =   4980
-   ClientLeft      =   120
-   ClientTop       =   450
+   ClientLeft      =   2790
+   ClientTop       =   3180
    ClientWidth     =   4980
    LinkTopic       =   "Form1"
    ScaleHeight     =   4980
    ScaleWidth      =   4980
-   StartUpPosition =   1  'CenterOwner
    Begin VB.Frame Frame2 
       Caption         =   "Customer Input"
       Height          =   975

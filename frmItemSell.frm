@@ -4,15 +4,14 @@ Begin VB.Form frmItemSell
    BorderStyle     =   1  'Fixed Single
    Caption         =   "Item Counter"
    ClientHeight    =   5415
-   ClientLeft      =   45
-   ClientTop       =   375
+   ClientLeft      =   5385
+   ClientTop       =   3105
    ClientWidth     =   9960
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   5415
    ScaleWidth      =   9960
-   StartUpPosition =   1  'CenterOwner
    Begin VB.Frame Frame2 
       Caption         =   "Commands"
       Height          =   3375
@@ -37,7 +36,7 @@ Begin VB.Form frmItemSell
          Top             =   240
          Width           =   1695
       End
-      Begin VB.CommandButton Command2 
+      Begin VB.CommandButton cmdClose 
          Caption         =   "Close"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -202,10 +201,9 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub Command3_Click()
-
-End Sub
-
 Private Sub cmdAddItem_Click()
   frmAddBasketItem.Show vbModal
+End Sub
+Private Sub cmdClose_Click()
+  Unload Me
 End Sub
