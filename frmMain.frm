@@ -162,8 +162,8 @@ Private Sub dgPendinOrders_DblClick()
      
     End With
     
-    frmOrderReceive.lblTotalCost = Format(pendingOrderRs!Total_cost, Constants.CURRENCY_FORMAT)
-  
+    frmOrderReceive.lblTotalCost = Format(pendingOrderRs!Total_Cost, Constants.CURRENCY_FORMAT)
+    frmOrderReceive.isfromMain = True
     frmOrderReceive.Show vbModal
   End If
 End Sub
@@ -172,7 +172,7 @@ Private Sub Form_Load()
   lblWelcome.Caption = "Welcome " & UserSession.Name & " you are logged in as " & UserSession.Role
   Call populatePendingOrderDash
 End Sub
-Private Sub populatePendingOrderDash()
+Public Sub populatePendingOrderDash()
   Set pendingOrderRs = DataCrudDao.getPendingOrderDash
   Set dgPendinOrders.DataSource = pendingOrderRs
   With dgPendinOrders

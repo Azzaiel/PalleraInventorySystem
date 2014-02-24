@@ -221,6 +221,7 @@ Attribute VB_Exposed = False
 Option Explicit
 Private rs As ADODB.Recordset
 Private tmpRs As ADODB.Recordset
+Private totalCost As Double
 
 Private Sub cmbClear_Click()
   Dim ans
@@ -234,6 +235,8 @@ End Sub
 
 Private Sub cmbReceiveOrder_Click()
   Set RepSalesInvoice.DataSource = rs
+  RepSalesInvoice.Sections(2).Controls("lblDate").Caption = Format(Now, Constants.DEFAULT_FORMAT)
+  RepSalesInvoice.Sections(5).Controls("lblTotalCost").Caption = Format(totalCost, Constants.CURRENCY_FORMAT)
   RepSalesInvoice.Show vbModal
 End Sub
 
@@ -269,7 +272,7 @@ Public Sub reloadBasketItems()
   Set rs = DataCrudDao.getBasketItemsByUser(UserSession.getLoginUser)
   Set dgBasket.DataSource = rs
   If rs.RecordCount > 0 Then
-    Dim totalCost As Double
+    totalCost = 0
     While Not rs.EOF
       totalCost = totalCost + Val(CommonHelper.extractStringValue(rs!Total_Cost))
       rs.MoveNext

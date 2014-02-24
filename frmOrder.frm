@@ -316,7 +316,7 @@ Begin VB.Form frmOrder
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   66912259
+         Format          =   50987011
          CurrentDate     =   41671
       End
       Begin VB.Label Label2 
@@ -553,7 +553,7 @@ Private Sub cmbReceiveOrder_Click()
    .Columns(5).NumberFormat = Constants.CURRENCY_FORMAT
    .Columns(6).NumberFormat = Constants.CURRENCY_FORMAT
   End With
-  Dim totalCost As Integer
+  Dim totalCost As Long
   If (rsOrderItems.RecordCount > 0) Then
     While Not rsOrderItems.EOF
       totalCost = totalCost + Val(rsOrderItems!TOTAL_PRICE)
@@ -564,7 +564,7 @@ Private Sub cmbReceiveOrder_Click()
   Else
     frmOrderReceive.lblTotalCost = 0
   End If
-  
+  frmOrderReceive.isfromMain = False
   frmOrderReceive.Show vbModal
 End Sub
 Private Sub cmdAdd_Click()
@@ -574,7 +574,7 @@ Private Sub cmdAdd_Click()
     Set rsTemp = DataCrudDao.getFakeOrdersRs
     rsTemp.AddNew
     rsTemp!status = txtStatus
-    rsTemp!Suplier_id = suplierIdList(cmbSupplier.ListIndex)
+    rsTemp!suplier_id = suplierIdList(cmbSupplier.ListIndex)
     rsTemp!Order_Date = dtOrderDate.value
     rsTemp!Ordered_By = UserSession.getLoginUser
     rsTemp.Update
@@ -647,10 +647,10 @@ Private Sub dgOrderItems_DblClick()
     frmAddOrderItem.lblSuplier = cmbSupplier.Text
     frmAddOrderItem.suplierID = suplierIdList(cmbSupplier.ListIndex)
     Call frmAddOrderItem.initializeForm
-    frmAddOrderItem.cmbItemType.Text = rsOrderItems!Item_Type
+    frmAddOrderItem.cmbItemType.Text = rsOrderItems!ITEM_TYPE
     frmAddOrderItem.cmbItems.Text = rsOrderItems!Name
     frmAddOrderItem.txtRetailPrice = rsOrderItems!retil_price
-    frmAddOrderItem.txtQuantity = rsOrderItems!quantity
+    frmAddOrderItem.txtQuantity = rsOrderItems!QUANTITY
     frmAddOrderItem.cmdAdd.Caption = "Save"
     frmAddOrderItem.Show vbModal
   End If
@@ -675,7 +675,7 @@ Private Sub populateDataGrid()
   End If
 End Sub
 Public Sub showSelectedData()
-  lblOrderID = CommonHelper.extractStringValue(rs!Order_Id)
+  lblOrderID = CommonHelper.extractStringValue(rs!ORDER_ID)
   cmbSupplier.Text = rs!Suplier_Name
   txtStatus = CommonHelper.extractStringValue(rs!status)
   dtOrderDate.value = CommonHelper.extractDateValue(rs!Order_Date)

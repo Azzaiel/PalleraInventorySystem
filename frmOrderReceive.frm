@@ -299,28 +299,26 @@ Attribute VB_Exposed = False
 Option Explicit
 Public rs As ADODB.Recordset
 Private tempRs As ADODB.Recordset
+Public isfromMain As Boolean
 
 Private Sub cmbAccpectOrder_Click()
-
   If (rs.RecordCount = 0) Then
     MsgBox "No Order to accpet", vbCritical
     Exit Sub
   End If
-
   Dim ans
   ans = MsgBox("Are you sure you want to Continue?", vbYesNo)
   If ans = vbYes Then
     rs.MoveFirst
     While Not rs.EOF
-      Set tempRs = DataCrudDao.getItemRSByID(rs!ITEM_ID)
+      Set tempRs = DataCrudDao.getItemRSByID(rs!item_id)
       If (tempRs.RecordCount > 0) Then
-        tempRs!quantity = Val(CommonHelper.extractStringValue(tempRs!quantity)) + Val(rs!quantity)
+        tempRs!QUANTITY = Val(CommonHelper.extractStringValue(tempRs!QUANTITY)) + Val(rs!QUANTITY)
         tempRs.Update
       End If
       Call DbInstance.closeRecordSet(tempRs)
       rs.MoveNext
     Wend
-    
     Set tempRs = DataCrudDao.getOrderByIDRs(Val(lblOrderID))
     If (tempRs.RecordCount > 0) Then
       tempRs!status = "Completed"
@@ -330,9 +328,7 @@ Private Sub cmbAccpectOrder_Click()
     End If
     Call DbInstance.closeRecordSet(tempRs)
     MsgBox "Order Accpected!!", vbInformation
-    
     Unload Me
-    
   End If
 End Sub
 
@@ -341,5 +337,9 @@ Private Sub cmdClose_Click()
 End Sub
 
 Private Sub Form_Unload(Cancel As Integer)
-  Call frmOrder.Form_Load
+  If isfromMain Then
+    Call frmMain.populatePendingOrderDash
+  Else
+    Call frmOrder.Form_Load
+  End If
 End Sub
