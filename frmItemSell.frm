@@ -213,6 +213,12 @@ Private Sub cmbClear_Click()
     Call reloadBasketItems
   End If
 End Sub
+
+Private Sub cmbReceiveOrder_Click()
+  Set RepSalesInvoice.DataSource = rs
+  RepSalesInvoice.Show vbModal
+End Sub
+
 Private Sub cmdAddItem_Click()
   frmAddBasketItem.Show vbModal
 End Sub
@@ -238,12 +244,11 @@ Public Sub reloadBasketItems()
   End If
   With dgBasket
     .Columns(0).Width = 2000
-    .Columns(1).Width = 2000
-    .Columns(2).Width = 2500
+    .Columns(1).Width = 4500
+    .Columns(2).Width = 800
+    .Columns(2).NumberFormat = Constants.CURRENCY_FORMAT
     .Columns(3).Width = 800
-    .Columns(3).NumberFormat = Constants.CURRENCY_FORMAT
-    .Columns(4).Width = 800
-    .Columns(5).Width = 1000
-    .Columns(5).NumberFormat = Constants.CURRENCY_FORMAT
+    .Columns(4).Width = 1000
+    .Columns(4).NumberFormat = Constants.CURRENCY_FORMAT
   End With
 End Sub

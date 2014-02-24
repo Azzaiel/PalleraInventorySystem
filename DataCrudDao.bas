@@ -416,7 +416,7 @@ Public Function getBasketItemsByUser(username As String) As ADODB.Recordset
   Set con = DbInstance.getDBConnetion
   Dim sqlQuery As String
   
-  sqlQuery = "Select s.name as Suplier_name, it.Name as Item_Type, i.name as Item_Name " & _
+  sqlQuery = "Select it.Name as Item_Type, concat(s.name, ' - ', i.name) as Item_Name " & _
              "       , tb.Unit_Price, tb.Quantity,  (tb.Unit_Price *   tb.Quantity) as Total_Cost " & _
              "From tmp_basket tb, suppliers s " & _
              "     ,items i, supplier_item_types it " & _
