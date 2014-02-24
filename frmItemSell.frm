@@ -6,12 +6,12 @@ Begin VB.Form frmItemSell
    ClientHeight    =   5415
    ClientLeft      =   5385
    ClientTop       =   3105
-   ClientWidth     =   9960
+   ClientWidth     =   12705
    LinkTopic       =   "Form1"
    MaxButton       =   0   'False
    MinButton       =   0   'False
    ScaleHeight     =   5415
-   ScaleWidth      =   9960
+   ScaleWidth      =   12705
    Begin VB.Frame Frame2 
       Caption         =   "Commands"
       Height          =   3375
@@ -94,14 +94,14 @@ Begin VB.Form frmItemSell
       Left            =   2400
       TabIndex        =   0
       Top             =   120
-      Width           =   7335
-      Begin MSDataGridLib.DataGrid DataGrid1 
+      Width           =   10095
+      Begin MSDataGridLib.DataGrid dgBasket 
          Height          =   3855
          Left            =   240
          TabIndex        =   1
          Top             =   360
-         Width           =   6855
-         _ExtentX        =   12091
+         Width           =   9615
+         _ExtentX        =   16960
          _ExtentY        =   6800
          _Version        =   393216
          HeadLines       =   1
@@ -201,9 +201,39 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Option Explicit
+Private rs As ADODB.Recordset
 Private Sub cmdAddItem_Click()
   frmAddBasketItem.Show vbModal
 End Sub
 Private Sub cmdClose_Click()
   Unload Me
+End Sub
+Private Sub Form_Load()
+  Call reloadBasketItems
+End Sub
+Public Sub reloadBasketItems()
+  Set rs = DataCrudDao.getBasketItemsByUser(UserSession.getLoginUser)
+  Set dgBasket.DataSource = rs
+  If rs.RecordCount > 0 Then
+    Dim totalCost As Double
+    While Not rs.EOF
+      totalCost = totalCost + Val(CommonHelper.extractStringValue(rs!Total_Cost))
+      rs.MoveNext
+    Wend
+    rs.MoveFirst
+    lblTotalCost = Format(totalCost, Constants.CURRENCY_FORMAT)
+  Else
+    lblTotalCost = 0
+  End If
+  With dgBasket
+    .Columns(0).Width = 2000
+    .Columns(1).Width = 2000
+    .Columns(2).Width = 2500
+    .Columns(3).Width = 800
+    .Columns(3).NumberFormat = Constants.CURRENCY_FORMAT
+    .Columns(4).Width = 800
+    .Columns(5).Width = 1000
+    .Columns(5).NumberFormat = Constants.CURRENCY_FORMAT
+  End With
 End Sub

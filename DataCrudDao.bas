@@ -105,17 +105,19 @@ Public Function getItemTypeRSByID(id As Long) As ADODB.Recordset
    
   Set getItemTypeRSByID = rs
 End Function
-Public Function getFakeTmpBasketRs() As ADODB.Recordset
+Public Function getTmpBasketItem(username As String, supplier_id As Integer, item_id As Integer) As ADODB.Recordset
   Dim con As ADODB.Connection
   Set con = DbInstance.getDBConnetion
   Dim sqlQuery As String
   sqlQuery = "SELECT * " & _
              "FROM tmp_basket " & _
-             "Where 1 = 2"
+             "Where username = '" & username & "' " & _
+             "      and supplier_id = " & supplier_id & _
+             "      and item_id = " & item_id
   Dim rs As ADODB.Recordset
   Set rs = New ADODB.Recordset
   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
-  Set getFakeTmpBasketRs = rs
+  Set getTmpBasketItem = rs
 End Function
 Public Function getItemTypeRSBySupplierID(supplierID As Long) As ADODB.Recordset
   Dim con As ADODB.Connection
@@ -409,7 +411,27 @@ Public Function getPendingOrderDash() As ADODB.Recordset
    
  Set getPendingOrderDash = rs
 End Function
-
+Public Function getBasketItemsByUser(username As String) As ADODB.Recordset
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
+  Dim sqlQuery As String
+  
+  sqlQuery = "Select s.name as Suplier_name, it.Name as Item_Type, i.name as Item_Name " & _
+             "       , tb.Unit_Price, tb.Quantity,  (tb.Unit_Price *   tb.Quantity) as Total_Cost " & _
+             "From tmp_basket tb, suppliers s " & _
+             "     ,items i, supplier_item_types it " & _
+             "Where tb.Supplier_ID = s.ID  " & _
+             "      And i.id = tb.item_id " & _
+             "      And i.item_type_id  = it.id " & _
+             "      and tb.username ='" & username & "' " & _
+             " Order by s.name "
+            
+  Dim rs As ADODB.Recordset
+  Set rs = New ADODB.Recordset
+  
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+  Set getBasketItemsByUser = rs
+End Function
 
 
 

@@ -70,7 +70,7 @@ Begin VB.Form frmAddBasketItem
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   1440
+      Left            =   1200
       TabIndex        =   2
       Top             =   4560
       Width           =   975
@@ -87,7 +87,7 @@ Begin VB.Form frmAddBasketItem
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   2640
+      Left            =   2760
       TabIndex        =   3
       Top             =   4560
       Width           =   975
@@ -294,15 +294,22 @@ Private Sub cmbAddItem_Click()
     txtOrderQty.SelLength = Len(txtOrderQty)
     Exit Sub
   End If
-  Set tempRs = DataCrudDao.getFakeTmpBasketRs
-  tempRs.AddNew
-  tempRs!Username = UserSession.getLoginUser
-  tempRs!SUPPLIER_ID = rs!SUPPLIER_ID
-  tempRs!ITEM_ID = rs!id
+  Set tempRs = DataCrudDao.getTmpBasketItem(UserSession.getLoginUser, Val(rs!supplier_id), Val(rs!id))
+  If tempRs.RecordCount = 0 Then
+    tempRs.AddNew
+    tempRs!QUANTITY = Val(txtOrderQty)
+  Else
+    tempRs.MoveFirst
+    tempRs!QUANTITY = Val(txtOrderQty) + Val(CommonHelper.extractStringValue(tempRs!QUANTITY))
+  End If
+  tempRs!username = UserSession.getLoginUser
+  tempRs!supplier_id = rs!supplier_id
+  tempRs!item_id = rs!id
   tempRs!UNIT_PRICE = Val(lblUnitPrice)
-  tempRs!QUANTITY = Val(txtOrderQty)
   tempRs.Update
-  MsgBox "Record Updated", vbCritical
+  Call DbInstance.closeRecordSet(tempRs)
+  MsgBox "Item Added to Basket", vbInformation
+  Call frmItemSell.reloadBasketItems
   Call clearForm
   txtItemCodeSearch = ""
   newSearch = False
@@ -315,6 +322,8 @@ Private Sub clearForm()
    lblStocks = ""
    lblUnitPrice = ""
    lblActive = ""
+   txtOrderQty = ""
+   lblTotalCost = ""
 End Sub
 Private Sub cmbClose_Click()
    Unload Me
