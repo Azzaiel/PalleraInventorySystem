@@ -1,23 +1,23 @@
 VERSION 5.00
 Begin VB.Form frmAddBasketItem 
    Caption         =   "Add Item"
-   ClientHeight    =   4980
+   ClientHeight    =   5310
    ClientLeft      =   2790
    ClientTop       =   3180
    ClientWidth     =   4980
    LinkTopic       =   "Form1"
-   ScaleHeight     =   4980
+   ScaleHeight     =   5310
    ScaleWidth      =   4980
    Begin VB.Frame Frame2 
       Caption         =   "Customer Input"
       Height          =   975
-      Left            =   840
+      Left            =   120
       TabIndex        =   18
-      Top             =   3240
-      Width           =   3255
+      Top             =   3480
+      Width           =   4695
       Begin VB.TextBox txtOrderQty 
          Height          =   285
-         Left            =   1440
+         Left            =   2160
          TabIndex        =   1
          Top             =   240
          Width           =   1575
@@ -34,7 +34,7 @@ Begin VB.Form frmAddBasketItem
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   1440
+         Left            =   2160
          TabIndex        =   21
          Top             =   600
          Width           =   1575
@@ -43,7 +43,7 @@ Begin VB.Form frmAddBasketItem
          BackColor       =   &H0000FF00&
          Caption         =   "Total Cost"
          Height          =   255
-         Left            =   240
+         Left            =   960
          TabIndex        =   20
          Top             =   600
          Width           =   735
@@ -52,7 +52,7 @@ Begin VB.Form frmAddBasketItem
          BackColor       =   &H0000FF00&
          Caption         =   "Enter Quantity"
          Height          =   255
-         Left            =   240
+         Left            =   960
          TabIndex        =   19
          Top             =   240
          Width           =   1095
@@ -72,7 +72,7 @@ Begin VB.Form frmAddBasketItem
       Height          =   495
       Left            =   1440
       TabIndex        =   2
-      Top             =   4320
+      Top             =   4560
       Width           =   975
    End
    Begin VB.CommandButton cmbClose 
@@ -89,7 +89,7 @@ Begin VB.Form frmAddBasketItem
       Height          =   495
       Left            =   2640
       TabIndex        =   3
-      Top             =   4320
+      Top             =   4560
       Width           =   975
    End
    Begin VB.Frame Frame1 
@@ -97,7 +97,7 @@ Begin VB.Form frmAddBasketItem
       Height          =   2655
       Left            =   120
       TabIndex        =   5
-      Top             =   480
+      Top             =   600
       Width           =   4695
       Begin VB.Label lblActive 
          BackColor       =   &H00FFFFFF&
@@ -260,7 +260,7 @@ Begin VB.Form frmAddBasketItem
       Height          =   285
       Left            =   1800
       TabIndex        =   0
-      Top             =   120
+      Top             =   240
       Width           =   2775
    End
    Begin VB.Label aaa 
@@ -269,7 +269,7 @@ Begin VB.Form frmAddBasketItem
       Height          =   255
       Left            =   360
       TabIndex        =   4
-      Top             =   120
+      Top             =   240
       Width           =   1335
    End
 End
@@ -281,7 +281,41 @@ Attribute VB_Exposed = False
 Option Explicit
 Private newSearch As Boolean
 Private rs As ADODB.Recordset
-
+Private tempRs As ADODB.Recordset
+Private Sub cmbAddItem_Click()
+  If Val(txtOrderQty) < 0 Then
+    MsgBox "Please enter a Quantity", vbCritical
+    txtOrderQty.SetFocus
+    Exit Sub
+  ElseIf Val(lblStocks) - Val(txtOrderQty) < 0 Then
+    MsgBox "Requested Quantity is greater that the current stock", vbCritical
+    txtOrderQty.SetFocus
+    txtOrderQty.SelStart = 0
+    txtOrderQty.SelLength = Len(txtOrderQty)
+    Exit Sub
+  End If
+  Set tempRs = DataCrudDao.getFakeTmpBasketRs
+  tempRs.AddNew
+  tempRs!Username = UserSession.getLoginUser
+  tempRs!SUPPLIER_ID = rs!SUPPLIER_ID
+  tempRs!ITEM_ID = rs!id
+  tempRs!UNIT_PRICE = Val(lblUnitPrice)
+  tempRs!QUANTITY = Val(txtOrderQty)
+  tempRs.Update
+  MsgBox "Record Updated", vbCritical
+  Call clearForm
+  txtItemCodeSearch = ""
+  newSearch = False
+  txtItemCodeSearch.SetFocus
+End Sub
+Private Sub clearForm()
+   lblSuplier = ""
+   lblItemType = ""
+   lblItem = ""
+   lblStocks = ""
+   lblUnitPrice = ""
+   lblActive = ""
+End Sub
 Private Sub cmbClose_Click()
    Unload Me
 End Sub
@@ -296,7 +330,7 @@ Private Sub txtItemCodeSearch_KeyPress(KeyAscii As Integer)
       lblSuplier = CommonHelper.extractStringValue(rs!SUPPLIER)
       lblItemType = CommonHelper.extractStringValue(rs!ITEM_TYPE)
       lblItem = CommonHelper.extractStringValue(rs!ITEM_NAME)
-      lblStocks = Val(CommonHelper.extractStringValue(rs!Quantity))
+      lblStocks = Val(CommonHelper.extractStringValue(rs!QUANTITY))
       lblUnitPrice = Format(Val(CommonHelper.extractStringValue(rs!UNIT_PRICE)), Constants.CURRENCY_FORMAT)
       lblActive = CommonHelper.extractStringValue(rs!active)
       txtOrderQty.SetFocus
@@ -314,7 +348,9 @@ Private Sub txtOrderQty_Change()
 End Sub
 
 Private Sub txtOrderQty_KeyPress(KeyAscii As Integer)
-  If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtOrderQty) > 11)) Then
+  If KeyAscii = 13 Then
+    Call cmbAddItem_Click
+  ElseIf (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtOrderQty) > 11)) Then
     KeyAscii = 0
     Beep
   End If

@@ -89,11 +89,9 @@ Public Function getFakeItemTypeRS() As ADODB.Recordset
   Set getFakeItemTypeRS = rs
   
 End Function
-
 Public Function getItemTypeRSByID(id As Long) As ADODB.Recordset
-
-   Dim con As ADODB.Connection
-   Set con = DbInstance.getDBConnetion
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
   
   Dim sqlQuery As String
   
@@ -103,17 +101,25 @@ Public Function getItemTypeRSByID(id As Long) As ADODB.Recordset
               
   Dim rs As ADODB.Recordset
   Set rs = New ADODB.Recordset
-  
   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
    
   Set getItemTypeRSByID = rs
-  
 End Function
-
+Public Function getFakeTmpBasketRs() As ADODB.Recordset
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
+  Dim sqlQuery As String
+  sqlQuery = "SELECT * " & _
+             "FROM tmp_basket " & _
+             "Where 1 = 2"
+  Dim rs As ADODB.Recordset
+  Set rs = New ADODB.Recordset
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+  Set getFakeTmpBasketRs = rs
+End Function
 Public Function getItemTypeRSBySupplierID(supplierID As Long) As ADODB.Recordset
-
-   Dim con As ADODB.Connection
-   Set con = DbInstance.getDBConnetion
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
   
   Dim sqlQuery As String
   
@@ -148,18 +154,16 @@ Public Function getAccount() As ADODB.Recordset
    Set getAccount = rs
 
 End Function
-
-
 Public Function getItemReg(Optional itemCode As String) As ADODB.Recordset
 
-Dim con As ADODB.Connection
+   Dim con As ADODB.Connection
    Set con = DbInstance.getDBConnetion
    
    Dim sqlQuery As String
    
    sqlQuery = "Select a.ID, a.ACTIVE, a.ITEM_CODE, b.Name as SUPPLIER , c.Name as ITEM_TYPE, a.Name as ITEM_NAME " & _
               "       , a.Quantity, a.RETAIL_PRICE, a.UNIT_PRICE, a.CREATED_BY , a.CREATED_DATE, a.LAST_MOD_BY " & _
-              "       , a.LAST_MOD_DATE " & _
+              "       , a.LAST_MOD_DATE, a.SUPPLIER_ID " & _
               "From items a, SUPPLIERS b, supplier_item_types c " & _
               "Where a.SUPPLIER_ID = b.ID " & _
               "      and a.ITEm_TYPE_ID = c.ID"
@@ -174,12 +178,8 @@ Dim con As ADODB.Connection
    rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
    
    Set getItemReg = rs
-
-
 End Function
-
 Public Function getItemByItemsRS(itemTypeID As Long) As ADODB.Recordset
-
 Dim con As ADODB.Connection
    Set con = DbInstance.getDBConnetion
    

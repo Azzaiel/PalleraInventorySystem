@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `tmp_basket`;
 CREATE TABLE `tmp_basket` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) DEFAULT NULL,
-  `suplier_id` int(11) DEFAULT NULL,
+  `SUPPLIER_ID` int(11) DEFAULT NULL,
   `item_id` int(11) DEFAULT NULL,
   `sale_date` datetime DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL,
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-23 21:10:52
+-- Dump completed on 2014-02-24 11:00:49
