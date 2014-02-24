@@ -3,11 +3,11 @@ Option Explicit
 Public Name As String
 Public Role As String
 Public UserID As Integer
-Private Username As String
+Private username As String
 Public Function getLoginUser() As String
 
-  If (Username <> vbNullString) Then
-   getLoginUser = Username
+  If (username <> vbNullString) Then
+   getLoginUser = username
   Else
     getLoginUser = "System"
   End If
@@ -29,17 +29,16 @@ Set con = DbInstance.getDBConnetion
   
   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
   If rs.RecordCount = 1 Then
-    UserID = rs!ID
+    UserID = rs!id
     Role = rs!Role
-    Name = CommonHelper.extractStringValue(rs!First_name) & " " & CommonHelper.extractStringValue(rs!Middle_name) & " " & CommonHelper.extractStringValue(rs!Last_name)
-    Username = CommonHelper.extractStringValue(rs!Username)
+    Name = CommonHelper.extractStringValue(rs!FIRST_NAME) & " " & CommonHelper.extractStringValue(rs!MIDDLE_NAME) & " " & CommonHelper.extractStringValue(rs!LAST_NAME)
+    username = CommonHelper.extractStringValue(rs!username)
     hasValidCredential = True
   
   Else
     hasValidCredential = False
   End If
 End Function
-
 Public Function getUserRS(Password As String) As ADODB.Recordset
 Dim con As ADODB.Connection
 Set con = DbInstance.getDBConnetion

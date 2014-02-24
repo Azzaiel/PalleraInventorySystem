@@ -416,8 +416,9 @@ Public Function getBasketItemsByUser(username As String) As ADODB.Recordset
   Set con = DbInstance.getDBConnetion
   Dim sqlQuery As String
   
-  sqlQuery = "Select it.Name as Item_Type, concat(s.name, ' - ', i.name) as Item_Name " & _
+  sqlQuery = "Select i.Item_Code, it.Name as Item_Type, concat(s.name, ' - ', i.name) as Item_Name " & _
              "       , tb.Unit_Price, tb.Quantity,  (tb.Unit_Price *   tb.Quantity) as Total_Cost " & _
+             "       , i.id as Item_ID, i.Supplier_ID " & _
              "From tmp_basket tb, suppliers s " & _
              "     ,items i, supplier_item_types it " & _
              "Where tb.Supplier_ID = s.ID  " & _
@@ -425,10 +426,8 @@ Public Function getBasketItemsByUser(username As String) As ADODB.Recordset
              "      And i.item_type_id  = it.id " & _
              "      and tb.username ='" & username & "' " & _
              " Order by s.name "
-            
   Dim rs As ADODB.Recordset
   Set rs = New ADODB.Recordset
-  
   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
   Set getBasketItemsByUser = rs
 End Function
@@ -436,24 +435,19 @@ Public Sub deleteTmpUserBasket(username As String)
   Dim con As ADODB.Connection
   Set con = DbInstance.getDBConnetion
   Dim sqlQuery As String
-  
   sqlQuery = "Select * " & _
              "From tmp_basket " & _
              "Where username = '" & username & "' "
              
   Dim rs As ADODB.Recordset
   Set rs = New ADODB.Recordset
-  
   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
-  
   While Not rs.EOF
     rs.Delete
     rs.Update
     rs.MoveNext
   Wend
-  
   Call DbInstance.closeRecordSet(rs)
-  
 End Sub
 
 

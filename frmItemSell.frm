@@ -14,11 +14,28 @@ Begin VB.Form frmItemSell
    ScaleWidth      =   12705
    Begin VB.Frame Frame2 
       Caption         =   "Commands"
-      Height          =   3375
+      Height          =   3975
       Left            =   120
       TabIndex        =   4
       Top             =   120
       Width           =   2175
+      Begin VB.CommandButton cmdRemoveItem 
+         Caption         =   "Remove Item"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   9.75
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   615
+         Left            =   240
+         TabIndex        =   9
+         Top             =   960
+         Width           =   1695
+      End
       Begin VB.CommandButton cmdAddItem 
          Caption         =   "Add Item"
          BeginProperty Font 
@@ -50,7 +67,7 @@ Begin VB.Form frmItemSell
          Height          =   615
          Left            =   240
          TabIndex        =   7
-         Top             =   2400
+         Top             =   3120
          Width           =   1695
       End
       Begin VB.CommandButton cmbClear 
@@ -67,7 +84,7 @@ Begin VB.Form frmItemSell
          Height          =   615
          Left            =   240
          TabIndex        =   6
-         Top             =   1680
+         Top             =   2400
          Width           =   1695
       End
       Begin VB.CommandButton cmbReceiveOrder 
@@ -84,7 +101,7 @@ Begin VB.Form frmItemSell
          Height          =   615
          Left            =   240
          TabIndex        =   5
-         Top             =   960
+         Top             =   1680
          Width           =   1695
       End
    End
@@ -203,6 +220,7 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Private rs As ADODB.Recordset
+Private tmpRs As ADODB.Recordset
 
 Private Sub cmbClear_Click()
   Dim ans
@@ -225,6 +243,25 @@ End Sub
 Private Sub cmdClose_Click()
   Unload Me
 End Sub
+Private Sub cmdRemoveItem_Click()
+  If rs.RecordCount = 0 Or rs.BOF Then
+    MsgBox "Please select a record to delete", vbCritical
+    Exit Sub
+  End If
+  Dim ans
+  ans = MsgBox("Are you sure you want to remove the item?", vbYesNo)
+  If ans = vbYes Then
+    Set tmpRs = DataCrudDao.getTmpBasketItem(UserSession.getLoginUser, Val(rs!supplier_id), Val(rs!item_id))
+    If tmpRs.RecordCount > 0 Then
+      tmpRs.Delete
+      tmpRs.Update
+      Call DbInstance.closeRecordSet(tmpRs)
+      MsgBox "Item Removed from basket", vbInformation
+      Call reloadBasketItems
+    End If
+  End If
+End Sub
+
 Private Sub Form_Load()
   Call reloadBasketItems
 End Sub
@@ -243,12 +280,13 @@ Public Sub reloadBasketItems()
     lblTotalCost = 0
   End If
   With dgBasket
-    .Columns(0).Width = 2000
-    .Columns(1).Width = 4500
-    .Columns(2).Width = 800
-    .Columns(2).NumberFormat = Constants.CURRENCY_FORMAT
+    .Columns(0).Width = 1000
+    .Columns(1).Width = 2000
+    .Columns(2).Width = 3500
     .Columns(3).Width = 800
+    .Columns(3).NumberFormat = Constants.CURRENCY_FORMAT
+    .Columns(4).Width = 800
     .Columns(4).Width = 1000
-    .Columns(4).NumberFormat = Constants.CURRENCY_FORMAT
+    .Columns(5).NumberFormat = Constants.CURRENCY_FORMAT
   End With
 End Sub
