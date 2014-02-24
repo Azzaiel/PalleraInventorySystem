@@ -53,8 +53,8 @@ Begin VB.Form frmItemSell
          Top             =   2400
          Width           =   1695
       End
-      Begin VB.CommandButton Command1 
-         Caption         =   "RESET"
+      Begin VB.CommandButton cmbClear 
+         Caption         =   "Clear"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   9.75
@@ -90,19 +90,19 @@ Begin VB.Form frmItemSell
    End
    Begin VB.Frame Frame1 
       Caption         =   "Customer Items"
-      Height          =   4935
+      Height          =   5175
       Left            =   2400
       TabIndex        =   0
       Top             =   120
       Width           =   10095
       Begin MSDataGridLib.DataGrid dgBasket 
-         Height          =   3855
+         Height          =   4215
          Left            =   240
          TabIndex        =   1
          Top             =   360
          Width           =   9615
          _ExtentX        =   16960
-         _ExtentY        =   6800
+         _ExtentY        =   7435
          _Version        =   393216
          HeadLines       =   1
          RowHeight       =   15
@@ -171,9 +171,9 @@ Begin VB.Form frmItemSell
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   3600
+         Left            =   4920
          TabIndex        =   3
-         Top             =   4440
+         Top             =   4680
          Width           =   1455
       End
       Begin VB.Label Label3 
@@ -189,9 +189,9 @@ Begin VB.Form frmItemSell
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   2280
+         Left            =   3600
          TabIndex        =   2
-         Top             =   4440
+         Top             =   4680
          Width           =   1215
       End
    End
@@ -203,6 +203,16 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 Option Explicit
 Private rs As ADODB.Recordset
+
+Private Sub cmbClear_Click()
+  Dim ans
+  ans = MsgBox("Are you sure you want to clear the basket?", vbYesNo)
+  If ans = vbYes Then
+    Call DataCrudDao.deleteTmpUserBasket(UserSession.getLoginUser)
+    MsgBox "Basket Cleared", vbInformation
+    Call reloadBasketItems
+  End If
+End Sub
 Private Sub cmdAddItem_Click()
   frmAddBasketItem.Show vbModal
 End Sub

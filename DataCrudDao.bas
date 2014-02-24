@@ -432,6 +432,30 @@ Public Function getBasketItemsByUser(username As String) As ADODB.Recordset
   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
   Set getBasketItemsByUser = rs
 End Function
+Public Sub deleteTmpUserBasket(username As String)
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
+  Dim sqlQuery As String
+  
+  sqlQuery = "Select * " & _
+             "From tmp_basket " & _
+             "Where username = '" & username & "' "
+             
+  Dim rs As ADODB.Recordset
+  Set rs = New ADODB.Recordset
+  
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+  
+  While Not rs.EOF
+    rs.Delete
+    rs.Update
+    rs.MoveNext
+  Wend
+  
+  Call DbInstance.closeRecordSet(rs)
+  
+End Sub
+
 
 
 
