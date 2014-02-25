@@ -221,8 +221,8 @@ Attribute VB_Exposed = False
 Option Explicit
 Private rs As ADODB.Recordset
 Private tmpRs As ADODB.Recordset
-Private totalCost As Double
-
+Public totalCost As Double
+Public payment As Long
 Private Sub cmbClear_Click()
   Dim ans
   ans = MsgBox("Are you sure you want to clear the basket?", vbYesNo)
@@ -232,14 +232,24 @@ Private Sub cmbClear_Click()
     Call reloadBasketItems
   End If
 End Sub
-
 Private Sub cmbReceiveOrder_Click()
-  Set RepSalesInvoice.DataSource = rs
-  RepSalesInvoice.Sections(2).Controls("lblDate").Caption = Format(Now, Constants.DEFAULT_FORMAT)
-  RepSalesInvoice.Sections(5).Controls("lblTotalCost").Caption = Format(totalCost, Constants.CURRENCY_FORMAT)
-  RepSalesInvoice.Show vbModal
+  If Val(totalCost) = 0 Then
+    MsgBox "Please purchase an Item First", vbCritical
+    Exit Sub
+  End If
+  
+  payment = -1
+  frmEntePayment.lblTotalCost = lblTotalCost
+  frmEntePayment.Show vbModal
+    If payment <> -1 Then
+    Set RepSalesInvoice.DataSource = rs
+    RepSalesInvoice.Sections(2).Controls("lblDate").Caption = Format(Now, Constants.DEFAULT_FORMAT)
+    RepSalesInvoice.Sections(5).Controls("lblTotalCost").Caption = Format(totalCost, Constants.CURRENCY_FORMAT)
+    RepSalesInvoice.Sections(5).Controls("lblTendred").Caption = Format(payment, Constants.CURRENCY_FORMAT)
+    RepSalesInvoice.Sections(5).Controls("lblChange").Caption = Format(payment - totalCost, Constants.CURRENCY_FORMAT)
+    RepSalesInvoice.Show vbModal
+  End If
 End Sub
-
 Private Sub cmdAddItem_Click()
   frmAddBasketItem.Show vbModal
 End Sub
@@ -271,8 +281,8 @@ End Sub
 Public Sub reloadBasketItems()
   Set rs = DataCrudDao.getBasketItemsByUser(UserSession.getLoginUser)
   Set dgBasket.DataSource = rs
+  totalCost = 0
   If rs.RecordCount > 0 Then
-    totalCost = 0
     While Not rs.EOF
       totalCost = totalCost + Val(CommonHelper.extractStringValue(rs!Total_Cost))
       rs.MoveNext

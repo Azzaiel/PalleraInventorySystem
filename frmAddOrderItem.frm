@@ -279,11 +279,11 @@ Private Sub cmdAdd_Click()
     Set tempRs = DataCrudDao.getFakeOrderItems
     tempRs.AddNew
     tempRs!ORDER_ID = lblOrderID
-    tempRs!SUPPLIER_ID = suplierID
+    tempRs!supplier_id = suplierID
     tempRs!ITEM_TYPE_ID = Val(itemTypeIdList(cmbItemType.ListIndex))
-    tempRs!ITEM_ID = itemsInfoList(cmbItems.ListIndex, ID_INDEX)
+    tempRs!item_id = itemsInfoList(cmbItems.ListIndex, ID_INDEX)
     tempRs!retil_price = Val(txtRetailPrice)
-    tempRs!quantity = Val(txtQuantity)
+    tempRs!QUANTITY = Val(txtQuantity)
     tempRs!CREATED_BY = UserSession.getLoginUser
     tempRs!CREATED_DATE = Now
     tempRs!LAST_MOD_BY = UserSession.getLoginUser
@@ -296,11 +296,11 @@ Private Sub cmdAdd_Click()
     Set tempRs = DataCrudDao.getOrderItemsByID(orderItemID)
     If (tempRs.RecordCount > 0) Then
       tempRs!ORDER_ID = lblOrderID
-      tempRs!SUPPLIER_ID = suplierID
+      tempRs!supplier_id = suplierID
       tempRs!ITEM_TYPE_ID = Val(itemTypeIdList(cmbItemType.ListIndex))
-      tempRs!ITEM_ID = itemsInfoList(cmbItems.ListIndex, ID_INDEX)
+      tempRs!item_id = itemsInfoList(cmbItems.ListIndex, ID_INDEX)
       tempRs!retil_price = Val(txtRetailPrice)
-      tempRs!quantity = Val(txtQuantity)
+      tempRs!QUANTITY = Val(txtQuantity)
       tempRs!CREATED_BY = UserSession.getLoginUser
       tempRs!CREATED_DATE = Now
       tempRs!LAST_MOD_BY = UserSession.getLoginUser
@@ -328,7 +328,7 @@ Private Sub computeTotalPrice()
   lblTotalPrice = Format(Val(txtRetailPrice) * Val(txtQuantity), Constants.CURRENCY_FORMAT)
 End Sub
 Private Sub txtQuantity_KeyPress(KeyAscii As Integer)
-   If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtQuantity) > 11)) Then
+  If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtQuantity) > 11)) Then
     KeyAscii = 0
     Beep
   End If
