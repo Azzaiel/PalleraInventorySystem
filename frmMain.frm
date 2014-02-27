@@ -122,6 +122,15 @@ Begin VB.Form frmMain
    Begin VB.Menu mnSellItem 
       Caption         =   "Sell Item"
    End
+   Begin VB.Menu mnReports 
+      Caption         =   "Reports"
+      Begin VB.Menu mnOrderReport 
+         Caption         =   "Orders"
+      End
+      Begin VB.Menu mnSalesReport 
+         Caption         =   "Sales"
+      End
+   End
    Begin VB.Menu mnUsers 
       Caption         =   "Account"
       Begin VB.Menu mnChangePass 
@@ -204,6 +213,10 @@ End Sub
 
 Private Sub mnOder_Click()
   frmOrder.Show vbModal
+End Sub
+
+Private Sub mnOrderReport_Click()
+  frmOrderReport.Show vbModal
 End Sub
 
 Private Sub mnRegisterItem_Click()

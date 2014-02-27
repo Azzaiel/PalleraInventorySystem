@@ -328,7 +328,7 @@ Begin VB.Form frmItemReg
       Height          =   3975
       Left            =   6240
       TabIndex        =   12
-      Top             =   1560
+      Top             =   1440
       Width           =   10695
       _ExtentX        =   18865
       _ExtentY        =   7011
@@ -506,11 +506,11 @@ Private Sub cmbEdit_Click()
   If (hasValidFormValue(Val(rs!id))) Then
     Set tempRs = DataCrudDao.getItemRSByID(rs!id)
     tempRs!ITeM_CODE = txtItemCode
-    tempRs!SUPPLIER_ID = suplierIdList(cmbSupplier.ListIndex)
+    tempRs!supplier_id = suplierIdList(cmbSupplier.ListIndex)
     tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
     tempRs!Name = txtItemName
     tempRs!RETAIL_PRICE = txtRetailPrice
-    tempRs!UNIT_PRICE = txtUnitPrice
+    tempRs!unit_price = txtUnitPrice
     tempRs!CREATED_BY = UserSession.getLoginUser
     tempRs!LAST_MOD_DATE = Now
   
@@ -531,11 +531,11 @@ Private Sub cmbNewRec_Click()
       Set tempRs = DataCrudDao.getFakeItemsRS
       tempRs.AddNew
       tempRs!ITeM_CODE = txtItemCode
-       tempRs!SUPPLIER_ID = suplierIdList(cmbSupplier.ListIndex)
+       tempRs!supplier_id = suplierIdList(cmbSupplier.ListIndex)
       tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
       tempRs!Name = txtItemName
       tempRs!RETAIL_PRICE = txtRetailPrice
-      tempRs!UNIT_PRICE = txtUnitPrice
+      tempRs!unit_price = txtUnitPrice
       tempRs!CREATED_BY = UserSession.getLoginUser
       tempRs!CREATED_DATE = Now
       tempRs!LAST_MOD_DATE = Now
@@ -675,11 +675,11 @@ End Sub
 Private Sub showSelectedData()
  txtItemCode = CommonHelper.extractStringValue(rs!ITeM_CODE)
  cmbSupplier.Text = CommonHelper.extractStringValue(rs!SUPPLIER)
- cmbItemType.Text = CommonHelper.extractStringValue(rs!Item_Type)
+ cmbItemType.Text = CommonHelper.extractStringValue(rs!ITEM_TYPE)
  txtItemName = CommonHelper.extractStringValue(rs!ITEM_NAME)
  lblQuantity = Val(CommonHelper.extractStringValue(rs!quantity))
  txtRetailPrice = CommonHelper.extractStringValue(rs!RETAIL_PRICE)
- txtUnitPrice = CommonHelper.extractStringValue(rs!UNIT_PRICE)
+ txtUnitPrice = CommonHelper.extractStringValue(rs!unit_price)
  txtActive = CommonHelper.extractStringValue(rs!active)
  lblCreatedBy = CommonHelper.extractStringValue(rs!CREATED_BY)
  lblCreatedDate = CommonHelper.extractDateValue(rs!CREATED_DATE)
