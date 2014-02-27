@@ -18,33 +18,32 @@ USE `palleras_inventory`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `supplier_item_types`
+-- Table structure for table `sales`
 --
 
-DROP TABLE IF EXISTS `supplier_item_types`;
+DROP TABLE IF EXISTS `sales`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `supplier_item_types` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `NAME` varchar(255) DEFAULT NULL,
+CREATE TABLE `sales` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) DEFAULT NULL,
   `SUPPLIER_ID` int(11) DEFAULT NULL,
-  `CREATED_BY` varchar(255) DEFAULT NULL,
-  `CREATED_DATE` datetime NOT NULL,
-  `LAST_MOD_BY` varchar(255) DEFAULT NULL,
-  `LAST_MOD_DATE` datetime DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `ID_UNIQUE` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+  `item_id` int(11) DEFAULT NULL,
+  `sale_date` datetime DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `unit_price` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `supplier_item_types`
+-- Dumping data for table `sales`
 --
 
-LOCK TABLES `supplier_item_types` WRITE;
-/*!40000 ALTER TABLE `supplier_item_types` DISABLE KEYS */;
-INSERT INTO `supplier_item_types` VALUES (1,'Wood Paint',2,'icha','2014-01-26 11:35:44','icha','2014-01-26 11:35:44'),(2,'Wall Paint',2,'System','2014-01-26 12:08:16','System','2014-01-26 12:08:16'),(3,'Aircon 123',1,'System','2014-01-26 12:09:40','System','2014-01-26 12:13:33'),(4,'Wood',3,'System','2014-02-23 10:35:17','System','2014-02-23 10:35:17'),(5,'Tiles',3,'System','2014-02-23 10:35:55','System','2014-02-23 10:35:55'),(6,'Lights',1,'System','2014-02-23 10:36:19','System','2014-02-23 10:36:19'),(7,'Spray Wood Paint',2,'System','2014-02-23 11:02:09','System','2014-02-23 11:02:09');
-/*!40000 ALTER TABLE `supplier_item_types` ENABLE KEYS */;
+LOCK TABLES `sales` WRITE;
+/*!40000 ALTER TABLE `sales` DISABLE KEYS */;
+INSERT INTO `sales` VALUES (1,'System',2,1,'2014-02-27 12:26:48',1,131);
+/*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

@@ -6,10 +6,10 @@ Begin VB.Form frmOrderReport
    ClientHeight    =   8640
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   15075
+   ClientWidth     =   14910
    LinkTopic       =   "Form1"
    ScaleHeight     =   8640
-   ScaleWidth      =   15075
+   ScaleWidth      =   14910
    StartUpPosition =   1  'CenterOwner
    Begin VB.Frame Frame2 
       Height          =   6975
