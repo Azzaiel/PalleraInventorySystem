@@ -449,7 +449,30 @@ Public Sub deleteTmpUserBasket(username As String)
   Wend
   Call DbInstance.closeRecordSet(rs)
 End Sub
-
+Public Function getFakeSalesRs() As ADODB.Recordset
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
+  Dim sqlQuery As String
+  sqlQuery = "Select * " & _
+             "From Sales " & _
+             "Where 2 = 1 "
+  Dim rs As ADODB.Recordset
+  Set rs = New ADODB.Recordset
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+  Set getFakeSalesRs = rs
+End Function
+Public Function getUserTmpBasket(username As String) As ADODB.Recordset
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
+  Dim sqlQuery As String
+  sqlQuery = "Select * " & _
+             "From tmp_basket " & _
+             "Where username = '" & username & "'"
+  Dim rs As ADODB.Recordset
+  Set rs = New ADODB.Recordset
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+  Set getUserTmpBasket = rs
+End Function
 
 
 

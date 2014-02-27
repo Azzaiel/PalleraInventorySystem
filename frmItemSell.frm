@@ -221,6 +221,8 @@ Attribute VB_Exposed = False
 Option Explicit
 Private rs As ADODB.Recordset
 Private tmpRs As ADODB.Recordset
+Private tmpBasketRs As ADODB.Recordset
+Private salesRS As ADODB.Recordset
 Public totalCost As Double
 Public payment As Long
 Private Sub cmbClear_Click()
@@ -241,13 +243,41 @@ Private Sub cmbReceiveOrder_Click()
   payment = -1
   frmEntePayment.lblTotalCost = lblTotalCost
   frmEntePayment.Show vbModal
-    If payment <> -1 Then
+  If payment <> -1 Then
     Set RepSalesInvoice.DataSource = rs
     RepSalesInvoice.Sections(2).Controls("lblDate").Caption = Format(Now, Constants.DEFAULT_FORMAT)
     RepSalesInvoice.Sections(5).Controls("lblTotalCost").Caption = Format(totalCost, Constants.CURRENCY_FORMAT)
     RepSalesInvoice.Sections(5).Controls("lblTendred").Caption = Format(payment, Constants.CURRENCY_FORMAT)
     RepSalesInvoice.Sections(5).Controls("lblChange").Caption = Format(payment - totalCost, Constants.CURRENCY_FORMAT)
+    
+    Set tmpBasketRs = DataCrudDao.getUserTmpBasket(UserSession.getLoginUser)
+    Set salesRS = DataCrudDao.getFakeSalesRs
+    
+    While Not tmpBasketRs.EOF
+      
+      Set tmpRs = DataCrudDao.getItemRSByID(tmpBasketRs!item_id)
+      tmpRs!quantity = Val(tmpRs!quantity) - Val(tmpBasketRs!quantity)
+      tmpRs.Update
+      Call DbInstance.closeRecordSet(tmpRs)
+      
+      salesRS.AddNew
+      salesRS!username = UserSession.getLoginUser
+      salesRS!supplier_id = tmpBasketRs!supplier_id
+      salesRS!item_id = tmpBasketRs!item_id
+      salesRS!sale_date = Now
+      salesRS!quantity = tmpBasketRs!quantity
+      salesRS!unit_price = tmpBasketRs!unit_price
+      salesRS.Update
+      
+      tmpBasketRs.Delete
+      tmpBasketRs.MoveNext
+    Wend
+    
+    Call DbInstance.closeRecordSet(tmpBasketRs)
+    Call DbInstance.closeRecordSet(salesRS)
+    
     RepSalesInvoice.Show vbModal
+    Call reloadBasketItems
   End If
 End Sub
 Private Sub cmdAddItem_Click()
