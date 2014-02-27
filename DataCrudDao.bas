@@ -473,8 +473,32 @@ Public Function getUserTmpBasket(username As String) As ADODB.Recordset
   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
   Set getUserTmpBasket = rs
 End Function
+Public Function getOrdersReport(supplierID As Long, startDate As Date, endDate As Date) As ADODB.Recordset
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
+  Dim sqlQuery As String
+  sqlQuery = "SELECT o.id Order_ID, o.STATUS, s.Name as Supplier_Name, sit.Name as Item_Type, i.name as Item_Name " & _
+             "       , oi.Quantity, oi.Retil_Price, oi.quantity * oi.retil_price as Total_Cost, o.Ordered_By " & _
+             "       , o.Order_Date, o.Recived_Date, o.Recived_By " & _
+             "From orders o, suppliers s, order_items oi " & _
+             "     , items i, supplier_item_types sit " & _
+             "Where s.ID = o.SUPLIER_ID " & _
+             "      and oi.ORDER_ID = o.ID " & _
+             "      and o.ID = oi.ORDER_ID " & _
+             "      and i.id = oi.Item_id " & _
+             "      and i.Item_Type_Id = sit.ID " & _
+             "      and o.Order_Date between STR_TO_DATE('" & Format(startDate, "mm/dd/yyyy") & "','%m/%d/%Y') and STR_TO_DATE('" & Format(endDate, "mm/dd/yyyy") & "','%m/%d/%Y') "
 
-
+  If supplierID > -1 Then
+    sqlQuery = sqlQuery & " and s.ID = " & supplierID & " "
+  End If
+  
+  sqlQuery = sqlQuery & "Order by  o.id "
+  Dim rs As ADODB.Recordset
+  Set rs = New ADODB.Recordset
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+  Set getOrdersReport = rs
+End Function
 
 
 

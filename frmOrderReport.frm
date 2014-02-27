@@ -6,24 +6,24 @@ Begin VB.Form frmOrderReport
    ClientHeight    =   8640
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   12165
+   ClientWidth     =   15075
    LinkTopic       =   "Form1"
    ScaleHeight     =   8640
-   ScaleWidth      =   12165
+   ScaleWidth      =   15075
    StartUpPosition =   1  'CenterOwner
    Begin VB.Frame Frame2 
       Height          =   6975
       Left            =   240
       TabIndex        =   9
       Top             =   1440
-      Width           =   11655
+      Width           =   14415
       Begin MSDataGridLib.DataGrid dgOrders 
          Height          =   6495
          Left            =   240
          TabIndex        =   10
          Top             =   240
-         Width           =   11175
-         _ExtentX        =   19711
+         Width           =   13935
+         _ExtentX        =   24580
          _ExtentY        =   11456
          _Version        =   393216
          AllowUpdate     =   0   'False
@@ -86,18 +86,27 @@ Begin VB.Form frmOrderReport
    Begin VB.Frame Frame1 
       Caption         =   "Search Form"
       Height          =   1215
-      Left            =   240
+      Left            =   960
       TabIndex        =   0
       Top             =   120
-      Width           =   11655
+      Width           =   12975
       Begin MSComCtl2.DTPicker dtStartDate 
-         Height          =   255
+         BeginProperty DataFormat 
+            Type            =   1
+            Format          =   ""
+            HaveTrueFalseNull=   0
+            FirstDayOfWeek  =   0
+            FirstWeekOfYear =   0
+            LCID            =   1033
+            SubFormatType   =   0
+         EndProperty
+         Height          =   375
          Left            =   6360
          TabIndex        =   6
          Top             =   240
-         Width           =   1575
-         _ExtentX        =   2778
-         _ExtentY        =   450
+         Width           =   2175
+         _ExtentX        =   3836
+         _ExtentY        =   661
          _Version        =   393216
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
@@ -108,7 +117,8 @@ Begin VB.Form frmOrderReport
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   70254593
+         CustomFormat    =   "MMMM, dd yyyy"
+         Format          =   70320131
          CurrentDate     =   41697
       End
       Begin VB.CommandButton cmdClearSearch 
@@ -123,7 +133,7 @@ Begin VB.Form frmOrderReport
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   6000
+         Left            =   6120
          TabIndex        =   4
          Top             =   720
          Width           =   1695
@@ -140,7 +150,7 @@ Begin VB.Form frmOrderReport
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   3720
+         Left            =   3840
          TabIndex        =   3
          Top             =   720
          Width           =   1695
@@ -154,13 +164,13 @@ Begin VB.Form frmOrderReport
          Width           =   3375
       End
       Begin MSComCtl2.DTPicker dtEndDate 
-         Height          =   255
-         Left            =   9600
+         Height          =   375
+         Left            =   10200
          TabIndex        =   8
          Top             =   240
-         Width           =   1575
-         _ExtentX        =   2778
-         _ExtentY        =   450
+         Width           =   2175
+         _ExtentX        =   3836
+         _ExtentY        =   661
          _Version        =   393216
          BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
             Name            =   "MS Sans Serif"
@@ -171,14 +181,15 @@ Begin VB.Form frmOrderReport
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
-         Format          =   70254593
+         CustomFormat    =   "MMMM, dd yyyy"
+         Format          =   70320131
          CurrentDate     =   41697
       End
       Begin VB.Label Label2 
          BackColor       =   &H0000FF00&
          Caption         =   "End Date"
          Height          =   255
-         Left            =   8400
+         Left            =   9240
          TabIndex        =   7
          Top             =   240
          Width           =   855
@@ -212,16 +223,66 @@ Option Explicit
 Private rs As ADODB.Recordset
 Private suplierIdList As Variant
 Private tempRs As ADODB.Recordset
-
 Private Sub cmdClearSearch_Click()
   cmbSupplier.ListIndex = -1
   dtStartDate = DateAdd("m", -1, Now)
   dtEndDate = Now
 End Sub
+Private Sub cmdSearch_Click()
+  Dim supplierID As Long
+  If cmbSupplier.ListIndex > -1 Then
+    supplierID = Val(suplierIdList(cmbSupplier.ListIndex))
+  Else
+    supplierID = -1
+  End If
+
+  Set rs = DataCrudDao.getOrdersReport(supplierID, dtStartDate.value, DateAdd("d", 1, dtEndDate.value))
+  Set dgOrders.DataSource = rs
+  With dgOrders
+    .Columns(0).Width = 800
+    .Columns(0).Alignment = dbgCenter
+
+    .Columns(1).Width = 1200
+    .Columns(1).Alignment = dbgCenter
+    
+    .Columns(2).Width = 2500
+    
+    .Columns(3).Width = 1300
+    
+    .Columns(4).Width = 2500
+    
+    .Columns(5).Width = 750
+    .Columns(5).Alignment = dbgCenter
+    
+    .Columns(6).Width = 900
+    .Columns(6).NumberFormat = Constants.CURRENCY_FORMAT
+    .Columns(6).Alignment = dbgCenter
+    
+    .Columns(7).Width = 1000
+    .Columns(7).NumberFormat = Constants.CURRENCY_FORMAT
+    .Columns(7).Alignment = dbgCenter
+    
+    .Columns(8).Width = 1000
+    .Columns(8).Alignment = dbgCenter
+    
+    .Columns(9).Width = 1500
+    .Columns(9).NumberFormat = Constants.DEFAULT_FORMAT
+    .Columns(9).Alignment = dbgCenter
+    
+    .Columns(10).Width = 1500
+    .Columns(10).NumberFormat = Constants.DEFAULT_FORMAT
+    .Columns(10).Alignment = dbgCenter
+    
+    .Columns(11).Width = 1000
+    .Columns(11).Alignment = dbgCenter
+    
+  End With
+End Sub
 
 Private Sub Form_Load()
   Call populateLov
   Call cmdClearSearch_Click
+  Call cmdSearch_Click
 End Sub
 Private Sub populateLov()
   Set tempRs = DataCrudDao.getSupplierRS("", "", "")
@@ -237,3 +298,4 @@ Private Sub populateLov()
   Wend
   Call DbInstance.closeRecordSet(tempRs)
 End Sub
+
