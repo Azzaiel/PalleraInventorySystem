@@ -498,6 +498,26 @@ Public Function getOrdersReport(supplierID As Long, startDate As Date, endDate A
   Set rs = New ADODB.Recordset
   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
   Set getOrdersReport = rs
+  
+End Function
+Public Function getSalesReport(startDate As Date, endDate As Date) As ADODB.Recordset
+   Dim con As ADODB.Connection
+   Set con = DbInstance.getDBConnetion
+   Dim sqlQuery As String
+   
+   sqlQuery = "Select sl.Sale_date as Transaction_Name, sl.username as Sold_By, sup.name as Supplier, sit.name as Item_Type " & _
+              "       , itm.name as Item_Name, sl.Quantity , sl.Unit_Price, sl.Quantity * sl.unit_price as Total_Cost " & _
+              "From sales sl, suppliers sup, items itm, supplier_item_types sit " & _
+              "Where sl.SUPPLIER_ID = sup.id " & _
+              "      and itm.id = sl.Item_ID " & _
+              "      and sit.id = itm.Item_type_ID " & _
+              "      and sl.Sale_date between STR_TO_DATE('" & Format(startDate, "mm/dd/yyyy") & "','%m/%d/%Y') and STR_TO_DATE('" & Format(endDate, "mm/dd/yyyy") & "','%m/%d/%Y') " & _
+              "order by sl.Sale_date, sl.username "
+   
+   Dim rs As ADODB.Recordset
+   Set rs = New ADODB.Recordset
+   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   Set getSalesReport = rs
 End Function
 
 
