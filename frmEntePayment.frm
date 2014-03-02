@@ -8,7 +8,7 @@ Begin VB.Form frmEntePayment
    LinkTopic       =   "Form1"
    ScaleHeight     =   1695
    ScaleWidth      =   3540
-   StartUpPosition =   2  'CenterScreen
+   StartUpPosition =   1  'CenterOwner
    Begin VB.CommandButton cmbCancel 
       Caption         =   "Cancel"
       BeginProperty Font 
@@ -39,21 +39,21 @@ Begin VB.Form frmEntePayment
          Strikethrough   =   0   'False
       EndProperty
       Height          =   495
-      Left            =   600
+      Left            =   480
       TabIndex        =   4
       Top             =   1080
       Width           =   1095
    End
    Begin VB.TextBox txtPayment 
       Height          =   285
-      Left            =   1680
+      Left            =   1800
       TabIndex        =   2
       Top             =   600
       Width           =   1575
    End
    Begin VB.Label Label1 
       BackColor       =   &H0000FF00&
-      Caption         =   "Total Cost:"
+      Caption         =   "Enter Payment:"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   9.75
@@ -64,10 +64,10 @@ Begin VB.Form frmEntePayment
          Strikethrough   =   0   'False
       EndProperty
       Height          =   255
-      Left            =   360
+      Left            =   120
       TabIndex        =   3
       Top             =   600
-      Width           =   1215
+      Width           =   1575
    End
    Begin VB.Label Label3 
       BackColor       =   &H0000FF00&
@@ -82,10 +82,10 @@ Begin VB.Form frmEntePayment
          Strikethrough   =   0   'False
       EndProperty
       Height          =   255
-      Left            =   360
+      Left            =   120
       TabIndex        =   1
       Top             =   240
-      Width           =   1215
+      Width           =   1575
    End
    Begin VB.Label lblTotalCost 
       BackColor       =   &H00FFFFFF&
@@ -99,7 +99,7 @@ Begin VB.Form frmEntePayment
          Strikethrough   =   0   'False
       EndProperty
       Height          =   255
-      Left            =   1680
+      Left            =   1800
       TabIndex        =   0
       Top             =   240
       Width           =   1575
@@ -127,5 +127,8 @@ Private Sub txtPayment_KeyPress(KeyAscii As Integer)
   If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtPayment) > 11)) Then
     KeyAscii = 0
     Beep
+  End If
+  If KeyAscii = 13 Then
+    Call cmbSubmit_Click
   End If
 End Sub

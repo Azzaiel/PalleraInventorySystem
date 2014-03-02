@@ -213,6 +213,7 @@ End Sub
 
 Private Sub mnOder_Click()
   frmOrder.Show vbModal
+ Call populatePendingOrderDash
 End Sub
 
 Private Sub mnOrderReport_Click()
@@ -233,6 +234,10 @@ End Sub
 
 Private Sub mnReSupplier_Click()
   frmSupplier.Show vbModal
+End Sub
+
+Private Sub mnSalesReport_Click()
+frmSalesReport.Show vbModal
 End Sub
 
 Private Sub mnSellItem_Click()
