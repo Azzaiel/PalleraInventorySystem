@@ -117,7 +117,7 @@ Begin VB.Form frmOrderReceive
          EndProperty
       End
       Begin VB.Label Label3 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Total Cost:"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -154,6 +154,15 @@ Begin VB.Form frmOrderReceive
    End
    Begin VB.Frame Frame1 
       Caption         =   "Order Detail"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   2175
       Left            =   1200
       TabIndex        =   0
@@ -245,7 +254,7 @@ Begin VB.Form frmOrderReceive
          Width           =   1935
       End
       Begin VB.Label Label6 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Order  By"
          Height          =   255
          Left            =   600
@@ -254,7 +263,7 @@ Begin VB.Form frmOrderReceive
          Width           =   855
       End
       Begin VB.Label Label12 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Order  Date"
          Height          =   255
          Left            =   600
@@ -263,7 +272,7 @@ Begin VB.Form frmOrderReceive
          Width           =   855
       End
       Begin VB.Label Label1 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Suppliers:"
          Height          =   255
          Left            =   600
@@ -272,7 +281,7 @@ Begin VB.Form frmOrderReceive
          Width           =   855
       End
       Begin VB.Label Label5 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Order ID"
          Height          =   255
          Left            =   600
@@ -281,7 +290,7 @@ Begin VB.Form frmOrderReceive
          Width           =   855
       End
       Begin VB.Label Label4 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Status"
          Height          =   255
          Left            =   600

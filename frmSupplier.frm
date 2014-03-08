@@ -97,10 +97,19 @@ Begin VB.Form frmSupplier
    End
    Begin VB.Frame Frame2 
       Caption         =   "Search"
-      Height          =   975
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   1095
       Left            =   6240
       TabIndex        =   17
-      Top             =   120
+      Top             =   0
       Width           =   12375
       Begin VB.CommandButton cmdSearch 
          Caption         =   "Search"
@@ -143,7 +152,7 @@ Begin VB.Form frmSupplier
          Width           =   3735
       End
       Begin VB.Label Label14 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Sales Contact"
          Height          =   255
          Left            =   6120
@@ -152,7 +161,7 @@ Begin VB.Form frmSupplier
          Width           =   1095
       End
       Begin VB.Label Label13 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Active"
          Height          =   255
          Left            =   480
@@ -161,7 +170,7 @@ Begin VB.Form frmSupplier
          Width           =   615
       End
       Begin VB.Label Label11 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Supplier Name"
          Height          =   255
          Left            =   480
@@ -172,6 +181,15 @@ Begin VB.Form frmSupplier
    End
    Begin VB.Frame Frame1 
       Caption         =   "Sales Form"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   4815
       Left            =   0
       TabIndex        =   1
@@ -220,17 +238,36 @@ Begin VB.Form frmSupplier
          Width           =   3735
       End
       Begin VB.Label Label12 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Sales Email"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   36
          Top             =   2640
-         Width           =   855
+         Width           =   1335
       End
       Begin VB.Label Label5 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "*Sales Phone no"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
          Height          =   255
          Left            =   240
          TabIndex        =   34
@@ -284,62 +321,126 @@ Begin VB.Form frmSupplier
          Width           =   2535
       End
       Begin VB.Label Label10 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Last mde date"
+         BackColor       =   &H00FFFFFF&
+         Caption         =   "Last made date"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   10
          Top             =   4440
-         Width           =   1095
+         Width           =   1455
       End
       Begin VB.Label Label9 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Last mod by"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   9
          Top             =   4080
-         Width           =   975
+         Width           =   1455
       End
       Begin VB.Label Label8 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Created date"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   8
          Top             =   3720
-         Width           =   975
+         Width           =   1455
       End
       Begin VB.Label Label7 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Created by"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   7
          Top             =   3360
-         Width           =   855
+         Width           =   1335
       End
       Begin VB.Label Label6 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Active"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   6
          Top             =   3000
-         Width           =   615
+         Width           =   1335
       End
       Begin VB.Label Label4 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "*Sales Contact"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
          Height          =   255
          Left            =   240
          TabIndex        =   5
          Top             =   1920
-         Width           =   1095
+         Width           =   1455
       End
       Begin VB.Label Label3 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Company Phone no"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   4
@@ -347,22 +448,41 @@ Begin VB.Form frmSupplier
          Width           =   1455
       End
       Begin VB.Label Label2 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Company Address"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   3
          Top             =   840
-         Width           =   1335
+         Width           =   1575
       End
       Begin VB.Label Label1 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "*Supplier Name"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H000000FF&
          Height          =   255
          Left            =   240
          TabIndex        =   2
          Top             =   480
-         Width           =   1095
+         Width           =   1455
       End
    End
    Begin MSDataGridLib.DataGrid dgSupplier 

@@ -10,6 +10,15 @@ Begin VB.Form frmAddBasketItem
    ScaleWidth      =   4980
    Begin VB.Frame Frame2 
       Caption         =   "Customer Input"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   -1  'True
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   975
       Left            =   120
       TabIndex        =   18
@@ -40,22 +49,40 @@ Begin VB.Form frmAddBasketItem
          Width           =   1575
       End
       Begin VB.Label Label9 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Total Cost"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
-         Left            =   960
+         Left            =   840
          TabIndex        =   20
          Top             =   600
-         Width           =   735
+         Width           =   975
       End
       Begin VB.Label Label15 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Enter Quantity"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
-         Left            =   960
+         Left            =   840
          TabIndex        =   19
          Top             =   240
-         Width           =   1095
+         Width           =   1455
       End
    End
    Begin VB.CommandButton cmbAddItem 
@@ -94,6 +121,15 @@ Begin VB.Form frmAddBasketItem
    End
    Begin VB.Frame Frame1 
       Caption         =   "Item Information"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   -1  'True
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   2655
       Left            =   120
       TabIndex        =   5
@@ -202,8 +238,17 @@ Begin VB.Form frmAddBasketItem
          Width           =   3015
       End
       Begin VB.Label Label2 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Item Type:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   11
@@ -211,8 +256,17 @@ Begin VB.Form frmAddBasketItem
          Width           =   855
       End
       Begin VB.Label Label1 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Suppliers:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   10
@@ -220,8 +274,17 @@ Begin VB.Form frmAddBasketItem
          Width           =   855
       End
       Begin VB.Label Label4 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Unit Price"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   9
@@ -229,8 +292,17 @@ Begin VB.Form frmAddBasketItem
          Width           =   855
       End
       Begin VB.Label Label12 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Active"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   8
@@ -238,17 +310,35 @@ Begin VB.Form frmAddBasketItem
          Width           =   495
       End
       Begin VB.Label Label13 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Item Name:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   7
          Top             =   1080
-         Width           =   855
+         Width           =   1095
       End
       Begin VB.Label Label10 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Stocks"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   6
@@ -264,7 +354,7 @@ Begin VB.Form frmAddBasketItem
       Width           =   2775
    End
    Begin VB.Label aaa 
-      BackColor       =   &H0000FF00&
+      BackColor       =   &H00FFFFFF&
       Caption         =   "Item Code Search"
       Height          =   255
       Left            =   360

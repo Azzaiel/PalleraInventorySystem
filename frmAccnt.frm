@@ -2,12 +2,12 @@ VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form frmAccnt 
    Caption         =   "Accounts"
-   ClientHeight    =   4155
+   ClientHeight    =   4140
    ClientLeft      =   60
    ClientTop       =   450
    ClientWidth     =   16005
    LinkTopic       =   "Form1"
-   ScaleHeight     =   4155
+   ScaleHeight     =   4140
    ScaleWidth      =   16005
    StartUpPosition =   3  'Windows Default
    Begin VB.Frame Frame2 
@@ -20,6 +20,15 @@ Begin VB.Form frmAccnt
    End
    Begin VB.Frame Frame1 
       Caption         =   "Registration Form"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   -1  'True
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   3375
       Left            =   240
       TabIndex        =   6
@@ -65,43 +74,88 @@ Begin VB.Form frmAccnt
       End
       Begin VB.Label Label2 
          Caption         =   "USERNAME"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   375
-         Left            =   600
+         Left            =   480
          TabIndex        =   16
          Top             =   480
-         Width           =   975
+         Width           =   1095
       End
       Begin VB.Label Label4 
          Caption         =   "FIRST NAME"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   375
-         Left            =   600
+         Left            =   480
          TabIndex        =   15
          Top             =   1560
-         Width           =   975
+         Width           =   1455
       End
       Begin VB.Label Label5 
          Caption         =   "MIDDLE NAME"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   375
-         Left            =   600
+         Left            =   480
          TabIndex        =   14
          Top             =   2160
-         Width           =   1335
+         Width           =   1455
       End
       Begin VB.Label Label6 
          Caption         =   "LAST NAME"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   375
-         Left            =   600
+         Left            =   480
          TabIndex        =   13
          Top             =   2640
-         Width           =   1335
+         Width           =   1455
       End
       Begin VB.Label Label7 
          Caption         =   "ROLE"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
-         Left            =   600
+         Left            =   480
          TabIndex        =   12
          Top             =   1080
-         Width           =   855
+         Width           =   975
       End
    End
    Begin VB.CommandButton cmdExit 
@@ -285,7 +339,7 @@ Private Sub cmdAdd_Click()
     Call toogelInsertMode(True)
   Else
     rs.AddNew
-    rs!Username = txtUsername.Text
+    rs!username = txtUsername.Text
     rs!Password = txtUsername.Text
     rs!Role = cmbRole.Text
     rs!FIRST_NAME = txtFirstname.Text
@@ -340,7 +394,7 @@ End Sub
 
 Private Sub cmdEdit_Click()
     rs!id = txtID
-    rs!Username = txtUsername
+    rs!username = txtUsername
     rs!Role = cmbRole.Text
     rs!FIRST_NAME = txtFirstname
     rs!LAST_NAME = txtLastname
@@ -368,7 +422,7 @@ Private Sub Form_Load()
 End Sub
 Private Sub showSelectedData()
   'txtID = CommonHelper.extractStringValue(rs!ID)
-  txtUsername = CommonHelper.extractStringValue(rs!Username)
+  txtUsername = CommonHelper.extractStringValue(rs!username)
   'txtPassword = CommonHelper.extractStringValue(rs!PASSWORD)
   cmbRole.Text = CommonHelper.extractStringValue(rs!Role)
   txtFirstname = CommonHelper.extractStringValue(rs!FIRST_NAME)

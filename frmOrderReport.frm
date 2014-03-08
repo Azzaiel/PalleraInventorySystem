@@ -12,10 +12,10 @@ Begin VB.Form frmOrderReport
    ScaleWidth      =   14910
    StartUpPosition =   1  'CenterOwner
    Begin VB.Frame Frame2 
-      Height          =   6975
+      Height          =   6615
       Left            =   240
       TabIndex        =   9
-      Top             =   1440
+      Top             =   1560
       Width           =   14415
       Begin MSDataGridLib.DataGrid dgOrders 
          Height          =   6495
@@ -85,6 +85,15 @@ Begin VB.Form frmOrderReport
    End
    Begin VB.Frame Frame1 
       Caption         =   "Search Form"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   1215
       Left            =   960
       TabIndex        =   0
@@ -101,7 +110,7 @@ Begin VB.Form frmOrderReport
             SubFormatType   =   0
          EndProperty
          Height          =   375
-         Left            =   6360
+         Left            =   7080
          TabIndex        =   6
          Top             =   240
          Width           =   2175
@@ -118,7 +127,7 @@ Begin VB.Form frmOrderReport
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   "MMMM, dd yyyy"
-         Format          =   70320131
+         Format          =   16580611
          CurrentDate     =   41697
       End
       Begin VB.CommandButton cmdClearSearch 
@@ -150,14 +159,14 @@ Begin VB.Form frmOrderReport
             Strikethrough   =   0   'False
          EndProperty
          Height          =   315
-         Left            =   3840
+         Left            =   4200
          TabIndex        =   3
          Top             =   720
          Width           =   1695
       End
       Begin VB.ComboBox cmbSupplier 
          Height          =   315
-         Left            =   1680
+         Left            =   2280
          Style           =   2  'Dropdown List
          TabIndex        =   1
          Top             =   240
@@ -165,7 +174,7 @@ Begin VB.Form frmOrderReport
       End
       Begin MSComCtl2.DTPicker dtEndDate 
          Height          =   375
-         Left            =   10200
+         Left            =   10560
          TabIndex        =   8
          Top             =   240
          Width           =   2175
@@ -182,35 +191,62 @@ Begin VB.Form frmOrderReport
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   "MMMM, dd yyyy"
-         Format          =   70320131
+         Format          =   16580611
          CurrentDate     =   41697
       End
       Begin VB.Label Label2 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "End Date"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
-         Left            =   9240
+         Left            =   9600
          TabIndex        =   7
          Top             =   240
          Width           =   855
       End
       Begin VB.Label Label1 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Start Date"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
-         Left            =   5400
+         Left            =   6000
          TabIndex        =   5
          Top             =   240
-         Width           =   855
+         Width           =   1095
       End
       Begin VB.Label Label11 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Supplier Name"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
-         Left            =   480
+         Left            =   840
          TabIndex        =   2
          Top             =   240
-         Width           =   1095
+         Width           =   1335
       End
    End
 End

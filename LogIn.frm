@@ -17,6 +17,15 @@ Begin VB.Form LogIn
       Width           =   3495
       Begin VB.CommandButton Command2 
          Caption         =   "E&xit"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   495
          Left            =   1680
          TabIndex        =   6
@@ -26,6 +35,15 @@ Begin VB.Form LogIn
       Begin VB.CommandButton cmdLogin 
          BackColor       =   &H00000000&
          Caption         =   "&Login"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   495
          Left            =   240
          TabIndex        =   5
@@ -51,6 +69,15 @@ Begin VB.Form LogIn
       Begin VB.Label Label2 
          BackColor       =   &H00FFFFFF&
          Caption         =   "Password:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   4
@@ -60,6 +87,15 @@ Begin VB.Form LogIn
       Begin VB.Label Label1 
          BackColor       =   &H00FFFFFF&
          Caption         =   "Username:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   240
          TabIndex        =   3

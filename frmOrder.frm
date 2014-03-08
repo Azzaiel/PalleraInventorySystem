@@ -62,7 +62,7 @@ Begin VB.Form frmOrder
          Width           =   2655
       End
       Begin VB.Label Label9 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Status"
          Height          =   255
          Left            =   240
@@ -229,7 +229,7 @@ Begin VB.Form frmOrder
          Width           =   1455
       End
       Begin VB.Label Label3 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H000000FF&
          Caption         =   "Total Cost:"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -316,11 +316,11 @@ Begin VB.Form frmOrder
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   50987011
+         Format          =   16580611
          CurrentDate     =   41671
       End
       Begin VB.Label Label2 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Height          =   855
          Left            =   3720
          TabIndex        =   24
@@ -328,7 +328,7 @@ Begin VB.Form frmOrder
          Width           =   2055
       End
       Begin VB.Label Label4 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Status"
          Height          =   255
          Left            =   480
@@ -337,7 +337,7 @@ Begin VB.Form frmOrder
          Width           =   855
       End
       Begin VB.Label Label5 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Order ID"
          Height          =   255
          Left            =   480
@@ -355,7 +355,7 @@ Begin VB.Form frmOrder
          Width           =   1935
       End
       Begin VB.Label Label1 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Suppliers:"
          Height          =   255
          Left            =   480
@@ -364,7 +364,7 @@ Begin VB.Form frmOrder
          Width           =   855
       End
       Begin VB.Label Label12 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Order  Date"
          Height          =   255
          Left            =   480
@@ -373,7 +373,7 @@ Begin VB.Form frmOrder
          Width           =   855
       End
       Begin VB.Label Label6 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Order  By"
          Height          =   255
          Left            =   480
@@ -382,7 +382,7 @@ Begin VB.Form frmOrder
          Width           =   855
       End
       Begin VB.Label Label7 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Received Date"
          Height          =   255
          Left            =   480
@@ -391,7 +391,7 @@ Begin VB.Form frmOrder
          Width           =   1095
       End
       Begin VB.Label Label8 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Received By"
          Height          =   255
          Left            =   480

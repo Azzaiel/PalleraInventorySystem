@@ -85,6 +85,15 @@ Begin VB.Form frmSalesReport
    End
    Begin VB.Frame Frame1 
       Caption         =   "Search Form"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   1215
       Left            =   2640
       TabIndex        =   0
@@ -152,7 +161,7 @@ Begin VB.Form frmSalesReport
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   "MMMM, dd yyyy"
-         Format          =   70582275
+         Format          =   16580611
          CurrentDate     =   41697
       End
       Begin MSComCtl2.DTPicker dtEndDate 
@@ -174,21 +183,39 @@ Begin VB.Form frmSalesReport
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   "MMMM, dd yyyy"
-         Format          =   70582275
+         Format          =   16580611
          CurrentDate     =   41697
       End
       Begin VB.Label Label1 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "Start Date"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
-         Left            =   480
+         Left            =   240
          TabIndex        =   6
          Top             =   240
-         Width           =   855
+         Width           =   1095
       End
       Begin VB.Label Label2 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
          Caption         =   "End Date"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   255
          Left            =   4320
          TabIndex        =   5
