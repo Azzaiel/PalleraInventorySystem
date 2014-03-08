@@ -155,7 +155,7 @@ Begin VB.Form frmChangePassword
       Begin VB.Image Image5 
          Height          =   4215
          Left            =   0
-         Picture         =   "frmChangePassword.frx":750D4
+         Picture         =   "frmChangePassword.frx":59ED
          Stretch         =   -1  'True
          Top             =   0
          Width           =   15975

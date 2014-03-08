@@ -6,6 +6,7 @@ Begin VB.Form frmEntePayment
    ClientTop       =   450
    ClientWidth     =   3540
    LinkTopic       =   "Form1"
+   Picture         =   "frmEntePayment.frx":0000
    ScaleHeight     =   1695
    ScaleWidth      =   3540
    StartUpPosition =   1  'CenterOwner
@@ -45,6 +46,16 @@ Begin VB.Form frmEntePayment
       Width           =   1095
    End
    Begin VB.TextBox txtPayment 
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      ForeColor       =   &H00008000&
       Height          =   285
       Left            =   1800
       TabIndex        =   2
@@ -52,7 +63,8 @@ Begin VB.Form frmEntePayment
       Width           =   1575
    End
    Begin VB.Label Label1 
-      BackColor       =   &H0000FF00&
+      BackColor       =   &H00FFFFFF&
+      BackStyle       =   0  'Transparent
       Caption         =   "Enter Payment:"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -63,6 +75,7 @@ Begin VB.Form frmEntePayment
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   &H8000000A&
       Height          =   255
       Left            =   120
       TabIndex        =   3
@@ -70,7 +83,8 @@ Begin VB.Form frmEntePayment
       Width           =   1575
    End
    Begin VB.Label Label3 
-      BackColor       =   &H0000FF00&
+      BackColor       =   &H00FFFFFF&
+      BackStyle       =   0  'Transparent
       Caption         =   "Total Cost:"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -81,6 +95,7 @@ Begin VB.Form frmEntePayment
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   &H8000000A&
       Height          =   255
       Left            =   120
       TabIndex        =   1
@@ -98,6 +113,7 @@ Begin VB.Form frmEntePayment
          Italic          =   0   'False
          Strikethrough   =   0   'False
       EndProperty
+      ForeColor       =   &H000000FF&
       Height          =   255
       Left            =   1800
       TabIndex        =   0
