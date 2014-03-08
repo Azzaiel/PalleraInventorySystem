@@ -5,10 +5,11 @@ Begin VB.Form frmAddOrderItem
    ClientHeight    =   4245
    ClientLeft      =   120
    ClientTop       =   450
-   ClientWidth     =   5115
+   ClientWidth     =   5070
    LinkTopic       =   "Form1"
+   Picture         =   "frmAddOrderItem.frx":0000
    ScaleHeight     =   4245
-   ScaleWidth      =   5115
+   ScaleWidth      =   5070
    StartUpPosition =   1  'CenterOwner
    Begin VB.CommandButton cmbClose 
       Caption         =   "Close"
@@ -24,7 +25,7 @@ Begin VB.Form frmAddOrderItem
       Height          =   495
       Left            =   2640
       TabIndex        =   4
-      Top             =   3600
+      Top             =   3720
       Width           =   1095
    End
    Begin VB.CommandButton cmdAdd 
@@ -41,16 +42,17 @@ Begin VB.Form frmAddOrderItem
       Height          =   495
       Left            =   1320
       TabIndex        =   3
-      Top             =   3600
+      Top             =   3720
       Width           =   975
    End
    Begin VB.Frame Frame2 
       Height          =   1095
       Left            =   120
       TabIndex        =   12
-      Top             =   0
+      Top             =   120
       Width           =   4815
       Begin VB.Label lblSuplier 
+         BorderStyle     =   1  'Fixed Single
          Caption         =   "XXXXXXXXXXXXXXXXXXX"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -68,6 +70,7 @@ Begin VB.Form frmAddOrderItem
          Width           =   2895
       End
       Begin VB.Label lblOrderID 
+         BorderStyle     =   1  'Fixed Single
          Caption         =   "XXXXXXXXXXXXXXXXXXX"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -78,13 +81,15 @@ Begin VB.Form frmAddOrderItem
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H000000FF&
          Height          =   255
          Left            =   1320
          TabIndex        =   15
          Top             =   240
-         Width           =   3255
+         Width           =   2895
       End
       Begin VB.Label Label5 
+         BackStyle       =   0  'Transparent
          Caption         =   "Suplier:"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -102,6 +107,7 @@ Begin VB.Form frmAddOrderItem
          Width           =   1095
       End
       Begin VB.Label Label1 
+         BackStyle       =   0  'Transparent
          Caption         =   "Order ID:"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -118,12 +124,20 @@ Begin VB.Form frmAddOrderItem
          Top             =   240
          Width           =   1095
       End
+      Begin VB.Image Image1 
+         Height          =   3975
+         Left            =   0
+         Picture         =   "frmAddOrderItem.frx":750D4
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   15975
+      End
    End
    Begin VB.Frame Frame1 
       Height          =   2295
       Left            =   120
       TabIndex        =   5
-      Top             =   1200
+      Top             =   1320
       Width           =   4815
       Begin VB.TextBox txtRetailPrice 
          Height          =   285
@@ -156,7 +170,8 @@ Begin VB.Form frmAddOrderItem
          Width           =   1935
       End
       Begin VB.Label Label13 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Item"
          Height          =   255
          Left            =   120
@@ -165,7 +180,8 @@ Begin VB.Form frmAddOrderItem
          Width           =   855
       End
       Begin VB.Label Label3 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Retail Price"
          Height          =   255
          Left            =   120
@@ -174,7 +190,8 @@ Begin VB.Form frmAddOrderItem
          Width           =   855
       End
       Begin VB.Label Label2 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Item Type:"
          Height          =   255
          Left            =   120
@@ -183,7 +200,8 @@ Begin VB.Form frmAddOrderItem
          Width           =   855
       End
       Begin VB.Label Label10 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Quantity"
          Height          =   255
          Left            =   120
@@ -192,7 +210,8 @@ Begin VB.Form frmAddOrderItem
          Width           =   855
       End
       Begin VB.Label Label11 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Total Price"
          Height          =   255
          Left            =   120
@@ -208,6 +227,14 @@ Begin VB.Form frmAddOrderItem
          TabIndex        =   6
          Top             =   1800
          Width           =   1935
+      End
+      Begin VB.Image Image5 
+         Height          =   4335
+         Left            =   0
+         Picture         =   "frmAddOrderItem.frx":7AAC1
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   15975
       End
    End
 End
