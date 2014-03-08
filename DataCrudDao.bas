@@ -546,8 +546,6 @@ Public Function getSalesReport(startDate As Date, endDate As Date) As ADODB.Reco
    rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
    Set getSalesReport = rs
 End Function
-
-
 Public Function isItemTypeExisting(txtItemName As String, Optional supplierID As Long = 0) As Boolean
   
   Dim con As ADODB.Connection
@@ -573,4 +571,26 @@ Public Function isItemTypeExisting(txtItemName As String, Optional supplierID As
      isItemTypeExisting = False
    End If
 
+End Function
+Public Function getCriticalLevelItemRS() As ADODB.Recordset
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
+  
+  Dim sqlQuery As String
+  
+  sqlQuery = "Select  a.ITEM_CODE, b.Name as SUPPLIER , c.Name as ITEM_TYPE, a.Name as ITEM_NAME " & _
+             "       , a.CRITICAL_LEVEL, a.QUANTITY  " & _
+             "From items a, SUPPLIERS b, supplier_item_types c  " & _
+             "Where a.SUPPLIER_ID = b.ID  " & _
+             "      and a.ITEm_TYPE_ID = c.ID " & _
+             "      and  a.ACTIVE = 'Y' "
+             
+    
+   Dim rs As ADODB.Recordset
+   Set rs = New ADODB.Recordset
+
+   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+   Set getCriticalLevelItemRS = rs
+   
 End Function
