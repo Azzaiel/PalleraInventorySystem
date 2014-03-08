@@ -579,11 +579,12 @@ Public Function getCriticalLevelItemRS() As ADODB.Recordset
   Dim sqlQuery As String
   
   sqlQuery = "Select  a.ITEM_CODE, b.Name as SUPPLIER , c.Name as ITEM_TYPE, a.Name as ITEM_NAME " & _
-             "       , a.CRITICAL_LEVEL, a.QUANTITY  " & _
+             "       , a.QUANTITY, a.CRITICAL_LEVEL  " & _
              "From items a, SUPPLIERS b, supplier_item_types c  " & _
              "Where a.SUPPLIER_ID = b.ID  " & _
              "      and a.ITEm_TYPE_ID = c.ID " & _
-             "      and  a.ACTIVE = 'Y' "
+             "      and  a.ACTIVE = 'Y' " & _
+             "      and a.QUANTITY <= a.CRITICAL_LEVEL"
              
     
    Dim rs As ADODB.Recordset
