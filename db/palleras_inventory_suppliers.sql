@@ -48,7 +48,7 @@ CREATE TABLE `suppliers` (
 
 LOCK TABLES `suppliers` WRITE;
 /*!40000 ALTER TABLE `suppliers` DISABLE KEYS */;
-INSERT INTO `suppliers` VALUES (1,'Metro Marketing','asd','dasdsdsd','dasd','asdasdas','asdas','System','2014-01-11 11:52:34','2014-01-11 11:52:34','System','Y'),(2,'Davis Paint','asd','dasdsdsd','dasd','asdasdas','asdas','System','2014-01-11 11:49:47','2014-02-23 10:41:20','System','Y'),(3,'Mayland Constraction','Richard Reyles','asdasdasd','asdasdas','Some where','sdsdsd','System','2014-01-11 12:11:14','2014-01-11 12:11:14','System','Y');
+INSERT INTO `suppliers` VALUES (1,'Metro Marketing','asd','dasdsdsd','dasd','asdasdas','asdas','System','2014-01-11 11:52:34','2014-01-11 11:52:34','System','Y'),(2,'Davis Paint','asd','dasdsdsd','dasd','asdasdas','asdas','System','2014-03-08 11:11:45','2014-03-08 11:11:45','System','Y'),(3,'Mayland Constraction','Richard Reyles','asdasdasd','asdasdas','Some where','sdsdsd','System','2014-01-11 12:11:14','2014-01-11 12:11:14','System','Y');
 /*!40000 ALTER TABLE `suppliers` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -61,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-02-27 15:26:08
+-- Dump completed on 2014-03-08 12:08:18

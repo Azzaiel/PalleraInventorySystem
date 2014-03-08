@@ -191,7 +191,7 @@ Public Function getItemReg(Optional itemCode As String) As ADODB.Recordset
    Dim sqlQuery As String
    
    sqlQuery = "Select a.ID, a.ACTIVE, a.ITEM_CODE, b.Name as SUPPLIER , c.Name as ITEM_TYPE, a.Name as ITEM_NAME " & _
-              "       , a.Quantity, a.RETAIL_PRICE, a.UNIT_PRICE, a.CREATED_BY , a.CREATED_DATE, a.LAST_MOD_BY " & _
+              "       , a.CRITICAL_LEVEL, a.QUANTITY, a.RETAIL_PRICE, a.UNIT_PRICE, a.CREATED_BY , a.CREATED_DATE, a.LAST_MOD_BY " & _
               "       , a.LAST_MOD_DATE, a.SUPPLIER_ID " & _
               "From items a, SUPPLIERS b, supplier_item_types c " & _
               "Where a.SUPPLIER_ID = b.ID " & _
