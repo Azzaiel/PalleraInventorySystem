@@ -33,7 +33,7 @@ CREATE TABLE `sales` (
   `quantity` int(11) DEFAULT NULL,
   `unit_price` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `sales` (
 
 LOCK TABLES `sales` WRITE;
 /*!40000 ALTER TABLE `sales` DISABLE KEYS */;
-INSERT INTO `sales` VALUES (1,'System',2,1,'2014-02-27 12:26:48',1,131);
+INSERT INTO `sales` VALUES (1,'System',2,1,'2014-02-27 12:26:48',1,131),(2,'System',1,9,'2014-03-08 13:26:50',2,15),(3,'System',3,5,'2014-03-08 13:26:50',1,170),(4,'System',3,4,'2014-03-08 13:26:50',4,250),(5,'System',2,1,'2014-03-08 13:27:12',20,131),(6,'System',3,5,'2014-03-08 13:27:44',2,170),(7,'System',3,4,'2014-03-08 13:28:09',2,250);
 /*!40000 ALTER TABLE `sales` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-03-08 12:08:18
+-- Dump completed on 2014-03-08 13:30:00
