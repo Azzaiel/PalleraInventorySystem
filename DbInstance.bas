@@ -14,7 +14,6 @@ Public Function getDBConnetion() As ADODB.Connection
   End If
   Set getDBConnetion = createConnection
 End Function
-
 Private Function createConnection() As ADODB.Connection
  Set con = New ADODB.Connection
  Dim strCon As String
