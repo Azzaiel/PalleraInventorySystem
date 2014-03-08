@@ -198,6 +198,9 @@ Begin VB.Form frmMain
    End
    Begin VB.Menu mnReports 
       Caption         =   "Reports"
+      Begin VB.Menu mnFastMoving 
+         Caption         =   "Fast  Moving"
+      End
       Begin VB.Menu mnOrderReport 
          Caption         =   "Orders"
       End
@@ -302,6 +305,10 @@ End Sub
 
 Private Sub mnChangePass_Click()
   frmChangePassword.Show vbModal
+End Sub
+
+Private Sub mnFastMoving_Click()
+  frmFastMovingItems.Show vbModal
 End Sub
 
 Private Sub mnLogout_Click()
