@@ -10,14 +10,6 @@ Begin VB.Form frmAccnt
    ScaleHeight     =   4140
    ScaleWidth      =   16005
    StartUpPosition =   3  'Windows Default
-   Begin VB.Frame Frame2 
-      Caption         =   "Frame2"
-      Height          =   15
-      Left            =   9000
-      TabIndex        =   17
-      Top             =   2160
-      Width           =   15
-   End
    Begin VB.Frame Frame1 
       Caption         =   "Registration Form"
       BeginProperty Font 
@@ -29,50 +21,56 @@ Begin VB.Form frmAccnt
          Italic          =   -1  'True
          Strikethrough   =   0   'False
       EndProperty
-      Height          =   3375
+      Height          =   3255
       Left            =   240
-      TabIndex        =   6
-      Top             =   0
+      TabIndex        =   7
+      Top             =   120
       Width           =   5055
-      Begin VB.TextBox txtUsername 
-         Height          =   375
-         Left            =   2160
-         TabIndex        =   11
-         Top             =   360
-         Width           =   2295
-      End
-      Begin VB.TextBox txtFirstname 
-         Height          =   375
-         Left            =   2160
-         TabIndex        =   10
-         Top             =   1440
-         Width           =   2295
-      End
-      Begin VB.TextBox txtMiddlename 
-         Height          =   375
-         Left            =   2160
-         TabIndex        =   9
-         Top             =   2040
-         Width           =   2295
-      End
-      Begin VB.TextBox txtLastname 
-         Height          =   375
-         Left            =   2160
-         TabIndex        =   8
-         Top             =   2640
-         Width           =   2295
-      End
       Begin VB.ComboBox cmbRole 
+         BackColor       =   &H00C0E0FF&
          Height          =   315
          ItemData        =   "frmAccnt.frx":0000
          Left            =   2160
          List            =   "frmAccnt.frx":000A
-         TabIndex        =   7
+         TabIndex        =   12
          Text            =   "cmbRole"
          Top             =   960
          Width           =   2295
       End
+      Begin VB.TextBox txtLastname 
+         BackColor       =   &H00C0E0FF&
+         Height          =   375
+         Left            =   2160
+         TabIndex        =   11
+         Top             =   2640
+         Width           =   2295
+      End
+      Begin VB.TextBox txtMiddlename 
+         BackColor       =   &H00C0E0FF&
+         Height          =   375
+         Left            =   2160
+         TabIndex        =   10
+         Top             =   2040
+         Width           =   2295
+      End
+      Begin VB.TextBox txtFirstname 
+         BackColor       =   &H00C0E0FF&
+         Height          =   375
+         Left            =   2160
+         TabIndex        =   9
+         Top             =   1440
+         Width           =   2295
+      End
+      Begin VB.TextBox txtUsername 
+         BackColor       =   &H00C0E0FF&
+         Height          =   375
+         Left            =   2160
+         TabIndex        =   8
+         Top             =   360
+         Width           =   2295
+      End
       Begin VB.Label Label2 
+         BackStyle       =   0  'Transparent
          Caption         =   "USERNAME"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -83,64 +81,15 @@ Begin VB.Form frmAccnt
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H8000000E&
          Height          =   375
          Left            =   480
-         TabIndex        =   16
+         TabIndex        =   17
          Top             =   480
          Width           =   1095
       End
-      Begin VB.Label Label4 
-         Caption         =   "FIRST NAME"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   375
-         Left            =   480
-         TabIndex        =   15
-         Top             =   1560
-         Width           =   1455
-      End
-      Begin VB.Label Label5 
-         Caption         =   "MIDDLE NAME"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   375
-         Left            =   480
-         TabIndex        =   14
-         Top             =   2160
-         Width           =   1455
-      End
-      Begin VB.Label Label6 
-         Caption         =   "LAST NAME"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   8.25
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   375
-         Left            =   480
-         TabIndex        =   13
-         Top             =   2640
-         Width           =   1455
-      End
       Begin VB.Label Label7 
+         BackStyle       =   0  'Transparent
          Caption         =   "ROLE"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -151,14 +100,89 @@ Begin VB.Form frmAccnt
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H8000000E&
          Height          =   255
          Left            =   480
-         TabIndex        =   12
+         TabIndex        =   16
          Top             =   1080
          Width           =   975
       End
+      Begin VB.Label Label6 
+         BackStyle       =   0  'Transparent
+         Caption         =   "LAST NAME"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000E&
+         Height          =   375
+         Left            =   480
+         TabIndex        =   15
+         Top             =   2760
+         Width           =   1455
+      End
+      Begin VB.Label Label5 
+         BackStyle       =   0  'Transparent
+         Caption         =   "MIDDLE NAME"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000E&
+         Height          =   375
+         Left            =   480
+         TabIndex        =   14
+         Top             =   2160
+         Width           =   1455
+      End
+      Begin VB.Label Label4 
+         BackStyle       =   0  'Transparent
+         Caption         =   "FIRST NAME"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000E&
+         Height          =   375
+         Left            =   480
+         TabIndex        =   13
+         Top             =   1560
+         Width           =   1455
+      End
+      Begin VB.Image Image4 
+         Height          =   3855
+         Left            =   0
+         Picture         =   "frmAccnt.frx":001B
+         Stretch         =   -1  'True
+         Top             =   -240
+         Width           =   5055
+      End
+   End
+   Begin VB.Frame Frame2 
+      Caption         =   "Frame2"
+      Height          =   15
+      Left            =   9000
+      TabIndex        =   6
+      Top             =   2160
+      Width           =   15
    End
    Begin VB.CommandButton cmdExit 
+      BackColor       =   &H8000000E&
       Caption         =   "Exit"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -171,6 +195,7 @@ Begin VB.Form frmAccnt
       EndProperty
       Height          =   495
       Left            =   4440
+      Picture         =   "frmAccnt.frx":750EF
       TabIndex        =   5
       Top             =   3480
       Width           =   975
@@ -227,7 +252,9 @@ Begin VB.Form frmAccnt
       Width           =   975
    End
    Begin VB.CommandButton cmdAdd 
+      BackColor       =   &H000040C0&
       Caption         =   "New"
+      DownPicture     =   "frmAccnt.frx":EA1C3
       BeginProperty Font 
          Name            =   "MS Sans Serif"
          Size            =   8.25
@@ -239,6 +266,8 @@ Begin VB.Form frmAccnt
       EndProperty
       Height          =   495
       Left            =   120
+      MaskColor       =   &H00FFFFFF&
+      Picture         =   "frmAccnt.frx":15F297
       TabIndex        =   1
       Top             =   3480
       Width           =   975
@@ -308,6 +337,34 @@ Begin VB.Form frmAccnt
          EndProperty
       EndProperty
    End
+   Begin VB.Image Image5 
+      Height          =   4215
+      Left            =   0
+      Picture         =   "frmAccnt.frx":175A81
+      Stretch         =   -1  'True
+      Top             =   0
+      Width           =   15975
+   End
+   Begin VB.Image Image3 
+      Height          =   4095
+      Left            =   0
+      Picture         =   "frmAccnt.frx":17B46E
+      Stretch         =   -1  'True
+      Top             =   0
+      Width           =   15975
+   End
+   Begin VB.Image Image2 
+      Height          =   495
+      Left            =   7440
+      Top             =   1800
+      Width           =   1215
+   End
+   Begin VB.Image Image1 
+      Height          =   1575
+      Left            =   2160
+      Top             =   2280
+      Width           =   135
+   End
 End
 Attribute VB_Name = "frmAccnt"
 Attribute VB_GlobalNameSpace = False
@@ -369,7 +426,7 @@ Private Sub cmdclear_Click()
   Call toogelInsertMode(False)
 End Sub
 Private Sub clearForm()
-  txtID = ""
+  'txtID = ""
   txtUsername = ""
   txtFirstname = ""
   txtLastname = ""
@@ -433,3 +490,4 @@ Private Sub showSelectedData()
 Private Sub Label1_Click()
 
 End Sub
+
