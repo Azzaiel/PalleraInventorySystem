@@ -252,7 +252,6 @@ Private Sub cmbItems_Click()
   End If
    Call computeTotalPrice
 End Sub
-
 Private Sub cmbItemType_Click()
   cmbItems.Clear
   txtRetailPrice = ""
@@ -274,7 +273,19 @@ Private Sub cmbItemType_Click()
   End If
   Call computeTotalPrice
 End Sub
+Private Function hasValidForm() As Boolean
+  Dim isValid As Boolean
+  isValid = True
+  If Val(txtQuantity) <= 0 Then
+    isValid = False
+    MsgBox "Please enter a valid Quantity to Continue", vbCritical
+  End If
+  hasValidForm = isValid
+End Function
 Private Sub cmdAdd_Click()
+  If (hasValidForm = False) Then
+    Exit Sub
+  End If
   If (cmdAdd.Caption = "Add") Then
     Set tempRs = DataCrudDao.getFakeOrderItems
     tempRs.AddNew
