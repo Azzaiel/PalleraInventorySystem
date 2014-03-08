@@ -362,7 +362,7 @@ End Sub
 Private Sub cmbEdit_Click()
 
   Set tempRs = DataCrudDao.getItemTypeRSByID(rs!id)
-  tempRs!SUPPLIER_ID = suplierIdList(cmSuppliers.ListIndex)
+  tempRs!supplier_id = suplierIdList(cmSuppliers.ListIndex)
   tempRs!Name = txtItemType
   tempRs!LAST_MOD_BY = UserSession.getLoginUser
   tempRs!LAST_MOD_DATE = Now
@@ -376,19 +376,23 @@ Private Sub cmbNewRec_Click()
   If (cmbNewRec.Caption = "New") Then
     Call toogelInsertMode(True)
   Else
-    Set tempRs = DataCrudDao.getFakeItemTypeRS
-    tempRs.AddNew
-    tempRs!SUPPLIER_ID = suplierIdList(cmSuppliers.ListIndex)
-    tempRs!Name = txtItemType
-    tempRs!CREATED_BY = UserSession.getLoginUser
-    tempRs!CREATED_DATE = Now
-    tempRs!LAST_MOD_BY = UserSession.getLoginUser
-    tempRs!LAST_MOD_DATE = Now
-    tempRs.Update
-    Call DbInstance.closeRecordSet(tempRs)
-    MsgBox "Record Created", vbInformation
-    Call populateDataGrid
-    Call toogelInsertMode(False)
+    If (DataCrudDao.isItemTypeExisting(txtItemType) = False) Then
+     Set tempRs = DataCrudDao.getFakeItemTypeRS
+      tempRs.AddNew
+      tempRs!supplier_id = suplierIdList(cmSuppliers.ListIndex)
+      tempRs!Name = txtItemType
+      tempRs!CREATED_BY = UserSession.getLoginUser
+      tempRs!CREATED_DATE = Now
+      tempRs!LAST_MOD_BY = UserSession.getLoginUser
+      tempRs!LAST_MOD_DATE = Now
+      tempRs.Update
+      Call DbInstance.closeRecordSet(tempRs)
+      MsgBox "Record Created", vbInformation
+      Call populateDataGrid
+      Call toogelInsertMode(False)
+    Else
+      MsgBox "Item Type Already exist!!", vbCritical
+    End If
   End If
 End Sub
 Private Sub toogelInsertMode(isInisilization As Boolean)

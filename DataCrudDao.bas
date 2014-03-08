@@ -548,4 +548,29 @@ Public Function getSalesReport(startDate As Date, endDate As Date) As ADODB.Reco
 End Function
 
 
+Public Function isItemTypeExisting(txtItemName As String, Optional supplierID As Long = 0) As Boolean
+  
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
+  
+  Dim sqlQuery As String
+  
+  sqlQuery = "Select * " & _
+             "From Supplier_item_types " & _
+             "Where Name = '" & txtItemName & "' "
+             
+   If (supplierID > 0) Then
+       sqlQuery = sqlQuery & " And ID <> " & supplierID
+   End If
+              
+   Dim rs As ADODB.Recordset
+   Set rs = New ADODB.Recordset
 
+   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   If rs.RecordCount > 0 Then
+     isItemTypeExisting = True
+   Else
+     isItemTypeExisting = False
+   End If
+
+End Function
