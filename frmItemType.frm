@@ -360,7 +360,7 @@ Private Sub cmbDelete_Click()
 End Sub
 
 Private Sub cmbEdit_Click()
-
+If (DataCrudDao.isItemTypeExisting(txtItemType, rs!id) = False) Then
   Set tempRs = DataCrudDao.getItemTypeRSByID(rs!id)
   tempRs!supplier_id = suplierIdList(cmSuppliers.ListIndex)
   tempRs!Name = txtItemType
@@ -370,6 +370,7 @@ Private Sub cmbEdit_Click()
   Call DbInstance.closeRecordSet(tempRs)
   MsgBox "Record Updated", vbInformation
   Call populateDataGrid
+End If
 End Sub
 
 Private Sub cmbNewRec_Click()

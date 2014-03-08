@@ -506,7 +506,3 @@ Private Sub showSelectedData()
   txtMiddlename = CommonHelper.extractStringValue(rs!MIDDLE_NAME)
   End Sub
   
-Private Sub Label1_Click()
-
-End Sub
-

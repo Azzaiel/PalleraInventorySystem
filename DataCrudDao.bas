@@ -208,7 +208,7 @@ Public Function getItemReg(Optional itemCode As String) As ADODB.Recordset
    
    Set getItemReg = rs
 End Function
-Public Function getItemByItemsRS(itemTypeID As Long) As ADODB.Recordset
+Public Function getItemByItemsRS(ItemTypeID As Long) As ADODB.Recordset
 Dim con As ADODB.Connection
    Set con = DbInstance.getDBConnetion
    
@@ -220,7 +220,7 @@ Dim con As ADODB.Connection
               "From items a, SUPPLIERS b, supplier_item_types c " & _
               "Where a.SUPPLIER_ID = b.ID " & _
               "      and a.ITEm_TYPE_ID = c.ID" & _
-              "      and a.ITEm_TYPE_ID = " & itemTypeID
+              "      and a.ITEm_TYPE_ID = " & ItemTypeID
 
               
    Dim rs As ADODB.Recordset
@@ -546,7 +546,7 @@ Public Function getSalesReport(startDate As Date, endDate As Date) As ADODB.Reco
    rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
    Set getSalesReport = rs
 End Function
-Public Function isItemTypeExisting(txtItemName As String, Optional supplierID As Long = 0) As Boolean
+Public Function isItemTypeExisting(txtItemName As String, Optional ItemTypeID As Long = 0) As Boolean
   
   Dim con As ADODB.Connection
   Set con = DbInstance.getDBConnetion
@@ -557,8 +557,8 @@ Public Function isItemTypeExisting(txtItemName As String, Optional supplierID As
              "From Supplier_item_types " & _
              "Where Name = '" & txtItemName & "' "
              
-   If (supplierID > 0) Then
-       sqlQuery = sqlQuery & " And ID <> " & supplierID
+   If (ItemTypeID > 0) Then
+       sqlQuery = sqlQuery & " And ID <> " & ItemTypeID
    End If
               
    Dim rs As ADODB.Recordset
