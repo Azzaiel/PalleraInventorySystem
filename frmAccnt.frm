@@ -69,6 +69,24 @@ Begin VB.Form frmAccnt
          Top             =   360
          Width           =   2295
       End
+      Begin VB.Label Label1 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Registration form"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   120
+         TabIndex        =   18
+         Top             =   0
+         Width           =   1575
+      End
       Begin VB.Label Label2 
          BackStyle       =   0  'Transparent
          Caption         =   "USERNAME"
@@ -165,12 +183,13 @@ Begin VB.Form frmAccnt
          Width           =   1455
       End
       Begin VB.Image Image4 
+         BorderStyle     =   1  'Fixed Single
          Height          =   3855
          Left            =   0
          Picture         =   "frmAccnt.frx":001B
          Stretch         =   -1  'True
-         Top             =   -240
-         Width           =   5055
+         Top             =   0
+         Width           =   5175
       End
    End
    Begin VB.Frame Frame2 
