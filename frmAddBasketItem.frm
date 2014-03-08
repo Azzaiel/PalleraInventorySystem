@@ -1,5 +1,6 @@
 VERSION 5.00
 Begin VB.Form frmAddBasketItem 
+   BackColor       =   &H00FFFFFF&
    Caption         =   "Add Item"
    ClientHeight    =   5310
    ClientLeft      =   2790
@@ -9,6 +10,7 @@ Begin VB.Form frmAddBasketItem
    ScaleHeight     =   5310
    ScaleWidth      =   4980
    Begin VB.Frame Frame2 
+      BackColor       =   &H00FFFFFF&
       Caption         =   "Customer Input"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -120,6 +122,7 @@ Begin VB.Form frmAddBasketItem
       Width           =   975
    End
    Begin VB.Frame Frame1 
+      BackColor       =   &H00FFFFFF&
       Caption         =   "Item Information"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
