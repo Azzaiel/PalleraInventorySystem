@@ -2,12 +2,12 @@ VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form frmItemReg 
    Caption         =   "Item Registration Form"
-   ClientHeight    =   5700
+   ClientHeight    =   6015
    ClientLeft      =   120
    ClientTop       =   750
    ClientWidth     =   17085
    LinkTopic       =   "Form1"
-   ScaleHeight     =   5700
+   ScaleHeight     =   6015
    ScaleWidth      =   17085
    StartUpPosition =   1  'CenterOwner
    Begin VB.ComboBox cmbSupplierName 
@@ -39,16 +39,23 @@ Begin VB.Form frmItemReg
       Height          =   495
       Left            =   1320
       TabIndex        =   8
-      Top             =   5040
+      Top             =   5400
       Width           =   1215
    End
    Begin VB.Frame Frame1 
       Caption         =   "Item Type Form"
-      Height          =   4815
+      Height          =   5295
       Left            =   120
       TabIndex        =   17
       Top             =   0
       Width           =   5895
+      Begin VB.TextBox txtCriticalLevel 
+         Height          =   285
+         Left            =   1440
+         TabIndex        =   43
+         Top             =   1920
+         Width           =   1935
+      End
       Begin VB.TextBox txtItemName 
          Height          =   285
          Left            =   1440
@@ -60,14 +67,14 @@ Begin VB.Form frmItemReg
          Height          =   285
          Left            =   1440
          TabIndex        =   6
-         Top             =   2640
+         Top             =   3000
          Width           =   1935
       End
       Begin VB.TextBox txtRetailPrice 
          Height          =   285
          Left            =   1440
          TabIndex        =   5
-         Top             =   2280
+         Top             =   2640
          Width           =   1935
       End
       Begin VB.ComboBox cmbSupplier 
@@ -93,13 +100,22 @@ Begin VB.Form frmItemReg
          Top             =   360
          Width           =   4215
       End
+      Begin VB.Label Label16 
+         BackColor       =   &H0000FF00&
+         Caption         =   "Critical Level"
+         Height          =   255
+         Left            =   240
+         TabIndex        =   42
+         Top             =   1920
+         Width           =   975
+      End
       Begin VB.Label lblQuantity 
          BackColor       =   &H8000000A&
          BorderStyle     =   1  'Fixed Single
          Height          =   255
          Left            =   1440
          TabIndex        =   37
-         Top             =   1920
+         Top             =   2280
          Width           =   1935
       End
       Begin VB.Label Label10 
@@ -108,7 +124,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   240
          TabIndex        =   36
-         Top             =   1920
+         Top             =   2280
          Width           =   615
       End
       Begin VB.Label Label13 
@@ -126,7 +142,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   240
          TabIndex        =   32
-         Top             =   3000
+         Top             =   3360
          Width           =   495
       End
       Begin VB.Label txtActive 
@@ -135,7 +151,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   1440
          TabIndex        =   31
-         Top             =   3000
+         Top             =   3360
          Width           =   1935
       End
       Begin VB.Label Label4 
@@ -144,7 +160,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   240
          TabIndex        =   30
-         Top             =   2640
+         Top             =   3000
          Width           =   855
       End
       Begin VB.Label Label3 
@@ -153,7 +169,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   240
          TabIndex        =   29
-         Top             =   2280
+         Top             =   2640
          Width           =   855
       End
       Begin VB.Label Label1 
@@ -180,7 +196,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   240
          TabIndex        =   26
-         Top             =   3360
+         Top             =   3720
          Width           =   855
       End
       Begin VB.Label Label7 
@@ -189,7 +205,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   240
          TabIndex        =   25
-         Top             =   3720
+         Top             =   4080
          Width           =   975
       End
       Begin VB.Label Label8 
@@ -198,7 +214,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   240
          TabIndex        =   24
-         Top             =   4080
+         Top             =   4440
          Width           =   975
       End
       Begin VB.Label Label9 
@@ -207,7 +223,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   240
          TabIndex        =   23
-         Top             =   4440
+         Top             =   4800
          Width           =   1095
       End
       Begin VB.Label lblLastModDate 
@@ -216,7 +232,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   1440
          TabIndex        =   22
-         Top             =   4440
+         Top             =   4800
          Width           =   1935
       End
       Begin VB.Label lblLatModBy 
@@ -225,7 +241,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   1440
          TabIndex        =   21
-         Top             =   4080
+         Top             =   4440
          Width           =   1935
       End
       Begin VB.Label lblCreatedDate 
@@ -234,7 +250,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   1440
          TabIndex        =   20
-         Top             =   3720
+         Top             =   4080
          Width           =   1935
       End
       Begin VB.Label lblCreatedBy 
@@ -243,7 +259,7 @@ Begin VB.Form frmItemReg
          Height          =   255
          Left            =   1440
          TabIndex        =   19
-         Top             =   3360
+         Top             =   3720
          Width           =   1935
       End
       Begin VB.Label Label5 
@@ -270,7 +286,7 @@ Begin VB.Form frmItemReg
       Height          =   495
       Left            =   3840
       TabIndex        =   10
-      Top             =   5040
+      Top             =   5400
       Width           =   1095
    End
    Begin VB.CommandButton cmbClose 
@@ -287,7 +303,7 @@ Begin VB.Form frmItemReg
       Height          =   495
       Left            =   5040
       TabIndex        =   11
-      Top             =   5040
+      Top             =   5400
       Width           =   1095
    End
    Begin VB.CommandButton cmbEdit 
@@ -304,7 +320,7 @@ Begin VB.Form frmItemReg
       Height          =   495
       Left            =   2640
       TabIndex        =   9
-      Top             =   5040
+      Top             =   5400
       Width           =   1095
    End
    Begin VB.CommandButton cmbNewRec 
@@ -321,17 +337,17 @@ Begin VB.Form frmItemReg
       Height          =   495
       Left            =   120
       TabIndex        =   7
-      Top             =   5040
+      Top             =   5400
       Width           =   1095
    End
    Begin MSDataGridLib.DataGrid dgItems 
-      Height          =   3975
+      Height          =   4335
       Left            =   6240
       TabIndex        =   12
-      Top             =   1440
+      Top             =   1560
       Width           =   10695
       _ExtentX        =   18865
-      _ExtentY        =   7011
+      _ExtentY        =   7646
       _Version        =   393216
       HeadLines       =   1
       RowHeight       =   15
@@ -494,8 +510,8 @@ Private itemTypeIdList As Variant
 Private tempRs As ADODB.Recordset
 
 Private Sub cmbClear_Click()
-Call clearForm
-Call toogelInsertMode(False)
+  Call clearForm
+  Call toogelInsertMode(False)
 End Sub
 
 Private Sub cmbClose_Click()
@@ -505,15 +521,15 @@ End Sub
 Private Sub cmbEdit_Click()
   If (hasValidFormValue(Val(rs!id))) Then
     Set tempRs = DataCrudDao.getItemRSByID(rs!id)
-    tempRs!ITeM_CODE = txtItemCode
+    tempRs!ITEM_CODE = txtItemCode
     tempRs!supplier_id = suplierIdList(cmbSupplier.ListIndex)
     tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
     tempRs!Name = txtItemName
+    tempRs!CRITICAL_LEVEL = Val(txtCriticalLevel)
     tempRs!RETAIL_PRICE = txtRetailPrice
-    tempRs!unit_price = txtUnitPrice
+    tempRs!UNIT_PRICE = txtUnitPrice
     tempRs!CREATED_BY = UserSession.getLoginUser
     tempRs!LAST_MOD_DATE = Now
-  
     tempRs.Update
     Call DbInstance.closeRecordSet(tempRs)
     MsgBox "Record Updated!! ", vbInformation
@@ -530,12 +546,14 @@ Private Sub cmbNewRec_Click()
       Call toogelInsertMode(False)
       Set tempRs = DataCrudDao.getFakeItemsRS
       tempRs.AddNew
-      tempRs!ITeM_CODE = txtItemCode
-       tempRs!supplier_id = suplierIdList(cmbSupplier.ListIndex)
+      tempRs!ITEM_CODE = txtItemCode
+      tempRs!supplier_id = suplierIdList(cmbSupplier.ListIndex)
       tempRs!ITEM_TYPE_ID = itemTypeIdList(cmbItemType.ListIndex)
       tempRs!Name = txtItemName
       tempRs!RETAIL_PRICE = txtRetailPrice
-      tempRs!unit_price = txtUnitPrice
+      tempRs!CRITICAL_LEVEL = Val(txtCriticalLevel)
+      tempRs!QUANTITY = 0
+      tempRs!UNIT_PRICE = txtUnitPrice
       tempRs!CREATED_BY = UserSession.getLoginUser
       tempRs!CREATED_DATE = Now
       tempRs!LAST_MOD_DATE = Now
@@ -639,6 +657,13 @@ Private Sub populateDataGrid()
 Call formatDataGrid
 End Sub
 
+Private Sub txtCriticalLevel_KeyPress(KeyAscii As Integer)
+  If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtCriticalLevel) > 11)) Then
+    KeyAscii = 0
+    Beep
+  End If
+End Sub
+
 Private Sub txtItemCodeSearch_KeyPress(KeyAscii As Integer)
 If KeyAscii = 13 Then
 Call cmdSearch_Click
@@ -673,23 +698,26 @@ Private Sub txtUnitPrice_KeyPress(KeyAscii As Integer)
 End Sub
 
 Private Sub showSelectedData()
- txtItemCode = CommonHelper.extractStringValue(rs!ITeM_CODE)
+ txtItemCode = CommonHelper.extractStringValue(rs!ITEM_CODE)
  cmbSupplier.Text = CommonHelper.extractStringValue(rs!SUPPLIER)
  cmbItemType.Text = CommonHelper.extractStringValue(rs!ITEM_TYPE)
  txtItemName = CommonHelper.extractStringValue(rs!ITEM_NAME)
- lblQuantity = Val(CommonHelper.extractStringValue(rs!quantity))
+ lblQuantity = Val(CommonHelper.extractStringValue(rs!QUANTITY))
  txtRetailPrice = CommonHelper.extractStringValue(rs!RETAIL_PRICE)
- txtUnitPrice = CommonHelper.extractStringValue(rs!unit_price)
+ txtUnitPrice = CommonHelper.extractStringValue(rs!UNIT_PRICE)
  txtActive = CommonHelper.extractStringValue(rs!active)
  lblCreatedBy = CommonHelper.extractStringValue(rs!CREATED_BY)
  lblCreatedDate = CommonHelper.extractDateValue(rs!CREATED_DATE)
  lblLatModBy = CommonHelper.extractStringValue(rs!LAST_MOD_BY)
  lblLastModDate = CommonHelper.extractDateValue(rs!LAST_MOD_DATE)
+ txtCriticalLevel = CommonHelper.extractStringValue(rs!CRITICAL_LEVEL)
 
 End Sub
 
 Private Sub formatDataGrid()
-
+  With dgItems
+    .Columns(0).Visible = False
+  End With
 End Sub
 
 Private Sub clearForm()
@@ -704,7 +732,7 @@ lblCreatedBy = ""
 lblCreatedDate = ""
 lblLastModDate = ""
 lblLatModBy = ""
-
+txtCriticalLevel = ""
 
 End Sub
 
