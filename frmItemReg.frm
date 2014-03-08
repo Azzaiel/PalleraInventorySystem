@@ -527,7 +527,7 @@ Private Sub cmbEdit_Click()
     tempRs!Name = txtItemName
     tempRs!CRITICAL_LEVEL = Val(txtCriticalLevel)
     tempRs!RETAIL_PRICE = txtRetailPrice
-    tempRs!UNIT_PRICE = txtUnitPrice
+    tempRs!unit_price = txtUnitPrice
     tempRs!CREATED_BY = UserSession.getLoginUser
     tempRs!LAST_MOD_DATE = Now
     tempRs.Update
@@ -552,8 +552,8 @@ Private Sub cmbNewRec_Click()
       tempRs!Name = txtItemName
       tempRs!RETAIL_PRICE = txtRetailPrice
       tempRs!CRITICAL_LEVEL = Val(txtCriticalLevel)
-      tempRs!QUANTITY = 0
-      tempRs!UNIT_PRICE = txtUnitPrice
+      tempRs!quantity = 0
+      tempRs!unit_price = txtUnitPrice
       tempRs!CREATED_BY = UserSession.getLoginUser
       tempRs!CREATED_DATE = Now
       tempRs!LAST_MOD_DATE = Now
@@ -576,6 +576,18 @@ Private Function hasValidFormValue(Optional itemID As Integer = -1) As Boolean
   ElseIf DataCrudDao.isItemCodeAlreadyUsed(txtItemCode, itemID) Then
     isValid = False
     MsgBox "ItemCodeAlready In use", vbCritical
+  ElseIf (CommonHelper.hasValidValue(txtItemName) = False) Then
+    isValid = False
+    MsgBox "Please enter an Item Name", vbCritical
+  ElseIf (CommonHelper.hasValidValue(txtCriticalLevel) = False) Then
+    isValid = False
+    MsgBox "Please enter an Critical level", vbCritical
+  ElseIf (CommonHelper.hasValidValue(txtRetailPrice) = False) Then
+    isValid = False
+    MsgBox "Please enter an Retail Price", vbCritical
+  ElseIf (CommonHelper.hasValidValue(txtUnitPrice) = False) Then
+    isValid = False
+    MsgBox "Please enter an Retail Price", vbCritical
   End If
   hasValidFormValue = isValid
 End Function
@@ -702,9 +714,9 @@ Private Sub showSelectedData()
  cmbSupplier.Text = CommonHelper.extractStringValue(rs!SUPPLIER)
  cmbItemType.Text = CommonHelper.extractStringValue(rs!ITEM_TYPE)
  txtItemName = CommonHelper.extractStringValue(rs!ITEM_NAME)
- lblQuantity = Val(CommonHelper.extractStringValue(rs!QUANTITY))
+ lblQuantity = Val(CommonHelper.extractStringValue(rs!quantity))
  txtRetailPrice = CommonHelper.extractStringValue(rs!RETAIL_PRICE)
- txtUnitPrice = CommonHelper.extractStringValue(rs!UNIT_PRICE)
+ txtUnitPrice = CommonHelper.extractStringValue(rs!unit_price)
  txtActive = CommonHelper.extractStringValue(rs!active)
  lblCreatedBy = CommonHelper.extractStringValue(rs!CREATED_BY)
  lblCreatedDate = CommonHelper.extractDateValue(rs!CREATED_DATE)
@@ -739,6 +751,7 @@ End Sub
 Private Sub toogelInsertMode(isInisilization As Boolean)
   If (isInisilization) Then
     Call clearForm
+    lblQuantity = 0
     cmbNewRec.Caption = "ADD"
     cmdActivation.Enabled = False
     cmbEdit.Enabled = False
@@ -748,3 +761,4 @@ Private Sub toogelInsertMode(isInisilization As Boolean)
     cmbEdit.Enabled = True
   End If
 End Sub
+
