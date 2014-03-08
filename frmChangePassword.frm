@@ -6,12 +6,22 @@ Begin VB.Form frmChangePassword
    ClientTop       =   1965
    ClientWidth     =   5175
    LinkTopic       =   "Form1"
+   Picture         =   "frmChangePassword.frx":0000
    ScaleHeight     =   3555
    ScaleWidth      =   5175
    Begin VB.CommandButton cmdCancel 
       Caption         =   "Cancel"
+      BeginProperty Font 
+         Name            =   "MS Sans Serif"
+         Size            =   8.25
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
       Height          =   495
-      Left            =   3120
+      Left            =   2760
       TabIndex        =   8
       Top             =   2520
       Width           =   1455
@@ -25,8 +35,17 @@ Begin VB.Form frmChangePassword
       Width           =   4935
       Begin VB.CommandButton cmdSubmit 
          Caption         =   "Submit"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
          Height          =   495
-         Left            =   1080
+         Left            =   720
          TabIndex        =   7
          Top             =   2400
          Width           =   1575
@@ -58,8 +77,37 @@ Begin VB.Form frmChangePassword
          Top             =   480
          Width           =   2055
       End
+      Begin VB.Label Label4 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Change Passowrd"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   255
+         Left            =   0
+         TabIndex        =   9
+         Top             =   0
+         Width           =   1815
+      End
       Begin VB.Label Label3 
+         BackStyle       =   0  'Transparent
          Caption         =   "Confirm Password"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
          Left            =   360
          TabIndex        =   6
@@ -67,7 +115,18 @@ Begin VB.Form frmChangePassword
          Width           =   1575
       End
       Begin VB.Label Label2 
+         BackStyle       =   0  'Transparent
          Caption         =   "New Password"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
          Left            =   360
          TabIndex        =   5
@@ -75,12 +134,31 @@ Begin VB.Form frmChangePassword
          Width           =   1575
       End
       Begin VB.Label Label1 
+         BackStyle       =   0  'Transparent
          Caption         =   "Old Password"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
          Left            =   360
          TabIndex        =   4
          Top             =   600
          Width           =   1575
+      End
+      Begin VB.Image Image5 
+         Height          =   4215
+         Left            =   0
+         Picture         =   "frmChangePassword.frx":59ED
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   15975
       End
    End
 End
