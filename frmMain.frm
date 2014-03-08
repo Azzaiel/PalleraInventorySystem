@@ -5,25 +5,25 @@ Begin VB.Form frmMain
    ClientHeight    =   7755
    ClientLeft      =   420
    ClientTop       =   1635
-   ClientWidth     =   16770
+   ClientWidth     =   18765
    LinkTopic       =   "Form1"
    ScaleHeight     =   7755
-   ScaleWidth      =   16770
+   ScaleWidth      =   18765
    StartUpPosition =   2  'CenterScreen
    Begin VB.Frame Frame2 
       Caption         =   "Items in Critical Level"
       Height          =   7095
-      Left            =   8160
+      Left            =   8520
       TabIndex        =   3
       Top             =   480
-      Width           =   7815
+      Width           =   9855
       Begin MSDataGridLib.DataGrid dgCriticalItems 
          Height          =   6735
          Left            =   120
          TabIndex        =   4
          Top             =   240
-         Width           =   7575
-         _ExtentX        =   13361
+         Width           =   9615
+         _ExtentX        =   16960
          _ExtentY        =   11880
          _Version        =   393216
          AllowUpdate     =   0   'False
@@ -86,7 +86,7 @@ Begin VB.Form frmMain
    Begin VB.Frame Frame1 
       Caption         =   "Pending Orders (Double Click to View Details)"
       Height          =   7095
-      Left            =   120
+      Left            =   480
       TabIndex        =   0
       Top             =   480
       Width           =   7815
@@ -173,7 +173,7 @@ Begin VB.Form frmMain
       Left            =   120
       TabIndex        =   1
       Top             =   0
-      Width           =   15855
+      Width           =   18615
    End
    Begin VB.Menu mnSupplier 
       Caption         =   "Supplier"
@@ -258,8 +258,25 @@ Private Sub Form_Load()
   Call populateItemsInCritical
 End Sub
 Public Sub populateItemsInCritical()
-   Set itemsCriticalRS = DataCrudDao.getCriticalLevelItemRS
+  Set itemsCriticalRS = DataCrudDao.getCriticalLevelItemRS
   Set dgCriticalItems.DataSource = itemsCriticalRS
+  With dgCriticalItems
+    .Columns(0).Width = 1200
+    .Columns(0).Alignment = dbgCenter
+    
+    .Columns(1).Width = 2000
+    
+    .Columns(2).Width = 1500
+    
+    .Columns(3).Width = 2000
+    
+    .Columns(4).Width = 1000
+    .Columns(4).Alignment = dbgCenter
+    
+    .Columns(5).Width = 1500
+    .Columns(5).Alignment = dbgCenter
+    
+  End With
 End Sub
 Public Sub populatePendingOrderDash()
   Set pendingOrderRs = DataCrudDao.getPendingOrderDash
