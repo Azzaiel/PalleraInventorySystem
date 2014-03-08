@@ -1,5 +1,32 @@
 Attribute VB_Name = "DataCrudDao"
 Option Explicit
+Public Function isSupplierExisting(supplierName As String, Optional supplierID As Long = 0) As Boolean
+  
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
+  
+  Dim sqlQuery As String
+  
+  sqlQuery = "Select * " & _
+             "From Suppliers " & _
+             "Where Name = '" & supplierName & "' "
+             
+   If (supplierID > 0) Then
+       sqlQuery = sqlQuery & " And ID <> " & supplierID
+   End If
+              
+   Dim rs As ADODB.Recordset
+   Set rs = New ADODB.Recordset
+
+   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   If rs.RecordCount > 0 Then
+     isSupplierExisting = True
+   Else
+     isSupplierExisting = False
+   End If
+
+End Function
+
 Public Function getSupplierRS(active As String, suplierName As String, salesContact As String) As ADODB.Recordset
 
    Dim con As ADODB.Connection

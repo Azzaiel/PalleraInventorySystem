@@ -578,7 +578,9 @@ Private Sub populateDataGrid()
   Call formatDataGrid
 End Sub
 Private Sub formatDataGrid()
-  
+  With dgSupplier
+    .Columns(0).Visible = False
+  End With
 End Sub
 
 Private Sub cmbClear_Click()
@@ -592,35 +594,7 @@ End Sub
 Private Sub cmbEdit_Click()
   Call resetFormSkin
   If (isFormDetailValid) Then
-    rs!Name = txtName
-    rs!active = lblActive
-    rs!COMPANY_PHONE_NUMBER = txtComPhone
-    rs!COMPANY_ADDRESS = txtCompanyAddress
-    rs!SALES_CONTACT = txtSales
-    rs!SALES_EMAIL = txtSalesEmail
-    rs!SALES_PHONE_NUMBER = txtSalesPhone
-    rs!CREATED_BY = UserSession.getLoginUser
-    rs!CREATED_DATE = Now
-    rs!LAST_MOD_BY = UserSession.getLoginUser
-    rs!LAST_MOD_DATE = Now
-    rs.Update
-    MsgBox "Record Updated", vbInformation
-    Call populateDataGrid
-  End If
-End Sub
-Private Function resetFormSkin()
-  Call CommonHelper.toDefaultSkin(txtName)
-  Call CommonHelper.toDefaultSkin(txtSales)
-  Call CommonHelper.toDefaultSkin(txtSalesPhone)
-End Function
-
-Private Sub cmbNewRec_Click()
-  Call resetFormSkin
-  If (cmbNewRec.Caption = "New") Then
-    Call toogelInsertMode(True)
-  Else
-    If (isFormDetailValid) Then
-      rs.AddNew
+    If (DataCrudDao.isSupplierExisting(txtName, rs!id) = False) Then
       rs!Name = txtName
       rs!active = lblActive
       rs!COMPANY_PHONE_NUMBER = txtComPhone
@@ -628,15 +602,49 @@ Private Sub cmbNewRec_Click()
       rs!SALES_CONTACT = txtSales
       rs!SALES_EMAIL = txtSalesEmail
       rs!SALES_PHONE_NUMBER = txtSalesPhone
+      rs!CREATED_BY = UserSession.getLoginUser
+      rs!CREATED_DATE = Now
       rs!LAST_MOD_BY = UserSession.getLoginUser
       rs!LAST_MOD_DATE = Now
       rs.Update
+      MsgBox "Record Updated", vbInformation
       Call populateDataGrid
-      Call toogelInsertMode(False)
+    Else
+      MsgBox "Supplier already exist!", vbCritical
     End If
   End If
 End Sub
-
+Private Function resetFormSkin()
+  Call CommonHelper.toDefaultSkin(txtName)
+  Call CommonHelper.toDefaultSkin(txtSales)
+  Call CommonHelper.toDefaultSkin(txtSalesPhone)
+End Function
+Private Sub cmbNewRec_Click()
+  Call resetFormSkin
+  If (cmbNewRec.Caption = "New") Then
+    Call toogelInsertMode(True)
+  Else
+    If (isFormDetailValid) Then
+      If (DataCrudDao.isSupplierExisting(txtName) = False) Then
+        rs.AddNew
+        rs!Name = txtName
+        rs!active = lblActive
+        rs!COMPANY_PHONE_NUMBER = txtComPhone
+        rs!COMPANY_ADDRESS = txtCompanyAddress
+        rs!SALES_CONTACT = txtSales
+        rs!SALES_EMAIL = txtSalesEmail
+        rs!SALES_PHONE_NUMBER = txtSalesPhone
+        rs!LAST_MOD_BY = UserSession.getLoginUser
+        rs!LAST_MOD_DATE = Now
+        rs.Update
+        Call populateDataGrid
+        Call toogelInsertMode(False)
+      Else
+        MsgBox "Supplier already exist!!", vbCritical
+      End If
+    End If
+  End If
+End Sub
 Private Function isFormDetailValid() As Boolean
   If (Not CommonHelper.hasValidValue(txtName)) Then
     isFormDetailValid = False
@@ -743,6 +751,13 @@ End Sub
 
 Private Sub Form_Load()
     Call populateDataGrid
+End Sub
+
+Private Sub txtSalesPhone_KeyPress(KeyAscii As Integer)
+   If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtSalesPhone) > 11)) Then
+    KeyAscii = 0
+    Beep
+  End If
 End Sub
 
 Private Sub txtSearchName_KeyPress(KeyAscii As Integer)
