@@ -586,12 +586,33 @@ Public Function getCriticalLevelItemRS() As ADODB.Recordset
              "      and  a.ACTIVE = 'Y' " & _
              "      and a.QUANTITY <= a.CRITICAL_LEVEL"
              
-    
-   Dim rs As ADODB.Recordset
-   Set rs = New ADODB.Recordset
+  Dim rs As ADODB.Recordset
+  Set rs = New ADODB.Recordset
 
-   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
    
-   Set getCriticalLevelItemRS = rs
+  Set getCriticalLevelItemRS = rs
    
+End Function
+Public Function getFastMovingItems() As ADODB.Recordset
+  Dim con As ADODB.Connection
+  Set con = DbInstance.getDBConnetion
+  
+  Dim sqlQuery As String
+  
+  sqlQuery = "Select  itm.Item_Code, sup.name as Supplier, sit.name as Item_Type " & _
+             "        , itm.name as Item_Name, SUM(sl.Quantity) Sold_Items, SUM(sl.Unit_Price * sl.Quantity) as Total_Cost " & _
+             "From sales sl, suppliers sup, items itm, supplier_item_types sit  " & _
+             "Where sl.SUPPLIER_ID = sup.id " & _
+             "     and itm.id = sl.Item_ID " & _
+             "     and sit.id = itm.Item_type_ID " & _
+             "GROUP BY itm.Item_Code, sup.name, sit.name, itm.name " & _
+             "Order BY SUM(sl.Quantity) desc "
+             
+  Dim rs As ADODB.Recordset
+  Set rs = New ADODB.Recordset
+
+  rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+  Set getFastMovingItems = rs
 End Function
