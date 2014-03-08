@@ -745,6 +745,13 @@ Private Sub Form_Load()
     Call populateDataGrid
 End Sub
 
+Private Sub txtSalesPhone_KeyPress(KeyAscii As Integer)
+   If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtSalesPhone) > 11)) Then
+    KeyAscii = 0
+    Beep
+  End If
+End Sub
+
 Private Sub txtSearchName_KeyPress(KeyAscii As Integer)
   If (KeyAscii = 13) Then
     Call populateDataGrid
