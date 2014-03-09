@@ -500,7 +500,7 @@ End Sub
 Private Sub txtItemCodeSearch_KeyPress(KeyAscii As Integer)
   If KeyAscii = 13 Then
     newSearch = True
-    Set rs = DataCrudDao.getItemReg(txtItemCodeSearch)
+    Set rs = DataCrudDao.getItemForSales(txtItemCodeSearch)
     If rs.RecordCount > 0 Then
       lblSuplier = CommonHelper.extractStringValue(rs!SUPPLIER)
       lblItemType = CommonHelper.extractStringValue(rs!ITEM_TYPE)

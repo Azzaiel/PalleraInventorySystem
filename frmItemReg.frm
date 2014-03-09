@@ -921,10 +921,6 @@ Private Sub populateDataGrid()
 Call formatDataGrid
 End Sub
 
-Private Sub Image4_Click()
-
-End Sub
-
 Private Sub txtCriticalLevel_KeyPress(KeyAscii As Integer)
   If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtCriticalLevel) > 11)) Then
     KeyAscii = 0
@@ -979,6 +975,12 @@ Private Sub showSelectedData()
  lblLatModBy = CommonHelper.extractStringValue(rs!LAST_MOD_BY)
  lblLastModDate = CommonHelper.extractDateValue(rs!LAST_MOD_DATE)
  txtCriticalLevel = CommonHelper.extractStringValue(rs!CRITICAL_LEVEL)
+  
+  If txtActive = "Y" Then
+    cmdActivation.Caption = "De-Activate"
+  Else
+    cmdActivation.Caption = "Activate"
+  End If
 
 End Sub
 

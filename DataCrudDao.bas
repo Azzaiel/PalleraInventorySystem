@@ -183,6 +183,30 @@ Public Function getAccount() As ADODB.Recordset
    Set getAccount = rs
 
 End Function
+Public Function getItemForSales(itemCode As String) As ADODB.Recordset
+
+   Dim con As ADODB.Connection
+   Set con = DbInstance.getDBConnetion
+   
+   Dim sqlQuery As String
+   
+   sqlQuery = "Select a.ID, a.ACTIVE, a.ITEM_CODE, b.Name as SUPPLIER , c.Name as ITEM_TYPE, a.Name as ITEM_NAME " & _
+              "       , a.CRITICAL_LEVEL, a.QUANTITY, a.RETAIL_PRICE, a.UNIT_PRICE, a.CREATED_BY , a.CREATED_DATE, a.LAST_MOD_BY " & _
+              "       , a.LAST_MOD_DATE, a.SUPPLIER_ID " & _
+              "From items a, SUPPLIERS b, supplier_item_types c " & _
+              "Where a.SUPPLIER_ID = b.ID " & _
+              "      and a.ITEm_TYPE_ID = c.ID" & _
+              "      and a.ACTIVE = 'Y'" & _
+              "      and a.item_code = '" & itemCode & "'"
+
+              
+   Dim rs As ADODB.Recordset
+   Set rs = New ADODB.Recordset
+   
+   rs.Open sqlQuery, con, adOpenDynamic, adLockPessimistic
+   
+   Set getItemForSales = rs
+End Function
 Public Function getItemReg(Optional itemCode As String) As ADODB.Recordset
 
    Dim con As ADODB.Connection
@@ -219,6 +243,7 @@ Dim con As ADODB.Connection
               ", a.LAST_MOD_DATE " & _
               "From items a, SUPPLIERS b, supplier_item_types c " & _
               "Where a.SUPPLIER_ID = b.ID " & _
+              "      and a.ACTIVE = '" & "Y' " & _
               "      and a.ITEm_TYPE_ID = c.ID" & _
               "      and a.ITEm_TYPE_ID = " & ItemTypeID
 
