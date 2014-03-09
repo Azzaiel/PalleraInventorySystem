@@ -696,7 +696,13 @@ End Sub
 Private Sub formatDataGrid()
   With dgSupplier
     .Columns(0).Visible = False
-  End With
+    .Columns(1).Width = 2500
+    .Columns(2).Width = 800
+    .Columns(2).Alignment = dbgCenter
+    .Columns(9).Width = 1500
+    .Columns(9).NumberFormat = Constants.DEFAULT_FORMAT
+    
+    End With
 End Sub
 
 Private Sub cmbClear_Click()
