@@ -62,7 +62,7 @@ Public Function getFileName(flname As String) As String
     
 End Function
 Public Function getImgPath() As String
-  getImgPath = App.Path & "\" & Constants.IMG_FOLDER
+  'getImgPath = App.Path & "\" & Constants.IMG_FOLDER
 End Function
 Public Function isFunctionAscii(ascii As Integer) As Boolean
   If (ascii = 13 Or ascii = 8 Or ascii = 32) Then

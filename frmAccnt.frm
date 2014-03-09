@@ -469,7 +469,6 @@ Private Sub cmdDelete_Click()
 End Sub
 
 Private Sub cmdEdit_Click()
-    rs!id = txtID
     rs!username = txtUsername
     rs!Role = cmbRole.Text
     rs!FIRST_NAME = txtFirstname
