@@ -22,7 +22,7 @@ Set con = DbInstance.getDBConnetion
   
   sqlQuery = "SELECT id,username, role, first_name, last_name, middle_name " & _
              "FROM users " & _
-             "WHERE username = '" & Uname & "' and Password = '" & Password & "'"
+             "WHERE BINARY username = '" & Uname & "' and BINARY Password = '" & Password & "'"
               
   Dim rs As ADODB.Recordset
   Set rs = New ADODB.Recordset
