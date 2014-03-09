@@ -18,32 +18,33 @@ USE `palleras_inventory`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `sales`
+-- Table structure for table `item_loss`
 --
 
-DROP TABLE IF EXISTS `sales`;
+DROP TABLE IF EXISTS `item_loss`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `sales` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) DEFAULT NULL,
-  `SUPPLIER_ID` int(11) DEFAULT NULL,
-  `item_id` int(11) DEFAULT NULL,
-  `sale_date` datetime DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
-  `unit_price` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+CREATE TABLE `item_loss` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `SUPPLIER` varchar(100) DEFAULT NULL,
+  `ITEM_TYPE` varchar(100) DEFAULT NULL,
+  `ITEM_NAME` varchar(100) DEFAULT NULL,
+  `QUANTITY` int(11) DEFAULT NULL,
+  `RETAIL_PRICE` int(11) DEFAULT NULL,
+  `USER_NAME` varchar(100) DEFAULT NULL,
+  `COMMENT` varchar(200) DEFAULT NULL,
+  `REPORT_DATE` date DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `sales`
+-- Dumping data for table `item_loss`
 --
 
-LOCK TABLES `sales` WRITE;
-/*!40000 ALTER TABLE `sales` DISABLE KEYS */;
-INSERT INTO `sales` VALUES (1,'System',2,1,'2014-02-27 12:26:48',1,131),(2,'System',1,9,'2014-03-08 13:26:50',2,15),(3,'System',3,5,'2014-03-08 13:26:50',1,170),(4,'System',3,4,'2014-03-08 13:26:50',4,250),(5,'System',2,1,'2014-03-08 13:27:12',20,131),(6,'System',3,5,'2014-03-08 13:27:44',2,170),(7,'System',3,4,'2014-03-08 13:28:09',2,250);
-/*!40000 ALTER TABLE `sales` ENABLE KEYS */;
+LOCK TABLES `item_loss` WRITE;
+/*!40000 ALTER TABLE `item_loss` DISABLE KEYS */;
+/*!40000 ALTER TABLE `item_loss` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

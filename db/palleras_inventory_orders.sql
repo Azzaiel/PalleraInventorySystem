@@ -33,7 +33,7 @@ CREATE TABLE `orders` (
   `RECIVED_DATE` datetime DEFAULT NULL,
   `RECIVED_BY` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,2,'Completed','2014-02-15 15:06:00','System','2014-02-23 11:03:53','System'),(2,3,'Completed','2014-02-27 00:00:00','System','2014-03-08 12:04:47','System'),(3,2,'Completed','2014-02-27 00:00:00','System','2014-03-08 12:04:52','System'),(4,1,'Completed','2014-02-27 00:00:00','System','2014-03-08 12:05:24','System'),(5,3,'Pending','2014-02-27 00:00:00','System',NULL,NULL);
+INSERT INTO `orders` VALUES (1,2,'Completed','2014-02-15 15:06:00','System','2014-02-23 11:03:53','System'),(2,3,'Completed','2014-02-27 00:00:00','System','2014-03-08 12:04:47','System'),(3,2,'Completed','2014-02-27 00:00:00','System','2014-03-08 12:04:52','System'),(4,1,'Completed','2014-02-27 00:00:00','System','2014-03-08 12:05:24','System'),(5,3,'Pending','2014-02-27 00:00:00','System',NULL,NULL),(6,1,'Pending','2014-02-27 00:00:00','System',NULL,NULL);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-03-08 13:30:00
+-- Dump completed on 2014-03-09 17:20:11
