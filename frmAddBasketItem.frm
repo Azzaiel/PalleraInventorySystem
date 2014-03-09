@@ -1,7 +1,7 @@
 VERSION 5.00
 Begin VB.Form frmAddBasketItem 
    BackColor       =   &H00FFFFFF&
-   Caption         =   "Add Item"
+   Caption         =   "Add Item to Basket Form"
    ClientHeight    =   5310
    ClientLeft      =   2790
    ClientTop       =   3180

@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin VB.Form frmChangePassword 
-   Caption         =   "Form1"
+   Caption         =   "Change Password Form"
    ClientHeight    =   3555
    ClientLeft      =   8685
    ClientTop       =   1965

@@ -6,6 +6,7 @@ Begin VB.Form frmMain
    ClientLeft      =   420
    ClientTop       =   1635
    ClientWidth     =   18765
+   Icon            =   "frmMain.frx":0000
    LinkTopic       =   "Form1"
    ScaleHeight     =   7755
    ScaleWidth      =   18765
@@ -105,7 +106,7 @@ Begin VB.Form frmMain
          BorderStyle     =   1  'Fixed Single
          Height          =   7215
          Left            =   0
-         Picture         =   "frmMain.frx":0000
+         Picture         =   "frmMain.frx":0442
          Stretch         =   -1  'True
          Top             =   0
          Width           =   10095
@@ -206,7 +207,7 @@ Begin VB.Form frmMain
          BorderStyle     =   1  'Fixed Single
          Height          =   7215
          Left            =   0
-         Picture         =   "frmMain.frx":750D4
+         Picture         =   "frmMain.frx":75516
          Stretch         =   -1  'True
          Top             =   0
          Width           =   8055
@@ -214,6 +215,7 @@ Begin VB.Form frmMain
    End
    Begin VB.Label lblWelcome 
       BackColor       =   &H00E0E0E0&
+      BackStyle       =   0  'Transparent
       Caption         =   "Welcome"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -226,15 +228,15 @@ Begin VB.Form frmMain
       EndProperty
       ForeColor       =   &H000000FF&
       Height          =   255
-      Left            =   4680
+      Left            =   6000
       TabIndex        =   1
-      Top             =   0
+      Top             =   120
       Width           =   10215
    End
    Begin VB.Image Image2 
       Height          =   8175
       Left            =   0
-      Picture         =   "frmMain.frx":EA1A8
+      Picture         =   "frmMain.frx":EA5EA
       Stretch         =   -1  'True
       Top             =   -120
       Width           =   19335

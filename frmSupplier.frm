@@ -1,7 +1,7 @@
 VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form frmSupplier 
-   Caption         =   "Form1"
+   Caption         =   "Supplier Registration Form"
    ClientHeight    =   5715
    ClientLeft      =   270
    ClientTop       =   765
