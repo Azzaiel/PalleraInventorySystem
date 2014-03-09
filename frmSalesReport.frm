@@ -170,7 +170,7 @@ Begin VB.Form frmSalesReport
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   "MMMM, dd yyyy"
-         Format          =   16580611
+         Format          =   106037251
          CurrentDate     =   41697
       End
       Begin MSComCtl2.DTPicker dtEndDate 
@@ -192,7 +192,7 @@ Begin VB.Form frmSalesReport
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   "MMMM, dd yyyy"
-         Format          =   16580611
+         Format          =   106037251
          CurrentDate     =   41697
       End
       Begin VB.Label Label10 

@@ -1,6 +1,6 @@
 Attribute VB_Name = "MainSub"
 Sub main()
-  'LogIn.Show
+  LogIn.Show
   'frmMain.Show
-  frmOrder.Show vbModal
+  'frmOrder.Show vbModal
 End Sub

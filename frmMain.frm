@@ -226,10 +226,10 @@ Begin VB.Form frmMain
       EndProperty
       ForeColor       =   &H000000FF&
       Height          =   255
-      Left            =   5640
+      Left            =   4680
       TabIndex        =   1
       Top             =   0
-      Width           =   5535
+      Width           =   10215
    End
    Begin VB.Image Image2 
       Height          =   8175
@@ -255,9 +255,6 @@ Begin VB.Form frmMain
       End
       Begin VB.Menu mnOder 
          Caption         =   "Order Itmes"
-      End
-      Begin VB.Menu MnItemLoss 
-         Caption         =   "Item Loss"
       End
    End
    Begin VB.Menu mnSellItem 

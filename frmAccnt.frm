@@ -9,7 +9,7 @@ Begin VB.Form frmAccnt
    LinkTopic       =   "Form1"
    ScaleHeight     =   4140
    ScaleWidth      =   16005
-   StartUpPosition =   3  'Windows Default
+   StartUpPosition =   1  'CenterOwner
    Begin VB.Frame Frame1 
       Caption         =   "Registration Form"
       BeginProperty Font 

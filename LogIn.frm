@@ -116,10 +116,21 @@ Private Sub CmdLogin_Click()
   Call CommonHelper.toDefaultSkin(txtPassword)
   If (hasValidForm) Then
     If UserSession.hasValidCredential(txtUser, txtPassword) Then
-    Unload Me
-    frmMain.Show
+      Unload Me
+      frmMain.Show
+      If UserSession.Role = "User" Then
+        frmMain.mnSupplier.Visible = False
+        frmMain.mnRegisterItem.Visible = False
+        frmMain.mnReports.Visible = False
+        frmMain.mnRegUsers.Visible = False
+      Else
+        frmMain.mnSupplier.Visible = True
+        frmMain.mnRegisterItem.Visible = True
+        frmMain.mnReports.Visible = True
+        frmMain.mnRegUsers.Visible = True
+      End If
     Else
-    MsgBox "Username and Password do not match!", vbCritical
+      MsgBox "Username and Password do not match!", vbCritical
     End If
   End If
 End Sub
