@@ -20,3 +20,4 @@ RepSalesInvoice = 75, 75, 958, 526, C, 50, 50, 971, 519, C
 frmEntePayment = 0, 0, 0, 0, C, 0, 0, 714, 585, C
 frmOrderReport = 16, 11, 959, 731, C, 0, 2, 1407, 731, C
 frmSalesReport = 0, 0, 0, 0, C, 0, 0, 0, 0, C
+frmFastMovingItems = 175, 175, 1058, 626, C, 25, 25, 908, 476, C

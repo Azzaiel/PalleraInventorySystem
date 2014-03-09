@@ -256,6 +256,9 @@ Begin VB.Form frmMain
       Begin VB.Menu mnOder 
          Caption         =   "Order Itmes"
       End
+      Begin VB.Menu MnItemLoss 
+         Caption         =   "Item Loss"
+      End
    End
    Begin VB.Menu mnSellItem 
       Caption         =   "Sell Item"
@@ -373,6 +376,10 @@ End Sub
 
 Private Sub mnFastMoving_Click()
   frmFastMovingItems.Show vbModal
+End Sub
+
+Private Sub MnItemLoss_Click()
+  frmItemLoss.Show vbModal
 End Sub
 
 Private Sub mnLogout_Click()

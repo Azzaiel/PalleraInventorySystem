@@ -29,6 +29,7 @@ Form=frmEntePayment.frm
 Form=frmOrderReport.frm
 Form=frmSalesReport.frm
 Form=frmFastMovingItems.frm
+Form=frmItemLoss.frm
 Startup="frmMain"
 HelpFile=""
 Command32=""
