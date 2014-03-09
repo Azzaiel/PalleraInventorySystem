@@ -1,20 +1,20 @@
 VERSION 5.00
 Begin VB.Form LogIn 
    Caption         =   "LogIn"
-   ClientHeight    =   3000
+   ClientHeight    =   1965
    ClientLeft      =   5670
    ClientTop       =   3705
-   ClientWidth     =   7125
+   ClientWidth     =   4650
    LinkTopic       =   "Form1"
-   ScaleHeight     =   3000
-   ScaleWidth      =   7125
+   ScaleHeight     =   1965
+   ScaleWidth      =   4650
    Begin VB.Frame Frame1 
-      Caption         =   "Login"
+      BackColor       =   &H80000009&
       Height          =   2295
-      Left            =   3480
+      Left            =   0
       TabIndex        =   0
-      Top             =   360
-      Width           =   3495
+      Top             =   -120
+      Width           =   5175
       Begin VB.CommandButton Command2 
          Caption         =   "E&xit"
          BeginProperty Font 
@@ -27,7 +27,7 @@ Begin VB.Form LogIn
             Strikethrough   =   0   'False
          EndProperty
          Height          =   495
-         Left            =   1680
+         Left            =   3240
          TabIndex        =   6
          Top             =   1320
          Width           =   1215
@@ -45,7 +45,7 @@ Begin VB.Form LogIn
             Strikethrough   =   0   'False
          EndProperty
          Height          =   495
-         Left            =   240
+         Left            =   1800
          TabIndex        =   5
          Top             =   1320
          Width           =   1215
@@ -53,7 +53,7 @@ Begin VB.Form LogIn
       Begin VB.TextBox txtPassword 
          Height          =   285
          IMEMode         =   3  'DISABLE
-         Left            =   1200
+         Left            =   2760
          PasswordChar    =   "*"
          TabIndex        =   2
          Top             =   840
@@ -61,10 +61,17 @@ Begin VB.Form LogIn
       End
       Begin VB.TextBox txtUser 
          Height          =   285
-         Left            =   1200
+         Left            =   2760
          TabIndex        =   1
          Top             =   360
          Width           =   1695
+      End
+      Begin VB.Image Image1 
+         Height          =   1260
+         Left            =   120
+         Picture         =   "LogIn.frx":0000
+         Top             =   480
+         Width           =   1455
       End
       Begin VB.Label Label2 
          BackColor       =   &H00FFFFFF&
@@ -79,7 +86,7 @@ Begin VB.Form LogIn
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   240
+         Left            =   1800
          TabIndex        =   4
          Top             =   840
          Width           =   855
@@ -97,7 +104,7 @@ Begin VB.Form LogIn
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   240
+         Left            =   1800
          TabIndex        =   3
          Top             =   360
          Width           =   855
