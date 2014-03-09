@@ -435,51 +435,55 @@ Private newSearch As Boolean
 Private rs As ADODB.Recordset
 Private tempRs As ADODB.Recordset
 Private Sub cmbAddItem_Click()
-    
-
-  If rs.RecordCount = 0 Then
-    MsgBox "Please select an Item First", vbCritical
-    txtOrderQty.SetFocus
-    Exit Sub
-  ElseIf Val(txtOrderQty) = 0 Then
-    MsgBox "Please enter a Quantity", vbCritical
-    txtOrderQty.SetFocus
-    Exit Sub
-  ElseIf Val(lblStocks) - Val(txtOrderQty) < 0 Then
-    MsgBox "Requested Quantity is greater that the current stock", vbCritical
-    txtOrderQty.SetFocus
-    txtOrderQty.SelStart = 0
-    txtOrderQty.SelLength = Len(txtOrderQty)
-    Exit Sub
-  End If
-  
-  Set tempRs = DataCrudDao.getTmpBasketItem(UserSession.getLoginUser, Val(rs!supplier_id), Val(rs!id))
-  If tempRs.RecordCount = 0 Then
-    tempRs.AddNew
-    tempRs!QUANTITY = Val(txtOrderQty)
-  Else
-    tempRs.MoveFirst
-    tempRs!QUANTITY = Val(txtOrderQty) + Val(CommonHelper.extractStringValue(tempRs!QUANTITY))
-    If Val(lblStocks) - Val(tempRs!QUANTITY) < 0 Then
+  If (hasValidForm) Then
+    If rs.State = 0 Then
+       MsgBox "Please select an Item First", vbCritical
+      txtOrderQty.SetFocus
+      Exit Sub
+    ElseIf rs.RecordCount = 0 Then
+      MsgBox "Please select an Item First", vbCritical
+      txtOrderQty.SetFocus
+      Exit Sub
+    ElseIf Val(txtOrderQty) = 0 Then
+      MsgBox "Please enter a Quantity", vbCritical
+      txtOrderQty.SetFocus
+      Exit Sub
+    ElseIf Val(lblStocks) - Val(txtOrderQty) < 0 Then
       MsgBox "Requested Quantity is greater that the current stock", vbCritical
       txtOrderQty.SetFocus
       txtOrderQty.SelStart = 0
       txtOrderQty.SelLength = Len(txtOrderQty)
       Exit Sub
     End If
+
+    Set tempRs = DataCrudDao.getTmpBasketItem(UserSession.getLoginUser, Val(rs!supplier_id), Val(rs!id))
+    If tempRs.RecordCount = 0 Then
+      tempRs.AddNew
+      tempRs!QUANTITY = Val(txtOrderQty)
+    Else
+      tempRs.MoveFirst
+      tempRs!QUANTITY = Val(txtOrderQty) + Val(CommonHelper.extractStringValue(tempRs!QUANTITY))
+      If Val(lblStocks) - Val(tempRs!QUANTITY) < 0 Then
+        MsgBox "Requested Quantity is greater that the current stock", vbCritical
+        txtOrderQty.SetFocus
+        txtOrderQty.SelStart = 0
+        txtOrderQty.SelLength = Len(txtOrderQty)
+        Exit Sub
+      End If
+    End If
+    tempRs!username = UserSession.getLoginUser
+    tempRs!supplier_id = rs!supplier_id
+    tempRs!item_id = rs!id
+    tempRs!UNIT_PRICE = Val(lblUnitPrice)
+    tempRs.Update
+    Call DbInstance.closeRecordSet(tempRs)
+    MsgBox "Item Added to Basket", vbInformation
+    Call frmItemSell.reloadBasketItems
+    Call clearForm
+    txtItemCodeSearch = ""
+    newSearch = False
+    txtItemCodeSearch.SetFocus
   End If
-  tempRs!username = UserSession.getLoginUser
-  tempRs!supplier_id = rs!supplier_id
-  tempRs!item_id = rs!id
-  tempRs!UNIT_PRICE = Val(lblUnitPrice)
-  tempRs.Update
-  Call DbInstance.closeRecordSet(tempRs)
-  MsgBox "Item Added to Basket", vbInformation
-  Call frmItemSell.reloadBasketItems
-  Call clearForm
-  txtItemCodeSearch = ""
-  newSearch = False
-  txtItemCodeSearch.SetFocus
 End Sub
 Private Sub clearForm()
    lblSuplier = ""
@@ -496,6 +500,7 @@ Private Sub cmbClose_Click()
 End Sub
 Private Sub Form_Load()
   newSearch = False
+  Set rs = DataCrudDao.getItemForSales(txtItemCodeSearch)
 End Sub
 Private Sub txtItemCodeSearch_KeyPress(KeyAscii As Integer)
   If KeyAscii = 13 Then
@@ -530,3 +535,12 @@ Private Sub txtOrderQty_KeyPress(KeyAscii As Integer)
     Beep
   End If
 End Sub
+Private Function hasValidForm() As Boolean
+   Dim isValid As Boolean
+   isValid = True
+   If (Not CommonHelper.hasValidValue(txtItemCodeSearch)) Then
+     Call CommonHelper.sendWarning(txtItemCodeSearch, "Please enter a Item ID")
+     isValid = False
+   End If
+   hasValidForm = isValid
+End Function

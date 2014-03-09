@@ -1,5 +1,5 @@
 frmSupplier = 47, 63, 891, 514, C, 50, 50, 879, 542, C
-DbInstance = 132, 174, 1160, 560, C
+DbInstance = -473, 178, 555, 564, C
 MainSub = 154, 203, 1087, 647, C
 DataCrudDao = -3, 34, 964, 810, C
 UserSession = 9, 1, 958, 781, C
@@ -16,7 +16,7 @@ LogIn = 192, 142, 1075, 593, C, 50, 61, 940, 479, C
 frmChangePassword = 0, 0, 0, 0, C, 75, 75, 958, 526, C
 frmItemSell = 14, 55, 897, 506, C, 0, 0, 924, 529, C
 frmAddBasketItem = 75, 65, 958, 516, C, 0, 0, 883, 451, C
-RepSalesInvoice = 75, 75, 958, 526, C, 50, 50, 971, 519, C
+RepSalesInvoice = 75, 75, 958, 526, C, 50, 50, 971, 519, CZ
 frmEntePayment = 0, 0, 0, 0, C, 0, 0, 714, 585, C
 frmOrderReport = 16, 11, 959, 731, C, 0, 2, 1378, 731, C
 frmSalesReport = 0, 0, 0, 0, C, 100, 100, 983, 551, C

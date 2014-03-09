@@ -54,9 +54,9 @@ Begin VB.Form frmOrder
       End
       Begin VB.ComboBox cmbSearchStatus 
          Height          =   315
-         ItemData        =   "frmOrder.frx":0000
+         ItemData        =   "Þ.frx":0000
          Left            =   1200
-         List            =   "frmOrder.frx":000A
+         List            =   "Þ.frx":000A
          TabIndex        =   28
          Text            =   "Pending"
          Top             =   240
@@ -96,7 +96,7 @@ Begin VB.Form frmOrder
          BorderStyle     =   1  'Fixed Single
          Height          =   3615
          Left            =   0
-         Picture         =   "frmOrder.frx":0022
+         Picture         =   "Þ.frx":0022
          Stretch         =   -1  'True
          Top             =   -1800
          Width           =   9495
@@ -322,7 +322,7 @@ Begin VB.Form frmOrder
          BorderStyle     =   1  'Fixed Single
          Height          =   7215
          Left            =   0
-         Picture         =   "frmOrder.frx":750F6
+         Picture         =   "Þ.frx":750F6
          Stretch         =   -1  'True
          Top             =   0
          Width           =   8055
@@ -335,23 +335,6 @@ Begin VB.Form frmOrder
       TabIndex        =   0
       Top             =   720
       Width           =   6015
-      Begin VB.CommandButton Command3 
-         Caption         =   "Print Order"
-         BeginProperty Font 
-            Name            =   "MS Sans Serif"
-            Size            =   9.75
-            Charset         =   0
-            Weight          =   700
-            Underline       =   0   'False
-            Italic          =   0   'False
-            Strikethrough   =   0   'False
-         EndProperty
-         Height          =   615
-         Left            =   4080
-         TabIndex        =   35
-         Top             =   1320
-         Width           =   1815
-      End
       Begin VB.CommandButton cmbReceiveOrder 
          Caption         =   "Receive Order"
          BeginProperty Font 
@@ -366,7 +349,7 @@ Begin VB.Form frmOrder
          Height          =   615
          Left            =   4080
          TabIndex        =   23
-         Top             =   2160
+         Top             =   1680
          Width           =   1815
       End
       Begin VB.TextBox txtStatus 
@@ -607,7 +590,7 @@ Begin VB.Form frmOrder
          BorderStyle     =   1  'Fixed Single
          Height          =   7215
          Left            =   0
-         Picture         =   "frmOrder.frx":EA1CA
+         Picture         =   "Þ.frx":EA1CA
          Stretch         =   -1  'True
          Top             =   0
          Width           =   8055
@@ -681,7 +664,7 @@ Begin VB.Form frmOrder
    Begin VB.Image Image2 
       Height          =   8175
       Left            =   0
-      Picture         =   "frmOrder.frx":15F29E
+      Picture         =   "Þ.frx":15F29E
       Stretch         =   -1  'True
       Top             =   -120
       Width           =   19335
@@ -832,42 +815,6 @@ End Sub
 
 Private Sub Command2_Click()
   cmbSearchStatus.Text = ""
-End Sub
-
-Private Sub Command3_Click()
-  Dim excelApp As New Excel.Application
-  Dim oBook As New Excel.Workbook
-  Dim oSheet As New Excel.Worksheet
-  
-  Set excelApp = CreateObject("Excel.Application")
-  Set oBook = excelApp.Workbooks.Open(App.Path & "\Template\Order.xlsx")
-  Set oSheet = excelApp.Worksheets(1)
-  
-  
-  oSheet.Range("E3") = lblOrderID
-  oSheet.Range("E4") = cmbSupplier.Text
-  oSheet.Range("E5") = dtOrderDate.value
-  oSheet.Range("E5").NumberFormat = Constants.DEFAULT_FORMAT
-  oSheet.Range("E6") = lblOrderBy
-  oSheet.Range("A9").CopyFromRecordset dgOrderItems.DataSource
-   oSheet.Columns.AutoFit
-  
-  oSheet.Range("A1").EntireColumn.Hidden = True
-  oSheet.Range("B1").EntireColumn.Hidden = True
-  oSheet.Range("H1:M1").EntireColumn.Hidden = True
- 
-  excelApp.DisplayAlerts = False
-  oBook.SaveAs App.Path & "\tmp\Temp.xlsx"
-  
-  'If (UserSession.role = "Admin") Then
-  ' excelApp.Visible = True
-  'Else
-    Dim pdfFilePat As String
-    pdfFilePat = App.Path & "\tmp\temp_" & Format(Now, "mmhhyysssh") & ".pdf"
-    Call oBook.ExportAsFixedFormat(xlTypePDF, pdfFilePat, xlQualityStandard, False, True)
-    oBook.Close
-    Call CommonHelper.openFile(pdfFilePat, Me.hWnd)
-  'End If
 End Sub
 
 Private Sub dgOrderItems_DblClick()

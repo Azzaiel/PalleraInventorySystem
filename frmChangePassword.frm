@@ -170,6 +170,11 @@ Attribute VB_Exposed = False
 
 Option Explicit
 Private rs As ADODB.Recordset
+
+Private Sub cmdCancel_Click()
+Unload Me
+End Sub
+
 Private Sub cmdSubmit_Click()
 Call CommonHelper.toDefaultSkin(txtOldPassword)
 Call CommonHelper.toDefaultSkin(txtNewPassword)
