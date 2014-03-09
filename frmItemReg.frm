@@ -921,6 +921,8 @@ Private Sub populateDataGrid()
 Call formatDataGrid
 End Sub
 
+
+
 Private Sub txtCriticalLevel_KeyPress(KeyAscii As Integer)
   If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtCriticalLevel) > 11)) Then
     KeyAscii = 0
