@@ -179,23 +179,73 @@ Begin VB.Form frmItemType
          Top             =   600
          Width           =   1695
       End
+      Begin VB.Label Label1 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Search Form"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   0
+         TabIndex        =   26
+         Top             =   0
+         Width           =   1575
+      End
       Begin VB.Label Label11 
          BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
          Caption         =   "Supplier Name"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
          Left            =   480
          TabIndex        =   17
          Top             =   240
-         Width           =   1095
+         Width           =   1455
       End
       Begin VB.Label Label14 
          BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
          Caption         =   "Item Type"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
          Left            =   5400
          TabIndex        =   16
          Top             =   240
-         Width           =   1095
+         Width           =   1455
+      End
+      Begin VB.Image Image1 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   5415
+         Left            =   0
+         Picture         =   "frmItemType.frx":0000
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   11055
       End
    End
    Begin VB.Frame Frame1 
@@ -207,109 +257,211 @@ Begin VB.Form frmItemType
       Width           =   5055
       Begin VB.TextBox txtItemType 
          Height          =   285
-         Left            =   1440
+         Left            =   1560
          TabIndex        =   20
          Top             =   840
-         Width           =   3375
+         Width           =   3255
       End
       Begin VB.ComboBox cmSuppliers 
          Height          =   315
-         Left            =   1440
+         Left            =   1560
          Style           =   2  'Dropdown List
          TabIndex        =   6
          Top             =   360
-         Width           =   3375
+         Width           =   3255
+      End
+      Begin VB.Label Label17 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Item Type Form"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   0
+         TabIndex        =   25
+         Top             =   0
+         Width           =   1575
       End
       Begin VB.Label Label5 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Item Type:"
-         Height          =   255
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
+         Height          =   375
          Left            =   240
          TabIndex        =   19
          Top             =   840
-         Width           =   855
+         Width           =   1335
       End
       Begin VB.Label lblCreatedBy 
          BackColor       =   &H8000000A&
          BorderStyle     =   1  'Fixed Single
          Height          =   255
-         Left            =   1440
+         Left            =   1560
          TabIndex        =   10
          Top             =   1200
-         Width           =   1935
+         Width           =   1815
       End
       Begin VB.Label lblCreatedDate 
          BackColor       =   &H8000000A&
          BorderStyle     =   1  'Fixed Single
          Height          =   255
-         Left            =   1440
+         Left            =   1560
          TabIndex        =   9
          Top             =   1560
-         Width           =   1935
+         Width           =   1815
       End
       Begin VB.Label lblLatModBy 
          BackColor       =   &H8000000A&
          BorderStyle     =   1  'Fixed Single
          Height          =   255
-         Left            =   1440
+         Left            =   1560
          TabIndex        =   8
          Top             =   1920
-         Width           =   1935
+         Width           =   1815
       End
       Begin VB.Label lblLastModDate 
          BackColor       =   &H8000000A&
          BorderStyle     =   1  'Fixed Single
          Height          =   255
-         Left            =   1440
+         Left            =   1560
          TabIndex        =   7
          Top             =   2280
-         Width           =   1935
+         Width           =   1815
       End
       Begin VB.Label Label9 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Last mod date:"
-         Height          =   255
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
+         Height          =   375
          Left            =   240
          TabIndex        =   5
          Top             =   2280
-         Width           =   1095
+         Width           =   1575
       End
       Begin VB.Label Label8 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Last mod by:"
-         Height          =   255
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
+         Height          =   375
          Left            =   240
          TabIndex        =   4
          Top             =   1920
-         Width           =   975
+         Width           =   1455
       End
       Begin VB.Label Label7 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Created date:"
-         Height          =   255
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
+         Height          =   375
          Left            =   240
          TabIndex        =   3
          Top             =   1560
-         Width           =   975
+         Width           =   1455
       End
       Begin VB.Label Label6 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Created by:"
-         Height          =   255
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
+         Height          =   375
          Left            =   240
          TabIndex        =   2
          Top             =   1200
-         Width           =   855
+         Width           =   1335
       End
       Begin VB.Label Label2 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Suppliers:"
-         Height          =   255
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
+         Height          =   375
          Left            =   240
          TabIndex        =   1
          Top             =   360
-         Width           =   855
+         Width           =   1335
       End
+      Begin VB.Image Image4 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   5415
+         Left            =   0
+         Picture         =   "frmItemType.frx":750D4
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   6015
+      End
+   End
+   Begin VB.Image Image5 
+      Height          =   5535
+      Left            =   0
+      Picture         =   "frmItemType.frx":EA1A8
+      Stretch         =   -1  'True
+      Top             =   0
+      Width           =   16935
    End
 End
 Attribute VB_Name = "frmItemType"
@@ -378,7 +530,9 @@ Private Sub cmbNewRec_Click()
     Call toogelInsertMode(True)
   Else
     If (DataCrudDao.isItemTypeExisting(txtItemType) = False) Then
+    
      Set tempRs = DataCrudDao.getFakeItemTypeRS
+
       tempRs.AddNew
       tempRs!supplier_id = suplierIdList(cmSuppliers.ListIndex)
       tempRs!Name = txtItemType
@@ -395,7 +549,7 @@ Private Sub cmbNewRec_Click()
       MsgBox "Item Type Already exist!!", vbCritical
     End If
   End If
-End Sub
+End Function
 Private Sub toogelInsertMode(isInisilization As Boolean)
   If (isInisilization) Then
     Call clearForm

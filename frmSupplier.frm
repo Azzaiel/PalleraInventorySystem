@@ -163,6 +163,7 @@ Begin VB.Form frmSupplier
             Italic          =   -1  'True
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
          Left            =   0
          TabIndex        =   39
@@ -182,6 +183,7 @@ Begin VB.Form frmSupplier
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   6120
          TabIndex        =   23
@@ -201,6 +203,7 @@ Begin VB.Form frmSupplier
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   480
          TabIndex        =   21
@@ -220,6 +223,7 @@ Begin VB.Form frmSupplier
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   480
          TabIndex        =   18
@@ -306,6 +310,7 @@ Begin VB.Form frmSupplier
             Italic          =   -1  'True
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
          Left            =   0
          TabIndex        =   38
@@ -325,11 +330,12 @@ Begin VB.Form frmSupplier
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   240
          TabIndex        =   36
          Top             =   2640
-         Width           =   1335
+         Width           =   1455
       End
       Begin VB.Label Label5 
          BackColor       =   &H00FFFFFF&
@@ -410,11 +416,12 @@ Begin VB.Form frmSupplier
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   240
          TabIndex        =   10
          Top             =   4440
-         Width           =   1455
+         Width           =   1575
       End
       Begin VB.Label Label9 
          BackColor       =   &H00FFFFFF&
@@ -429,11 +436,12 @@ Begin VB.Form frmSupplier
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   240
          TabIndex        =   9
          Top             =   4080
-         Width           =   1455
+         Width           =   1575
       End
       Begin VB.Label Label8 
          BackColor       =   &H00FFFFFF&
@@ -448,11 +456,12 @@ Begin VB.Form frmSupplier
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   240
          TabIndex        =   8
          Top             =   3720
-         Width           =   1455
+         Width           =   1575
       End
       Begin VB.Label Label7 
          BackColor       =   &H00FFFFFF&
@@ -467,11 +476,12 @@ Begin VB.Form frmSupplier
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   240
          TabIndex        =   7
          Top             =   3360
-         Width           =   1335
+         Width           =   1455
       End
       Begin VB.Label Label6 
          BackColor       =   &H00FFFFFF&
@@ -486,11 +496,12 @@ Begin VB.Form frmSupplier
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   240
          TabIndex        =   6
          Top             =   3000
-         Width           =   1335
+         Width           =   1455
       End
       Begin VB.Label Label4 
          BackColor       =   &H00FFFFFF&
@@ -525,11 +536,12 @@ Begin VB.Form frmSupplier
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   240
          TabIndex        =   4
          Top             =   1560
-         Width           =   1455
+         Width           =   1575
       End
       Begin VB.Label Label2 
          BackColor       =   &H00FFFFFF&
@@ -544,11 +556,12 @@ Begin VB.Form frmSupplier
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   240
          TabIndex        =   3
          Top             =   840
-         Width           =   1575
+         Width           =   1695
       End
       Begin VB.Label Label1 
          BackColor       =   &H00FFFFFF&

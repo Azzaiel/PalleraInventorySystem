@@ -10,6 +10,408 @@ Begin VB.Form frmItemReg
    ScaleHeight     =   6015
    ScaleWidth      =   17085
    StartUpPosition =   1  'CenterOwner
+   Begin VB.Frame Frame1 
+      Caption         =   "Item Type Form"
+      Height          =   5295
+      Left            =   120
+      TabIndex        =   17
+      Top             =   120
+      Width           =   5895
+      Begin VB.TextBox txtCriticalLevel 
+         Height          =   285
+         Left            =   1560
+         TabIndex        =   43
+         Top             =   1920
+         Width           =   1815
+      End
+      Begin VB.TextBox txtItemName 
+         Height          =   285
+         Left            =   1560
+         TabIndex        =   4
+         Top             =   1560
+         Width           =   4095
+      End
+      Begin VB.TextBox txtUnitPrice 
+         Height          =   285
+         Left            =   1560
+         TabIndex        =   6
+         Top             =   3000
+         Width           =   1815
+      End
+      Begin VB.TextBox txtRetailPrice 
+         Height          =   285
+         Left            =   1560
+         TabIndex        =   5
+         Top             =   2640
+         Width           =   1815
+      End
+      Begin VB.ComboBox cmbSupplier 
+         Height          =   315
+         Left            =   1560
+         Style           =   2  'Dropdown List
+         TabIndex        =   2
+         Top             =   720
+         Width           =   4095
+      End
+      Begin VB.ComboBox cmbItemType 
+         Height          =   315
+         Left            =   1560
+         Style           =   2  'Dropdown List
+         TabIndex        =   3
+         Top             =   1200
+         Width           =   4095
+      End
+      Begin VB.TextBox txtItemCode 
+         Height          =   285
+         Left            =   1560
+         TabIndex        =   1
+         Top             =   360
+         Width           =   4095
+      End
+      Begin VB.Label Label17 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Item Type Form"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   0
+         TabIndex        =   44
+         Top             =   0
+         Width           =   1575
+      End
+      Begin VB.Label Label16 
+         BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Critical Level"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   42
+         Top             =   1920
+         Width           =   1455
+      End
+      Begin VB.Label lblQuantity 
+         BackColor       =   &H8000000A&
+         BorderStyle     =   1  'Fixed Single
+         ForeColor       =   &H00000000&
+         Height          =   255
+         Left            =   1560
+         TabIndex        =   37
+         Top             =   2280
+         Width           =   1815
+      End
+      Begin VB.Label Label10 
+         BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Quantity"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   36
+         Top             =   2280
+         Width           =   1095
+      End
+      Begin VB.Label Label13 
+         BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Item Name:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   33
+         Top             =   1560
+         Width           =   1335
+      End
+      Begin VB.Label Label12 
+         BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Active:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   32
+         Top             =   3360
+         Width           =   975
+      End
+      Begin VB.Label txtActive 
+         BackColor       =   &H8000000A&
+         BorderStyle     =   1  'Fixed Single
+         Height          =   255
+         Left            =   1560
+         TabIndex        =   31
+         Top             =   3360
+         Width           =   1815
+      End
+      Begin VB.Label Label4 
+         BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Unit Price"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   30
+         Top             =   3000
+         Width           =   1335
+      End
+      Begin VB.Label Label3 
+         BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Retail Price"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   29
+         Top             =   2640
+         Width           =   1335
+      End
+      Begin VB.Label Label1 
+         BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Suppliers:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   28
+         Top             =   720
+         Width           =   1335
+      End
+      Begin VB.Label Label2 
+         BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Item Type:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   27
+         Top             =   1200
+         Width           =   1335
+      End
+      Begin VB.Label Label6 
+         BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Created by:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   26
+         Top             =   3720
+         Width           =   1335
+      End
+      Begin VB.Label Label7 
+         BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Created date:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   25
+         Top             =   4080
+         Width           =   1455
+      End
+      Begin VB.Label Label8 
+         BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Last mod by:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   24
+         Top             =   4440
+         Width           =   1455
+      End
+      Begin VB.Label Label9 
+         BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Last mod date:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   23
+         Top             =   4800
+         Width           =   1575
+      End
+      Begin VB.Label lblLastModDate 
+         BackColor       =   &H8000000A&
+         BorderStyle     =   1  'Fixed Single
+         Height          =   255
+         Left            =   1560
+         TabIndex        =   22
+         Top             =   4800
+         Width           =   1815
+      End
+      Begin VB.Label lblLatModBy 
+         BackColor       =   &H8000000A&
+         BorderStyle     =   1  'Fixed Single
+         Height          =   255
+         Left            =   1560
+         TabIndex        =   21
+         Top             =   4440
+         Width           =   1815
+      End
+      Begin VB.Label lblCreatedDate 
+         BackColor       =   &H8000000A&
+         BorderStyle     =   1  'Fixed Single
+         Height          =   255
+         Left            =   1560
+         TabIndex        =   20
+         Top             =   4080
+         Width           =   1815
+      End
+      Begin VB.Label lblCreatedBy 
+         BackColor       =   &H8000000A&
+         BorderStyle     =   1  'Fixed Single
+         Height          =   255
+         Left            =   1560
+         TabIndex        =   19
+         Top             =   3720
+         Width           =   1815
+      End
+      Begin VB.Label Label5 
+         BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
+         Caption         =   "Item Code"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   240
+         TabIndex        =   18
+         Top             =   360
+         Width           =   1335
+      End
+      Begin VB.Image Image4 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   5415
+         Left            =   0
+         Picture         =   "frmItemReg.frx":0000
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   6015
+      End
+   End
    Begin VB.ComboBox cmbSupplierName 
       Height          =   315
       Left            =   12960
@@ -41,236 +443,6 @@ Begin VB.Form frmItemReg
       TabIndex        =   8
       Top             =   5400
       Width           =   1215
-   End
-   Begin VB.Frame Frame1 
-      Caption         =   "Item Type Form"
-      Height          =   5295
-      Left            =   120
-      TabIndex        =   17
-      Top             =   0
-      Width           =   5895
-      Begin VB.TextBox txtCriticalLevel 
-         Height          =   285
-         Left            =   1440
-         TabIndex        =   43
-         Top             =   1920
-         Width           =   1935
-      End
-      Begin VB.TextBox txtItemName 
-         Height          =   285
-         Left            =   1440
-         TabIndex        =   4
-         Top             =   1560
-         Width           =   4215
-      End
-      Begin VB.TextBox txtUnitPrice 
-         Height          =   285
-         Left            =   1440
-         TabIndex        =   6
-         Top             =   3000
-         Width           =   1935
-      End
-      Begin VB.TextBox txtRetailPrice 
-         Height          =   285
-         Left            =   1440
-         TabIndex        =   5
-         Top             =   2640
-         Width           =   1935
-      End
-      Begin VB.ComboBox cmbSupplier 
-         Height          =   315
-         Left            =   1440
-         Style           =   2  'Dropdown List
-         TabIndex        =   2
-         Top             =   720
-         Width           =   4215
-      End
-      Begin VB.ComboBox cmbItemType 
-         Height          =   315
-         Left            =   1440
-         Style           =   2  'Dropdown List
-         TabIndex        =   3
-         Top             =   1200
-         Width           =   4215
-      End
-      Begin VB.TextBox txtItemCode 
-         Height          =   285
-         Left            =   1440
-         TabIndex        =   1
-         Top             =   360
-         Width           =   4215
-      End
-      Begin VB.Label Label16 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Critical Level"
-         Height          =   255
-         Left            =   240
-         TabIndex        =   42
-         Top             =   1920
-         Width           =   975
-      End
-      Begin VB.Label lblQuantity 
-         BackColor       =   &H8000000A&
-         BorderStyle     =   1  'Fixed Single
-         Height          =   255
-         Left            =   1440
-         TabIndex        =   37
-         Top             =   2280
-         Width           =   1935
-      End
-      Begin VB.Label Label10 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Quantity"
-         Height          =   255
-         Left            =   240
-         TabIndex        =   36
-         Top             =   2280
-         Width           =   615
-      End
-      Begin VB.Label Label13 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Item Name:"
-         Height          =   255
-         Left            =   240
-         TabIndex        =   33
-         Top             =   1560
-         Width           =   855
-      End
-      Begin VB.Label Label12 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Active:"
-         Height          =   255
-         Left            =   240
-         TabIndex        =   32
-         Top             =   3360
-         Width           =   495
-      End
-      Begin VB.Label txtActive 
-         BackColor       =   &H8000000A&
-         BorderStyle     =   1  'Fixed Single
-         Height          =   255
-         Left            =   1440
-         TabIndex        =   31
-         Top             =   3360
-         Width           =   1935
-      End
-      Begin VB.Label Label4 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Unit Price"
-         Height          =   255
-         Left            =   240
-         TabIndex        =   30
-         Top             =   3000
-         Width           =   855
-      End
-      Begin VB.Label Label3 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Retail Price"
-         Height          =   255
-         Left            =   240
-         TabIndex        =   29
-         Top             =   2640
-         Width           =   855
-      End
-      Begin VB.Label Label1 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Suppliers:"
-         Height          =   255
-         Left            =   240
-         TabIndex        =   28
-         Top             =   720
-         Width           =   855
-      End
-      Begin VB.Label Label2 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Item Type:"
-         Height          =   255
-         Left            =   240
-         TabIndex        =   27
-         Top             =   1200
-         Width           =   855
-      End
-      Begin VB.Label Label6 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Created by:"
-         Height          =   255
-         Left            =   240
-         TabIndex        =   26
-         Top             =   3720
-         Width           =   855
-      End
-      Begin VB.Label Label7 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Created date:"
-         Height          =   255
-         Left            =   240
-         TabIndex        =   25
-         Top             =   4080
-         Width           =   975
-      End
-      Begin VB.Label Label8 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Last mod by:"
-         Height          =   255
-         Left            =   240
-         TabIndex        =   24
-         Top             =   4440
-         Width           =   975
-      End
-      Begin VB.Label Label9 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Last mod date:"
-         Height          =   255
-         Left            =   240
-         TabIndex        =   23
-         Top             =   4800
-         Width           =   1095
-      End
-      Begin VB.Label lblLastModDate 
-         BackColor       =   &H8000000A&
-         BorderStyle     =   1  'Fixed Single
-         Height          =   255
-         Left            =   1440
-         TabIndex        =   22
-         Top             =   4800
-         Width           =   1935
-      End
-      Begin VB.Label lblLatModBy 
-         BackColor       =   &H8000000A&
-         BorderStyle     =   1  'Fixed Single
-         Height          =   255
-         Left            =   1440
-         TabIndex        =   21
-         Top             =   4440
-         Width           =   1935
-      End
-      Begin VB.Label lblCreatedDate 
-         BackColor       =   &H8000000A&
-         BorderStyle     =   1  'Fixed Single
-         Height          =   255
-         Left            =   1440
-         TabIndex        =   20
-         Top             =   4080
-         Width           =   1935
-      End
-      Begin VB.Label lblCreatedBy 
-         BackColor       =   &H8000000A&
-         BorderStyle     =   1  'Fixed Single
-         Height          =   255
-         Left            =   1440
-         TabIndex        =   19
-         Top             =   3720
-         Width           =   1935
-      End
-      Begin VB.Label Label5 
-         BackColor       =   &H0000FF00&
-         Caption         =   "Item Code"
-         Height          =   255
-         Left            =   240
-         TabIndex        =   18
-         Top             =   360
-         Width           =   855
-      End
    End
    Begin VB.CommandButton cmbClear 
       Caption         =   "Clear"
@@ -341,13 +513,13 @@ Begin VB.Form frmItemReg
       Width           =   1095
    End
    Begin MSDataGridLib.DataGrid dgItems 
-      Height          =   4335
+      Height          =   4215
       Left            =   6240
       TabIndex        =   12
-      Top             =   1560
+      Top             =   1680
       Width           =   10695
       _ExtentX        =   18865
-      _ExtentY        =   7646
+      _ExtentY        =   7435
       _Version        =   393216
       HeadLines       =   1
       RowHeight       =   15
@@ -409,7 +581,7 @@ Begin VB.Form frmItemReg
       Height          =   1455
       Left            =   6240
       TabIndex        =   13
-      Top             =   0
+      Top             =   120
       Width           =   10695
       Begin VB.TextBox Text1 
          Height          =   285
@@ -462,40 +634,120 @@ Begin VB.Form frmItemReg
       End
       Begin VB.Label Label15 
          BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
          Caption         =   "Item Name:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
-         Left            =   5520
+         Left            =   5400
          TabIndex        =   41
          Top             =   600
-         Width           =   855
+         Width           =   1335
       End
       Begin VB.Label Label14 
          BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
          Caption         =   "Supplier Name"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
-         Left            =   360
+         Left            =   240
          TabIndex        =   38
          Top             =   600
-         Width           =   1335
+         Width           =   1815
       End
       Begin VB.Label aaa 
          BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
          Caption         =   "Item Code Search"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
-         Left            =   360
+         Left            =   240
          TabIndex        =   34
          Top             =   240
-         Width           =   1335
+         Width           =   1815
       End
       Begin VB.Label Label11 
          BackColor       =   &H0000FF00&
+         BackStyle       =   0  'Transparent
          Caption         =   "Supplier Name"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
-         Left            =   5520
+         Left            =   5400
          TabIndex        =   16
          Top             =   240
-         Width           =   1095
+         Width           =   1575
       End
+      Begin VB.Label Label18 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Search Form"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   0
+         TabIndex        =   45
+         Top             =   0
+         Width           =   1575
+      End
+      Begin VB.Image Image1 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   5415
+         Left            =   0
+         Picture         =   "frmItemReg.frx":750D4
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   11295
+      End
+   End
+   Begin VB.Image Image5 
+      Height          =   6015
+      Left            =   -120
+      Picture         =   "frmItemReg.frx":EA1A8
+      Stretch         =   -1  'True
+      Top             =   0
+      Width           =   17175
    End
 End
 Attribute VB_Name = "frmItemReg"
@@ -527,7 +779,7 @@ Private Sub cmbEdit_Click()
     tempRs!Name = txtItemName
     tempRs!CRITICAL_LEVEL = Val(txtCriticalLevel)
     tempRs!RETAIL_PRICE = txtRetailPrice
-    tempRs!unit_price = txtUnitPrice
+    tempRs!UNIT_PRICE = txtUnitPrice
     tempRs!CREATED_BY = UserSession.getLoginUser
     tempRs!LAST_MOD_DATE = Now
     tempRs.Update
@@ -552,8 +804,8 @@ Private Sub cmbNewRec_Click()
       tempRs!Name = txtItemName
       tempRs!RETAIL_PRICE = txtRetailPrice
       tempRs!CRITICAL_LEVEL = Val(txtCriticalLevel)
-      tempRs!quantity = 0
-      tempRs!unit_price = txtUnitPrice
+      tempRs!QUANTITY = 0
+      tempRs!UNIT_PRICE = txtUnitPrice
       tempRs!CREATED_BY = UserSession.getLoginUser
       tempRs!CREATED_DATE = Now
       tempRs!LAST_MOD_DATE = Now
@@ -669,6 +921,10 @@ Private Sub populateDataGrid()
 Call formatDataGrid
 End Sub
 
+Private Sub Image4_Click()
+
+End Sub
+
 Private Sub txtCriticalLevel_KeyPress(KeyAscii As Integer)
   If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtCriticalLevel) > 11)) Then
     KeyAscii = 0
@@ -714,9 +970,9 @@ Private Sub showSelectedData()
  cmbSupplier.Text = CommonHelper.extractStringValue(rs!SUPPLIER)
  cmbItemType.Text = CommonHelper.extractStringValue(rs!ITEM_TYPE)
  txtItemName = CommonHelper.extractStringValue(rs!ITEM_NAME)
- lblQuantity = Val(CommonHelper.extractStringValue(rs!quantity))
+ lblQuantity = Val(CommonHelper.extractStringValue(rs!QUANTITY))
  txtRetailPrice = CommonHelper.extractStringValue(rs!RETAIL_PRICE)
- txtUnitPrice = CommonHelper.extractStringValue(rs!unit_price)
+ txtUnitPrice = CommonHelper.extractStringValue(rs!UNIT_PRICE)
  txtActive = CommonHelper.extractStringValue(rs!active)
  lblCreatedBy = CommonHelper.extractStringValue(rs!CREATED_BY)
  lblCreatedDate = CommonHelper.extractDateValue(rs!CREATED_DATE)

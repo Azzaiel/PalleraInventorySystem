@@ -435,21 +435,22 @@ Private newSearch As Boolean
 Private rs As ADODB.Recordset
 Private tempRs As ADODB.Recordset
 Private Sub cmbAddItem_Click()
+    
 
   If rs.RecordCount = 0 Then
     MsgBox "Please select an Item First", vbCritical
     txtOrderQty.SetFocus
-    Exit Sub
+    Exit Function
   ElseIf Val(txtOrderQty) = 0 Then
     MsgBox "Please enter a Quantity", vbCritical
     txtOrderQty.SetFocus
-    Exit Sub
+    Exit Function
   ElseIf Val(lblStocks) - Val(txtOrderQty) < 0 Then
     MsgBox "Requested Quantity is greater that the current stock", vbCritical
     txtOrderQty.SetFocus
     txtOrderQty.SelStart = 0
     txtOrderQty.SelLength = Len(txtOrderQty)
-    Exit Sub
+    Exit Function
   End If
   
   Set tempRs = DataCrudDao.getTmpBasketItem(UserSession.getLoginUser, Val(rs!supplier_id), Val(rs!id))
@@ -464,7 +465,7 @@ Private Sub cmbAddItem_Click()
       txtOrderQty.SetFocus
       txtOrderQty.SelStart = 0
       txtOrderQty.SelLength = Len(txtOrderQty)
-      Exit Sub
+      Exit Function
     End If
   End If
   tempRs!username = UserSession.getLoginUser
@@ -479,7 +480,7 @@ Private Sub cmbAddItem_Click()
   txtItemCodeSearch = ""
   newSearch = False
   txtItemCodeSearch.SetFocus
-End Sub
+End Function
 Private Sub clearForm()
    lblSuplier = ""
    lblItemType = ""
@@ -529,3 +530,6 @@ Private Sub txtOrderQty_KeyPress(KeyAscii As Integer)
     Beep
   End If
 End Sub
+
++
+

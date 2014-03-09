@@ -75,6 +75,14 @@ Begin VB.Form frmFastMovingItems
          EndProperty
       EndProperty
    End
+   Begin VB.Image Image1 
+      Height          =   7935
+      Left            =   0
+      Picture         =   "frmFastMovingItems.frx":0000
+      Stretch         =   -1  'True
+      Top             =   0
+      Width           =   10455
+   End
 End
 Attribute VB_Name = "frmFastMovingItems"
 Attribute VB_GlobalNameSpace = False

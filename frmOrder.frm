@@ -29,9 +29,9 @@ Begin VB.Form frmOrder
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   5040
+         Left            =   6600
          TabIndex        =   31
-         Top             =   600
+         Top             =   240
          Width           =   1815
       End
       Begin VB.CommandButton Command1 
@@ -46,9 +46,9 @@ Begin VB.Form frmOrder
             Strikethrough   =   0   'False
          EndProperty
          Height          =   255
-         Left            =   3000
+         Left            =   4320
          TabIndex        =   30
-         Top             =   600
+         Top             =   240
          Width           =   1815
       End
       Begin VB.ComboBox cmbSearchStatus 
@@ -61,14 +61,44 @@ Begin VB.Form frmOrder
          Top             =   240
          Width           =   2655
       End
+      Begin VB.Label Label11 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Search Status Field"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   0
+         TabIndex        =   33
+         Top             =   0
+         Width           =   4695
+      End
       Begin VB.Label Label9 
          BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Status"
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   240
          TabIndex        =   29
          Top             =   240
          Width           =   855
+      End
+      Begin VB.Image Image1 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   3615
+         Left            =   0
+         Picture         =   "frmOrder.frx":0022
+         Stretch         =   -1  'True
+         Top             =   -1800
+         Width           =   9495
       End
    End
    Begin VB.CommandButton cmdDelete 
@@ -211,8 +241,28 @@ Begin VB.Form frmOrder
             EndProperty
          EndProperty
       End
+      Begin VB.Label Label13 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Order Items (Double Click to View Details)"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   0
+         TabIndex        =   34
+         Top             =   0
+         Width           =   4695
+      End
       Begin VB.Label lblTotalCost 
          BackColor       =   &H00FFFFFF&
+         BorderStyle     =   1  'Fixed Single
          BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   9.75
@@ -222,6 +272,7 @@ Begin VB.Form frmOrder
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H000000FF&
          Height          =   255
          Left            =   2880
          TabIndex        =   26
@@ -230,6 +281,7 @@ Begin VB.Form frmOrder
       End
       Begin VB.Label Label3 
          BackColor       =   &H000000FF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Total Cost:"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -247,6 +299,7 @@ Begin VB.Form frmOrder
          Width           =   1215
       End
       Begin VB.Label lblAddItemLink 
+         BackStyle       =   0  'Transparent
          Caption         =   "Add Item"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -263,6 +316,15 @@ Begin VB.Form frmOrder
          TabIndex        =   22
          Top             =   0
          Width           =   1095
+      End
+      Begin VB.Image Image3 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   7215
+         Left            =   0
+         Picture         =   "frmOrder.frx":750F6
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   8055
       End
    End
    Begin VB.Frame Frame2 
@@ -284,14 +346,14 @@ Begin VB.Form frmOrder
             Strikethrough   =   0   'False
          EndProperty
          Height          =   615
-         Left            =   3840
+         Left            =   4080
          TabIndex        =   23
          Top             =   1680
          Width           =   1815
       End
       Begin VB.TextBox txtStatus 
          Height          =   285
-         Left            =   1680
+         Left            =   1800
          Locked          =   -1  'True
          TabIndex        =   16
          Text            =   "Pending"
@@ -301,7 +363,7 @@ Begin VB.Form frmOrder
       Begin VB.ComboBox cmbSupplier 
          Enabled         =   0   'False
          Height          =   315
-         Left            =   1680
+         Left            =   1800
          Style           =   2  'Dropdown List
          TabIndex        =   9
          Top             =   720
@@ -309,18 +371,38 @@ Begin VB.Form frmOrder
       End
       Begin MSComCtl2.DTPicker dtOrderDate 
          Height          =   255
-         Left            =   1680
+         Left            =   1800
          TabIndex        =   1
          Top             =   1560
          Width           =   1935
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
-         Format          =   16580611
+         Format          =   60620803
          CurrentDate     =   41671
+      End
+      Begin VB.Label Label10 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Order Information"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   0
+         TabIndex        =   32
+         Top             =   0
+         Width           =   4695
       End
       Begin VB.Label Label2 
          BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Height          =   855
          Left            =   3720
          TabIndex        =   24
@@ -329,81 +411,158 @@ Begin VB.Form frmOrder
       End
       Begin VB.Label Label4 
          BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Status"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   480
          TabIndex        =   17
          Top             =   1200
-         Width           =   855
+         Width           =   1455
       End
       Begin VB.Label Label5 
          BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Order ID"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   480
          TabIndex        =   12
          Top             =   360
-         Width           =   855
+         Width           =   1455
       End
       Begin VB.Label lblOrderID 
          BackColor       =   &H8000000A&
          BorderStyle     =   1  'Fixed Single
          Height          =   255
-         Left            =   1680
+         Left            =   1800
          TabIndex        =   11
          Top             =   360
          Width           =   1935
       End
       Begin VB.Label Label1 
          BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Suppliers:"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   480
          TabIndex        =   10
          Top             =   720
-         Width           =   855
+         Width           =   1455
       End
       Begin VB.Label Label12 
          BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Order  Date"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   480
          TabIndex        =   8
          Top             =   1560
-         Width           =   855
+         Width           =   1455
       End
       Begin VB.Label Label6 
          BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Order  By"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   480
          TabIndex        =   7
          Top             =   1920
-         Width           =   855
+         Width           =   1455
       End
       Begin VB.Label Label7 
          BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Received Date"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   480
          TabIndex        =   6
          Top             =   2280
-         Width           =   1095
+         Width           =   1695
       End
       Begin VB.Label Label8 
          BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Received By"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H00FFFFFF&
          Height          =   255
          Left            =   480
          TabIndex        =   5
          Top             =   2640
-         Width           =   975
+         Width           =   1575
       End
       Begin VB.Label lblReceviedBy 
          BackColor       =   &H8000000A&
          BorderStyle     =   1  'Fixed Single
          Height          =   255
-         Left            =   1680
+         Left            =   1800
          TabIndex        =   4
          Top             =   2640
          Width           =   1935
@@ -412,7 +571,7 @@ Begin VB.Form frmOrder
          BackColor       =   &H8000000A&
          BorderStyle     =   1  'Fixed Single
          Height          =   255
-         Left            =   1680
+         Left            =   1800
          TabIndex        =   3
          Top             =   1920
          Width           =   1935
@@ -421,10 +580,19 @@ Begin VB.Form frmOrder
          BackColor       =   &H8000000A&
          BorderStyle     =   1  'Fixed Single
          Height          =   255
-         Left            =   1680
+         Left            =   1800
          TabIndex        =   2
          Top             =   2280
          Width           =   1935
+      End
+      Begin VB.Image Image4 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   7215
+         Left            =   0
+         Picture         =   "frmOrder.frx":EA1CA
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   8055
       End
    End
    Begin MSDataGridLib.DataGrid dgOrders 
@@ -491,6 +659,14 @@ Begin VB.Form frmOrder
          BeginProperty Column01 
          EndProperty
       EndProperty
+   End
+   Begin VB.Image Image2 
+      Height          =   8175
+      Left            =   0
+      Picture         =   "frmOrder.frx":15F29E
+      Stretch         =   -1  'True
+      Top             =   -120
+      Width           =   19335
    End
 End
 Attribute VB_Name = "frmOrder"

@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form frmItemSell 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Item Counter"
+   Caption         =   "Commands"
    ClientHeight    =   5415
    ClientLeft      =   5385
    ClientTop       =   3105
@@ -104,6 +104,34 @@ Begin VB.Form frmItemSell
          Top             =   1680
          Width           =   1695
       End
+      Begin VB.Label Label17 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Commands"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   0
+         TabIndex        =   10
+         Top             =   0
+         Width           =   1575
+      End
+      Begin VB.Image Image4 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   5415
+         Left            =   0
+         Picture         =   "frmItemSell.frx":0000
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   6015
+      End
    End
    Begin VB.Frame Frame1 
       Caption         =   "Customer Items"
@@ -176,8 +204,28 @@ Begin VB.Form frmItemSell
             EndProperty
          EndProperty
       End
+      Begin VB.Label Label1 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Customer's Items"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   0
+         TabIndex        =   11
+         Top             =   0
+         Width           =   1575
+      End
       Begin VB.Label lblTotalCost 
          BackColor       =   &H00FFFFFF&
+         BorderStyle     =   1  'Fixed Single
          BeginProperty Font 
             Name            =   "MS Sans Serif"
             Size            =   9.75
@@ -187,6 +235,7 @@ Begin VB.Form frmItemSell
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H000000FF&
          Height          =   255
          Left            =   4920
          TabIndex        =   3
@@ -194,7 +243,8 @@ Begin VB.Form frmItemSell
          Width           =   1455
       End
       Begin VB.Label Label3 
-         BackColor       =   &H0000FF00&
+         BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Total Cost:"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -211,6 +261,23 @@ Begin VB.Form frmItemSell
          Top             =   4680
          Width           =   1215
       End
+      Begin VB.Image Image1 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   5415
+         Left            =   0
+         Picture         =   "frmItemSell.frx":750D4
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   10215
+      End
+   End
+   Begin VB.Image Image5 
+      Height          =   6015
+      Left            =   0
+      Picture         =   "frmItemSell.frx":EA1A8
+      Stretch         =   -1  'True
+      Top             =   0
+      Width           =   17175
    End
 End
 Attribute VB_Name = "frmItemSell"
@@ -256,7 +323,7 @@ Private Sub cmbReceiveOrder_Click()
     While Not tmpBasketRs.EOF
       
       Set tmpRs = DataCrudDao.getItemRSByID(tmpBasketRs!item_id)
-      tmpRs!quantity = Val(tmpRs!quantity) - Val(tmpBasketRs!quantity)
+      tmpRs!QUANTITY = Val(tmpRs!QUANTITY) - Val(tmpBasketRs!QUANTITY)
       tmpRs.Update
       Call DbInstance.closeRecordSet(tmpRs)
       
@@ -265,8 +332,8 @@ Private Sub cmbReceiveOrder_Click()
       salesRS!supplier_id = tmpBasketRs!supplier_id
       salesRS!item_id = tmpBasketRs!item_id
       salesRS!sale_date = Now
-      salesRS!quantity = tmpBasketRs!quantity
-      salesRS!unit_price = tmpBasketRs!unit_price
+      salesRS!QUANTITY = tmpBasketRs!QUANTITY
+      salesRS!UNIT_PRICE = tmpBasketRs!UNIT_PRICE
       salesRS.Update
       
       tmpBasketRs.Delete

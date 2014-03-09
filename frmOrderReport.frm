@@ -82,6 +82,15 @@ Begin VB.Form frmOrderReport
             EndProperty
          EndProperty
       End
+      Begin VB.Image Image1 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   7215
+         Left            =   0
+         Picture         =   "frmOrderReport.frx":0000
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   14535
+      End
    End
    Begin VB.Frame Frame1 
       Caption         =   "Search Form"
@@ -127,7 +136,7 @@ Begin VB.Form frmOrderReport
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   "MMMM, dd yyyy"
-         Format          =   16580611
+         Format          =   60686339
          CurrentDate     =   41697
       End
       Begin VB.CommandButton cmdClearSearch 
@@ -191,11 +200,31 @@ Begin VB.Form frmOrderReport
             Strikethrough   =   0   'False
          EndProperty
          CustomFormat    =   "MMMM, dd yyyy"
-         Format          =   16580611
+         Format          =   60686339
          CurrentDate     =   41697
+      End
+      Begin VB.Label Label10 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Search Field"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   0
+         TabIndex        =   11
+         Top             =   0
+         Width           =   4695
       End
       Begin VB.Label Label2 
          BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "End Date"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -206,14 +235,16 @@ Begin VB.Form frmOrderReport
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
          Left            =   9600
          TabIndex        =   7
          Top             =   240
-         Width           =   855
+         Width           =   1695
       End
       Begin VB.Label Label1 
          BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Start Date"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -224,14 +255,16 @@ Begin VB.Form frmOrderReport
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
          Left            =   6000
          TabIndex        =   5
          Top             =   240
-         Width           =   1095
+         Width           =   1935
       End
       Begin VB.Label Label11 
          BackColor       =   &H00FFFFFF&
+         BackStyle       =   0  'Transparent
          Caption         =   "Supplier Name"
          BeginProperty Font 
             Name            =   "MS Sans Serif"
@@ -242,12 +275,30 @@ Begin VB.Form frmOrderReport
             Italic          =   0   'False
             Strikethrough   =   0   'False
          EndProperty
+         ForeColor       =   &H8000000A&
          Height          =   255
          Left            =   840
          TabIndex        =   2
          Top             =   240
-         Width           =   1335
+         Width           =   2175
       End
+      Begin VB.Image Image4 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   7215
+         Left            =   0
+         Picture         =   "frmOrderReport.frx":750D4
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   13335
+      End
+   End
+   Begin VB.Image Image2 
+      Height          =   9135
+      Left            =   0
+      Picture         =   "frmOrderReport.frx":EA1A8
+      Stretch         =   -1  'True
+      Top             =   0
+      Width           =   19815
    End
 End
 Attribute VB_Name = "frmOrderReport"

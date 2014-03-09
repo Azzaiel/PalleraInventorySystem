@@ -82,6 +82,15 @@ Begin VB.Form frmSalesReport
             EndProperty
          EndProperty
       End
+      Begin VB.Image Image1 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   7215
+         Left            =   0
+         Picture         =   "frmSalesReport.frx":0000
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   13335
+      End
    End
    Begin VB.Frame Frame1 
       Caption         =   "Search Form"
@@ -186,6 +195,25 @@ Begin VB.Form frmSalesReport
          Format          =   16580611
          CurrentDate     =   41697
       End
+      Begin VB.Label Label10 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Search Field"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   0
+         TabIndex        =   9
+         Top             =   0
+         Width           =   4695
+      End
       Begin VB.Label Label1 
          BackColor       =   &H00FFFFFF&
          Caption         =   "Start Date"
@@ -222,6 +250,23 @@ Begin VB.Form frmSalesReport
          Top             =   240
          Width           =   855
       End
+      Begin VB.Image Image4 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   7215
+         Left            =   0
+         Picture         =   "frmSalesReport.frx":750D4
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   13335
+      End
+   End
+   Begin VB.Image Image2 
+      Height          =   8895
+      Left            =   0
+      Picture         =   "frmSalesReport.frx":EA1A8
+      Stretch         =   -1  'True
+      Top             =   0
+      Width           =   19695
    End
 End
 Attribute VB_Name = "frmSalesReport"

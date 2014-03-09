@@ -82,6 +82,34 @@ Begin VB.Form frmMain
             EndProperty
          EndProperty
       End
+      Begin VB.Label Label2 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Items in Critical Level"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   0
+         TabIndex        =   6
+         Top             =   0
+         Width           =   4695
+      End
+      Begin VB.Image Image1 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   7215
+         Left            =   0
+         Picture         =   "frmMain.frx":0000
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   10095
+      End
    End
    Begin VB.Frame Frame1 
       Caption         =   "Pending Orders (Double Click to View Details)"
@@ -155,9 +183,37 @@ Begin VB.Form frmMain
             EndProperty
          EndProperty
       End
+      Begin VB.Label Label1 
+         BackStyle       =   0  'Transparent
+         Caption         =   "Pending Orders ( Double Click to View Details)"
+         BeginProperty Font 
+            Name            =   "MS Sans Serif"
+            Size            =   8.25
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   -1  'True
+            Strikethrough   =   0   'False
+         EndProperty
+         ForeColor       =   &H8000000A&
+         Height          =   255
+         Left            =   0
+         TabIndex        =   5
+         Top             =   0
+         Width           =   4695
+      End
+      Begin VB.Image Image4 
+         BorderStyle     =   1  'Fixed Single
+         Height          =   7215
+         Left            =   0
+         Picture         =   "frmMain.frx":750D4
+         Stretch         =   -1  'True
+         Top             =   0
+         Width           =   8055
+      End
    End
    Begin VB.Label lblWelcome 
-      Alignment       =   2  'Center
+      BackColor       =   &H00E0E0E0&
       Caption         =   "Welcome"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -170,10 +226,18 @@ Begin VB.Form frmMain
       EndProperty
       ForeColor       =   &H000000FF&
       Height          =   255
-      Left            =   120
+      Left            =   5640
       TabIndex        =   1
       Top             =   0
-      Width           =   18615
+      Width           =   5535
+   End
+   Begin VB.Image Image2 
+      Height          =   8175
+      Left            =   0
+      Picture         =   "frmMain.frx":EA1A8
+      Stretch         =   -1  'True
+      Top             =   -120
+      Width           =   19335
    End
    Begin VB.Menu mnSupplier 
       Caption         =   "Supplier"

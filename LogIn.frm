@@ -1,19 +1,19 @@
 VERSION 5.00
 Begin VB.Form LogIn 
    Caption         =   "LogIn"
-   ClientHeight    =   3015
+   ClientHeight    =   3000
    ClientLeft      =   5670
    ClientTop       =   3705
-   ClientWidth     =   4140
+   ClientWidth     =   7125
    LinkTopic       =   "Form1"
-   ScaleHeight     =   3015
-   ScaleWidth      =   4140
+   ScaleHeight     =   3000
+   ScaleWidth      =   7125
    Begin VB.Frame Frame1 
       Caption         =   "Login"
       Height          =   2295
-      Left            =   240
+      Left            =   3480
       TabIndex        =   0
-      Top             =   240
+      Top             =   360
       Width           =   3495
       Begin VB.CommandButton Command2 
          Caption         =   "E&xit"
