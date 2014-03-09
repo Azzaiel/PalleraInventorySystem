@@ -493,6 +493,14 @@ Private Sub cmdExit_Click()
   Unload Me
 End Sub
 
+Private Sub dgAccounts_RowColChange(LastRow As Variant, ByVal LastCol As Integer)
+  Call showSelectedData
+End Sub
+
+Private Sub dgAccounts_SelChange(Cancel As Integer)
+  Call showSelectedData
+End Sub
+
 Private Sub Form_Load()
     Call populateDataGrid
 End Sub
