@@ -530,6 +530,3 @@ Private Sub txtOrderQty_KeyPress(KeyAscii As Integer)
     Beep
   End If
 End Sub
-
-+
-

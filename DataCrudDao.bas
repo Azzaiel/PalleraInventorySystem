@@ -196,6 +196,7 @@ Public Function getItemForSales(itemCode As String) As ADODB.Recordset
               "From items a, SUPPLIERS b, supplier_item_types c " & _
               "Where a.SUPPLIER_ID = b.ID " & _
               "      and a.ITEm_TYPE_ID = c.ID" & _
+              "      and b.ACTIVE = 'Y'" & _
               "      and a.ACTIVE = 'Y'" & _
               "      and a.item_code = '" & itemCode & "'"
 
@@ -244,6 +245,7 @@ Dim con As ADODB.Connection
               "From items a, SUPPLIERS b, supplier_item_types c " & _
               "Where a.SUPPLIER_ID = b.ID " & _
               "      and a.ACTIVE = '" & "Y' " & _
+              "      and b.ACTIVE = '" & "Y' " & _
               "      and a.ITEm_TYPE_ID = c.ID" & _
               "      and a.ITEm_TYPE_ID = " & ItemTypeID
 
