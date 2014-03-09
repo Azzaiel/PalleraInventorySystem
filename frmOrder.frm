@@ -379,7 +379,11 @@ Begin VB.Form frmOrder
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
+<<<<<<< HEAD
+         Format          =   53411843
+=======
          Format          =   60030979
+>>>>>>> 741abfe71113b790715ccae2ce781d787c0edab7
          CurrentDate     =   41671
       End
       Begin VB.Label Label10 
@@ -688,26 +692,26 @@ Private Sub lblCreatedDate_Click()
 End Sub
 
 Private Sub cmbItems_Click()
-  lblUnitPrice = itemsList(cmbItems.ListIndex, 1)
-  Call computeTotalPrice
+  'lblUnitPrice = itemsList(cmbItems.ListIndex, 1)
+  'Call computeTotalPrice
 End Sub
 
 Private Sub cmbItemType_Click()
-  cmbItems.Clear
-  lblUnitPrice = ""
-  Call computeTotalPrice
-  Set tempRs = DataCrudDao.getItemByItemType(Val(itemTypeIdList(cmbItemType.ListIndex)))
-  ReDim itemsList(0 To tempRs.RecordCount, 0 To 1) As Long
-  Dim index As Integer
-  index = 0
-   While Not tempRs.EOF
-    cmbItems.AddItem tempRs!ITEM_NAME
-    itemsList(index, 0) = tempRs!id
-    itemsList(index, 1) = tempRs!RETAIL_PRICE
-    index = index + 1
-    tempRs.MoveNext
-  Wend
-  Call DbInstance.closeRecordSet(tempRs)
+  'cmbItems.Clear
+  'lblUnitPrice = ""
+  'Call computeTotalPrice
+  'Set tempRs = DataCrudDao.getItemByItemType(Val(itemTypeIdList(cmbItemType.ListIndex)))
+  'ReDim itemsList(0 To tempRs.RecordCount, 0 To 1) As Long
+  'Dim index As Integer
+  'index = 0
+   'While Not tempRs.EOF
+   ' cmbItems.AddItem tempRs!ITEM_NAME
+   ' itemsList(index, 0) = tempRs!id
+   ' itemsList(index, 1) = tempRs!RETAIL_PRICE
+   ' index = index + 1
+   ' tempRs.MoveNext
+  'Wend
+  'Call DbInstance.closeRecordSet(tempRs)
 End Sub
 
 Private Sub cmbClose_Click()
@@ -915,20 +919,20 @@ Private Sub Text2_KeyPress(KeyAscii As Integer)
 End Sub
 
 Private Sub computeTotalPrice()
-  If (Val(txtQuantity) > 0 And Val(lblUnitPrice) > 0) Then
-    lblTotalPrice = Val(txtQuantity) * Val(lblUnitPrice)
-  Else
-    lblTotalPrice = ""
-  End If
+  'If (Val(txtQuantity) > 0 And Val(lblUnitPrice) > 0) Then
+  '  lblTotalPrice = Val(txtQuantity) * Val(lblUnitPrice)
+  'Else
+  '  lblTotalPrice = ""
+  'End If
 End Sub
 Private Sub txtQuantity_Change()
   Call computeTotalPrice
 End Sub
 Private Sub txtQuantity_KeyPress(KeyAscii As Integer)
-    If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtQuantity) > 11)) Then
-    KeyAscii = 0
-    Beep
-  End If
+    'If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtQuantity) > 11)) Then
+    'KeyAscii = 0
+    'Beep
+  'End If
 End Sub
 
 Private Sub gdOrderItems_Click()

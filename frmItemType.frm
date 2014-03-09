@@ -530,9 +530,7 @@ Private Sub cmbNewRec_Click()
     Call toogelInsertMode(True)
   Else
     If (DataCrudDao.isItemTypeExisting(txtItemType) = False) Then
-    
      Set tempRs = DataCrudDao.getFakeItemTypeRS
-
       tempRs.AddNew
       tempRs!supplier_id = suplierIdList(cmSuppliers.ListIndex)
       tempRs!Name = txtItemType
@@ -548,8 +546,8 @@ Private Sub cmbNewRec_Click()
     Else
       MsgBox "Item Type Already exist!!", vbCritical
     End If
-  End If
-End Function
+ End If
+End Sub
 Private Sub toogelInsertMode(isInisilization As Boolean)
   If (isInisilization) Then
     Call clearForm
@@ -563,7 +561,6 @@ End Sub
 Private Sub cmdClearSearch_Click()
   txtSearchItemType = ""
   txtSearchSuppliers = ""
-  cmSearchCategory.ListIndex = -1
 End Sub
 
 Private Sub cmdSearch_Click()

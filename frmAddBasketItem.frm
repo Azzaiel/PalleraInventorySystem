@@ -440,17 +440,17 @@ Private Sub cmbAddItem_Click()
   If rs.RecordCount = 0 Then
     MsgBox "Please select an Item First", vbCritical
     txtOrderQty.SetFocus
-    Exit Function
+    Exit Sub
   ElseIf Val(txtOrderQty) = 0 Then
     MsgBox "Please enter a Quantity", vbCritical
     txtOrderQty.SetFocus
-    Exit Function
+    Exit Sub
   ElseIf Val(lblStocks) - Val(txtOrderQty) < 0 Then
     MsgBox "Requested Quantity is greater that the current stock", vbCritical
     txtOrderQty.SetFocus
     txtOrderQty.SelStart = 0
     txtOrderQty.SelLength = Len(txtOrderQty)
-    Exit Function
+    Exit Sub
   End If
   
   Set tempRs = DataCrudDao.getTmpBasketItem(UserSession.getLoginUser, Val(rs!supplier_id), Val(rs!id))
@@ -465,7 +465,7 @@ Private Sub cmbAddItem_Click()
       txtOrderQty.SetFocus
       txtOrderQty.SelStart = 0
       txtOrderQty.SelLength = Len(txtOrderQty)
-      Exit Function
+      Exit Sub
     End If
   End If
   tempRs!username = UserSession.getLoginUser
@@ -480,7 +480,7 @@ Private Sub cmbAddItem_Click()
   txtItemCodeSearch = ""
   newSearch = False
   txtItemCodeSearch.SetFocus
-End Function
+End Sub
 Private Sub clearForm()
    lblSuplier = ""
    lblItemType = ""

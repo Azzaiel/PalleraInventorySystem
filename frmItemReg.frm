@@ -945,17 +945,10 @@ Private Sub txtRetailPrice_KeyPress(KeyAscii As Integer)
 End Sub
 
 Private Sub txtSearchItemType_KeyPress(KeyAscii As Integer)
-If KeyAscii = 13 Then
-Call cmdSearch
-End If
+'If KeyAscii = 13 Then
+'Call cmdSearch
+'End If
 End Sub
-
-Private Sub txtSearchSuppliers_KeyPress(KeyAscii As Integer)
-If KeyAscii = 13 Then
-Call cmdSearch
-End If
-End Sub
-
 Private Sub txtUnitPrice_KeyPress(KeyAscii As Integer)
   If (Not CommonHelper.isFunctionAscii(KeyAscii) And (Not CommonHelper.isNumberAscii(KeyAscii) Or Len(txtUnitPrice) > 11)) Then
     KeyAscii = 0
