@@ -2,6 +2,7 @@ VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Object = "{86CF1D34-0C5F-11D2-A9FC-0000F8754DA1}#2.0#0"; "MSCOMCT2.OCX"
 Begin VB.Form frmOrder 
+   Caption         =   "Order Form"
    ClientHeight    =   7995
    ClientLeft      =   120
    ClientTop       =   450
@@ -378,7 +379,11 @@ Begin VB.Form frmOrder
          _ExtentX        =   3413
          _ExtentY        =   450
          _Version        =   393216
+<<<<<<< HEAD
          Format          =   53411843
+=======
+         Format          =   60030979
+>>>>>>> 741abfe71113b790715ccae2ce781d787c0edab7
          CurrentDate     =   41671
       End
       Begin VB.Label Label10 

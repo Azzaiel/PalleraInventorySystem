@@ -215,6 +215,7 @@ Begin VB.Form frmMain
    End
    Begin VB.Label lblWelcome 
       BackColor       =   &H00E0E0E0&
+      BackStyle       =   0  'Transparent
       Caption         =   "Welcome"
       BeginProperty Font 
          Name            =   "MS Sans Serif"
@@ -227,9 +228,9 @@ Begin VB.Form frmMain
       EndProperty
       ForeColor       =   &H000000FF&
       Height          =   255
-      Left            =   4680
+      Left            =   6000
       TabIndex        =   1
-      Top             =   0
+      Top             =   120
       Width           =   10215
    End
    Begin VB.Image Image2 
