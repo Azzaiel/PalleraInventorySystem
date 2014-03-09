@@ -2,7 +2,7 @@ VERSION 5.00
 Object = "{CDE57A40-8B86-11D0-B3C6-00A0C90AEA82}#1.0#0"; "MSDATGRD.OCX"
 Begin VB.Form frmItemSell 
    BorderStyle     =   1  'Fixed Single
-   Caption         =   "Commands"
+   Caption         =   "Point of Sale"
    ClientHeight    =   5415
    ClientLeft      =   5385
    ClientTop       =   3105
